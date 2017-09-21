@@ -1,4 +1,4 @@
-/* Price Range */
+// Price Range
 
 $('#sl2').slider();
 
@@ -6,7 +6,7 @@ var RGBChange = function() {
     $('#RGB').css('background', 'rgb(' + r.getValue() + ',' + g.getValue() + ',' + b.getValue() + ')')
 };
 
-/* Scroll To Top */
+// Scroll To Top
 
 $(document).ready(function() {
     $(function() {
@@ -39,3 +39,30 @@ jQuery(document).ready(function() {
             $('.dropdown-menu', this).fadeOut("fast");
         });
 });
+
+// Slider
+// var $item = $('.carousel .item');
+// var $wHeight = $(window).height();
+// $item.eq(0).addClass('active');
+// $item.height($wHeight);
+// $item.addClass('full-screen');
+
+// $('.carousel img').each(function() {
+//     var $src = $(this).attr('src');
+//     var $color = $(this).attr('data-color');
+//     $(this).parent().css({
+//         'background-image': 'url(' + $src + ')',
+//         'background-color': $color
+//     });
+//     $(this).remove();
+// });
+
+// $(window).on('resize', function() {
+//     $wHeight = $(window).height();
+//     $item.height($wHeight);
+// });
+
+// $('.carousel').carousel({
+//     interval: 6000,
+//     pause: "false"
+// });
