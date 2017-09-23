@@ -20,775 +20,958 @@
 
 	<!-- My CSS -->
 	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" type="text/css" href="css/header.css">
 	<link rel="stylesheet" type="text/css" href="css/slider.css">
+	<link rel="stylesheet" type="text/css" href="css/footer.css">
 </head>
 <body>
-	<header>
-		<div class="header-top">
-			<div class="container">
-				<div class="row">
-					<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-						<div class="contact pull-left">
-							<ul class="nav navbar-nav">
-								<li><i class="fa fa-phone" aria-hidden="true"></i> 0912.818.789 | 0913.123.569</li>
-								<li><i class="fa fa-envelope" aria-hidden="true"></i> tuanphuongsports@gmail.com</li>
-							</ul>
+	<div class="wrapper">
+		<header>
+			<div class="header-top">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+							<div class="sub-menu pull-left">
+								<ul class="nav navbar-nav">
+									<li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i>Bản đồ</a></li>
+									<li><a href="#"><i class="fa fa-phone" aria-hidden="true"></i>Liên hệ</a></li>
+									<li><a href="#"><i class="fa fa-heart" aria-hidden="true"></i>Yêu thích</a></li>
+									<li><a href="#"><i class="fa fa-money" aria-hidden="true"></i>Thanh toán</a></li>
+								</ul>
+							</div>
+							<!-- /.sub-menu -->
 						</div>
-						<!-- /.contact -->
-					</div>
 
-					<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-						<div class="social pull-right">
-							<ul class="nav navbar-nav">
-								<li><a href="#" class="facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-								<li><a href="#" class="twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-								<li><a href="#" class="youtube"><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
-							</ul>
+						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+							<div class="account pull-right">
+								<ul class="nav navbar-nav">
+									<li><a data-toggle="modal" href="#modal-login"><i class="fa fa-sign-in" aria-hidden="true"></i>Đăng nhập</a></li>
+									<li><a data-toggle="modal" href="#modal-register"><i class="fa fa-lock" aria-hidden="true"></i>Đăng kí</a></li>
+								</ul>
+							</div>
+							<!-- /.account -->
 						</div>
-						<!-- /.social -->
 					</div>
 				</div>
 			</div>
-		</div>
-		<!-- /.header-top -->
+			<!-- /.header-top -->
 
-		<div class="header-middle">
-			<div class="container">
-				<div class="row">
-					<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-						<div class="logo pull-left">
-							<a href=""><img src="images/logo.png" alt="" height="60"></a>
-						</div>
-						<!-- /.logo -->
-					</div>
-
-					<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-						<div class="sub-menu pull-right">
-							<ul class="nav navbar-nav">
-								<li><a href="#"><i class="fa fa-heart" aria-hidden="true"></i>Wishlist</a></li>
-								<li><a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i>Shopping Cart</a></li>
-								<li><a href="#"><i class="fa fa-money" aria-hidden="true"></i>Checkout</a></li>
-								<li><a href="#"><i class="fa fa-sign-in" aria-hidden="true"></i>Login</a></li>
-								<li><a href="#"><i class="fa fa-lock" aria-hidden="true"></i>Register</a></li>
-							</ul>
-						</div>
-						<!-- /.sub-menu -->
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- /.header-middle -->
-
-		<div class="header-bottom navbar navbar-default navbar-static-top">
-			<div class="container">
-			    <div class="navbar-header">
-		            <!-- Mobile toggle button -->
-		            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-				</div>
-
-				<div class="mainmenu pull-left">
-		            <nav class="navbar-collapse collapse">
-			            <ul class="nav navbar-nav">
-						    <li><a href="#top">Home</a></li>
-		                    <li class="dropdown menu-large">
-		                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sản phẩm <b class="caret"></b></a>
-								<ul class="dropdown-menu mega-menu">
-								    <li class="mega-menu-column">
-									    <ul>
-									        <li class="dropdown-header">Tennis</li>
-									        <img src="http://placehold.it/150x120">
-											<li><a href="#">Giày</a></li>
-									        <li><a href="#">Quần áo</a></li>
-									        <li><a href="#">Vợt</a></li>
-									        <li><a href="#">Phụ kiện</a></li>
-									    </ul>
-								    </li>
-								    <li class="mega-menu-column">
-									    <ul>
-									    	<li class="dropdown-header">Bóng đá</li>
-									        <img src="http://placehold.it/150x120">
-											<li><a href="#">Giày</a></li>
-									        <li><a href="#">Quần áo</a></li>
-									        <li><a href="#">Phụ kiện</a></li>
-									    </ul>
-								    </li>
-								    <li class="mega-menu-column">
-									    <ul>
-									    	<li class="dropdown-header">Cầu lông</li>
-									        <img src="http://placehold.it/150x120">
-											<li><a href="#">Giày</a></li>
-									        <li><a href="#">Quần áo</a></li>
-									        <li><a href="#">Vợt</a></li>
-									        <li><a href="#">Phụ kiện</a></li>
-									    </ul>
-								    </li>
-								    <li class="mega-menu-column">
-									    <ul>
-									    	<li class="dropdown-header">Bóng bàn</li>
-									        <img src="http://placehold.it/150x120">
-											<li><a href="#">Giày</a></li>
-									        <li><a href="#">Quần áo</a></li>
-									        <li><a href="#">Vợt</a></li>
-									        <li><a href="#">Phụ kiện</a></li>
-									    </ul>
-								    </li>
-								    <li class="mega-menu-column">
-									    <ul>
-									    	<li class="dropdown-header">Bơi</li>
-									        <img src="http://placehold.it/150x120">
-											<li><a href="#">Kính</a></li>
-									        <li><a href="#">Quần áo</a></li>
-									    </ul>
-								    </li>
-								    <li class="mega-menu-column">
-									    <ul>
-									    	<li class="dropdown-header">Gym & Fitness</li>
-									        <img src="http://placehold.it/150x120">
-											<li><a href="#">Giày</a></li>
-									        <li><a href="#">Quần áo</a></li>
-									        <li><a href="#">Phụ kiện</a></li>
-									    </ul>
-								    </li>
-
-								</ul>
-							</li>
-							<li class="dropdown menu-large">
-		                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Thương hiệu <b class="caret"></b></a>
-								<ul class="dropdown-menu mega-menu">
-								    <li class="mega-menu-column">
-									    <ul>
-									        <li class="dropdown-header">Wilson</li>
-									        <img src="http://placehold.it/150x120">
-											<li><a href="#">Giày</a></li>
-									    </ul>
-								    </li>
-								    <li class="mega-menu-column">
-									    <ul>
-									    	<li class="dropdown-header">Nike</li>
-									        <img src="http://placehold.it/150x120">
-											<li><a href="#">Giày</a></li>
-									    </ul>
-								    </li>
-								    <li class="mega-menu-column">
-									    <ul>
-									    <li class="dropdown-header">Adidas</li>
-									        <img src="http://placehold.it/150x120">
-											<li><a href="#">Giày</a></li>
-									    </ul>
-								    </li>
-								</ul>
-							</li>
-		                    <li><a href="#">Tin Tức</a></li>
-		                    <li><a href="#">Video</a></li>
-		                    <li><a href="#">Khuyến Mãi</a></li>
-		                    <li><a href="#">Liên hệ</a></li>
-		                </ul>
-		            </nav>
-				</div>
-				<!-- /.mainmenu -->
-
-				<div class="search pull-right">
-					<form class="form-search top-search">
-                        <input type="text" class="input-medium search-query" placeholder="Search Here…">
-                    </form>
-				</div>
-				<!-- /.search -->
-			</div>
-		</div>
-		<!-- /.header-bottom -->
-	</header>
-	<!-- /header -->
-
-	<section id="mySlider" class="carousel slide" data-ride="carousel" data-wrap="true" data-interval="5000">
-	    <div class="section-container">
-	        <div>
-	            <ol class="carousel-indicators">
-	                <li data-target="#mySlider" data-slide-to="0" class="active"></li>
-	                <li data-target="#mySlider" data-slide-to="1"></li>
-	                <li data-target="#mySlider" data-slide-to="2"></li>
-	                <li data-target="#mySlider" data-slide-to="3"></li>
-	                <li data-target="#mySlider" data-slide-to="4"></li>
-	                <li data-target="#mySlider" data-slide-to="5"></li>
-	            </ol>
-
-	            <div class="carousel-inner" role="listbox">
-	                <div class="item center active" style="background-image: url(images/banner1.jpg);">
-	                </div>
-	                <div class="item center" style="background-image: url(images/banner2.jpg);">
-	                </div>
-	                <div class="item center" style="background-image: url(images/banner3.jpg);">
-	                </div>
-	                <div class="item center" style="background-image: url(images/banner4.jpg);">
-	                </div>
-	                <div class="item center" style="background-image: url(images/banner5.jpg);">
-	                </div>
-	                <div class="item center" style="background-image: url(images/banner6.jpg);">
-	                </div>
-	            </div>
-
-	            <a href="#mySlider" class="left carousel-control" data-slide="prev">
-	                <i class="fa fa-angle-left" aria-hidden="true"></i>
-	            </a>
-	            <a href="#mySlider" class="right carousel-control" data-slide="next">
-	                <i class="fa fa-angle-right" aria-hidden="true"></i>
-	            </a>
-	        </div>
-	    </div>
-	</section>
-	<!-- /#mySlider -->
-
-	<div class="main-content">
-		<div class="container">
-			<div class="row">
-				<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-					<div class="sidebar-left">
-						<h2>Bộ môn</h2>
-						<div class="product_category panel-group" id="accordian">
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title">
-										<a data-toggle="collapse" data-parent="#accordian" href="#tennis">
-											<span class="plus-icon pull-right"><i class="fa fa-plus" aria-hidden="true"></i></span>
-											Tennis
-										</a>
-									</h4>
-								</div>
-								<div id="tennis" class="panel-collapse collapse">
-									<div class="panel-body">
-										<ul>
-											<li><a href="#">Quần áo </a></li>
-											<li><a href="#">Giày </a></li>
-											<li><a href="#">Vợt </a></li>
-											<li><a href="#">Bóng </a></li>
-											<li><a href="#">Túi xách</a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
-
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title">
-										<a data-toggle="collapse" data-parent="#accordian" href="#soccer">
-											<span class="plus-icon pull-right"><i class="fa fa-plus"></i></span>
-											Bóng đá
-										</a>
-									</h4>
-								</div>
-								<div id="soccer" class="panel-collapse collapse">
-									<div class="panel-body">
-										<ul>
-											<li><a href="#">Quần áo </a></li>
-											<li><a href="#">Giày </a></li>
-											<li><a href="#">Bóng </a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
-
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title">
-										<a data-toggle="collapse" data-parent="#accordian" href="#badminton">
-											<span class="plus-icon pull-right"><i class="fa fa-plus"></i></span>
-											Cầu lông
-										</a>
-									</h4>
-								</div>
-								<div id="badminton" class="panel-collapse collapse">
-									<div class="panel-body">
-										<ul>
-											<li><a href="#">Vợt </a></li>
-											<li><a href="#">Cầu </a></li>
-											<li><a href="#">Lưới </a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title"><a href="#">Bóng bàn</a></h4>
-								</div>
-							</div>
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title"><a href="#">Bơi</a></h4>
-								</div>
-							</div>
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title"><a href="#">Gym & Fitness</a></h4>
-								</div>
-							</div>
-						</div><!--/product_category-->
-
-						<div class="product_brand">
-							<h2>Thương hiệu</h2>
-							<div class="brand_name">
-								<ul class="nav nav-pills nav-stacked">
-									<li><a href="#"> <span class="pull-right">(50)</span>Wilson</a></li>
-									<li><a href="#"> <span class="pull-right">(56)</span>Nike</a></li>
-									<li><a href="#"> <span class="pull-right">(27)</span>Adidas</a></li>
-									<li><a href="#"> <span class="pull-right">(32)</span>ASICS</a></li>
-								</ul>
-							</div>
-						</div><!--/product_brand-->
-
-						<div class="price-range">
-							<h2>Lọc giá</h2>
-							<div class="range text-center">
-								 <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="600" data-slider-step="5" data-slider-value="[250,450]" id="sl2" ><br />
-								 <b class="pull-left">$ 0</b> <b class="pull-right">$ 600</b>
-							</div>
-						</div><!--/price-range-->
-
-					</div>
-					<!-- /.sidebar-left -->
-				</div>
-
-				<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
-					<div class="features_items">
-						<h2 class="title text-center">Sản phẩm đặc trưng</h2>
+			<div class="header-middle">
+				<div class="container">
+					<div class="row">
 						<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-							<div class="product-image-wrapper">
-								<div class="single-products">
+							<div class="logo pull-left">
+								<a href=""><img src="images/logo.png" alt="" height="60"></a>
+							</div>
+							<!-- /.logo -->
+						</div>
+
+						<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+							<div class="shopping-cart pull-right">
+								<ul class="nav pull-left">
+				                    <li class="dropdown hover">
+				                    	<a href="#" class="dropdown-toggle">Giỏ hàng <span>1 sản phẩm</span> - <span>$589.50</span> <b class="caret"></b></a>
+				                        <ul class="dropdown-menu">
+				                            <li>
+				                                <table>
+				                                    <tbody>
+				                                        <tr>
+				                                            <td class="image">
+				                                            	<a href="product.html"><img width="50" height="50" src="images/7.jpg" alt="product" title="product"></a>
+				                                            </td>
+				                                            <!-- <td class="name"><a href="product.html">MacBook</a></td> -->
+				                                            <td class="quantity">x&nbsp;1</td>
+				                                            <td class="total">$589.50</td>
+				                                            <td class="remove"><i class="fa fa-times" aria-hidden="true"></i></td>
+				                                        </tr>
+				                                        <tr>
+				                                            <td class="image">
+				                                            	<a href="product.html"><img width="50" height="50" src="images/7.jpg" alt="product" title="product"></a>
+				                                            </td>
+				                                            <!-- <td class="name"><a href="product.html">MacBook</a></td> -->
+				                                            <td class="quantity">x&nbsp;1</td>
+				                                            <td class="total">$589.50</td>
+				                                            <td class="remove"><i class="fa fa-times" aria-hidden="true"></i></td>
+				                                        </tr>
+				                                    </tbody>
+				                                </table>
+				                                <table>
+				                                    <tbody>
+				                                        <tr>
+				                                            <td class="text-center"><b>Tổng tiền:</b></td>
+				                                            <td class="text-center">$589.50</td>
+				                                        </tr>
+				                                    </tbody>
+				                                </table>
+				                                <div class="button-wrap">
+				                                	<a class="btn" href="#">Xem giỏ</a>
+				                                	<a class="btn" href="#">Thanh toán</a>
+				                                </div>
+				                            </li>
+				                        </ul>
+				                    </li>
+				                </ul>
+							</div>
+							<!-- /.shopping-cart -->
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /.header-middle -->
+
+			<div class="header-bottom navbar navbar-default navbar-static-top">
+				<div class="container">
+				    <div class="navbar-header">
+			            <!-- Mobile toggle button -->
+			            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+					</div>
+
+					<div class="mainmenu pull-left">
+			            <nav class="navbar-collapse collapse">
+				            <ul class="nav navbar-nav">
+							    <li><a href="#top">Trang chủ</a></li>
+			                    <li class="dropdown menu-large">
+			                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sản phẩm <b class="caret"></b></a>
+									<ul class="dropdown-menu mega-menu">
+									    <li class="mega-menu-column">
+										    <ul>
+										        <li class="dropdown-header">Tennis</li>
+										        <img src="http://placehold.it/150x120">
+												<li><a href="#">Giày</a></li>
+										        <li><a href="#">Quần áo</a></li>
+										        <li><a href="#">Vợt</a></li>
+										        <li><a href="#">Phụ kiện</a></li>
+										    </ul>
+									    </li>
+									    <li class="mega-menu-column">
+										    <ul>
+										    	<li class="dropdown-header">Bóng đá</li>
+										        <img src="http://placehold.it/150x120">
+												<li><a href="#">Giày</a></li>
+										        <li><a href="#">Quần áo</a></li>
+										        <li><a href="#">Phụ kiện</a></li>
+										    </ul>
+									    </li>
+									    <li class="mega-menu-column">
+										    <ul>
+										    	<li class="dropdown-header">Cầu lông</li>
+										        <img src="http://placehold.it/150x120">
+												<li><a href="#">Giày</a></li>
+										        <li><a href="#">Quần áo</a></li>
+										        <li><a href="#">Vợt</a></li>
+										        <li><a href="#">Phụ kiện</a></li>
+										    </ul>
+									    </li>
+									    <li class="mega-menu-column">
+										    <ul>
+										    	<li class="dropdown-header">Bóng bàn</li>
+										        <img src="http://placehold.it/150x120">
+												<li><a href="#">Giày</a></li>
+										        <li><a href="#">Quần áo</a></li>
+										        <li><a href="#">Vợt</a></li>
+										        <li><a href="#">Phụ kiện</a></li>
+										    </ul>
+									    </li>
+									    <li class="mega-menu-column">
+										    <ul>
+										    	<li class="dropdown-header">Bơi</li>
+										        <img src="http://placehold.it/150x120">
+												<li><a href="#">Kính</a></li>
+										        <li><a href="#">Quần áo</a></li>
+										    </ul>
+									    </li>
+									    <li class="mega-menu-column">
+										    <ul>
+										    	<li class="dropdown-header">Gym & Fitness</li>
+										        <img src="http://placehold.it/150x120">
+												<li><a href="#">Giày</a></li>
+										        <li><a href="#">Quần áo</a></li>
+										        <li><a href="#">Phụ kiện</a></li>
+										    </ul>
+									    </li>
+
+									</ul>
+								</li>
+								<li class="dropdown menu-large">
+			                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Thương hiệu <b class="caret"></b></a>
+									<ul class="dropdown-menu mega-menu">
+									    <li class="mega-menu-column">
+										    <ul>
+										        <li class="dropdown-header">Wilson</li>
+										        <img src="http://placehold.it/150x120">
+												<li><a href="#">Giày</a></li>
+										    </ul>
+									    </li>
+									    <li class="mega-menu-column">
+										    <ul>
+										    	<li class="dropdown-header">Nike</li>
+										        <img src="http://placehold.it/150x120">
+												<li><a href="#">Giày</a></li>
+										    </ul>
+									    </li>
+									    <li class="mega-menu-column">
+										    <ul>
+										    <li class="dropdown-header">Adidas</li>
+										        <img src="http://placehold.it/150x120">
+												<li><a href="#">Giày</a></li>
+										    </ul>
+									    </li>
+									</ul>
+								</li>
+			                    <li><a href="#">Tin Tức</a></li>
+			                    <li><a href="#">Video</a></li>
+			                    <li><a href="#">Khuyến Mãi</a></li>
+			                </ul>
+			            </nav>
+					</div>
+					<!-- /.mainmenu -->
+
+					<div class="search pull-right">
+						<form class="form-search top-search">
+	                        <input type="text" class="input-medium search-query" placeholder="Search Here…">
+	                    </form>
+					</div>
+					<!-- /.search -->
+				</div>
+			</div>
+			<!-- /.header-bottom -->
+		</header>
+		<!-- /header -->
+
+		<div id="mySlider" class="carousel slide" data-ride="carousel" data-wrap="true" data-interval="5000">
+		    <div class="section-container">
+		        <div>
+		            <ol class="carousel-indicators">
+		                <li data-target="#mySlider" data-slide-to="0" class="active"></li>
+		                <li data-target="#mySlider" data-slide-to="1"></li>
+		                <li data-target="#mySlider" data-slide-to="2"></li>
+		                <li data-target="#mySlider" data-slide-to="3"></li>
+		                <li data-target="#mySlider" data-slide-to="4"></li>
+		                <li data-target="#mySlider" data-slide-to="5"></li>
+		            </ol>
+
+		            <div class="carousel-inner" role="listbox">
+		                <div class="item center active" style="background-image: url(images/banner1.jpg);">
+		                </div>
+		                <div class="item center" style="background-image: url(images/banner2.jpg);">
+		                </div>
+		                <div class="item center" style="background-image: url(images/banner3.jpg);">
+		                </div>
+		                <div class="item center" style="background-image: url(images/banner4.jpg);">
+		                </div>
+		                <div class="item center" style="background-image: url(images/banner5.jpg);">
+		                </div>
+		                <div class="item center" style="background-image: url(images/banner6.jpg);">
+		                </div>
+		            </div>
+
+		            <a href="#mySlider" class="left carousel-control" data-slide="prev">
+		                <i class="fa fa-angle-left" aria-hidden="true"></i>
+		            </a>
+		            <a href="#mySlider" class="right carousel-control" data-slide="next">
+		                <i class="fa fa-angle-right" aria-hidden="true"></i>
+		            </a>
+		        </div>
+		    </div>
+		</div>
+		<!-- /#mySlider -->
+
+		<div class="main-content">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+						<div class="sidebar-left">
+							<h2>Bộ môn</h2>
+							<div class="product-category panel-group" id="accordian">
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<h4 class="panel-title">
+											<a data-toggle="collapse" data-parent="#accordian" href="#tennis">
+												<span class="plus-icon pull-right"><i class="fa fa-plus" aria-hidden="true"></i></span>
+												Tennis
+											</a>
+										</h4>
+									</div>
+									<div id="tennis" class="panel-collapse collapse">
+										<div class="panel-body">
+											<ul>
+												<li><a href="#">Quần áo </a></li>
+												<li><a href="#">Giày </a></li>
+												<li><a href="#">Vợt </a></li>
+												<li><a href="#">Bóng </a></li>
+												<li><a href="#">Túi xách</a></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<h4 class="panel-title">
+											<a data-toggle="collapse" data-parent="#accordian" href="#soccer">
+												<span class="plus-icon pull-right"><i class="fa fa-plus" aria-hidden="true"></i></span>
+												Bóng đá
+											</a>
+										</h4>
+									</div>
+									<div id="soccer" class="panel-collapse collapse">
+										<div class="panel-body">
+											<ul>
+												<li><a href="#">Quần áo </a></li>
+												<li><a href="#">Giày </a></li>
+												<li><a href="#">Bóng </a></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<h4 class="panel-title">
+											<a data-toggle="collapse" data-parent="#accordian" href="#badminton">
+												<span class="plus-icon pull-right"><i class="fa fa-plus" aria-hidden="true"></i></span>
+												Cầu lông
+											</a>
+										</h4>
+									</div>
+									<div id="badminton" class="panel-collapse collapse">
+										<div class="panel-body">
+											<ul>
+												<li><a href="#">Vợt </a></li>
+												<li><a href="#">Cầu </a></li>
+												<li><a href="#">Lưới </a></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<h4 class="panel-title"><a href="#">Bóng bàn</a></h4>
+									</div>
+								</div>
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<h4 class="panel-title"><a href="#">Bơi</a></h4>
+									</div>
+								</div>
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<h4 class="panel-title"><a href="#">Gym & Fitness</a></h4>
+									</div>
+								</div>
+							</div><!--/product-category-->
+
+							<div class="product-brand">
+								<h2>Thương hiệu</h2>
+								<div class="brand-name">
+									<ul class="nav nav-pills nav-stacked">
+										<li><a href="#"> <span class="pull-right">(50)</span>Wilson</a></li>
+										<li><a href="#"> <span class="pull-right">(56)</span>Nike</a></li>
+										<li><a href="#"> <span class="pull-right">(27)</span>Adidas</a></li>
+										<li><a href="#"> <span class="pull-right">(32)</span>ASICS</a></li>
+									</ul>
+								</div>
+							</div><!--/product-brand-->
+
+							<div class="price-range">
+								<h2>Lọc giá</h2>
+								<div class="range text-center">
+									 <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="600" data-slider-step="5" data-slider-value="[250,450]" id="sl2" ><br />
+									 <b class="pull-left">$ 0</b> <b class="pull-right">$ 600</b>
+								</div>
+							</div><!--/price-range-->
+
+							<!-- <div class="news">
+								<h2>Tin tức</h2>
+								<div class="news-content"></div>
+							</div> -->
+							<!-- /.news -->
+
+						</div>
+						<!-- /.sidebar-left -->
+					</div>
+
+					<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+						<div class="featured-product">
+							<h2 class="title text-center">Sản phẩm đặc trưng</h2>
+							<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+								<div class="product-image-wrapper">
+									<div class="single-product">
 										<div class="productinfo text-center">
-											<img src="images/1.jpg" alt="" />
+											<a href="#"><img src="images/7.jpg" onmouseover="this.src='images/8.jpg'" onmouseout="this.src='images/7.jpg'" /></a>
+											<div class="shortlinks">
+								              	<a class="details" href="#"><i class="fa fa-info-circle" aria-hidden="true"></i></i> DETAILS</a>
+								              	<a class="wishlist" href="#"><i class="fa fa-heart" aria-hidden="true"></i> WISHLIST</a>
+								            </div>
+											<h2>$56</h2>
+											<a href=""><p>Easy Polo Black Edition</p></a>
+											<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</a>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+								<div class="product-image-wrapper">
+									<div class="single-product">
+										<div class="productinfo text-center">
+											<a href="#"><img src="images/7.jpg" onmouseover="this.src='images/8.jpg'" onmouseout="this.src='images/7.jpg'" /></a>
+											<div class="shortlinks">
+								              	<a class="details" href="#"><i class="fa fa-info-circle" aria-hidden="true"></i></i> DETAILS</a>
+								              	<a class="wishlist" href="#"><i class="fa fa-heart" aria-hidden="true"></i> WISHLIST</a>
+								            </div>
 											<h2>$56</h2>
 											<p>Easy Polo Black Edition</p>
-											<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-										</div>
-								</div>
-								<div class="choose">
-									<ul class="nav nav-pills nav-justified">
-										<li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-							<div class="product-image-wrapper">
-								<div class="single-products">
-									<div class="productinfo text-center">
-										<img src="images/2.jpg" alt="" />
-										<h2>$56</h2>
-										<p>Easy Polo Black Edition</p>
-										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-									</div>
-								</div>
-								<div class="choose">
-									<ul class="nav nav-pills nav-justified">
-										<li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-							<div class="product-image-wrapper">
-								<div class="single-products">
-									<div class="productinfo text-center">
-										<img src="images/3.jpg" alt="" />
-										<h2>$56</h2>
-										<p>Easy Polo Black Edition</p>
-										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-									</div>
-								</div>
-								<div class="choose">
-									<ul class="nav nav-pills nav-justified">
-										<li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-							<div class="product-image-wrapper">
-								<div class="single-products">
-									<div class="productinfo text-center">
-										<img src="images/4.jpg" alt="" />
-										<h2>$56</h2>
-										<p>Easy Polo Black Edition</p>
-										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-									</div>
-									<img src="images/new.png" class="new" alt="" />
-								</div>
-								<div class="choose">
-									<ul class="nav nav-pills nav-justified">
-										<li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-							<div class="product-image-wrapper">
-								<div class="single-products">
-									<div class="productinfo text-center">
-										<img src="images/5.jpg" alt="" />
-										<h2>$56</h2>
-										<p>Easy Polo Black Edition</p>
-										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-									</div>
-									<img src="images/sale.png" class="new" alt="" />
-								</div>
-								<div class="choose">
-									<ul class="nav nav-pills nav-justified">
-										<li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-							<div class="product-image-wrapper">
-								<div class="single-products">
-									<div class="productinfo text-center">
-										<img src="images/6.jpg" alt="" />
-										<h2>$56</h2>
-										<p>Easy Polo Black Edition</p>
-										<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-									</div>
-								</div>
-								<div class="choose">
-									<ul class="nav nav-pills nav-justified">
-										<li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-
-					</div><!--features_items-->
-
-					<div class="category-tab">
-						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-							<ul class="nav nav-tabs">
-								<li class="active"><a href="#footwear" data-toggle="tab">Giày dép</a></li>
-								<li><a href="#clothes" data-toggle="tab">Quần áo</a></li>
-								<li><a href="#equipment" data-toggle="tab">Dụng cụ</a></li>
-								<li><a href="#accessories" data-toggle="tab">Phụ kiện</a></li>
-							</ul>
-						</div>
-
-						<div class="tab-content">
-							<div class="tab-pane fade active in" id="footwear" >
-								<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="images/1.jpg" alt="" />
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-											</div>
-										</div>
-									</div>
-								</div>
-
-								<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="images/1.jpg" alt="" />
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-											</div>
-										</div>
-									</div>
-								</div>
-
-								<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="images/1.jpg" alt="" />
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-											</div>
-										</div>
-									</div>
-								</div>
-
-								<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="images/1.jpg" alt="" />
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-											</div>
+											<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</a>
 										</div>
 									</div>
 								</div>
 							</div>
-
-							<div class="tab-pane fade" id="clothes" >
-								<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="images/1.jpg" alt="" />
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-											</div>
-										</div>
-									</div>
-								</div>
-
-								<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="images/1.jpg" alt="" />
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-											</div>
-										</div>
-									</div>
-								</div>
-
-								<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="images/1.jpg" alt="" />
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-											</div>
-										</div>
-									</div>
-								</div>
-
-								<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="images/1.jpg" alt="" />
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-											</div>
+							<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+								<div class="product-image-wrapper">
+									<div class="single-product">
+										<div class="productinfo text-center">
+											<a href="#"><img src="images/7.jpg" onmouseover="this.src='images/8.jpg'" onmouseout="this.src='images/7.jpg'" /></a>
+											<div class="shortlinks">
+								              	<a class="details" href="#"><i class="fa fa-info-circle" aria-hidden="true"></i></i> DETAILS</a>
+								              	<a class="wishlist" href="#"><i class="fa fa-heart" aria-hidden="true"></i> WISHLIST</a>
+								            </div>
+											<h2>$56</h2>
+											<p>Easy Polo Black Edition</p>
+											<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</a>
 										</div>
 									</div>
 								</div>
 							</div>
+							<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+								<div class="product-image-wrapper">
+									<div class="single-product">
+										<div class="productinfo text-center">
+											<a href="#"><img src="images/7.jpg" onmouseover="this.src='images/8.jpg'" onmouseout="this.src='images/7.jpg'" /></a>
+											<div class="shortlinks">
+								              	<a class="details" href="#"><i class="fa fa-info-circle" aria-hidden="true"></i></i> DETAILS</a>
+								              	<a class="wishlist" href="#"><i class="fa fa-heart" aria-hidden="true"></i> WISHLIST</a>
+								            </div>
+											<h2>$56</h2>
+											<p>Easy Polo Black Edition</p>
+											<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</a>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+								<div class="product-image-wrapper">
+									<div class="single-product">
+										<div class="productinfo text-center">
+											<a href="#"><img src="images/7.jpg" onmouseover="this.src='images/8.jpg'" onmouseout="this.src='images/7.jpg'" /></a>
+											<div class="shortlinks">
+								              	<a class="details" href="#"><i class="fa fa-info-circle" aria-hidden="true"></i></i> DETAILS</a>
+								              	<a class="wishlist" href="#"><i class="fa fa-heart" aria-hidden="true"></i> WISHLIST</a>
+								            </div>
+											<h2>$56</h2>
+											<p>Easy Polo Black Edition</p>
+											<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</a>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+								<div class="product-image-wrapper">
+									<div class="single-product">
+										<div class="productinfo text-center">
+											<a href="#"><img src="images/7.jpg" onmouseover="this.src='images/8.jpg'" onmouseout="this.src='images/7.jpg'" /></a>
+											<div class="shortlinks">
+								              	<a class="details" href="#"><i class="fa fa-info-circle" aria-hidden="true"></i></i> DETAILS</a>
+								              	<a class="wishlist" href="#"><i class="fa fa-heart" aria-hidden="true"></i> WISHLIST</a>
+								            </div>
+											<h2>$56</h2>
+											<p>Easy Polo Black Edition</p>
+											<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div><!--featured-product-->
 
-							<div class="tab-pane fade" id="equipment" >
-								<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
+						<div class="category-tab">
+							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+								<ul class="nav nav-tabs">
+									<li class="active"><a href="#footwear" data-toggle="tab">Giày dép</a></li>
+									<li><a href="#clothes" data-toggle="tab">Quần áo</a></li>
+									<li><a href="#equipment" data-toggle="tab">Dụng cụ</a></li>
+									<li><a href="#accessories" data-toggle="tab">Phụ kiện</a></li>
+								</ul>
+							</div>
+
+							<div class="tab-content">
+								<div class="tab-pane fade active in" id="footwear" >
+									<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+										<div class="single-product">
 											<div class="productinfo text-center">
-												<img src="images/1.jpg" alt="" />
+												<a href="#"><img src="images/7.jpg" onmouseover="this.src='images/8.jpg'" onmouseout="this.src='images/7.jpg'" /></a>
+												<div class="shortlinks">
+									              	<a class="details" href="#"><i class="fa fa-info-circle" aria-hidden="true"></i></i> DETAILS</a>
+									              	<a class="wishlist" href="#"><i class="fa fa-heart" aria-hidden="true"></i> WISHLIST</a>
+									            </div>
+												<h2>$56</h2>
+												<a href=""><p>Easy Polo Black Edition</p></a>
+												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</a>
+											</div>
+										</div>
+									</div>
+									<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+										<div class="single-product">
+											<div class="productinfo text-center">
+												<a href="#"><img src="images/7.jpg" onmouseover="this.src='images/8.jpg'" onmouseout="this.src='images/7.jpg'" /></a>
+												<div class="shortlinks">
+									              	<a class="details" href="#"><i class="fa fa-info-circle" aria-hidden="true"></i></i> DETAILS</a>
+									              	<a class="wishlist" href="#"><i class="fa fa-heart" aria-hidden="true"></i> WISHLIST</a>
+									            </div>
 												<h2>$56</h2>
 												<p>Easy Polo Black Edition</p>
-												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</a>
+											</div>
+										</div>
+									</div>
+									<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+										<div class="single-product">
+											<div class="productinfo text-center">
+												<a href="#"><img src="images/7.jpg" onmouseover="this.src='images/8.jpg'" onmouseout="this.src='images/7.jpg'" /></a>
+												<div class="shortlinks">
+									              	<a class="details" href="#"><i class="fa fa-info-circle" aria-hidden="true"></i></i> DETAILS</a>
+									              	<a class="wishlist" href="#"><i class="fa fa-heart" aria-hidden="true"></i> WISHLIST</a>
+									            </div>
+												<h2>$56</h2>
+												<p>Easy Polo Black Edition</p>
+												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</a>
+											</div>
+										</div>
+									</div>
+									<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+										<div class="single-product">
+											<div class="productinfo text-center">
+												<a href="#"><img src="images/7.jpg" onmouseover="this.src='images/8.jpg'" onmouseout="this.src='images/7.jpg'" /></a>
+												<div class="shortlinks">
+									              	<a class="details" href="#"><i class="fa fa-info-circle" aria-hidden="true"></i></i> DETAILS</a>
+									              	<a class="wishlist" href="#"><i class="fa fa-heart" aria-hidden="true"></i> WISHLIST</a>
+									            </div>
+												<h2>$56</h2>
+												<p>Easy Polo Black Edition</p>
+												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</a>
 											</div>
 										</div>
 									</div>
 								</div>
 
-								<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
+								<div class="tab-pane fade" id="clothes" >
+									<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+										<div class="single-product">
 											<div class="productinfo text-center">
-												<img src="images/1.jpg" alt="" />
+												<a href="#"><img src="images/7.jpg" onmouseover="this.src='images/8.jpg'" onmouseout="this.src='images/7.jpg'" /></a>
+												<div class="shortlinks">
+									              	<a class="details" href="#"><i class="fa fa-info-circle" aria-hidden="true"></i></i> DETAILS</a>
+									              	<a class="wishlist" href="#"><i class="fa fa-heart" aria-hidden="true"></i> WISHLIST</a>
+									            </div>
 												<h2>$56</h2>
 												<p>Easy Polo Black Edition</p>
-												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</a>
+											</div>
+										</div>
+									</div>
+									<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+										<div class="single-product">
+											<div class="productinfo text-center">
+												<a href="#"><img src="images/7.jpg" onmouseover="this.src='images/8.jpg'" onmouseout="this.src='images/7.jpg'" /></a>
+												<div class="shortlinks">
+									              	<a class="details" href="#"><i class="fa fa-info-circle" aria-hidden="true"></i></i> DETAILS</a>
+									              	<a class="wishlist" href="#"><i class="fa fa-heart" aria-hidden="true"></i> WISHLIST</a>
+									            </div>
+												<h2>$56</h2>
+												<p>Easy Polo Black Edition</p>
+												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</a>
+											</div>
+										</div>
+									</div>
+									<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+										<div class="single-product">
+											<div class="productinfo text-center">
+												<a href="#"><img src="images/7.jpg" onmouseover="this.src='images/8.jpg'" onmouseout="this.src='images/7.jpg'" /></a>
+												<div class="shortlinks">
+									              	<a class="details" href="#"><i class="fa fa-info-circle" aria-hidden="true"></i></i> DETAILS</a>
+									              	<a class="wishlist" href="#"><i class="fa fa-heart" aria-hidden="true"></i> WISHLIST</a>
+									            </div>
+												<h2>$56</h2>
+												<p>Easy Polo Black Edition</p>
+												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</a>
 											</div>
 										</div>
 									</div>
 								</div>
 
-								<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
+								<div class="tab-pane fade" id="equipment" >
+									<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+										<div class="single-product">
 											<div class="productinfo text-center">
-												<img src="images/1.jpg" alt="" />
+												<a href="#"><img src="images/7.jpg" onmouseover="this.src='images/8.jpg'" onmouseout="this.src='images/7.jpg'" /></a>
+												<div class="shortlinks">
+									              	<a class="details" href="#"><i class="fa fa-info-circle" aria-hidden="true"></i></i> DETAILS</a>
+									              	<a class="wishlist" href="#"><i class="fa fa-heart" aria-hidden="true"></i> WISHLIST</a>
+									            </div>
 												<h2>$56</h2>
 												<p>Easy Polo Black Edition</p>
-												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</a>
+											</div>
+										</div>
+									</div>
+									<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+										<div class="single-product">
+											<div class="productinfo text-center">
+												<a href="#"><img src="images/7.jpg" onmouseover="this.src='images/8.jpg'" onmouseout="this.src='images/7.jpg'" /></a>
+												<div class="shortlinks">
+									              	<a class="details" href="#"><i class="fa fa-info-circle" aria-hidden="true"></i></i> DETAILS</a>
+									              	<a class="wishlist" href="#"><i class="fa fa-heart" aria-hidden="true"></i> WISHLIST</a>
+									            </div>
+												<h2>$56</h2>
+												<p>Easy Polo Black Edition</p>
+												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</a>
 											</div>
 										</div>
 									</div>
 								</div>
 
-								<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
+								<div class="tab-pane fade" id="accessories" >
+									<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+										<div class="single-product">
 											<div class="productinfo text-center">
-												<img src="images/1.jpg" alt="" />
+												<a href="#"><img src="images/7.jpg" onmouseover="this.src='images/8.jpg'" onmouseout="this.src='images/7.jpg'" /></a>
+												<div class="shortlinks">
+									              	<a class="details" href="#"><i class="fa fa-info-circle" aria-hidden="true"></i></i> DETAILS</a>
+									              	<a class="wishlist" href="#"><i class="fa fa-heart" aria-hidden="true"></i> WISHLIST</a>
+									            </div>
 												<h2>$56</h2>
 												<p>Easy Polo Black Edition</p>
-												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</a>
+											</div>
+										</div>
+									</div>
+									<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+										<div class="single-product">
+											<div class="productinfo text-center">
+												<a href="#"><img src="images/7.jpg" onmouseover="this.src='images/8.jpg'" onmouseout="this.src='images/7.jpg'" /></a>
+												<div class="shortlinks">
+									              	<a class="details" href="#"><i class="fa fa-info-circle" aria-hidden="true"></i></i> DETAILS</a>
+									              	<a class="wishlist" href="#"><i class="fa fa-heart" aria-hidden="true"></i> WISHLIST</a>
+									            </div>
+												<h2>$56</h2>
+												<p>Easy Polo Black Edition</p>
+												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</a>
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
+						</div><!--/category-tab-->
 
-							<div class="tab-pane fade active in" id="accessories" >
-								<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="images/1.jpg" alt="" />
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+						<div class="recommended-product">
+							<h2 class="title text-center">Sản phẩm đề xuất</h2>
+							<div id="recommended-product-carousel" class="carousel slide" data-ride="carousel">
+								<div class="carousel-inner">
+									<div class="item active">
+										<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+											<div class="product-image-wrapper">
+												<div class="single-product">
+													<div class="productinfo text-center">
+														<a href="#"><img src="images/7.jpg" onmouseover="this.src='images/8.jpg'" onmouseout="this.src='images/7.jpg'" /></a>
+														<div class="shortlinks">
+											              	<a class="details" href="#"><i class="fa fa-info-circle" aria-hidden="true"></i></i> DETAILS</a>
+											              	<a class="wishlist" href="#"><i class="fa fa-heart" aria-hidden="true"></i> WISHLIST</a>
+											            </div>
+														<h2>$56</h2>
+														<a href=""><p>Easy Polo Black Edition</p></a>
+														<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</a>
+													</div>
+												</div>
 											</div>
 										</div>
-									</div>
-								</div>
-
-								<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="images/1.jpg" alt="" />
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+										<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+											<div class="product-image-wrapper">
+												<div class="single-product">
+													<div class="productinfo text-center">
+														<a href="#"><img src="images/7.jpg" onmouseover="this.src='images/8.jpg'" onmouseout="this.src='images/7.jpg'" /></a>
+														<div class="shortlinks">
+											              	<a class="details" href="#"><i class="fa fa-info-circle" aria-hidden="true"></i></i> DETAILS</a>
+											              	<a class="wishlist" href="#"><i class="fa fa-heart" aria-hidden="true"></i> WISHLIST</a>
+											            </div>
+														<h2>$56</h2>
+														<p>Easy Polo Black Edition</p>
+														<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</a>
+													</div>
+												</div>
 											</div>
 										</div>
-									</div>
-								</div>
-
-								<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="images/1.jpg" alt="" />
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-											</div>
-										</div>
-									</div>
-								</div>
-
-								<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="images/1.jpg" alt="" />
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div><!--/category-tab-->
-
-					<div class="recommended_items">
-						<h2 class="title text-center">Sản phẩm đề xuất</h2>
-						<div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
-							<div class="carousel-inner">
-								<div class="item active">
-									<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-										<div class="product-image-wrapper">
-											<div class="single-products">
-												<div class="productinfo text-center">
-													<img src="images/1.jpg" alt="" />
-													<h2>$56</h2>
-													<p>Easy Polo Black Edition</p>
-													<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+										<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+											<div class="product-image-wrapper">
+												<div class="single-product">
+													<div class="productinfo text-center">
+														<a href="#"><img src="images/7.jpg" onmouseover="this.src='images/8.jpg'" onmouseout="this.src='images/7.jpg'" /></a>
+														<div class="shortlinks">
+											              	<a class="details" href="#"><i class="fa fa-info-circle" aria-hidden="true"></i></i> DETAILS</a>
+											              	<a class="wishlist" href="#"><i class="fa fa-heart" aria-hidden="true"></i> WISHLIST</a>
+											            </div>
+														<h2>$56</h2>
+														<p>Easy Polo Black Edition</p>
+														<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</a>
+													</div>
 												</div>
 											</div>
 										</div>
 									</div>
-									<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-										<div class="product-image-wrapper">
-											<div class="single-products">
-												<div class="productinfo text-center">
-													<img src="images/1.jpg" alt="" />
-													<h2>$56</h2>
-													<p>Easy Polo Black Edition</p>
-													<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+									<div class="item">
+										<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+											<div class="product-image-wrapper">
+												<div class="single-product">
+													<div class="productinfo text-center">
+														<a href="#"><img src="images/7.jpg" onmouseover="this.src='images/8.jpg'" onmouseout="this.src='images/7.jpg'" /></a>
+														<div class="shortlinks">
+											              	<a class="details" href="#"><i class="fa fa-info-circle" aria-hidden="true"></i></i> DETAILS</a>
+											              	<a class="wishlist" href="#"><i class="fa fa-heart" aria-hidden="true"></i> WISHLIST</a>
+											            </div>
+														<h2>$56</h2>
+														<p>Easy Polo Black Edition</p>
+														<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</a>
+													</div>
 												</div>
 											</div>
 										</div>
-									</div>
-									<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-										<div class="product-image-wrapper">
-											<div class="single-products">
-												<div class="productinfo text-center">
-													<img src="images/1.jpg" alt="" />
-													<h2>$56</h2>
-													<p>Easy Polo Black Edition</p>
-													<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+										<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+											<div class="product-image-wrapper">
+												<div class="single-product">
+													<div class="productinfo text-center">
+														<a href="#"><img src="images/7.jpg" onmouseover="this.src='images/8.jpg'" onmouseout="this.src='images/7.jpg'" /></a>
+														<div class="shortlinks">
+											              	<a class="details" href="#"><i class="fa fa-info-circle" aria-hidden="true"></i></i> DETAILS</a>
+											              	<a class="wishlist" href="#"><i class="fa fa-heart" aria-hidden="true"></i> WISHLIST</a>
+											            </div>
+														<h2>$56</h2>
+														<p>Easy Polo Black Edition</p>
+														<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</a>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+											<div class="product-image-wrapper">
+												<div class="single-product">
+													<div class="productinfo text-center">
+														<a href="#"><img src="images/7.jpg" onmouseover="this.src='images/8.jpg'" onmouseout="this.src='images/7.jpg'" /></a>
+														<div class="shortlinks">
+											              	<a class="details" href="#"><i class="fa fa-info-circle" aria-hidden="true"></i></i> DETAILS</a>
+											              	<a class="wishlist" href="#"><i class="fa fa-heart" aria-hidden="true"></i> WISHLIST</a>
+											            </div>
+														<h2>$56</h2>
+														<p>Easy Polo Black Edition</p>
+														<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</a>
+													</div>
 												</div>
 											</div>
 										</div>
 									</div>
 								</div>
-								<div class="item">
-									<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-										<div class="product-image-wrapper">
-											<div class="single-products">
-												<div class="productinfo text-center">
-													<img src="images/1.jpg" alt="" />
-													<h2>$56</h2>
-													<p>Easy Polo Black Edition</p>
-													<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-										<div class="product-image-wrapper">
-											<div class="single-products">
-												<div class="productinfo text-center">
-													<img src="images/1.jpg" alt="" />
-													<h2>$56</h2>
-													<p>Easy Polo Black Edition</p>
-													<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-										<div class="product-image-wrapper">
-											<div class="single-products">
-												<div class="productinfo text-center">
-													<img src="images/1.jpg" alt="" />
-													<h2>$56</h2>
-													<p>Easy Polo Black Edition</p>
-													<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
+								<a class="left recommended-product-control" href="#recommended-product-carousel" data-slide="prev">
+									<i class="fa fa-angle-left" aria-hidden="true"></i>
+								</a>
+								<a class="right recommended-product-control" href="#recommended-product-carousel" data-slide="next">
+									<i class="fa fa-angle-right" aria-hidden="true"></i>
+								</a>
 							</div>
-							<a class="left recommended-item-control" href="#recommended-item-carousel" data-slide="prev">
-								<i class="fa fa-angle-left"></i>
-							</a>
-							<a class="right recommended-item-control" href="#recommended-item-carousel" data-slide="next">
-								<i class="fa fa-angle-right"></i>
-							</a>
-						</div>
-					</div><!--/recommended_items-->
+						</div><!--/recommended-product-->
+					</div>
 				</div>
+			</div>
+		</div>
+		<!-- /.main-content -->
+
+		<footer>
+	  		<div class="footer-account">
+	    		<div class="container">
+	      			<div class="row">
+	        			<div class="about-us col-xs-3 col-sm-3 col-md-3 col-lg-3">
+			          		<h2>Tuấn Phương Sports</h2>
+			          		<p> Trong hơn một thập kỷ qua, nhắc đến Tuấn Phương Sports là nhắc đến thương hiệu rất quen thuộc và đáng tin cậy của người tiêu dùng trên cả nước về các mặt hàng đặc chủng chuyên ngành Thể Dục Thể Thao.
+			         		<br><br>
+			            	Tuấn Phương Sports luôn tự hào là nhà tiên phong cung cấp cho thị trường Việt Nam những sản phẩm Thể Thao mới nhất với những thương hiệu hàng đầu trên thế giới, hầu hết có xuất xứ từ Mỹ như : WILSON, JONHSON, BODY-SOLIDE, NIKE,ADIDAS … phong phú về kiểu dáng, chất lượng hoàn hảo, cấu trúc kỷ thuật của từng loại sản phẩm hoàn thiện đến từng chi tiết.</p>
+	        			</div>
+	        			<div class="contact col-xs-3 col-sm-3 col-md-3 col-lg-3">
+	          				<h2>Liên hệ</h2>
+	          				<ul>
+	          					<p>SHOWROOM 1: Số 10 Lê Trực, Ba Đình</p>
+					            <li class="email">Điện thoại: 0912.818.789</li>
+					            <li class="email">Hotline: 0913.123.569</li>
+					        </ul>
+					        <ul>
+	          					<p>SHOWROOM 2: Số 8 TRịnh Hoài Đức, Đống Đa</p>
+					            <li class="email">Điện thoại: 024.3734 63 67</li>
+					            <li class="email">Hotline: 098 985 7777</li>
+					        </ul>
+					        <ul><p>Email: tuanphuongsports@yahoo.com.vn</p></ul>
+					        <ul><p>Website: www.tuanphuongsports.com.vn</p></ul>
+				        </div>
+				        <div class="twitter col-xs-3 col-sm-3 col-md-3 col-lg-3">
+				          	<h2>Twitter</h2>
+				          	<div id="twitter">
+				          	</div>
+				        </div>
+	        			<div class="facebook col-xs-3 col-sm-3 col-md-3 col-lg-3">
+		          			<h2>Facebook</h2>
+		         			<div id="fb-root"></div>
+						<!-- <script>
+								(function(d, s, id) {
+							  		var js, fjs = d.getElementsByTagName(s)[0];
+							  		if (d.getElementById(id)) return;
+							  		js = d.createElement(s); js.id = id;
+							  		js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+							  		fjs.parentNode.insertBefore(js, fjs);
+								}(document, 'script', 'facebook-jssdk'));
+							</script> -->
+	        				<div class="fb-like-box" data-href="http://www.facebook.com/envato" data-width="292" data-show-faces="true" data-colorscheme="light" data-stream="false" data-show-border="false" data-header="false"  data-height="240"></div>
+	        			</div>
+	      			</div>
+	    		</div>
+	  		</div>
+	  		<div class="footer-copyright">
+	    		<div class="container">
+	      			<div class="row">
+				        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+				         	<p>All images are copyright to their owners.</p>
+				         </div>
+				        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+				         	<p class="pull-right">ShopSimple @ 2012</p>
+				         </div>
+	      			</div>
+	    		</div>
+	  		</div>
+		</footer>
+		<!-- /footer -->
+
+		<a id="scrollUp" href="#top" style="position: fixed; z-index: 2147483647; display: block;">
+			<i class="fa fa-angle-up"></i>
+		</a>
+
+	</div>
+	<!-- /.wrapper -->
+
+	<div class="login">
+		<div class="modal fade" id="modal-login">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<form action="#" method="post">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+							<h4 class="modal-title">Khách hàng đã đăng ký</h4>
+						</div>
+						<div class="modal-body">
+							<div class="form-block">
+								<label for="email">Email *</label>
+								<input type="email" id="email" required>
+							</div>
+							<div class="form-block">
+								<label for="password">Mật khẩu *</label>
+								<input type="text" id="password" required>
+							</div>
+							<div class="form-block">
+								<span>
+									<input type="checkbox" class="checkbox">
+									Duy trì đăng nhập
+								</span>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<p class="text-center">* Thông tin bắt buộc</p>
+							<div class="form-block">
+								<button type="submit" class="btn btn-default">Đăng nhập</button>
+							</div>
+						</div>
+					</form>
+				</div>
+
+			</div>
+		</div>
+		<!-- <form action="#" method="post">
+			<h2>Khách hàng đã đăng ký</h2>
+			<div class="form-block">
+				<label for="email">Email *</label>
+				<input type="email" id="email" required>
+			</div>
+			<div class="form-block">
+				<label for="password">Mật khẩu *</label>
+				<input type="text" id="phone" required>
+			</div>
+			<div class="form-block">
+				<span>
+					<input type="checkbox" class="checkbox">
+					Duy trì đăng nhập
+				</span>
+			</div>
+			<div class="form-block">
+				<p class="text-center">* Thông tin bắt buộc</p>
+				<button type="submit" class="btn btn-default">Đăng nhập</button>
+			</div>
+		</form> -->
+	</div>
+	<!-- /.login -->
+
+	<div class="register">
+		<div class="modal fade" id="modal-register">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<form action="#" method="post">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+							<h4 class="modal-title">Tạo tài khoản khách hàng mới</h4>
+						</div>
+						<div class="modal-body">
+							<div class="form-block">
+								<label for="email">Email *</label>
+								<input type="email" id="email" required>
+							</div>
+							<div class="form-block">
+								<label for="name">Tên *</label>
+								<input type="text" id="name" required>
+							</div>
+							<div class="form-block">
+								<label for="adress">Địa chỉ *</label>
+								<input type="text" id="adress" value="" required>
+							</div>
+							<div class="form-block">
+								<label for="phone">Số điện thoại *</label>
+								<input type="text" id="phone" required>
+							</div>
+							<div class="form-block">
+								<label for="password">Mật khẩu *</label>
+								<input type="text" id="password" required>
+							</div>
+							<div class="form-block">
+								<label for="re-password">Nhập lại mật khẩu *</label>
+								<input type="text" id="re-password" required>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<p class="text-center">* Thông tin bắt buộc</p>
+							<div class="form-block">
+								<button type="submit" class="btn btn-default">Đăng ký</button>
+							</div>
+						</div>
+					</form>
+				</div>
+
 			</div>
 		</div>
 	</div>
-	<!-- /.main-content -->
+	<!-- /.register -->
 
 	<script src="js/jquery.js"></script>
 	<script src="js/bootstrap.min.js"></script>
@@ -797,4 +980,6 @@
     <script src="js/jquery.prettyPhoto.js"></script>
     <script src="js/main.js"></script>
 </body>
+
+
 </html>

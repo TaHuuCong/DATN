@@ -40,29 +40,17 @@ jQuery(document).ready(function() {
         });
 });
 
-// Slider
-// var $item = $('.carousel .item');
-// var $wHeight = $(window).height();
-// $item.eq(0).addClass('active');
-// $item.height($wHeight);
-// $item.addClass('full-screen');
+// Product Info
+$('.productinfo').each(function() {
+    $(this).hover(
+        function() {
+            //$(this).children('a').children('img').fadeOut()
+            $(this).children('.shortlinks').fadeIn()
+        },
+        function() {
+            //$(this).children('a').children('img').fadeIn()
+            $(this).children('.shortlinks').fadeOut()
+        }
+    );
 
-// $('.carousel img').each(function() {
-//     var $src = $(this).attr('src');
-//     var $color = $(this).attr('data-color');
-//     $(this).parent().css({
-//         'background-image': 'url(' + $src + ')',
-//         'background-color': $color
-//     });
-//     $(this).remove();
-// });
-
-// $(window).on('resize', function() {
-//     $wHeight = $(window).height();
-//     $item.height($wHeight);
-// });
-
-// $('.carousel').carousel({
-//     interval: 6000,
-//     pause: "false"
-// });
+});

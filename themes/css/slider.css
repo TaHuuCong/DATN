@@ -1,5 +1,6 @@
 #mySlider {
-  padding: 50px 0px;
+  padding: 20px 0px 50px;
+  z-index: 1;
 }
 
 .section-container {
@@ -37,11 +38,11 @@
 }
 
 .carousel-indicators li:hover {
-  background: #FF0000;
+  background: #FF9800;
 }
 
 .carousel-indicators li.active {
-  background: #FF0000;
+  background: #FF9800;
 }
 
 .carousel-inner .item img {
@@ -75,7 +76,7 @@
 }
 
 .carousel-control:hover {
-  color: #FF0000;
+  color: #FF9800;
 }
 
 */
