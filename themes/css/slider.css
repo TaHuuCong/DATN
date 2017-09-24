@@ -1,5 +1,5 @@
-#mySlider {
-  padding: 20px 0px 50px;
+.mySlider {
+  padding: 0 0 50px;
   z-index: 1;
 }
 
@@ -15,7 +15,7 @@
   background-position: 50% 0;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 100vh;  /* tương đương 100%, vh = viewport height, tuy nhiên ở đây nếu để là 100% thì ko được? */
+  height: 100vh; /* tương đương 100%, vh = viewport height, tuy nhiên ở đây nếu để là 100% thì ko được? */
   display: table;
   width: 100%;   /* tương đương 100vw, vw = viewport width, ở đây để là 100vw thì vẫn được */
   padding-left: 0;

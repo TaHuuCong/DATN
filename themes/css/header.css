@@ -30,6 +30,7 @@
 .header-middle {
   height: 80px;
   margin-bottom: 20px;
+  background-color: #EEEEEE;
 }
 
 .header-middle .logo {
@@ -140,6 +141,9 @@
 /* --------------------------------------------------- */
 
 /* header-bottom */
+.header-bottom {
+  margin-bottom: 30px;
+}
 
 /* .mainmenu: mega menu */
 .header-bottom.navbar-default {
@@ -148,7 +152,6 @@
 
 .header-bottom.navbar {
   border: none;
-  margin-bottom: 0;
   z-index: 4;
 }
 
@@ -193,7 +196,7 @@ li.menu-large {
 }
 
 .mega-menu li.mega-menu-column {
-  margin-right: 30px;
+  margin-left: 30px;
   width: 160px;
 }
 
@@ -205,12 +208,16 @@ li.mega-menu-column img {
 .mega-menu li.dropdown-header {
   padding: 3px 0px 5px !important;
   display: inline-block;
-  width: 160px;
+  width: 100%;
   border-bottom: 1px solid #757575;
   margin-bottom: 15px;
   font-size: 15px;
   font-weight: 600;
   color: #212121;
+}
+
+.mega-menu .mega-menu-column ul {
+  padding-left: 0;
 }
 
 .mega-menu .mega-menu-column li {

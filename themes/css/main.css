@@ -35,7 +35,7 @@ a:focus {
 
 /* MAIN-CONTENT */
 .main-content {
-  margin-bottom: 50px;
+  margin-bottom: 40px;
 }
 
 /* SIDEBAR-LEFT */
@@ -366,6 +366,7 @@ h2.title {
 /* .recommended-product */
 .recommended-product {
   overflow: hidden;
+  height: 70vh;
 }
 
 .recommended-product-control {
@@ -396,21 +397,8 @@ h2.title {
 
 /* --------------------------------------------------- */
 
-/* .opacity {
-  background-color: rgba(132, 128, 128, 0.79);
-  position: fixed;
-  height: 100%;
-  width: 100%;
-  top: 0;
-  left: 0;
-  z-index: 2;
-  visibility: hidden;
-  opacity: 0
-}
- */
-
-/* LOGIN */
-.login .modal-header, .register .modal-header {
+/* LOGIN, REGiSTER */
+.modal-header {
   margin: 0 20px;
 }
 
@@ -418,26 +406,26 @@ h2.title {
   font-weight: 700;
 }
 
-.modal-body .form-block {
-  margin: 0 0 15px 125px;
+.modal-body .control-group {
+  margin: 0 0 15px 100px;
 }
 
-.modal-body .form-block > label {
+.modal-body .control-group > label {
   width: 35%;
 }
 
-.modal-body .form-block > input {
-  width: 40%;
+.modal-body .control-group > input {
+  width: 45%;
 }
 
-.modal-body .form-block span input {
+.modal-body .control-group span input {
   width: 15px;
   float: left;
   height: 15px;
   margin-right: 5px;
 }
 
-.modal-body .form-block span {
+.modal-body .control-group span {
   line-height: 25px;
 }
 
@@ -446,15 +434,13 @@ h2.title {
   margin-top: 0;
 }
 
-.modal-footer .form-block button {
+.modal-footer .control-group button {
   background-color: #FF9800;
   color: #212121;
   font-weight: 500;
   margin: 0 230px;
 }
 
-/* END: lOGIN */
+/* END: LOGIN, REGiSTER */
 
 /* --------------------------------------------------- */
-
-/* REGiSTER */
