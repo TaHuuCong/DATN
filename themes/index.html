@@ -20,9 +20,7 @@
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 	<link rel="stylesheet" type="text/css" href="css/header.css">
 	<link rel="stylesheet" type="text/css" href="css/slider.css">
-	<link rel="stylesheet" type="text/css" href="css/footer.css">
 	<link rel="stylesheet" type="text/css" href="css/contact.css">
-	<link rel="stylesheet" type="text/css" href="css/wishlist.css">
 </head>
 <body>
 	<div class="wrapper">
@@ -35,7 +33,7 @@
 								<ul class="nav navbar-nav pull-left">
 									<li><a href="contact.html"><i class="fa fa-phone" aria-hidden="true"></i>Liên hệ</a></li>
 									<li><a href="wishlist.html"><i class="fa fa-heart" aria-hidden="true"></i>Yêu thích</a></li>
-									<li><a href="#"><i class="fa fa-money" aria-hidden="true"></i>Thanh toán</a></li>
+									<li><a href="checkout.html"><i class="fa fa-money" aria-hidden="true"></i>Thanh toán</a></li>
 								</ul>
 							</div>
 							<!-- /.sub-menu -->
@@ -103,8 +101,8 @@
 				                                    </tbody>
 				                                </table>
 				                                <div class="button-wrap">
-				                                	<a class="btn" href="#">Xem giỏ</a>
-				                                	<a class="btn" href="#">Thanh toán</a>
+				                                	<a class="btn" href="shopping-cart.html">Xem giỏ</a>
+				                                	<a class="btn" href="">Thanh toán</a>
 				                                </div>
 				                            </li>
 				                        </ul>
@@ -135,11 +133,11 @@
 				            <ul class="nav navbar-nav">
 							    <li><a href="index.html">Trang chủ</a></li>
 			                    <li class="dropdown menu-large">
-			                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sản phẩm <b class="caret"></b></a>
+			                        <a href="product.html" class="dropdown-toggle" data-toggle="dropdown">Sản phẩm <b class="caret"></b></a>
 									<ul class="dropdown-menu mega-menu">
 									    <li class="mega-menu-column">
 										    <ul>
-										    	<li class="dropdown-header">Gym & Fitness</li>
+										    	<li class="dropdown-header"><a href="#">Tenis</a></li>
 										        <img src="http://placehold.it/150x120">
 												<li><a href="#">Giày</a></li>
 										        <li><a href="#">Quần áo</a></li>
@@ -148,18 +146,7 @@
 									    </li>
 									    <li class="mega-menu-column">
 										    <ul>
-										    	<li class="dropdown-header">Gym & Fitness</li>
-										        <img src="http://placehold.it/150x120">
-												<li><a href="#">Giày</a></li>
-										        <li><a href="#">Quần áo</a></li>
-										        <li><a href="#">Phụ kiện</a></li>
-										        <li><a href="#">Phụ kiện</a></li>
-										        <li><a href="#">Phụ kiện</a></li>
-										    </ul>
-									    </li>
-									    <li class="mega-menu-column">
-										    <ul>
-										    	<li class="dropdown-header">Gym & Fitness</li>
+										    	<li class="dropdown-header"><a href="#">Tenis</a></li>
 										        <img src="http://placehold.it/150x120">
 												<li><a href="#">Giày</a></li>
 										        <li><a href="#">Quần áo</a></li>
@@ -168,7 +155,7 @@
 									    </li>
 									    <li class="mega-menu-column">
 										    <ul>
-										    	<li class="dropdown-header">Gym & Fitness</li>
+										    	<li class="dropdown-header"><a href="#">Tenis</a></li>
 										        <img src="http://placehold.it/150x120">
 												<li><a href="#">Giày</a></li>
 										        <li><a href="#">Quần áo</a></li>
@@ -177,7 +164,7 @@
 									    </li>
 									    <li class="mega-menu-column">
 										    <ul>
-										    	<li class="dropdown-header">Gym & Fitness</li>
+										    	<li class="dropdown-header"><a href="#">Tenis</a></li>
 										        <img src="http://placehold.it/150x120">
 												<li><a href="#">Giày</a></li>
 										        <li><a href="#">Quần áo</a></li>
@@ -186,7 +173,7 @@
 									    </li>
 									    <li class="mega-menu-column">
 										    <ul>
-										    	<li class="dropdown-header">Gym & Fitness</li>
+										    	<li class="dropdown-header"><a href="#">Tenis</a></li>
 										        <img src="http://placehold.it/150x120">
 												<li><a href="#">Giày</a></li>
 										        <li><a href="#">Quần áo</a></li>
@@ -195,23 +182,13 @@
 									    </li>
 									    <li class="mega-menu-column">
 										    <ul>
-										    	<li class="dropdown-header">Gym & Fitness</li>
+										    	<li class="dropdown-header"><a href="#">Tenis</a></li>
 										        <img src="http://placehold.it/150x120">
 												<li><a href="#">Giày</a></li>
 										        <li><a href="#">Quần áo</a></li>
 										        <li><a href="#">Phụ kiện</a></li>
 										    </ul>
 									    </li>
-									    <li class="mega-menu-column">
-										    <ul>
-										    	<li class="dropdown-header">Gym & Fitness</li>
-										        <img src="http://placehold.it/150x120">
-												<li><a href="#">Giày</a></li>
-										        <li><a href="#">Quần áo</a></li>
-										        <li><a href="#">Phụ kiện</a></li>
-										    </ul>
-									    </li>
-
 									</ul>
 								</li>
 								<li class="dropdown menu-large">
@@ -919,12 +896,17 @@
 						</div>
 						<div class="modal-body">
 							<div class="control-group">
-								<label for="email">Email *</label>
-								<input type="email" id="email" required>
+								<label>Giới tính </label>
+								<input id="gender" type="radio" class="input-radio" name="gender" value="nam"><span style="margin-right: 25px;">Nam</span>
+								<input id="gender" type="radio" class="input-radio" name="gender" value="nữ"><span>Nữ</span>
 							</div>
 							<div class="control-group">
 								<label for="name">Tên *</label>
 								<input type="text" id="name" required>
+							</div>
+							<div class="control-group">
+								<label for="email">Email *</label>
+								<input type="email" id="email" required>
 							</div>
 							<div class="control-group">
 								<label for="adress">Địa chỉ *</label>
@@ -958,11 +940,13 @@
 	<!-- /.register -->
 
 
-
+	<!-- JS Library -->
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/price-range.js"></script>
 	<script type="text/javascript" src="js/jquery.scrollUp.min.js"></script>
+
+	<!-- My JS -->
     <script type="text/javascript" src="js/main.js"></script>
 </body>
 </html>

@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Trang chủ</title>
+
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700,800" rel="stylesheet">
+
+	<!-- CSS Library -->
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/price-range.css">
+	<link rel="stylesheet" type="text/css" href="css/responsive.css">
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
+
+	<!-- My CSS -->
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" type="text/css" href="css/header.css">
+	<link rel="stylesheet" type="text/css" href="css/slider.css">
+	<link rel="stylesheet" type="text/css" href="css/contact.css">
+</head>
+<body>
+	<div class="wrapper">
+		<header>
+			<div class="header-top">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+							<div class="sub-menu pull-left">
+								<ul class="nav navbar-nav pull-left">
+									<li><a href="contact.html"><i class="fa fa-phone" aria-hidden="true"></i>Liên hệ</a></li>
+									<li><a href="wishlist.html"><i class="fa fa-heart" aria-hidden="true"></i>Yêu thích</a></li>
+									<li><a href="checkout.html"><i class="fa fa-money" aria-hidden="true"></i>Thanh toán</a></li>
+								</ul>
+							</div>
+							<!-- /.sub-menu -->
+						</div>
+
+						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+							<div class="account pull-right">
+								<ul class="nav navbar-nav">
+									<li><a data-toggle="modal" href="#modal-login"><i class="fa fa-sign-in" aria-hidden="true"></i>Đăng nhập</a></li>
+									<li><a data-toggle="modal" href="#modal-register"><i class="fa fa-lock" aria-hidden="true"></i>Đăng kí</a></li>
+								</ul>
+							</div>
+							<!-- /.account -->
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /.header-top -->
+
+			<div class="header-middle">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+							<div class="logo pull-left">
+								<a href="index.html"><img src="images/logo.png" alt="" height="60"></a>
+							</div>
+							<!-- /.logo -->
+						</div>
+
+						<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+							<div class="shopping-cart pull-right">
+								<ul class="nav pull-left">
+				                    <li class="dropdown hover">
+				                    	<a href="#" class="dropdown-toggle">Giỏ hàng <span>1 sản phẩm</span> - <span>$589.50</span> <b class="caret"></b></a>
+				                        <ul class="dropdown-menu">
+				                            <li>
+				                                <table>
+				                                    <tbody>
+				                                        <tr>
+				                                            <td class="image">
+				                                            	<a href="product.html"><img width="50" height="50" src="images/7.jpg" alt="product" title="product"></a>
+				                                            </td>
+				                                            <!-- <td class="name"><a href="product.html">MacBook</a></td> -->
+				                                            <td class="quantity">x&nbsp;1</td>
+				                                            <td class="total">$589.50</td>
+				                                            <td class="remove"><i class="fa fa-times" aria-hidden="true"></i></td>
+				                                        </tr>
+				                                        <tr>
+				                                            <td class="image">
+				                                            	<a href="product.html"><img width="50" height="50" src="images/7.jpg" alt="product" title="product"></a>
+				                                            </td>
+				                                            <!-- <td class="name"><a href="product.html">MacBook</a></td> -->
+				                                            <td class="quantity">x&nbsp;1</td>
+				                                            <td class="total">$589.50</td>
+				                                            <td class="remove"><i class="fa fa-times" aria-hidden="true"></i></td>
+				                                        </tr>
+				                                    </tbody>
+				                                </table>
+				                                <table>
+				                                    <tbody>
+				                                        <tr>
+				                                            <td class="text-center"><b>Tổng tiền:</b></td>
+				                                            <td class="text-center">$589.50</td>
+				                                        </tr>
+				                                    </tbody>
+				                                </table>
+				                                <div class="button-wrap">
+				                                	<a class="btn" href="shopping-cart.html">Xem giỏ</a>
+				                                	<a class="btn" href="">Thanh toán</a>
+				                                </div>
+				                            </li>
+				                        </ul>
+				                    </li>
+				                </ul>
+							</div>
+							<!-- /.shopping-cart -->
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /.header-middle -->
+
+			<div class="header-bottom navbar navbar-default navbar-static-top">
+				<div class="container">
+				    <div class="navbar-header">
+			            <!-- Mobile toggle button -->
+			            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+					</div>
+
+					<div class="mainmenu pull-left">
+			            <nav class="navbar-collapse collapse">
+				            <ul class="nav navbar-nav">
+							    <li><a href="index.html">Trang chủ</a></li>
+			                    <li class="dropdown menu-large">
+			                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sản phẩm <b class="caret"></b></a>
+									<ul class="dropdown-menu mega-menu">
+									    <li class="mega-menu-column">
+										    <ul>
+										    	<li class="dropdown-header">Gym & Fitness</li>
+										        <img src="http://placehold.it/150x120">
+												<li><a href="#">Giày</a></li>
+										        <li><a href="#">Quần áo</a></li>
+										        <li><a href="#">Phụ kiện</a></li>
+										    </ul>
+									    </li>
+									    <li class="mega-menu-column">
+										    <ul>
+										    	<li class="dropdown-header">Gym & Fitness</li>
+										        <img src="http://placehold.it/150x120">
+												<li><a href="#">Giày</a></li>
+										        <li><a href="#">Quần áo</a></li>
+										        <li><a href="#">Phụ kiện</a></li>
+										        <li><a href="#">Phụ kiện</a></li>
+										        <li><a href="#">Phụ kiện</a></li>
+										    </ul>
+									    </li>
+									    <li class="mega-menu-column">
+										    <ul>
+										    	<li class="dropdown-header">Gym & Fitness</li>
+										        <img src="http://placehold.it/150x120">
+												<li><a href="#">Giày</a></li>
+										        <li><a href="#">Quần áo</a></li>
+										        <li><a href="#">Phụ kiện</a></li>
+										    </ul>
+									    </li>
+									    <li class="mega-menu-column">
+										    <ul>
+										    	<li class="dropdown-header">Gym & Fitness</li>
+										        <img src="http://placehold.it/150x120">
+												<li><a href="#">Giày</a></li>
+										        <li><a href="#">Quần áo</a></li>
+										        <li><a href="#">Phụ kiện</a></li>
+										    </ul>
+									    </li>
+									    <li class="mega-menu-column">
+										    <ul>
+										    	<li class="dropdown-header">Gym & Fitness</li>
+										        <img src="http://placehold.it/150x120">
+												<li><a href="#">Giày</a></li>
+										        <li><a href="#">Quần áo</a></li>
+										        <li><a href="#">Phụ kiện</a></li>
+										    </ul>
+									    </li>
+									    <li class="mega-menu-column">
+										    <ul>
+										    	<li class="dropdown-header">Gym & Fitness</li>
+										        <img src="http://placehold.it/150x120">
+												<li><a href="#">Giày</a></li>
+										        <li><a href="#">Quần áo</a></li>
+										        <li><a href="#">Phụ kiện</a></li>
+										    </ul>
+									    </li>
+									    <li class="mega-menu-column">
+										    <ul>
+										    	<li class="dropdown-header">Gym & Fitness</li>
+										        <img src="http://placehold.it/150x120">
+												<li><a href="#">Giày</a></li>
+										        <li><a href="#">Quần áo</a></li>
+										        <li><a href="#">Phụ kiện</a></li>
+										    </ul>
+									    </li>
+									    <li class="mega-menu-column">
+										    <ul>
+										    	<li class="dropdown-header">Gym & Fitness</li>
+										        <img src="http://placehold.it/150x120">
+												<li><a href="#">Giày</a></li>
+										        <li><a href="#">Quần áo</a></li>
+										        <li><a href="#">Phụ kiện</a></li>
+										    </ul>
+									    </li>
+
+									</ul>
+								</li>
+								<li class="dropdown menu-large">
+			                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Thương hiệu <b class="caret"></b></a>
+									<ul class="dropdown-menu mega-menu">
+									    <li class="mega-menu-column">
+										    <ul>
+										        <li class="dropdown-header">Wilson</li>
+										        <img src="http://placehold.it/150x120">
+												<li><a href="#">Giày</a></li>
+										    </ul>
+									    </li>
+									    <li class="mega-menu-column">
+										    <ul>
+										    	<li class="dropdown-header">Nike</li>
+										        <img src="http://placehold.it/150x120">
+												<li><a href="#">Giày</a></li>
+										    </ul>
+									    </li>
+									    <li class="mega-menu-column">
+										    <ul>
+										    <li class="dropdown-header">Adidas</li>
+										        <img src="http://placehold.it/150x120">
+												<li><a href="#">Giày</a></li>
+										    </ul>
+									    </li>
+									</ul>
+								</li>
+			                    <li><a href="#">Tin Tức</a></li>
+			                    <li><a href="#">Video</a></li>
+			                    <li><a href="#">Khuyến Mãi</a></li>
+			                </ul>
+			            </nav>
+					</div>
+					<!-- /.mainmenu -->
+
+					<div class="search pull-right">
+						<form class="form-search top-search">
+	                        <input type="text" class="input-medium search-query" placeholder="Search Here…">
+	                    </form>
+					</div>
+					<!-- /.search -->
+				</div>
+			</div>
+			<!-- /.header-bottom -->
+		</header>
+		<!-- /header -->
+
+		<div class="checkout">
+			<div class="container">
+				<ul class="breadcrumb">
+	        		<li>
+	          			<a href="#">Trang chủ</a>
+	          			<span class="divider"></span>
+	        		</li>
+	        		<li class="active">Thanh toán</li>
+	      		</ul>
+	      		<!-- /.breadcrumb -->
+
+	      		<div class="row">
+	      			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+	      				<h2 class="title text-center checkout">Thanh toán</h2>
+	      				<!-- /.title text-center -->
+	      			</div>
+	      		</div>
+
+				<div class="checkout-page">
+					<form action="#" method="post" class="beta-form-checkout">
+						<div class="row">
+							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+								<div class="your-order">
+									<h5 class="your-order-head">Đơn hàng của bạn</h5>
+									<div class="your-order-body">
+										<table class="table table-striped table-bordered">
+							              	<tr>
+								                <th class="image">Hình Ảnh</th>
+								                <th class="name">Tên sản phẩm</th>
+								                <th class="size">Kích cỡ</th>
+								                <th class="quantity">Số lượng</th>
+								                <th class="action"></th>
+								                <th class="price">Giá</th>
+								                <th class="total">Tổng</th>
+							              	</tr>
+							              	<tr>
+								                <td class="image"><a href="#"><img title="product" alt="product" src="images/7.jpg" height="100" width="100"></a></td>
+								                <td class="name"><a href="#">T-Shirt</a></td>
+								                <td class="size">43</td>
+								                <td class="quantity"><input type="text" size="1" value="1" name="quantity[40]" class="span1"></td>
+								                <td class="action">
+								                	<a href="#"><img class="tooltip-test" data-original-title="Cập nhật" src="images/update.png" alt=""></a>
+								                  	<a href="#"><img class="tooltip-test" data-original-title="Xóa"  src="images/remove.png" alt=""></a>
+								                </td>
+								                <td class="price">$120</td>
+								                <td class="total">$120</td>
+							              	</tr>
+							              	<tr>
+								                <td class="image"><a href="#"><img title="product" alt="product" src="images/7.jpg" height="100" width="100"></a></td>
+								                <td class="name"><a href="#">T-Shirt</a></td>
+								                <td class="size">43</td>
+								                <td class="quantity"><input type="text" size="1" value="1" name="quantity[40]" class="span1"></td>
+								                <td class="action">
+								                	<a href="#"><img class="tooltip-test" data-original-title="Cập nhật" src="images/update.png" alt=""></a>
+								                  	<a href="#"><img class="tooltip-test" data-original-title="Xóa"  src="images/remove.png" alt=""></a>
+								                </td>
+								                <td class="price">$120</td>
+								                <td class="total">$120</td>
+							              	</tr>
+							            </table>
+							            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 pull-right">
+							            	<table class="table table-striped table-bordered table2">
+					      					<tr>
+								                <td><span class="total-amount">Tổng tiền:</span></td>
+								                <td><span class="total-amount pull-right">$240</span></td>
+							              	</tr>
+							            </table>
+							            </div>
+									</div>
+								</div>
+								<!-- /.your-order -->
+							</div>
+							<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+								<div class="your-info">
+									<h5 class="your-order-head">Địa chỉ giao hàng</h5>
+									<div class="control-group first">
+										<span><input type="checkbox" class="checkbox"> Giao hàng đến địa chỉ đã đăng kí</span>
+									</div>
+									<div class="control-group">
+										<label>Giới tính </label>
+										<input id="gender" type="radio" class="input-radio" name="gender" value="nam" checked="checked" style="width: 10%"><span style="margin-right: 10%">Nam</span>
+										<input id="gender" type="radio" class="input-radio" name="gender" value="nữ" style="width: 10%"><span>Nữ</span>
+									</div>
+									<div class="control-group">
+										<label for="name">Họ tên *</label>
+										<input type="text" id="name" required>
+									</div>
+									<div class="control-group">
+										<label for="email">Email *</label>
+										<input type="email" id="email" required>
+									</div>
+									<div class="control-group">
+										<label for="adress">Địa chỉ *</label>
+										<input type="text" id="adress" required>
+									</div>
+									<div class="control-group">
+										<label for="phone">Điện thoại *</label>
+										<input type="text" id="phone" required>
+									</div>
+									<div class="control-group">
+										<label for="notes">Ghi chú</label>
+										<textarea id="notes"></textarea>
+									</div>
+								</div>
+								<!-- /.your-info -->
+							</div>
+
+							<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+								<div class="your-order">
+									<h5 class="your-order-head">Phương thức thanh toán</h5>
+									<div class="your-order-body">
+										<ul class="payment-method">
+											<li>
+												<input type="radio">
+												<label>Thanh toán khi nhận hàng </label>
+												<p>Cửa hàng sẽ gửi hàng đến địa chỉ của bạn, bạn xem hàng rồi thanh toán tiền cho nhân viên giao hàng</p>
+											</li>
+											<li>
+												<input type="radio">
+												<label>Chuyển khoản </label>
+												<div>
+													<p>Chuyển tiền đến tài khoản sau:</p>
+													<ul>
+														<li>Nguyễn Anh Tuấn - VIETCOMBANK: TK 0011004004952 - Chi nhánh Hà Nội</li>
+														<li>Nguyễn Anh Tuấn - AGRIBANK: TK 1504205005481 - Chi nhánh Hà Nội</li>
+														<li>Tạ Hữu Phương - BIDV: TK 12310000383858 - Chi nhánh Hà Nội</li>
+														<li>Tạ Hữu Phương - VPBANK: TK 587777 - Chi nhánh Hà Nội</li>
+													</ul>
+												</div>
+											</li>
+										</ul>
+									</div>
+								</div> <!-- .your-order -->
+
+								<div class="text-center"><a class="btn btn-default checkout" href="#">Đặt hàng</a></div>
+							</div>
+						</div>
+					</form>
+				</div>
+				<!-- /.checkout-page -->
+
+			</div>
+		</div>
+		<!-- /.checkout -->
+
+		<footer>
+	  		<div class="footer-account">
+	    		<div class="container">
+	      			<div class="row">
+	        			<div class="about-us col-xs-3 col-sm-3 col-md-3 col-lg-3">
+			          		<h2>Tuấn Phương Sports</h2>
+			          		<p> Trong hơn một thập kỷ qua, nhắc đến Tuấn Phương Sports là nhắc đến thương hiệu rất quen thuộc và đáng tin cậy của người tiêu dùng trên cả nước về các mặt hàng đặc chủng chuyên ngành Thể Dục Thể Thao.
+			         		<br><br>
+			            	Tuấn Phương Sports luôn tự hào là nhà tiên phong cung cấp cho thị trường Việt Nam những sản phẩm Thể Thao mới nhất với những thương hiệu hàng đầu trên thế giới, hầu hết có xuất xứ từ Mỹ như : WILSON, JONHSON, BODY-SOLIDE, NIKE,ADIDAS … phong phú về kiểu dáng, chất lượng hoàn hảo, cấu trúc kỷ thuật của từng loại sản phẩm hoàn thiện đến từng chi tiết.</p>
+	        			</div>
+	        			<div class="contact col-xs-3 col-sm-3 col-md-3 col-lg-3">
+	          				<h2>Liên hệ</h2>
+	          				<ul>
+	          					<p>SHOWROOM 1: Số 10 Lê Trực, Ba Đình</p>
+					            <li class="email">Điện thoại: 0912.818.789</li>
+					            <li class="email">Hotline: 0913.123.569</li>
+					        </ul>
+					        <ul>
+	          					<p>SHOWROOM 2: Số 8 TRịnh Hoài Đức, Đống Đa</p>
+					            <li class="email">Điện thoại: 024.3734 63 67</li>
+					            <li class="email">Hotline: 098 985 7777</li>
+					        </ul>
+					        <ul><p>Email: tuanphuongsports@yahoo.com.vn</p></ul>
+					        <ul><p>Website: www.tuanphuongsports.com.vn</p></ul>
+				        </div>
+				        <div class="twitter col-xs-3 col-sm-3 col-md-3 col-lg-3">
+				          	<h2>Twitter</h2>
+				          	<div id="twitter"></div>
+				        </div>
+	        			<div class="facebook col-xs-3 col-sm-3 col-md-3 col-lg-3">
+		          			<h2>Facebook</h2>
+		         			<div id="fb-root"></div>
+	        			</div>
+	      			</div>
+	    		</div>
+	  		</div>
+	  		<div class="footer-copyright">
+	    		<div class="container">
+	      			<div class="row">
+				        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+				         	<p>My design</p>
+				        </div>
+				        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+				         	<p class="pull-right">Ta Huu Cong</p>
+				        </div>
+	      			</div>
+	    		</div>
+	  		</div>
+
+	  		<a id="scrollUp" href="#top">
+				<i class="fa fa-angle-up"></i>
+			</a>
+		</footer>
+		<!-- /footer -->
+
+	</div>
+	<!-- /.wrapper -->
+
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/price-range.js"></script>
+	<script type="text/javascript" src="js/jquery.scrollUp.min.js"></script>
+	<script type="text/javascript" src="js/scripts.min.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+</body>
+</html>
