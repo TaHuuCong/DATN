@@ -5,7 +5,6 @@ $('#sl2').slider();
 var RGBChange = function() {
     $('#RGB').css('background', 'rgb(' + r.getValue() + ',' + g.getValue() + ',' + b.getValue() + ')')
 };
-
 // Scroll To Top
 // $(document).ready(function() {
 //     $(function() {
@@ -54,28 +53,39 @@ $('.productinfo').each(function() {
 
 });
 
-// Product thumbnails
-$('.thumbnail').each(function() {
 
-    $(this).hover(
-        function() {
-            //$(this).children('a').children('img').fadeOut()
-            $(this).children('.shortlinks').fadeIn()
-        },
-        function() {
-            //$(this).children('a').children('img').fadeIn()
-            $(this).children('.shortlinks').fadeOut()
-        }
-    );
+
+// // Product Thumb
+// $(document).ready(function() {
+//     $('.mainimage li #wrap').hide();
+//     $('.mainimage li #wrap').eq(0).fadeIn();
+//     $('ul.mainimage li.producthtumb').click(function() {
+//         var thumbindex = $(this).index();
+//         $('.mainimage li #wrap').fadeOut(0);
+//         $('.mainimage li #wrap').eq(thumbindex).fadeIn();
+//         $('.cloud-zoom, .cloud-zoom-gallery').CloudZoom();
+//     });
+// });
+
+
+$(document).ready(function() {
+
+    $("#zoom_05").elevateZoom({
+        gallery: 'gal1',
+        zoomType: "inner",
+        cursor: "crosshair",
+        galleryActiveClass: 'active',
+        imageCrossfade: true,
+        loadingIcon: ''
+    });
+
+    $("#zoom_05").bind("click", function(e) {
+        var ez = $('#zoom_05').data('elevateZoom');
+        $.fancybox(ez.getGalleryList());
+        return false;
+    });
 
 });
 
-// Product Thumb
-$('.mainimage li #wrap').hide()
-$('.mainimage li #wrap').eq(0).fadeIn()
-$('ul.mainimage li.producthtumb').click(function() {
-    var thumbindex = $(this).index()
-    $('.mainimage li #wrap').fadeOut(0)
-    $('.mainimage li #wrap').eq(thumbindex).fadeIn()
-    $('.cloud-zoom, .cloud-zoom-gallery').CloudZoom();
-})
+
+///////////////////////////////////////////////////////////////////////////
