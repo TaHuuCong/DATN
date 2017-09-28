@@ -825,8 +825,8 @@ h5.your-order-head {
 }
 
 .product-details #gal1 img {
-  width: 20%;
-  height: 20%;
+  width: 20% !important;
+  height: 20% !important;
   margin-right: 10px;
 }
 
@@ -979,3 +979,118 @@ ul.product-details-info li span {
 /* end: .product-details-tab */
 
 /* ------------------------------- */
+
+/* END: PRODUCT-DETAILS */
+
+/* --------------------------------------------------- */
+
+/* NEWS + NEW-DETAILS */
+.news-page h2.title:before {
+  width: 138px;
+  left: 55%;
+}
+
+.news-list {
+  margin: 0 15px;
+}
+
+.news-list .news-item {
+  padding-bottom: 40px;
+  border-bottom: 1px dotted #9E9E9E;
+}
+
+.news-item .news-image {
+  float: left;
+  margin-right: 25px;
+}
+
+.news-item .news-image img {
+  height: 125px;
+}
+
+.news-item h3 {
+  margin-bottom: 5px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.news-item h3 a {
+  color: #212121 !important;
+}
+
+.news-list .news-item > a {
+  background-color: #FF9800 !important;
+  color: #fff;
+}
+
+.news-date {
+  color: #757575;
+  margin-bottom: 5px;
+  font-size: 12px;
+}
+
+.short-news-content {
+  color: #212121;
+  margin-bottom: 10px;
+}
+
+.other-news {
+  margin: 0 15px 25px;
+  padding-bottom: 10px;
+  border-bottom: 1px dotted #9E9E9E;
+}
+
+.other-news h3 {
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #212121;
+}
+
+.other-news li a {
+  color: #212121;
+  margin: 0 5px;
+}
+
+.new-details-page {
+  margin: 0 15px 0 30px;
+}
+
+.main-news {
+  margin-bottom: 40px;
+}
+
+.new-details-page h1 {
+  margin-top: 0;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #BDBDBD;
+  font-weight: 700;
+}
+
+.new-details-page .news-content .news-image {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.news-content .news-image p {
+  font-size: 12px;
+}
+
+.new-details-page .news-content img {
+  width: 600px;
+  height: 400px;
+  padding-bottom: 7px;
+}
+
+.new-details-page .short-news-content {
+  font-weight: 600;
+  padding-top: 25px;
+  padding-bottom: 10px;
+}
+
+.new-details-page .other-news {
+  border-bottom: none;
+  margin: 0;
+  padding-top: 10px;
+  border-top: 1px dotted #BDBDBD;
+}
