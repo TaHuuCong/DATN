@@ -13,6 +13,11 @@ ul li {
   list-style: none;
 }
 
+a {
+  text-decoration: none;
+  color: #212121;
+}
+
 a:hover {
   outline: none;
   text-decoration: none;
@@ -1094,3 +1099,48 @@ ul.product-details-info li span {
   padding-top: 10px;
   border-top: 1px dotted #BDBDBD;
 }
+
+/* END: NEWS + NEW-DETAILS */
+
+/* --------------------------------------------------- */
+
+/* SALE */
+.sale-page h2.title:before {
+  width: 170px;
+  left: 53%;
+}
+
+/* END: SALE */
+
+/* --------------------------------------------------- */
+
+/* VIDEO */
+.video-page h2.title:before {
+  width: 168px;
+  left: 53%;
+}
+
+.video-list {
+  margin: 0 15px 25px;
+  border-bottom: 1px dotted #BDBDBD;
+}
+
+.video-list .video {
+  margin-bottom: 40px;
+}
+
+.video-list h3 {
+  font-size: 15px;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* END: VIDEO */
+
+/* --------------------------------------------------- */
+
+/* BLOG */
+
+/* END: BLOG */
+
+/* --------------------------------------------------- */
