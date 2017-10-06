@@ -1,4 +1,4 @@
-.mySlider {
+#mySlider {
   padding: 0 0 50px;
   z-index: 1;
 }
@@ -78,5 +78,3 @@
 .carousel-control:hover {
   color: #FF9800;
 }
-
-*/

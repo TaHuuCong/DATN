@@ -3,7 +3,7 @@
 /* header-top */
 .header-top {
   height: 40px;
-  background-color: #424242;
+  background-color: #11252F;
 }
 
 .header-top li a {
@@ -29,8 +29,8 @@
 /* header-middle */
 .header-middle {
   height: 80px;
-  margin-bottom: 20px;
-  background-color: #EEEEEE;
+  background-color: #455A64;
+  border-bottom: 2px solid #11252F;
 }
 
 .header-middle .logo {
@@ -45,8 +45,8 @@
 
 .shopping-cart li.dropdown > a {
   margin: 18px 0 0;
-  border: 1px solid #212121;
-  color: #212121;
+  border: 1px solid #fff;
+  color: #fff;
   font-weight: 600;
   font-size: 16px;
 }
@@ -142,14 +142,11 @@
 
 /* header-bottom */
 .header-bottom {
-  margin-bottom: 30px;
+  background-color: #455A64;
+  margin-bottom: 0;
 }
 
 /* .mainmenu: mega menu */
-.header-bottom.navbar-default {
-  background-color: #fff;
-}
-
 .header-bottom.navbar {
   border: none;
   z-index: 4;
@@ -174,7 +171,7 @@ li.menu-large {
 }
 
 .mainmenu .nav > li > a {
-  color: #212121;
+  color: #fff;
   font-size: 17px;
   font-weight: 600;
   text-transform: uppercase;
@@ -195,13 +192,25 @@ li.menu-large {
   padding: 3px 0px;
 }
 
+.main-sports, .main-brands {
+  border-right: 1px dotted #757575;
+  margin-left: 25px;
+}
+
+.other-sports, .other-brands {
+  margin-left: 15px;
+}
+
+.other-sports a, .other-brands a {
+  font-weight: 600;
+}
+
 .mega-menu li.mega-menu-column {
-  margin-left: 30px;
-  width: 160px;
+  width: 100%;
 }
 
 li.mega-menu-column img {
-  width: 160px;
+  width: 100%;
   height: 100px;
 }
 

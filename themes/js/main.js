@@ -39,7 +39,7 @@ jQuery(document).ready(function() {
 });
 
 // Product Info
-$('.productinfo').each(function() {
+$('.product-info').each(function() {
     $(this).hover(
         function() {
             //$(this).children('a').children('img').fadeOut()
@@ -52,21 +52,6 @@ $('.productinfo').each(function() {
     );
 
 });
-
-
-
-// // Product Thumb
-// $(document).ready(function() {
-//     $('.mainimage li #wrap').hide();
-//     $('.mainimage li #wrap').eq(0).fadeIn();
-//     $('ul.mainimage li.producthtumb').click(function() {
-//         var thumbindex = $(this).index();
-//         $('.mainimage li #wrap').fadeOut(0);
-//         $('.mainimage li #wrap').eq(thumbindex).fadeIn();
-//         $('.cloud-zoom, .cloud-zoom-gallery').CloudZoom();
-//     });
-// });
-
 
 $(document).ready(function() {
 
