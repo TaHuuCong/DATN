@@ -27,7 +27,7 @@ var RGBChange = function() {
 //     });
 // });
 
-// Dropdown Menu Fade
+// Hiệu ứng của Dropdown Menu
 jQuery(document).ready(function() {
     $(".dropdown").hover(
         function() {
@@ -38,7 +38,8 @@ jQuery(document).ready(function() {
         });
 });
 
-// Product Info
+
+// Hiệu ứng khi di chuột vào sản phẩm thì hiện lên thanh shortlinks
 $('.product-info').each(function() {
     $(this).hover(
         function() {
@@ -53,6 +54,8 @@ $('.product-info').each(function() {
 
 });
 
+
+// Hiệu ứng zoom ảnh
 $(document).ready(function() {
 
     $("#zoom_05").elevateZoom({
@@ -73,4 +76,50 @@ $(document).ready(function() {
 });
 
 
-///////////////////////////////////////////////////////////////////////////
+// Hiệu ứng sản phẩm bay vào giỏ hàng
+$(document).on('click', '.add-to-cart', function(event) {
+    event.preventDefault();
+    /* Act on the event */
+    if ($(this).hasClass('disable')) {
+        return false;
+    }
+
+    $(document).find('.add-to-cart').addClass('disable');
+
+    var parent = $(this).parents('.product-info'); //parents là lấy tất cả các thằng tổ tiên của thằng this
+    var src = parent.find('img').attr('src'); //lấy đường dẫn hình ảnh của sản phẩm
+    var cart = $(document).find('#shopping-cart');
+
+    var parentTop = parent.offset().top; //hàm offset lấy ra vị trí top, left... của 1 thành phần nào đó
+    var parentLeft = parent.offset().left;
+
+    $('<img />', {
+        class: 'img-pro-fly',
+        src: src,
+    }).appendTo('body').css({ //.css() ở đây để hình ảnh xuất hiện bên trong khung của .product-info
+        'top': parentTop,
+        'left': parentLeft + parent.width() - 50 //vị trí bên trái + chiều rộng của .product-info - chiều rộng của .img-pro-fly
+    });; //khi click thì sẽ thêm vào 1 thẻ img vào body
+
+    setTimeout(function() {
+        $(document).find('.img-pro-fly').css({
+            'top': cart.offset().top,
+            'left': cart.offset().left
+        });
+        setTimeout(function() {
+            $(document).find('.img-pro-fly').remove(); //bay vào sau 1s thì nó mất đi
+            var countItem = parseInt(cart.find('#count-item').data('count')) + 1;
+            cart.find('#count-item').text(countItem + ' sản phẩm').data('count', countItem);
+            $(document).find('.add-to-cart').removeClass('disable');
+        }, 1000);
+    }, 500); //sau 500ms thì .img-pro-fly sẽ xuất hiện ở vị trí giỏ hàng #shopping-cart
+});
+
+
+// Hiệu ứng sroll thì thay đổi header
+$(function() {
+    $(window).scroll(function(event) {
+        /* Act on the event */
+        var location = $('body').scrollTop(); //lấy vị trí của phần tử tính từ top
+    });
+});

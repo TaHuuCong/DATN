@@ -44,6 +44,10 @@ a:focus {
   margin-bottom: 40px;
 }
 
+ul.breadcrumb {
+  margin-top: 30px;
+}
+
 /* main-left */
 h2:before {
   content: " ";
@@ -113,6 +117,40 @@ h2.title:after {
 /* main-right */
 
 /* .newest-product  */
+
+/* hiệu ứng sản phẩm bay vào giỏ hàng */
+.img-pro-fly {
+  position: absolute;
+  z-index: 999999999999;
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  object-fit: cover;
+  border: 2px solid #FF9800;
+  transition: all 1s ease;
+  animation: myAnimation1 1.5s;
+}
+
+@keyframes myAnimation1 {
+  0% {
+    transform: scale(0.4);
+  }
+
+  25% {
+    transform: scale(1);
+  }
+
+  75% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(0.4);
+  }
+
+}
+
+/* end: hiệu ứng sản phẩm bay vào giỏ hàng */
 .newest-product {
   overflow: hidden;
 }
