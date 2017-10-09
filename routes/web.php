@@ -14,3 +14,15 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('schema/drop-col', function() {
+    Schema::table('products', function($table) {
+        $table->dropColumn('name');
+    });
+});
+
+Route::get('schema/add-col', function() {
+    Schema::table('products', function($table) {
+        $table->string('name')->unique();
+    });
+});
