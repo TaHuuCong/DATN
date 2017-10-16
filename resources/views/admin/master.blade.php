@@ -144,8 +144,34 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="list.html"><i class="fa fa-circle-o"></i> Danh sách thể loại</a></li>
-            <li><a href="add.html"><i class="fa fa-circle-o"></i> Thêm thể loại</a></li>
+            <li><a href="{!! URL::route('admin.cate.getList') !!}"><i class="fa fa-circle-o"></i> Danh sách thể loại</a></li>
+            <li><a href="{!! URL::route('admin.cate.getAdd') !!}"><i class="fa fa-circle-o"></i> Thêm thể loại</a></li>
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-list-alt" aria-hidden="true"></i>
+            <span>Quản lý bộ môn</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="{!! URL::route('admin.sport.getList') !!}"><i class="fa fa-circle-o"></i> Danh sách bộ môn</a></li>
+            <li><a href="{!! URL::route('admin.sport.getAdd') !!}"><i class="fa fa-circle-o"></i> Thêm bộ môn</a></li>
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-list-alt" aria-hidden="true"></i>
+            <span>Quản lý thương hiệu</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href=""><i class="fa fa-circle-o"></i> Danh sách thương hiệu</a></li>
+            <li><a href=""><i class="fa fa-circle-o"></i> Thêm thương hiệu</a></li>
           </ul>
         </li>
       </ul>

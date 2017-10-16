@@ -35,13 +35,31 @@ Route::get('schema/drop-cate-col', function() {
 
 Route::get('schema/add-cate-col', function() {
     Schema::table('categories', function($table) {
-        $table->text('description');
+        $table->string('keyword');
     });
 });
 
 Route::get('schema/edit-cate-col', function() {
     Schema::table('categories', function($table) {
         $table->longText('description');
+    });
+});
+
+Route::get('schema/drop-sport-col', function() {
+    Schema::table('sports', function($table) {
+        $table->dropColumn('description');
+    });
+});
+
+Route::get('schema/add-sport-col', function() {
+    Schema::table('sports', function($table) {
+        $table->string('keyword');
+    });
+});
+
+Route::get('schema/add-brand-col', function() {
+    Schema::table('brands', function($table) {
+        $table->string('keyword');
     });
 });
 
@@ -61,5 +79,29 @@ Route::group(['prefix' => 'admin'], function() {
         Route::post('edit/{id}', ['as' => 'admin.cate.postEdit', 'uses' => 'Admin\CateController@postEdit']);
 
         Route::get('delete/{id}', ['as' => 'admin.cate.getDelete', 'uses' => 'Admin\CateController@getDelete']);
+    });
+
+    Route::group(['prefix' => 'sport'], function() {
+        Route::get('list', ['as' => 'admin.sport.getList', 'uses' => 'Admin\SportController@getList']);
+
+        Route::get('add', ['as' => 'admin.sport.getAdd', 'uses' => 'Admin\SportController@getAdd']);
+        Route::post('add', ['as' => 'admin.sport.postAdd', 'uses' => 'Admin\SportController@postAdd']);
+
+        Route::get('edit/{id}', ['as' => 'admin.sport.getEdit', 'uses' => 'Admin\SportController@getEdit']);
+        Route::post('edit/{id}', ['as' => 'admin.sport.postEdit', 'uses' => 'Admin\SportController@postEdit']);
+
+        Route::get('delete/{id}', ['as' => 'admin.sport.getDelete', 'uses' => 'Admin\SportController@getDelete']);
+    });
+
+    Route::group(['prefix' => 'brand'], function() {
+        Route::get('list', ['as' => 'admin.brand.getList', 'uses' => 'Admin\BrandController@getList']);
+
+        Route::get('add', ['as' => 'admin.brand.getAdd', 'uses' => 'Admin\BrandController@getAdd']);
+        Route::post('add', ['as' => 'admin.brand.postAdd', 'uses' => 'Admin\BrandController@postAdd']);
+
+        // Route::get('edit/{id}', ['as' => 'admin.brand.getEdit', 'uses' => 'Admin\BrandController@getEdit']);
+        // Route::post('edit/{id}', ['as' => 'admin.brand.postEdit', 'uses' => 'Admin\BrandController@postEdit']);
+
+        // Route::get('delete/{id}', ['as' => 'admin.brand.getDelete', 'uses' => 'Admin\BrandController@getDelete']);
     });
 });

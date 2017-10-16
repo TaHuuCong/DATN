@@ -1,7 +1,7 @@
 @extends('admin.master')
-@section('controller', 'Thể loại')
-@section('action', 'Thêm thể loại')
-@section('breadcrumb', 'Quản lý thể loại')
+@section('controller', 'Thương hiệu')
+@section('action', 'Thêm thương hiệu')
+@section('breadcrumb', 'Quản lý thương hiệu')
 @section('content')
 
 <section class="content">
@@ -12,8 +12,12 @@
         <form action="" method="POST">
             <input type="hidden" name="_token" value="{!! csrf_token() !!}">
             <div class="form-group">
-                <label>Tên thể loại</label>
-                <input class="form-control" name="txtCateName" placeholder="Nhập tên thể loại" />
+                <label>Tên thương hiệu</label>
+                <input class="form-control" name="txtBrandName" placeholder="Nhập tên thương hiệu" />
+            </div>
+            <div class="form-group">
+                <label>Logo</label>
+                <input type="file" name="fImages">
             </div>
             <div class="form-group">
                 <label>Từ khóa</label>

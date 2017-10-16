@@ -11,7 +11,7 @@ class CateController extends Controller
 {
 	public function getList ()
     {
-        $cate = Category::select('id', 'name', 'description')->orderBy('id', 'DESC')->get()->toArray();
+        $cate = Category::select('id', 'name', 'keyword', 'description')->orderBy('id', 'DESC')->get()->toArray();
     	return view('admin.cate.list', compact('cate'));
     }
 
@@ -24,6 +24,7 @@ class CateController extends Controller
     {
         $cate              = new Category;
         $cate->name        = $request->txtCateName;
+        $cate->keyword     = $request->txtKeyword;
         $cate->description = $request->txtDescription;
 		$cate->save();
 		return redirect()->route('admin.cate.getList')->with(['flash_level' => 'success', 'flash_message' => 'Thêm thể loại thành công !']);
@@ -45,11 +46,12 @@ class CateController extends Controller
     public function postEdit (Request $request, $id)
     {
         $this->validate($request,
-            ['txtCateName' => 'required|unique:categories,name', 'txtDescription' => 'required'],
-            ['txtCateName.required' => 'Vui lòng nhập tên thể loại', 'txtCateName.unique' => 'Tên thể loại này đã tồn tại', 'txtDescription.required' => 'Vui lòng nhập mô tả về thể loại']
+            ['txtCateName' => 'required', 'txtDescription' => 'required'],
+            ['txtCateName.required' => 'Vui lòng nhập tên thể loại', 'txtKeyword.required' => 'Vui lòng nhập từ khóa cho thể loại', 'txtDescription.required' => 'Vui lòng nhập mô tả về thể loại']
         );  //dùng hàm validate() mặc định của Laravel để kiểm tra dữ liệu thì không cần tạo request mới
         $cate              = Category::findOrFail($id);
         $cate->name        = $request->txtCateName;
+        $cate->keyword     = $request->txtKeyword;
         $cate->description = $request->txtDescription;
         $cate->save();
         return redirect()->route('admin.cate.getList')->with(['flash_level' => 'success', 'flash_message' => 'Sửa thể loại thành công !']);

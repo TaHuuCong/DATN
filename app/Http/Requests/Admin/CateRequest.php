@@ -25,7 +25,8 @@ class CateRequest extends FormRequest
     {
         return [
             'txtCateName'    => 'required|unique:categories,name',
-            'txtDescription' => 'required'
+            'txtDescription' => 'required',
+            'txtKeyword'     => 'required'
         ];
     }
 
@@ -34,7 +35,8 @@ class CateRequest extends FormRequest
         return [
             'txtCateName.required'    => 'Vui lòng nhập tên thể loại',
             'txtCateName.unique'      => 'Tên thể loại này đã tồn tại',
-            'txtDescription.required' => 'Vui lòng nhập mô tả về thể loại'
+            'txtDescription.required' => 'Vui lòng nhập mô tả về thể loại',
+            'txtKeyword.required'     => 'Vui lòng nhập từ khóa cho thể loại'
         ];
     }
 

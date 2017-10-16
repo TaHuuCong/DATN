@@ -1,7 +1,7 @@
 @extends('admin.master')
-@section('controller', 'Thể loại')
-@section('action', 'Thêm thể loại')
-@section('breadcrumb', 'Quản lý thể loại')
+@section('controller', 'Bộ môn')
+@section('action', 'Thêm bộ môn')
+@section('breadcrumb', 'Quản lý bộ môn')
 @section('content')
 
 <section class="content">
@@ -12,16 +12,12 @@
         <form action="" method="POST">
             <input type="hidden" name="_token" value="{!! csrf_token() !!}">
             <div class="form-group">
-                <label>Tên thể loại</label>
-                <input class="form-control" name="txtCateName" placeholder="Nhập tên thể loại" />
+                <label>Tên bộ môn</label>
+                <input class="form-control" name="txtSportName" placeholder="Nhập tên bộ môn" />
             </div>
             <div class="form-group">
                 <label>Từ khóa</label>
                 <input class="form-control" name="txtKeyword" placeholder="Nhập từ khóa" />
-            </div>
-            <div class="form-group">
-                <label>Mô tả</label>
-                <textarea class="form-control" rows="5" name="txtDescription"></textarea>
             </div>
             <button type="submit" class="btn btn-default">Thêm</button>
             <button type="reset" class="btn btn-default">Đặt lại</button>
