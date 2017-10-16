@@ -1,6 +1,6 @@
 @extends('admin.master')
 @section('controller', 'Thể loại')
-@section('action', 'Thêm thể loại')
+@section('action', 'Sửa thể loại')
 @section('breadcrumb', 'Thể loại')
 @section('content')
 
@@ -12,13 +12,13 @@
             <input type="hidden" name="_token" value="{!! csrf_token() !!}">
             <div class="form-group">
                 <label>Tên</label>
-                <input class="form-control" name="txtCateName" placeholder="Nhập tên thể loại" />
+                <input class="form-control" name="txtCateName" placeholder="Nhập tên thể loại" value="{!! old('txtCateName', isset($cate) ? $cate['name'] : null) !!}" />
             </div>
             <div class="form-group">
                 <label>Mô tả</label>
-                <textarea class="form-control" rows="5" name="txtDescription"></textarea>
+                <textarea class="form-control" rows="5" name="txtDescription">{!! old('txtDescription', isset($cate) ? $cate['description'] : null) !!}</textarea>
             </div>
-            <button type="submit" class="btn btn-default">Thêm</button>
+            <button type="submit" class="btn btn-default">Sửa</button>
             <button type="reset" class="btn btn-default">Đặt lại</button>
         <form>
     </div>

@@ -21,3 +21,7 @@
 .content form button {
 	margin-right: 20px;
 }
+
+.message.alert {
+	text-align: center;
+}

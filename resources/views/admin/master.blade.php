@@ -48,7 +48,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 
   <!-- My CSS -->
-  <link rel="stylesheet" type="text/css" href="{{ asset('public/admin/dist/css/myCSS.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ asset('public/admin/dist/css/myStyle.css') }}">
 
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -169,9 +169,21 @@
     </section>
     <!-- /.content-header -->
 
+    {{-- Hiển thị thông báo khi thêm, sửa, xóa dữ liệu: flash_level ở đây là cấp độ của thông báo, có thể là success, danger...; flash_message là nội dung thông báo; 2 thành phần này được truyền từ controller sang --}}
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+      <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"></div>
+      <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+        @if (Session::has('flash_message'))
+          <div class="message alert alert-{!! Session::get('flash_level') !!}">
+            {!! Session::get('flash_message') !!}
+          </div>
+        @endif
+      </div>
+    </div>
+
     <!-- Main content -->
     @yield('content')
-    <!-- /.content -->
+    <!-- /.Main content -->
   </div>
   <!-- /.content-wrapper -->
 
@@ -242,13 +254,8 @@
 <script src="{{ asset('public/admin/bower_components/dataTables/media/js/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('public/admin/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js') }}"></script>
 
-<!-- Page-Level Demo Scripts - Tables - Use for reference -->
-<script>
-$(document).ready(function() {
-    $('#dataTables-example').DataTable({
-            responsive: true
-    });
-});
-</script>
+<!-- My JS -->
+<script src="{{ asset('public/admin/dist/js/myScript.js') }}"></script>
+
 </body>
 </html>
