@@ -144,8 +144,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{!! URL::route('admin.cate.getList') !!}"><i class="fa fa-circle-o"></i> Danh sách thể loại</a></li>
-            <li><a href="{!! URL::route('admin.cate.getAdd') !!}"><i class="fa fa-circle-o"></i> Thêm thể loại</a></li>
+            <li><a href="{!! URL::route('admin.cate.getList') !!}"><i class="fa fa-circle-o" aria-hidden="true"></i> Danh sách thể loại</a></li>
+            <li><a href="{!! URL::route('admin.cate.getAdd') !!}"><i class="fa fa-circle-o" aria-hidden="true"></i> Thêm thể loại</a></li>
           </ul>
         </li>
         <li class="treeview">
@@ -157,8 +157,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{!! URL::route('admin.sport.getList') !!}"><i class="fa fa-circle-o"></i> Danh sách bộ môn</a></li>
-            <li><a href="{!! URL::route('admin.sport.getAdd') !!}"><i class="fa fa-circle-o"></i> Thêm bộ môn</a></li>
+            <li><a href="{!! URL::route('admin.sport.getList') !!}"><i class="fa fa-futbol-o" aria-hidden="true"></i> Danh sách bộ môn</a></li>
+            <li><a href="{!! URL::route('admin.sport.getAdd') !!}"><i class="fa fa-futbol-o" aria-hidden="true"></i> Thêm bộ môn</a></li>
           </ul>
         </li>
         <li class="treeview">
@@ -170,8 +170,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href=""><i class="fa fa-circle-o"></i> Danh sách thương hiệu</a></li>
-            <li><a href=""><i class="fa fa-circle-o"></i> Thêm thương hiệu</a></li>
+            <li><a href="{!! URL::route('admin.brand.getList') !!}"><i class="fa fa-circle-o"></i> Danh sách thương hiệu</a></li>
+            <li><a href="{!! URL::route('admin.brand.getAdd') !!}"><i class="fa fa-circle-o"></i> Thêm thương hiệu</a></li>
           </ul>
         </li>
       </ul>
@@ -201,7 +201,7 @@
       <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
         @if (Session::has('flash_message'))
           <div class="message alert alert-{!! Session::get('flash_level') !!}">
-            {!! Session::get('flash_message') !!}
+            <p class="text-center">{!! Session::get('flash_message') !!}</p>
           </div>
         @endif
       </div>

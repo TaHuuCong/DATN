@@ -12,6 +12,7 @@
 
 .content-wrapper .content {
 	padding: 15px 25px 25px;
+	overflow: auto;
 }
 
 .content table thead tr th {
@@ -20,10 +21,6 @@
 
 .content form button {
 	margin-right: 20px;
-}
-
-.content .message.alert {
-	text-align: center;
 }
 
 button.add {

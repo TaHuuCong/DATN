@@ -1,6 +1,6 @@
 @extends('admin.master')
 @section('controller', 'Thương hiệu')
-@section('action', 'Thêm thương hiệu')
+@section('action', 'Sửa thương hiệu')
 @section('breadcrumb', 'Quản lý thương hiệu')
 @section('content')
 
@@ -13,21 +13,26 @@
             <input type="hidden" name="_token" value="{!! csrf_token() !!}">
             <div class="form-group">
                 <label>Tên thương hiệu</label>
-                <input class="form-control" name="txtBrandName" placeholder="Nhập tên thương hiệu" />
+                <input class="form-control" name="txtBrandName" placeholder="Nhập tên thương hiệu" value="{!! old('txtBrandName', isset($brand)) ? $brand['name'] : null !!}" />
             </div>
             <div class="form-group">
-                <label>Logo</label>
+                <label>Logo hiện tại</label><br>
+                <img src="{!! asset('resources/upload/images/brand/'.$brand['image']) !!}" width="250" height="150">
+                <input type="hidden" name="img_current" value="{!! $brand['image'] !!}" />
+            </div>
+            <div class="form-group">
+                <label>Thay đổi Logo</label>
                 <input type="file" name="fImages">
             </div>
             <div class="form-group">
                 <label>Từ khóa</label>
-                <input class="form-control" name="txtKeyword" placeholder="Nhập từ khóa" />
+                <input class="form-control" name="txtKeyword" placeholder="Nhập từ khóa" value="{!! old('txtKeyword', isset($brand)) ? $brand['keyword'] : null !!}" />
             </div>
             <div class="form-group">
                 <label>Mô tả</label>
-                <textarea class="form-control" rows="5" name="txtDescription"></textarea>
+                <textarea class="form-control" rows="5" name="txtDescription">{!! old('txtDescription', isset($brand)) ? $brand['description'] : null !!}</textarea>
             </div>
-            <button type="submit" class="btn btn-default">Thêm</button>
+            <button type="submit" class="btn btn-default">Sửa</button>
             <button type="reset" class="btn btn-default">Đặt lại</button>
         <form>
     </div>
