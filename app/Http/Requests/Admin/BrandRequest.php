@@ -43,3 +43,5 @@ class BrandRequest extends FormRequest
         ];
     }
 }
+
+

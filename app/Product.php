@@ -8,7 +8,7 @@ class Product extends Model
 {
     protected $table = 'products';
 
-    protected $fillable = ['name', 'alias', 'price', 'image', 'gender', 'info', 'description', 'promotion_price', 'cate_id', 'brand_id', 'sport_id'];
+    protected $fillable = ['id', 'name', 'alias', 'price', 'image', 'gender', 'description', 'keyword', 'cate_id', 'brand_id', 'sport_id', 'status'];
 
     public function cate ()
     {
@@ -17,16 +17,21 @@ class Product extends Model
 
     public function brand ()
     {
-    	return $this->belongsTo('App\Brand');
+    	return $this->belongsTo('App\Brand');     //1 sp thuộc về 1 thương hiệu
     }
 
     public function sport ()
     {
-    	return $this->belongsTo('App\Sport');
+    	return $this->belongsTo('App\Sport');     //1 sp thuộc về 1 môn thể thao
     }
 
     public function pro_image ()
     {
     	return $this->hasMany('App\ProductImage');  //1 sp có nhiều hình ảnh sp
+    }
+
+    public function pro_property ()
+    {
+        return $this->hasMany('App\ProductProperty');  //1 sp có nhiều thuộc tính sp
     }
 }

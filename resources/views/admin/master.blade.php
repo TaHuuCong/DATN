@@ -17,11 +17,11 @@
   <link rel="stylesheet" href="{{ asset('public/admin/bower_components/Ionicons/css/ionicons.min.css') }}">
 
   <!-- Theme style -->
-  <link rel="stylesheet" href="{{ asset('public/admin/dist/css/AdminLTE.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('public/admin/css/AdminLTE.min.css') }}">
 
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
-  <link rel="stylesheet" href="{{ asset('public/admin/dist/css/skins/_all-skins.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('public/admin/css/skins/_all-skins.min.css') }}">
 
   <!-- Morris chart -->
   <link rel="stylesheet" href="{{ asset('public/admin/bower_components/morris.js/morris.css') }}">
@@ -48,7 +48,16 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 
   <!-- My CSS -->
-  <link rel="stylesheet" type="text/css" href="{{ asset('public/admin/dist/css/myStyle.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ asset('public/admin/css/mystyle.css') }}">
+
+  <!-- CKEditor & CKFinder -->
+  <script type="text/javascript" src="{{ url('public/admin/js/ckeditor/ckeditor.js') }}"></script>
+  <script type="text/javascript" src="{{ url('public/admin/js/ckfinder/ckfinder.js') }}"></script>
+  <script type="text/javascript">
+    var baseURL = "{!! url('/') !!}";
+  </script>
+  <script type="text/javascript" src="{{ url('public/admin/js/func_ckfinder.js') }}"></script>
+  <!-- End: CKEditor & CKFinder -->
 
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -150,15 +159,15 @@
         </li>
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-list-alt" aria-hidden="true"></i>
+            <i class="fa fa-futbol-o" aria-hidden="true"></i>
             <span>Quản lý bộ môn</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{!! URL::route('admin.sport.getList') !!}"><i class="fa fa-futbol-o" aria-hidden="true"></i> Danh sách bộ môn</a></li>
-            <li><a href="{!! URL::route('admin.sport.getAdd') !!}"><i class="fa fa-futbol-o" aria-hidden="true"></i> Thêm bộ môn</a></li>
+            <li><a href="{!! URL::route('admin.sport.getList') !!}"><i class="fa fa-circle-o" aria-hidden="true"></i> Danh sách bộ môn</a></li>
+            <li><a href="{!! URL::route('admin.sport.getAdd') !!}"><i class="fa fa-circle-o" aria-hidden="true"></i> Thêm bộ môn</a></li>
           </ul>
         </li>
         <li class="treeview">
@@ -268,20 +277,20 @@
 <script src="{{ asset('public/admin/bower_components/fastclick/lib/fastclick.js') }}"></script>
 
 <!-- AdminLTE App -->
-<script src="{{ asset('public/admin/dist/js/adminlte.min.js') }}"></script>
+<script src="{{ asset('public/admin/js/adminlte.min.js') }}"></script>
 
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="{{ asset('public/admin/dist/js/pages/dashboard.js') }}"></script>
+<script src="{{ asset('public/admin/js/pages/dashboard.js') }}"></script>
 
 <!-- AdminLTE for demo purposes -->
-<script src="{{ asset('public/admin/dist/js/demo.js') }}"></script>
+<script src="{{ asset('public/admin/js/demo.js') }}"></script>
 
 <!-- DataTables JavaScript -->
 <script src="{{ asset('public/admin/bower_components/dataTables/media/js/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('public/admin/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js') }}"></script>
 
 <!-- My JS -->
-<script src="{{ asset('public/admin/dist/js/myScript.js') }}"></script>
+<script src="{{ asset('public/admin/js/myscript.js') }}"></script>
 
 </body>
 </html>

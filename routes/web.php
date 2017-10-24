@@ -17,49 +17,39 @@ Route::get('/', function () {
 
 Route::get('schema/drop-pro-col', function() {
     Schema::table('products', function($table) {
-        $table->dropColumn('name');
+        // $table->dropColumn('name');
+        // $table->dropColumn('promotion_price');
+        // $table->dropColumn('size');
+        // $table->dropColumn('info');
+        // $table->dropColumn('description');
+        $table->dropColumn('keyword');
     });
 });
 
 Route::get('schema/add-pro-col', function() {
     Schema::table('products', function($table) {
-        $table->string('name')->unique();
+        // $table->string('name')->unique();
+        // $table->string('keyword');
+        // $table->string('status');
+        // $table->string('size');
+        // $table->longText('info')->nullable();
+        $table->longText('description')->nullable();
+        $table->string('keyword')->nullable();
+        // $table->text('description');
     });
 });
 
-Route::get('schema/drop-cate-col', function() {
-    Schema::table('categories', function($table) {
-        $table->dropColumn('description');
-    });
-});
-
-Route::get('schema/add-cate-col', function() {
-    Schema::table('categories', function($table) {
-        $table->string('keyword');
-    });
-});
-
-Route::get('schema/edit-cate-col', function() {
-    Schema::table('categories', function($table) {
-        $table->longText('description');
-    });
-});
-
-Route::get('schema/drop-sport-col', function() {
+Route::get('schema/drop-col', function() {
     Schema::table('sports', function($table) {
-        $table->dropColumn('description');
+        // $table->dropColumn('description');
+        $table->dropColumn('keyword');
     });
 });
 
-Route::get('schema/add-sport-col', function() {
+Route::get('schema/add-col', function() {
     Schema::table('sports', function($table) {
-        $table->string('keyword');
-    });
-});
-
-Route::get('schema/add-brand-col', function() {
-    Schema::table('brands', function($table) {
-        $table->string('keyword');
+        // $table->text('description')->nullable();
+        $table->string('keyword')->nullable();
     });
 });
 
@@ -103,5 +93,17 @@ Route::group(['prefix' => 'admin'], function() {
         Route::post('edit/{id}', ['as' => 'admin.brand.postEdit', 'uses' => 'Admin\BrandController@postEdit']);
 
         Route::get('delete/{id}', ['as' => 'admin.brand.getDelete', 'uses' => 'Admin\BrandController@getDelete']);
+    });
+
+    Route::group(['prefix' => 'product'], function() {
+        Route::get('list', ['as' => 'admin.product.getList', 'uses' => 'Admin\ProductController@getList']);
+
+        Route::get('add', ['as' => 'admin.product.getAdd', 'uses' => 'Admin\ProductController@getAdd']);
+        Route::post('add', ['as' => 'admin.product.postAdd', 'uses' => 'Admin\ProductController@postAdd']);
+
+        // Route::get('edit/{id}', ['as' => 'admin.product.getEdit', 'uses' => 'Admin\ProductController@getEdit']);
+        // Route::post('edit/{id}', ['as' => 'admin.product.postEdit', 'uses' => 'Admin\ProductController@postEdit']);
+
+        // Route::get('delete/{id}', ['as' => 'admin.product.getDelete', 'uses' => 'Admin\ProductController@getDelete']);
     });
 });
