@@ -6,7 +6,7 @@
 
 <section class="content">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-        <button type="button" class="pull-right btn btn-default addCate"><a href="{!! URL::route('admin.brand.getAdd') !!}"> Thêm thương hiệu</a></button>
+        <button type="button" class="pull-right btn btn-default addItem"><a href="{!! URL::route('admin.brand.getAdd') !!}"> Thêm thương hiệu</a></button>
     </div>
     <table class="table table-striped table-bordered table-hover" id="dataTables-example">
         <thead>
@@ -16,8 +16,8 @@
                 <th>Logo</th>
                 <th>Từ khóa</th>
                 <th>Mô tả</th>
-                <th>Xóa</th>
-                <th>Sửa</th>
+                <th></th>
+                <th></th>
             </tr>
         </thead>
         <tbody>

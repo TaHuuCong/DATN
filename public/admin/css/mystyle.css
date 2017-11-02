@@ -1,17 +1,17 @@
 .content-wrapper .content-header {
-	padding-bottom: 9px;
+	paddIteming-bottom: 9px;
 	margin-bottom: 10px;
 	border-bottom: 1px solid #eee;
-	padding: 35px 25px 15px;
+	paddIteming: 35px 25px 15px;
 }
 
 .content-header > .breadcrumb {
 	top: 5px;
-	padding-right: 20px;
+	paddIteming-right: 20px;
 }
 
 .content-wrapper .content {
-	padding: 15px 25px 25px;
+	paddIteming: 15px 25px 25px;
 	overflow: auto;
 }
 
@@ -23,18 +23,18 @@
 	margin-right: 20px;
 }
 
-button.add {
+button.addItem {
 	margin-bottom: 20px;
 	background-color: #337ab7;
 	border-color: #337ab7;
 }
 
-button.add:hover {
+button.addItem:hover {
 	background-color: #FF9800;
 	border-color: #FF9800;
 }
 
-button.add a {
+button.addItem a {
 	color: #fff;
 }
 

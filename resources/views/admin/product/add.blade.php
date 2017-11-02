@@ -43,7 +43,7 @@
             </div>
             <div class="form-group">
                 <label>Tên sản phẩm</label>
-                <input class="form-control" name="txtProName" placeholder="Nhập tên sản phẩm" value="{!! old('txtProName') !!}" />
+                <input class="form-control" name="txtProName" placeholder="Nhập tên sản phẩm" />
             </div>
             <div class="form-group">
                 <label style="margin-right: 20px">Giới tính</label>
@@ -55,47 +55,38 @@
                 </label>
             </div>
             <div class="form-group">
-                <label>Hình ảnh</label>
-                <input type="file" name="fImages">
-            </div>
-            <div class="form-group">
                 <label>Giá</label>
-                <input class="form-control" name="txtPrice" placeholder="Nhập giá sản phẩm" {!! old('txtPrice') !!}/>
+                <input class="form-control" name="txtPrice" placeholder="Nhập giá sản phẩm"/>
             </div>
             <div class="form-group">
                 <label>Thông tin sản phẩm</label>
-                <textarea class="form-control" rows="3" name="txtInfo">{!! old('txtInfo') !!}</textarea>
+                <textarea class="form-control" rows="3" name="txtInfo"></textarea>
                 <script type="text/javascript">ckeditor("txtInfo")</script>
             </div>
             <div class="form-group">
                 <label>Mô tả</label>
-                <textarea class="form-control" rows="3" name="txtDescription">{!! old('txtDescription') !!}</textarea>
+                <textarea class="form-control" rows="3" name="txtDescription"></textarea>
                 <script type="text/javascript">ckeditor("txtDescription")</script>
             </div>
             <div class="form-group">
                 <label>Từ khóa</label>
-                <input class="form-control" name="txtKeyword" placeholder="Nhập từ khóa cho sản phẩm" {!! old('txtKeyword') !!}/>
-            </div>
-            <div class="form-group">
-                <label style="margin-right: 20px">Trạng thái</label>
-                <label class="radio-inline">
-                    <input name="chooseStatus" value="còn hàng" checked="checked" type="radio"> Còn hàng
-                </label>
-                <label class="radio-inline">
-                    <input name="chooseStatus" value="hết hàng" type="radio"> Hết hàng
-                </label>
+                <input class="form-control" name="txtKeyword" placeholder="Nhập từ khóa cho sản phẩm" />
             </div>
             <button type="submit" class="btn btn-default">Thêm</button>
             <button type="reset" class="btn btn-default">Đặt lại</button>
         </div>
         <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
         <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-            <label>Hình ảnh chi tiết</label>
             <div class="form-group">
-                <input type="file" name="fProductDetailImage[]" class="img-detail">  {{-- vì ở đây là một mảng các hình ảnh chi tiết nên có [] --}}
+                <label>Hình ảnh</label>
+                <input type="file" name="fImages">
+            </div>
+            <div class="form-group">
+                <label>Hình ảnh chi tiết</label>
+                <input type="file" name="fProductDetailImage[]" class="img-detail">  {{-- ở đây phải có [] vì là 1 mảng --}}
             </div>
             <div id="insert"></div>
-            <button type="button" class="btn btn-primary" id="addImages">+</button>
+            <button type="button" class="btn btn-primary" id="addImages"><b>+</b></button>
         </div>
         <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
     <form>

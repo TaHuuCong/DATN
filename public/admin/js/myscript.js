@@ -11,7 +11,7 @@ $('.message.alert').delay(1000).slideUp();
 //Thông báo lỗi khi thêm, sửa dữ liệu
 $('.error.alert').delay(1000).slideUp();
 
-//Khi thêm sản phẩm: click vào Add Images thì sẽ thêm vào trong thẻ có #insert những mục chọn file để chọn ảnh chi tiết
+//Khi thêm sản phẩm: click vào AddImages thì sẽ thêm vào trong thẻ có #insert những mục chọn file để chọn ảnh chi tiết
 $(document).ready(function() {
     $("#addImages").click(function() {
         $("#insert").append('<div class="form-group"><input type="file" name="fProductDetailImage[]" style="margin-bottom: 10px;"></div>');
