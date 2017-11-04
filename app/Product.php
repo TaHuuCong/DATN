@@ -8,7 +8,7 @@ class Product extends Model
 {
     protected $table = 'products';
 
-    protected $fillable = ['id', 'name', 'alias', 'price', 'image', 'gender', 'description', 'keyword', 'cate_id', 'brand_id', 'sport_id', 'status'];
+    protected $fillable = ['id', 'name', 'alias', 'price', 'image', 'gender', 'description', 'keyword', 'cate_id', 'brand_id', 'sport_id'];
 
     public function cate ()
     {
@@ -27,7 +27,7 @@ class Product extends Model
 
     public function pro_image ()
     {
-    	return $this->hasMany('App\ProductImage');  //1 sp có nhiều hình ảnh sp
+    	return $this->hasMany('App\ProductImage', 'id');  //1 sp có nhiều hình ảnh sp
     }
 
     public function pro_property ()

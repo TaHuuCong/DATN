@@ -1,28 +1,25 @@
 .content-wrapper .content-header {
-	paddIteming-bottom: 9px;
+	padding-bottom: 9px;
 	margin-bottom: 10px;
 	border-bottom: 1px solid #eee;
-	paddIteming: 35px 25px 15px;
+	padding: 35px 25px 15px;
 }
 
 .content-header > .breadcrumb {
 	top: 5px;
-	paddIteming-right: 20px;
+	padding-right: 20px;
 }
 
 .content-wrapper .content {
-	paddIteming: 15px 25px 25px;
+	padding: 15px 25px 25px;
 	overflow: auto;
-}
-
-.content table thead tr th {
-	text-align: center;
 }
 
 .content form button {
 	margin-right: 20px;
 }
 
+/* nút thêm sản phẩm, thể loại... */
 button.addItem {
 	margin-bottom: 20px;
 	background-color: #337ab7;
@@ -36,6 +33,11 @@ button.addItem:hover {
 
 button.addItem a {
 	color: #fff;
+}
+
+/* bảng hiển thị danh sách sản phẩm, thể loại... */
+.content table thead tr th {
+	text-align: center;
 }
 
 .table-bordered {
@@ -53,6 +55,22 @@ button.addItem a {
 	border-right: 1px solid #d0cece;
 }
 
+/* ảnh chi tiết của sản phẩm */
 .img-detail {
 	margin-bottom: 10px;
+}
+
+a#del_img {
+	position: relative;
+	top: -45px;
+	left: -15px;
+	border-radius: 20px;
+	width: 10px;
+	height: 25px;
+}
+
+a#del_img i {
+	position: relative;
+	top: -5px;
+	left: -5px;
 }

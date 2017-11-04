@@ -10,37 +10,32 @@
             @include('admin.blocks.error')
         </div>
     </div>
-    <form action="" method="POST" enctype="multipart/form-data">
+    <form action="" method="POST" name="formEditProduct" enctype="multipart/form-data">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
             <div class="form-group">
                 <label>Thể loại</label>
-                <?php
-                if(isset($id)){
-                    $cate  = DB::table('categories')->where('id', $product->cate_id)->get();
-                }
-                ?>
                 <select class="form-control" name="cateParent">
-                    @foreach ($cate as $c_item)
-                        <option value="{!! $c_item['id'] !!}" checked>{!! $c_item['name'] !!}</option>
-                    @endforeach
+                @foreach ($cate as $c_item)
+                    <option value="{{ $c_item->id }}" {{ ($product->cate_id == $c_item->id) ? 'selected' : '' }}>{{ $c_item->name }}</option>
+                @endforeach
                 </select>
             </div>
             <div class="form-group">
                 <label>Bộ môn</label>
                 <select class="form-control" name="sportParent">
-{{--                     @foreach ($sport as $s_item)
-                        <option value="{!! $s_item['id'] !!}" checked>{!! $s_item['name'] !!}</option>
-                    @endforeach --}}
+                @foreach ($sport as $s_item)
+                    <option value="{{ $s_item->id }}" {{ ($product->sport_id == $s_item->id) ? 'selected' : '' }}>{{ $s_item->name }}</option>
+                @endforeach
                 </select>
             </div>
             <div class="form-group">
                 <label>Thương hiệu</label>
                 <select class="form-control" name="brandParent">
-{{--                     @foreach ($brand as $b_item)
-                        <option value="{!! $b_item['id'] !!}" checked>{!! $b_item['name'] !!}</option>
-                    @endforeach --}}
+                @foreach ($brand as $b_item)
+                    <option value="{{ $b_item->id }}" {{ ($product->brand_id == $b_item->id) ? 'selected' : '' }}>{{ $b_item->name }}</option>
+                @endforeach
                 </select>
             </div>
             <div class="form-group">
@@ -80,15 +75,27 @@
         <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
         <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
             <div class="form-group">
-                <label>Hình ảnh</label>
+                <label>Ảnh đại diện hiện tại</label>
+                <div id="img_current">
+                    <img src="{!! asset('resources/upload/images/product/thumbnail/'.$product['id'].'/'.$product['image']) !!}" alt="" class="img_current">
+                    <input type="hidden" name="img_current" value="{!! $product['image'] !!}" />
+                </div>
+                <br>
+                <label>Ảnh đại diện mới</label>
                 <input type="file" name="fImages">
             </div>
-            <div class="form-group">
-                <label>Hình ảnh chi tiết</label>
-                <input type="file" name="fProductDetailImage[]" class="img-detail">  {{-- ở đây phải có [] vì là 1 mảng --}}
+            <label>Ảnh chi tiết</label>
+            <?php
+                $product_images = DB::table('product_images')->where('pro_id', '=', $id )->get();
+            ?>
+            @foreach ($product_images as $key => $i_item)
+            <div class="form-group" id="{!! $key !!}">
+                <img src="{!! asset('resources/upload/images/product/thumbnail/'.$product->id.'/detail/'.$i_item->name) !!}" class="img_detail" idImage="{!! $i_item->id !!}" rid="{!! $key !!}">  {{-- ở đây ta đặt rid = $key = số thứ tự của hình chi tiết (tính từ 0) = id của form-group để khi xóa hình chi tiết thì xóa luôn cả icon_del --}}
+                <a href="javascript:void(0)" type="button" id="del_img" class="btn btn-danger btn-circle icon_del"><i class="fa fa-times"></i></a>
             </div>
+            @endforeach
             <div id="insert"></div>
-            <button type="button" class="btn btn-primary" id="addImages"><b>+</b></button>
+            <button type="button" class="btn btn-primary" id="addImages"><i class="fa fa-plus" aria-hidden="true"></i></button>
         </div>
         <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
     <form>

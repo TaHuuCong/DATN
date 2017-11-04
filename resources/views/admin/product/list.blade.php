@@ -14,7 +14,7 @@
                 <th>STT</th>
                 <th>Tên sản phẩm</th>
                 <th>Giới tính</th>
-                <th>Hình ảnh</th>
+                <th>Ảnh đại diện</th>
                 <th>Giá</th>
                 <th>Thể loại</th>
                 <th>Bộ môn</th>

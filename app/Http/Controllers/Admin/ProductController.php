@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
+// use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Category;
 use App\Sport;
@@ -11,6 +11,7 @@ use App\Product;
 use App\ProductImage;
 use App\Http\Requests\Admin\ProductRequest;
 use Image;
+use Request;
 
 class ProductController extends Controller
 {
@@ -22,9 +23,9 @@ class ProductController extends Controller
 
     public function getAdd ()
     {
-		$cate  = Category::select('id', 'name')->orderBy('id', 'ASC')->get();
-		$sport = Sport::select('id', 'name')->orderBy('id', 'ASC')->get();
-		$brand = Brand::select('id', 'name')->orderBy('id', 'ASC')->get();
+		$cate  = Category::all();
+		$sport = Sport::all();
+		$brand = Brand::all();
     	return view('admin.product.add', compact('cate', 'sport', 'brand'));
     }
 
@@ -101,13 +102,40 @@ class ProductController extends Controller
 
     public function getEdit ($id)
     {
-    	$product = Product::findOrFail($id);
-    	return view('admin.product.edit', compact('product', 'id'));
+		$product = Product::findOrFail($id);
+		$cate    = Category::all();
+		$sport   = Sport::all();
+		$brand   = Brand::all();
+    	return view('admin.product.edit', compact('product', 'cate', 'sport', 'brand', 'id'));
     }
 
     public function postEdit ($id)
     {
     	
+    }
+
+    public function getDelImg ($id)
+    {
+    	if (Request::ajax()) {    //nếu dữ liệu là ajax, hoặc dùng $request->ajax()
+			$idImage = (int)Request::get('idImage');    //để lấy id hình từ ajax (ép kiểu về int)
+			$image_detail = ProductImage::find($idImage);
+			if (!empty($image_detail)) {
+				$lg_img  = 'resources/upload/images/product/large/' . $image_detail->pro_id . '/detail/'.$image_detail->name;
+				$sm_img  = 'resources/upload/images/product/small/' . $image_detail->pro_id . '/detail/'.$image_detail->name;
+				$thn_img = 'resources/upload/images/product/thumbnail/' . $image_detail->pro_id . '/detail/'.$image_detail->name;
+				if(File::exists($lg_img)){
+					File::delete($lg_img);
+				}
+				if(File::exists($sm_img)){
+					File::delete($sm_img);
+				}
+				if(File::exists($thn_img)){
+					File::delete($thn_img);
+				}
+				$image_detail->delete();
+				return "Ok";
+			}
+		}
     }
 
 }

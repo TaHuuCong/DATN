@@ -78,15 +78,15 @@
         <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
         <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
             <div class="form-group">
-                <label>Hình ảnh</label>
+                <label>Ảnh đại diện</label>
                 <input type="file" name="fImages">
             </div>
             <div class="form-group">
-                <label>Hình ảnh chi tiết</label>
+                <label>Ảnh chi tiết</label>
                 <input type="file" name="fProductDetailImage[]" class="img-detail">  {{-- ở đây phải có [] vì là 1 mảng --}}
             </div>
             <div id="insert"></div>
-            <button type="button" class="btn btn-primary" id="addImages"><b>+</b></button>
+            <button type="button" class="btn btn-primary" id="addImages"><i class="fa fa-plus" aria-hidden="true"></i></button>
         </div>
         <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
     <form>
