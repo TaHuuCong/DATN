@@ -8,10 +8,11 @@ use App\Sport;
 use App\Brand;
 use App\Product;
 use App\ProductImage;
+use App\ProductProperty;
 use App\Http\Requests\Admin\ProductRequest;
 use App\Http\Requests\Admin\ProductEditRequest;
 use Image;
-use Request, File;
+use Request, File, DB;
 
 class ProductController extends Controller
 {
@@ -135,9 +136,9 @@ class ProductController extends Controller
 		$sm_cur_dir   = $sm_dir . '/' . $img_cur_name;
 		$thn_cur_dir  = $thn_dir . '/' . $img_cur_name;
 
-			//nếu tồn tại ảnh mới: tải ảnh mới lên, lưu vào CSDL và xóa ảnh cũ
+			//nếu tồn tại ảnh đại diện mới: tải ảnh mới lên, lưu vào CSDL và xóa ảnh cũ
 		if (!empty($request->file('fImages'))) {
-				//lưu ảnh mới (resize)
+				//thêm ảnh mới (resize)
 			$file_name      = $request->file('fImages')->getClientOriginalName();
 			$product->image = $file_name;
 			$img = Image::make($request->file('fImages')->getRealPath());
@@ -158,6 +159,37 @@ class ProductController extends Controller
 			echo 'Không có file ảnh mới';
 		}
 		$product->save();
+
+		//Cập nhật ảnh chi tiết: nếu tồn tại ảnh chi tiết mới thì thêm vào bảng product_images
+		if (!empty($request->file('fProductDetailImage'))) {
+			$lg_detail_dir  = $lg_dir . '/detail';
+			$sm_detail_dir  = $sm_dir . '/detail';
+			$thn_detail_dir = $thn_dir . '/detail';
+			if(!file_exists($lg_detail_dir)){
+				mkdir($lg_detail_dir);
+			}
+			if(!file_exists($sm_detail_dir)){
+				mkdir($sm_detail_dir);
+			}
+			if(!file_exists($thn_detail_dir)){
+				mkdir($thn_detail_dir);
+			}
+
+			foreach ($request->file('fProductDetailImage') as $file) {
+				$product_images = new ProductImage;
+				//nếu có file tải lên thì mới cập nhật, ví dụ khi click thêm nhiều lựa chọn để chọn ảnh nhưng sau đó chỉ tải lên 2 ảnh thì chỉ cập nhật 2 ảnh đó
+				if (isset($file)) {
+					$product_images->name   = $file->getClientOriginalName();
+					$product_images->pro_id = $id;
+					$img = Image::make($file->getRealPath());
+					$img->resize(500, 500)->save($lg_detail_dir . '/' .  $product_images->name);
+					$img->resize(300, 300)->save($sm_detail_dir . '/' .  $product_images->name);
+					$img->resize(100, 100)->save($thn_detail_dir . '/' .  $product_images->name);
+					$product_images->save();
+				}
+			}
+		}
+
 		return redirect()->route('admin.product.getList')->with(['flash_level' => 'success', 'flash_message' => 'Sửa sản phẩm thành công']);
     }
 
@@ -183,6 +215,88 @@ class ProductController extends Controller
 				return "Ok";
 			}
 		}
+    }
+
+    public function getDelete ($id)
+    {
+    	//Xóa sản phẩm thì phải xóa ảnh chi tiết (bảng product_images) và thuộc tính (bảng product_properties) trước sau đó mới xóa dữ liệu trong bảng products vì nếu xóa ở bảng products trước thì sẽ không biết là cần xóa ảnh nào, thuộc tính nào nữa
+
+    	//xóa ảnh chi tiết
+    	$main_dir = 'resources/upload/images/product';
+		$lg_dir   = $main_dir . '/large/' . $id;
+		$sm_dir   = $main_dir . '/small/' . $id;
+		$thn_dir  = $main_dir . '/thumbnail/' . $id;
+
+		$lg_detail_dir  = $lg_dir . '/detail';
+		$sm_detail_dir  = $sm_dir . '/detail';
+		$thn_detail_dir = $thn_dir . '/detail';
+
+		$product_images = DB::table('product_images')->where('pro_id', $id)->get();
+		foreach ($product_images as $images) {
+			$lg_detail_img = $lg_detail_dir . '/' . $images->name;
+			$sm_detail_img = $sm_detail_dir . '/' . $images->name;
+			$thn_detail_img = $thn_detail_dir . '/' . $images->name;
+			//Xóa ảnh
+			if (file_exists($lg_detail_img)) {
+				File::delete($lg_detail_img);
+			}
+			if (file_exists($sm_detail_img)) {
+				File::delete($sm_detail_img);
+			}
+			if (file_exists($thn_detail_img)) {
+				File::delete($thn_detail_img);
+			}
+		}
+
+			//Xóa thư mục detail
+		if (file_exists($lg_detail_dir)) {
+			rmdir($lg_detail_dir);
+		}
+		if (file_exists($sm_detail_dir)) {
+			rmdir($sm_detail_dir);
+		}
+		if (file_exists($thn_detail_dir)) {
+			rmdir($thn_detail_dir);
+		}
+
+		//xóa thuộc tính
+		$product_properties = ProductProperty::where('pro_id', '=', $id)->get();
+		foreach ($product_properties as $properties) {
+			$properties->delete();
+		}
+
+		//xóa sản phẩm
+		$products = Product::findOrFail($id);
+			//Xóa ảnh đại diện
+		$lg_img = $lg_dir . '/' . $products->image;
+		$sm_img = $sm_dir . '/' . $products->image;
+		$thn_img = $thn_dir . '/' . $products->image;
+		if (file_exists($lg_img)) {
+			File::delete($lg_img);
+		}
+		if (file_exists($sm_img)) {
+			File::delete($sm_img);
+		}
+		if (file_exists($thn_img)) {
+			File::delete($thn_img);
+		}
+
+
+			//Xóa thư mục id
+		if (file_exists($lg_dir)) {
+			rmdir($lg_dir);
+		}
+		if (file_exists($sm_dir)) {
+			rmdir($sm_dir);
+		}
+		if (file_exists($thn_dir)) {
+			rmdir($thn_dir);
+		}
+
+		//xóa dữ liệu còn lại
+		$products->delete($id);
+
+		return redirect()->route('admin.product.getList')->with(['flash_level' => 'success', 'flash_message' => 'Xóa sản phẩm thành công']);
     }
 
 }

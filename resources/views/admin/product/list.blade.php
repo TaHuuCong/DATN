@@ -61,7 +61,7 @@
                         {!! $brand->name !!}
                     @endif
                 </td>
-                <td class="center"><i class="fa fa-trash-o fa-fw"></i><a href="#"> Xóa</a></td>
+                <td class="center"><i class="fa fa-trash-o fa-fw"></i><a href="{!! URL::route('admin.product.getDelete', $item['id']) !!}" onclick="return confirm('Bạn Có Chắc Là Muốn Xóa Không?')" > Xóa</a></td>
                 <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{!! URL::route('admin.product.getEdit', $item['id']) !!}"> Sửa</a></td>
             </tr>
         @endforeach
