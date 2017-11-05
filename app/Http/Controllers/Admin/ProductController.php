@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Admin;
 
-// use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Category;
 use App\Sport;
@@ -10,8 +9,9 @@ use App\Brand;
 use App\Product;
 use App\ProductImage;
 use App\Http\Requests\Admin\ProductRequest;
+use App\Http\Requests\Admin\ProductEditRequest;
 use Image;
-use Request;
+use Request, File;
 
 class ProductController extends Controller
 {
@@ -109,9 +109,56 @@ class ProductController extends Controller
     	return view('admin.product.edit', compact('product', 'cate', 'sport', 'brand', 'id'));
     }
 
-    public function postEdit ($id)
+    public function postEdit (ProductEditRequest $request, $id)
     {
-    	
+    	$product = Product::find($id);
+    	$product->name        = $request->txtProName;
+		$product->alias       = changeTitle($request->txtProName);
+		$product->price       = $request->txtPrice;
+		$product->gender      = $request->chooseGender;
+		$product->info        = $request->txtInfo;
+		$product->description = $request->txtDescription;
+		$product->keyword     = $request->txtKeyword;
+		$product->cate_id     = $request->cateParent;
+		$product->sport_id    = $request->sportParent;
+		$product->brand_id    = $request->brandParent;
+
+		//Cập nhật ảnh đại diện
+		$main_dir = 'resources/upload/images/product';
+		$lg_dir   = $main_dir . '/large/' . $id;
+		$sm_dir   = $main_dir . '/small/' . $id;
+		$thn_dir  = $main_dir . '/thumbnail/' . $id;
+
+			//lấy ảnh hiện tại
+		$img_cur_name = $request->img_current;
+		$lg_cur_dir   = $lg_dir . '/' . $img_cur_name;
+		$sm_cur_dir   = $sm_dir . '/' . $img_cur_name;
+		$thn_cur_dir  = $thn_dir . '/' . $img_cur_name;
+
+			//nếu tồn tại ảnh mới: tải ảnh mới lên, lưu vào CSDL và xóa ảnh cũ
+		if (!empty($request->file('fImages'))) {
+				//lưu ảnh mới (resize)
+			$file_name      = $request->file('fImages')->getClientOriginalName();
+			$product->image = $file_name;
+			$img = Image::make($request->file('fImages')->getRealPath());
+			$img->resize(500, 500)->save($lg_dir . '/' .  $file_name);
+			$img->resize(300, 300)->save($sm_dir . '/' .  $file_name);
+			$img->resize(100, 100)->save($thn_dir . '/' .  $file_name);
+				//xóa ảnh cũ
+			if (File::exists($lg_cur_dir)) {
+				File::delete($lg_cur_dir);
+			}
+			if (File::exists($sm_cur_dir)) {
+				File::delete($sm_cur_dir);
+			}
+			if (File::exists($thn_cur_dir)) {
+				File::delete($thn_cur_dir);
+			}
+		} else {
+			echo 'Không có file ảnh mới';
+		}
+		$product->save();
+		return redirect()->route('admin.product.getList')->with(['flash_level' => 'success', 'flash_message' => 'Sửa sản phẩm thành công']);
     }
 
     public function getDelImg ($id)
@@ -120,16 +167,16 @@ class ProductController extends Controller
 			$idImage = (int)Request::get('idImage');    //để lấy id hình từ ajax (ép kiểu về int)
 			$image_detail = ProductImage::find($idImage);
 			if (!empty($image_detail)) {
-				$lg_img  = 'resources/upload/images/product/large/' . $image_detail->pro_id . '/detail/'.$image_detail->name;
-				$sm_img  = 'resources/upload/images/product/small/' . $image_detail->pro_id . '/detail/'.$image_detail->name;
-				$thn_img = 'resources/upload/images/product/thumbnail/' . $image_detail->pro_id . '/detail/'.$image_detail->name;
-				if(File::exists($lg_img)){
+				$lg_img  = 'resources/upload/images/product/large/' . $image_detail->pro_id . '/detail/' . $image_detail->name;
+				$sm_img  = 'resources/upload/images/product/small/' . $image_detail->pro_id . '/detail/' . $image_detail->name;
+				$thn_img = 'resources/upload/images/product/thumbnail/' . $image_detail->pro_id . '/detail/' . $image_detail->name;
+				if (File::exists($lg_img)) {
 					File::delete($lg_img);
 				}
-				if(File::exists($sm_img)){
+				if (File::exists($sm_img)) {
 					File::delete($sm_img);
 				}
-				if(File::exists($thn_img)){
+				if (File::exists($thn_img)) {
 					File::delete($thn_img);
 				}
 				$image_detail->delete();

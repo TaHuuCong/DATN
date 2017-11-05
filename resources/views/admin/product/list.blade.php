@@ -8,7 +8,7 @@
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <button type="button" class="pull-right btn btn-default addItem"><a href="{!! URL::route('admin.product.getAdd') !!}"> Thêm sản phẩm</a></button>
     </div>
-    <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+    <table class="table table-striped table-bordered table-hover" id="dataTables-example"> {{-- nếu muốn xóa phân trang các thứ thì xóa cái id="dataTables-example" --}}
         <thead>
             <tr align="center">
                 <th>STT</th>

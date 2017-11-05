@@ -21,7 +21,7 @@ $(document).ready(function() {
 //Xóa hình ảnh chi tiết bằng Ajax
 $(document).ready(function() {
     $("a#del_img").on('click', function() {
-        var url = "http://localhost:8080/DATN/admin/product/del_img/"; //đường dẫn tới route del_img để trỏ tới hàm getDelImg($id) trong controller
+        var url = "http://localhost:8080/DATN/admin/product/delimg/"; //đường dẫn tới route delimg để trỏ tới hàm getDelImg($id) trong controller
         var _token = $("form[name='formEditProduct']").find("input[name='_token']").val(); //khi tác động đến form cần có _token để bảo mật: trong cái form có tên là formEditProduct, tìm kiếm cái input có tên là _token (xem ở edit.blade.php)
         var urlImage = $(this).parent().find("img").attr("src"); //lấy đường dẫn hình
         var idImage = $(this).parent().find("img").attr("idImage"); //lấy id gốc của hình
@@ -39,7 +39,7 @@ $(document).ready(function() {
                 if (data == "Ok") { //chính là "Ok" trong return "OK" ở bên controller
                     $("#" + rid).remove();
                 } else {
-                    alert("Lỗi xóa hình chi tiết");
+                    alert("Lỗi xóa hình chi tiết. Vui lòng xem lại!");
                 }
             }
         });

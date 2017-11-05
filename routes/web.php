@@ -80,7 +80,7 @@ Route::group(['prefix' => 'admin'], function() {
 
         // Route::get('delete/{id}', ['as' => 'admin.product.getDelete', 'uses' => 'Admin\ProductController@getDelete']);
 
-        Route::get('delimg/{id}', ['as' => 'admin.product.getDelImg', 'uses' => 'ProductController@getDelImg']);
+        Route::get('delimg/{id}', ['as' => 'admin.product.getDelImg', 'uses' => 'Admin\ProductController@getDelImg']);
     });
 
     Route::group(['prefix' => 'property'], function() {

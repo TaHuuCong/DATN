@@ -18,38 +18,40 @@
                 <?php
 			  		$products = DB::table('products')->orderBy('id', 'DESC')->get();   //hiển thị ra toàn bộ danh sách sản phẩm để chọn
                 ?>
+
+
                 <select class="form-control" name="chooseProName">
                 	<option value="">Chọn sản phẩm</option>
 	                @foreach ($products as $item)
-	                	<option value="{!! $item->id !!}">{!! $item->name !!}</option>
+	                	<option value="{!! $item->id !!}" @if(old('chooseProName') == $item->id) selected @endif>{!! $item->name !!}</option>
 	                @endforeach
                 </select>
             </div>
             <div class="form-group">
                 <label>Size</label>
                 <select class="form-control" name="chooseSize">
-                	<option value="" checked="checked">Chọn size</option>
-                	<option value="34">34</option>
-                	<option value="35">35</option>
-                	<option value="36">36</option>
-                	<option value="37">37</option>
-                	<option value="38">38</option>
-                	<option value="39">39</option>
-                	<option value="40">40</option>
-                	<option value="41">41</option>
-                	<option value="42">42</option>
-                	<option value="43">43</option>
-	                <option value="S">S</option>
-                	<option value="M">M</option>
-                	<option value="L">L</<option>
-	                <option value="XL">XL</<option>
-	                <option value="2XL">2XL</<option>
-                	<option value="3XL">3XL</option>
+                	<option value="" >Chọn size</option>
+                	<option value="34" @if(old('chooseSize') == '34') selected @endif>34</option>
+                	<option value="35" @if(old('chooseSize') == '35') selected @endif>35</option>
+                	<option value="36" @if(old('chooseSize') == '36') selected @endif>36</option>
+                	<option value="37" @if(old('chooseSize') == '37') selected @endif>37</option>
+                	<option value="38" @if(old('chooseSize') == '38') selected @endif>38</option>
+                	<option value="39" @if(old('chooseSize') == '39') selected @endif>39</option>
+                	<option value="40" @if(old('chooseSize') == '40') selected @endif>40</option>
+                	<option value="41" @if(old('chooseSize') == '41') selected @endif>41</option>
+                	<option value="42" @if(old('chooseSize') == '42') selected @endif>42</option>
+                	<option value="43" @if(old('chooseSize') == '43') selected @endif>43</option>
+	                <option value="S" @if(old('chooseSize') == 'S') selected @endif>S</option>
+                	<option value="M" @if(old('chooseSize') == 'M') selected @endif>M</option>
+                	<option value="L" @if(old('chooseSize') == 'L') selected @endif>L</<option>
+	                <option value="XL" @if(old('chooseSize') == 'XL') selected @endif>XL</<option>
+	                <option value="2XL" @if(old('chooseSize') == '2XL') selected @endif>2XL</<option>
+                	<option value="3XL" @if(old('chooseSize') == '3XL') selected @endif>3XL</option>
                 </select>
             </div>
             <div class="form-group">
                 <label>Màu sắc</label>
-                <input type="text" class="form-control" name="txtColor" value="" placeholder="Nhập màu sắc của sản phẩm">
+                <input type="text" class="form-control" name="txtColor" value="{!! old('txtColor') !!}" placeholder="Nhập màu sắc của sản phẩm">
             </div>
             <div class="form-group">
                 <label>Giá</label>
