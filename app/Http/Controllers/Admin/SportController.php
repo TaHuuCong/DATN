@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\SportRequest;
 use App\Sport;
+use App\Product;
 
 class SportController extends Controller
 {
@@ -32,6 +33,10 @@ class SportController extends Controller
     public function getDelete ($id)
     {
     	$sport = Sport::findOrFail($id);
+        $product = Product::where('sport_id', '=', $id)->get();
+        foreach ($product as $pro) {
+            $pro->delete();
+        }
     	$sport->delete();
     	return redirect()->route('admin.sport.getList')->with(['flash_level' => 'success', 'flash_message' => 'Xóa bộ môn thành công !']);
     }

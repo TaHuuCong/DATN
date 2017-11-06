@@ -190,7 +190,10 @@ class ProductController extends Controller
 			}
 		}
 
-		return redirect()->route('admin.product.getList')->with(['flash_level' => 'success', 'flash_message' => 'Sửa sản phẩm thành công']);
+		//Cập nhật thuộc tính
+
+
+		// return redirect()->route('admin.product.getList')->with(['flash_level' => 'success', 'flash_message' => 'Sửa sản phẩm thành công']);
     }
 
     public function getDelImg ($id)
@@ -298,5 +301,18 @@ class ProductController extends Controller
 
 		return redirect()->route('admin.product.getList')->with(['flash_level' => 'success', 'flash_message' => 'Xóa sản phẩm thành công']);
     }
+
+    // public function postEditProperty (Request $request)
+    // {
+    // 	$pro_property = DB::table('product_properties')
+    //     ->where('pro_id', $request->pro_id)
+    //     ->where('id', $request->id)
+    //     ->update($request->except('_token'));
+    //     if ($pro_property){
+    //       	return back();
+    //     } else {
+    //     	echo 'error';
+    //   	}
+    // }
 
 }

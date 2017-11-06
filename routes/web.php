@@ -16,14 +16,14 @@ Route::get('/', function () {
 });
 
 Route::get('schema/drop-col', function() {
-    Schema::table('products', function($table) {
+    Schema::table('product_properties', function($table) {
         $table->dropColumn('status');
     });
 });
 
 Route::get('schema/add-col', function() {
     Schema::table('product_properties', function($table) {
-        $table->integer('status');
+        $table->tinyInteger('status');
     });
 });
 

@@ -12,7 +12,6 @@
     </div>
     <form action="" method="POST" name="formEditProduct" enctype="multipart/form-data">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
             <div class="form-group">
                 <label>Thể loại</label>
@@ -73,7 +72,7 @@
             <button type="reset" class="btn btn-default">Đặt lại</button>
         </div>
         <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
-        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+        <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
             <div class="form-group">
                 <label>Ảnh đại diện hiện tại</label>
                 <div id="img_current">
@@ -96,8 +95,59 @@
             @endforeach
             <div id="insert"></div>
             <button type="button" class="btn btn-primary" id="addImages"><i class="fa fa-plus" aria-hidden="true"></i></button>
+            <br>
+
+            <?php
+                $pro_property = DB::table('product_properties')->where('pro_id', $id)->get();
+                if (count($pro_property) >= 1) {
+            ?>
+            <label style="margin-top: 20px; ">Thuộc tính</label>
+            <table class="table table-responsive">
+                <tr>
+                    <td>Size</td>
+                    <td>Màu sắc</td>
+                    <td>Trạng thái</td>
+                </tr>
+                @foreach($pro_property as $prop)
+                <tr>
+                    <input type="hidden" name="id" value="{!! $prop->id !!}" size="6"/>
+                    <input type="hidden" name="pro_id" value="{!! $prop->pro_id !!}" size="6"/>
+                    <td>
+                        <select class="form-control" name="chooseSize">
+                            <option value="34" @if($prop->size == '34') selected @endif>34</option>
+                            <option value="35" @if($prop->size == '35') selected @endif>35</option>
+                            <option value="36" @if($prop->size == '36') selected @endif>36</option>
+                            <option value="37" @if($prop->size == '37') selected @endif>37</option>
+                            <option value="38" @if($prop->size == '38') selected @endif>38</option>
+                            <option value="39" @if($prop->size == '39') selected @endif>39</option>
+                            <option value="40" @if($prop->size == '40') selected @endif>40</option>
+                            <option value="41" @if($prop->size == '41') selected @endif>41</option>
+                            <option value="42" @if($prop->size == '42') selected @endif>42</option>
+                            <option value="43" @if($prop->size == '43') selected @endif>43</option>
+                            <option value="S" @if($prop->size == 'S') selected @endif>S</option>
+                            <option value="M" @if($prop->size == 'M') selected @endif>M</option>
+                            <option value="L" @if($prop->size == 'L') selected @endif>L</<option>
+                            <option value="XL" @if($prop->size == 'XL') selected @endif>XL</<option>
+                            <option value="2XL" @if($prop->size == '2XL') selected @endif>2XL</<option>
+                            <option value="3XL" @if($prop->size == '3XL') selected @endif>3XL</option>
+                        </select>
+                    </td>
+                    <td>
+                        <input class="form-control" type="text" name="color" value="{!! $prop->color !!}" size="10"/>
+                    </td>
+                    <td>
+                        <select class="form-control" name="chooseStatus">
+                            <option value="0" @if($prop->status == '0') selected @endif>Còn hàng</option>
+                            <option value="1" @if($prop->status == '1') selected @endif>Tạm hết hàng</option>
+                        </select>
+                    </td>
+                </tr>
+                @endforeach
+            </table>
+            <?php
+                }
+            ?>
         </div>
-        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
     <form>
 </section>
 

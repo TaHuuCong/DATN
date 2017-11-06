@@ -15,7 +15,6 @@
                 <th>Tên sản phẩm</th>
                 <th>Size</th>
                 <th>Màu sắc</th>
-                <th>Giá</th>
                 <th>Trạng thái</th>
                 <th></th>
                 <th></th>
@@ -33,9 +32,8 @@
                 <td>{!! $product->name !!}</td>
                 <td>{!! $item->size !!}</td>
                 <td>{!! $item->color !!}</td>
-                <td>{!! $item->p_price !!}</td>
                 <td>
-                    @if ($item['status'] == 1)
+                    @if ($item['status'] == 0)
                         <span style="color: blue;">Còn hàng</span>
                     @else
                         <span style="color: red;">Tạm hết hàng</span>

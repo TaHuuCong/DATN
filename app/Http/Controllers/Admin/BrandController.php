@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Brand;
 use App\Http\Requests\Admin\BrandRequest;
 use File;
+use App\Product;
 
 class BrandController extends Controller
 {
@@ -37,6 +38,10 @@ class BrandController extends Controller
     public function getDelete ($id)
     {
     	$brand = Brand::find($id);
+        $product = Product::where('brand_id', '=', $id)->get();
+        foreach ($product as $pro) {
+            $pro->delete();
+        }
     	$brand->delete();
     	return redirect()->route('admin.brand.getList')->with(['flash_level' => 'success', 'flash_message' => 'Xóa thương hiệu thành công !']);
     }

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\CateRequest;
 use App\Category;
+use App\Product;
 
 class CateController extends Controller
 {
@@ -33,6 +34,10 @@ class CateController extends Controller
     public function getDelete ($id)
     {
         $cate = Category::find($id);
+        $product = Product::where('cate_id', '=', $id)->get();
+        foreach ($product as $pro) {
+            $pro->delete();
+        }
         $cate->delete();
         return redirect()->route('admin.cate.getList')->with(['flash_level' => 'success', 'flash_message' => 'Xóa thể loại thành công !']);
     }

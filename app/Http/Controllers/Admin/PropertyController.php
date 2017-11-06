@@ -12,7 +12,7 @@ class PropertyController extends Controller
 {
 	public function getList()
 	{
-		$property = ProductProperty::select('id', 'pro_id', 'size', 'color', 'p_price', 'status')->orderBy('id', 'DESC')->get();
+		$property = ProductProperty::select('id', 'pro_id', 'size', 'color', 'status')->orderBy('id', 'DESC')->get();
 		return view('admin.property.list', compact('property'));
 	}
 
@@ -31,7 +31,6 @@ class PropertyController extends Controller
 		$property->pro_id  = $request->chooseProName;
 		$property->size    = $request->chooseSize;
 		$property->color   = $request->txtColor;
-		$property->p_price = $request->txtPropertyPrice;
 		$property->status  = $request->chooseStatus;
 
         $check = DB::table('products as pr')
@@ -59,7 +58,6 @@ class PropertyController extends Controller
     	$property = ProductProperty::find($id);
     	$property->size    = $request->chooseSize;
 		$property->color   = $request->txtColor;
-		$property->p_price = $request->txtPropertyPrice;
 		$property->status  = $request->chooseStatus;
     	$property->save();
     	return redirect()->route('admin.property.getList')->with(['flash_level' => 'success', 'flash_message' => 'Sửa thuộc tinh sản phẩm thành công !']);

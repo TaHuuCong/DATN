@@ -200,6 +200,34 @@
             <li><a href="{!! URL::route('admin.product.getAdd') !!}"><i class="fa fa-circle-o"></i> Thêm sản phẩm</a></li>
           </ul>
         </li>
+
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-list-alt" aria-hidden="true"></i>
+            <span>Quản lý thuộc tính</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="{!! URL::route('admin.property.getList') !!}"><i class="fa fa-circle-o"></i> Danh sách thuộc tính</a></li>
+            <li><a href="{!! URL::route('admin.property.getAdd') !!}"><i class="fa fa-circle-o"></i> Thêm thuộc tính</a></li>
+          </ul>
+        </li>
+
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-list-alt" aria-hidden="true"></i>
+            <span>Quản lý giảm giá</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href=""><i class="fa fa-circle-o"></i> Danh sách phiếu giảm giá</a></li>
+            <li><a href=""><i class="fa fa-circle-o"></i> Thêm phiếu giảm giá</a></li>
+          </ul>
+        </li>
       </ul>
     </section>
     <!-- /.sidebar -->

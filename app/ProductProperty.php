@@ -8,7 +8,7 @@ class ProductProperty extends Model
 {
     protected $table = 'product_properties';
 
-    protected $fillable = ['id', 'pro_id', 'size', 'color', 'p_price'];
+    protected $fillable = ['id', 'pro_id', 'size', 'color', 'status'];
 
     public function product ()
     {

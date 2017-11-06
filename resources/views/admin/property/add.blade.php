@@ -54,17 +54,12 @@
                 <input type="text" class="form-control" name="txtColor" value="{!! old('txtColor') !!}" placeholder="Nhập màu sắc của sản phẩm">
             </div>
             <div class="form-group">
-                <label>Giá</label>
-                <input type="text" class="form-control" name="txtPropertyPrice" value="" placeholder="Nhập giá của sản phẩm">
-            </div>
-            <div class="form-group">
-                <label style="margin-right: 20px">Trạng thái</label>
-                <label class="radio-inline">
-                    <input name="chooseStatus" value="1" checked="checked" type="radio"> Còn hàng
-                </label>
-                <label class="radio-inline">
-                    <input name="chooseStatus" value="2" type="radio"> Tạm hết hàng
-                </label>
+                <label>Trạng thái</label>
+                <select class="form-control" name="chooseStatus">
+                    <option value="" >Chọn trạng thái</option>
+                    <option value="0" @if(old('chooseStatus') == '0') selected @endif>Còn hàng</option>
+                    <option value="1" @if(old('chooseStatus') == '1') selected @endif>Tạm hết hàng</option>
+                </select>
             </div>
             <button type="submit" class="btn btn-default">Thêm</button>
             <button type="reset" class="btn btn-default">Đặt lại</button>
