@@ -13,7 +13,7 @@ class BrandController extends Controller
 {
 	public function getList ()
 	{
-		$brand = Brand::select('id', 'name', 'image', 'keyword', 'description')->orderBy('id', 'DESC')->get();
+		$brand = Brand::select('id', 'name', 'image', 'keyword', 'description', 'created_at', 'updated_at')->orderBy('id', 'DESC')->get();
 		return view('admin.brand.list', compact('brand'));
 	}
 
@@ -35,15 +35,32 @@ class BrandController extends Controller
 		return redirect()->route('admin.brand.getList')->with(['flash_level' => 'success', 'flash_message' => 'Thêm thương hiệu thành công !']);
     }
 
-    public function getDelete ($id)
+    public function delete ($id)
     {
     	$brand = Brand::find($id);
         $product = Product::where('brand_id', '=', $id)->get();
-        foreach ($product as $pro) {
+        if (isset($product)) {
+            foreach ($product as $pro) {
             $pro->delete();
+            }
         }
     	$brand->delete();
-    	return redirect()->route('admin.brand.getList')->with(['flash_level' => 'success', 'flash_message' => 'Xóa thương hiệu thành công !']);
+    }
+
+    public function getDelete($id)
+    {
+        $this->delete($id);
+        return redirect()->route('admin.brand.getList')->with(['flash_level' => 'success', 'flash_message' => 'Xóa thương hiệu thành công !']);
+    }
+
+    public function postDelete (Request $request)
+    {
+        if($request->checks){
+            foreach($request->checks as $item){
+                $this->delete($item);
+            }
+        }
+        return redirect()->route('admin.brand.getList')->with(['flash_level' => 'success', 'flash_message' => 'Xóa thương hiệu thành công']);
     }
 
     public function getEdit ($id)

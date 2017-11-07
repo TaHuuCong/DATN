@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Category;
 use App\Sport;
@@ -12,13 +13,13 @@ use App\ProductProperty;
 use App\Http\Requests\Admin\ProductRequest;
 use App\Http\Requests\Admin\ProductEditRequest;
 use Image;
-use Request, File, DB;
+use File, DB, Config;
 
 class ProductController extends Controller
 {
 	public function getList ()
 	{
-		$product = Product::select('id', 'name', 'price', 'gender', 'info', 'image', 'keyword', 'description', 'cate_id', 'brand_id', 'sport_id', 'created_at')->orderBy('id', 'DESC')->get()->toArray();
+		$product = Product::select('id', 'name', 'price', 'gender', 'info', 'image', 'keyword', 'description', 'cate_id', 'brand_id', 'sport_id', 'created_at', 'updated_at')->orderBy('id', 'DESC')->paginate(5);
 		return view('admin.product.list', compact('product'));
 	}
 
@@ -129,6 +130,15 @@ class ProductController extends Controller
 		$lg_dir   = $main_dir . '/large/' . $id;
 		$sm_dir   = $main_dir . '/small/' . $id;
 		$thn_dir  = $main_dir . '/thumbnail/' . $id;
+		if (!file_exists($lg_dir)) {
+			mkdir($lg_dir);
+		}
+		if (!file_exists($sm_dir)) {
+			mkdir($sm_dir);
+		}
+		if (!file_exists($thn_dir)) {
+			mkdir($thn_dir);
+		}
 
 			//lấy ảnh hiện tại
 		$img_cur_name = $request->img_current;
@@ -138,89 +148,103 @@ class ProductController extends Controller
 
 			//nếu tồn tại ảnh đại diện mới: tải ảnh mới lên, lưu vào CSDL và xóa ảnh cũ
 		if (!empty($request->file('fImages'))) {
-				//thêm ảnh mới (resize)
-			$file_name      = $request->file('fImages')->getClientOriginalName();
-			$product->image = $file_name;
-			$img = Image::make($request->file('fImages')->getRealPath());
-			$img->resize(500, 500)->save($lg_dir . '/' .  $file_name);
-			$img->resize(300, 300)->save($sm_dir . '/' .  $file_name);
-			$img->resize(100, 100)->save($thn_dir . '/' .  $file_name);
-				//xóa ảnh cũ
-			if (File::exists($lg_cur_dir)) {
-				File::delete($lg_cur_dir);
-			}
-			if (File::exists($sm_cur_dir)) {
-				File::delete($sm_cur_dir);
-			}
-			if (File::exists($thn_cur_dir)) {
-				File::delete($thn_cur_dir);
-			}
+			//thêm ảnh mới (resize)
+			$img_ext = $request->file('fImages')->getClientOriginalExtension();  //lấy phần đuôi mở rộng của file
+            if (in_array($img_ext, Config::get('constants.image_valid_extension'))) { //kiểm tra $img_ext có nằm trong tập các đuôi ko (xem trong folder config/constants)
+            	$file_name      = $request->file('fImages')->getClientOriginalName();
+				$product->image = $file_name;
+				$img = Image::make($request->file('fImages')->getRealPath());
+				$img->resize(500, 500)->save($lg_dir . '/' .  $file_name);
+				$img->resize(300, 300)->save($sm_dir . '/' .  $file_name);
+				$img->resize(100, 100)->save($thn_dir . '/' .  $file_name);
+					//xóa ảnh cũ
+				if (File::exists($lg_cur_dir)) {
+					File::delete($lg_cur_dir);
+				}
+				if (File::exists($sm_cur_dir)) {
+					File::delete($sm_cur_dir);
+				}
+				if (File::exists($thn_cur_dir)) {
+					File::delete($thn_cur_dir);
+				}
+         	} else {
+         		return redirect()->back()->with(['flash_level' => 'danger', 'flash_message' => 'File bạn chọn không phải là một hình ảnh']);
+         	}
 		} else {
 			echo 'Không có file ảnh mới';
 		}
 		$product->save();
 
 		//Cập nhật ảnh chi tiết: nếu tồn tại ảnh chi tiết mới thì thêm vào bảng product_images
-		if (!empty($request->file('fProductDetailImage'))) {
-			$lg_detail_dir  = $lg_dir . '/detail';
-			$sm_detail_dir  = $sm_dir . '/detail';
-			$thn_detail_dir = $thn_dir . '/detail';
-			if(!file_exists($lg_detail_dir)){
-				mkdir($lg_detail_dir);
-			}
-			if(!file_exists($sm_detail_dir)){
-				mkdir($sm_detail_dir);
-			}
-			if(!file_exists($thn_detail_dir)){
-				mkdir($thn_detail_dir);
-			}
-
+		if(!empty($request->file('fProductDetailImage'))) {
 			foreach ($request->file('fProductDetailImage') as $file) {
-				$product_images = new ProductImage;
-				//nếu có file tải lên thì mới cập nhật, ví dụ khi click thêm nhiều lựa chọn để chọn ảnh nhưng sau đó chỉ tải lên 2 ảnh thì chỉ cập nhật 2 ảnh đó
-				if (isset($file)) {
-					$product_images->name   = $file->getClientOriginalName();
-					$product_images->pro_id = $id;
-					$img = Image::make($file->getRealPath());
-					$img->resize(500, 500)->save($lg_detail_dir . '/' .  $product_images->name);
-					$img->resize(300, 300)->save($sm_detail_dir . '/' .  $product_images->name);
-					$img->resize(100, 100)->save($thn_detail_dir . '/' .  $product_images->name);
-					$product_images->save();
+				if (!empty($file)) {
+					$img_detail_ext = $file->getClientOriginalExtension();
+		            if (in_array($img_detail_ext, Config::get('constants.image_valid_extension'))) {
+		            	$lg_detail_dir  = $lg_dir . '/detail';
+						$sm_detail_dir  = $sm_dir . '/detail';
+						$thn_detail_dir = $thn_dir . '/detail';
+						if(!file_exists($lg_detail_dir)){
+							mkdir($lg_detail_dir);
+						}
+						if(!file_exists($sm_detail_dir)){
+							mkdir($sm_detail_dir);
+						}
+						if(!file_exists($thn_detail_dir)){
+							mkdir($thn_detail_dir);
+						}
+
+						foreach ($request->file('fProductDetailImage') as $file) {
+							$product_images = new ProductImage;
+							//nếu có file tải lên thì mới cập nhật, ví dụ khi click thêm nhiều lựa chọn để chọn ảnh nhưng sau đó chỉ tải lên 2 ảnh thì chỉ cập nhật 2 ảnh đó
+							if (isset($file)) {
+								$product_images->name   = $file->getClientOriginalName();
+								$product_images->pro_id = $id;
+								$img = Image::make($file->getRealPath());
+								$img->resize(500, 500)->save($lg_detail_dir . '/' .  $product_images->name);
+								$img->resize(300, 300)->save($sm_detail_dir . '/' .  $product_images->name);
+								$img->resize(100, 100)->save($thn_detail_dir . '/' .  $product_images->name);
+								$product_images->save();
+							}
+						}
+	            	} else {
+	            		return redirect()->back()->with(['flash_level' => 'danger', 'flash_message' => 'File bạn chọn không phải là một hình ảnh']);
+	            	}
+				} else {
+					echo 'Không có file ảnh mới';
 				}
 			}
 		}
+
 
 		//Cập nhật thuộc tính
-
-
-		// return redirect()->route('admin.product.getList')->with(['flash_level' => 'success', 'flash_message' => 'Sửa sản phẩm thành công']);
-    }
-
-    public function getDelImg ($id)
-    {
-    	if (Request::ajax()) {    //nếu dữ liệu là ajax, hoặc dùng $request->ajax()
-			$idImage = (int)Request::get('idImage');    //để lấy id hình từ ajax (ép kiểu về int)
-			$image_detail = ProductImage::find($idImage);
-			if (!empty($image_detail)) {
-				$lg_img  = 'resources/upload/images/product/large/' . $image_detail->pro_id . '/detail/' . $image_detail->name;
-				$sm_img  = 'resources/upload/images/product/small/' . $image_detail->pro_id . '/detail/' . $image_detail->name;
-				$thn_img = 'resources/upload/images/product/thumbnail/' . $image_detail->pro_id . '/detail/' . $image_detail->name;
-				if (File::exists($lg_img)) {
-					File::delete($lg_img);
-				}
-				if (File::exists($sm_img)) {
-					File::delete($sm_img);
-				}
-				if (File::exists($thn_img)) {
-					File::delete($thn_img);
-				}
-				$image_detail->delete();
-				return "Ok";
+		$id_arr     = $request->id;
+		$size_arr   = $request->chooseSize;
+		$color_arr  = $request->color;
+		$status_arr = $request->chooseStatus;
+		for ($i=0; $i<count($request->id); $i++) {
+			$tmp_id     = $id_arr[$i];
+			$tmp_size   = $size_arr[$i];
+			$tmp_color  = $color_arr[$i];
+			$tmp_status = $status_arr[$i];
+			$data = [
+				'pro_id' => $id,
+				'size' => $tmp_size,
+				'color' => $tmp_color,
+				'status' => $tmp_status
+			];
+			$property = ProductProperty::find($tmp_id);
+			if(!empty($property)){
+				$property->update($data);
 			}
 		}
+
+		return redirect()->route('admin.product.getList')->with(['flash_level' => 'success', 'flash_message' => 'Sửa sản phẩm thành công']);
     }
 
-    public function getDelete ($id)
+
+    //Đây là 1 hàm xóa sản phẩm theo id, hàm này không có trong route
+    public function delete ($id)
     {
     	//Xóa sản phẩm thì phải xóa ảnh chi tiết (bảng product_images) và thuộc tính (bảng product_properties) trước sau đó mới xóa dữ liệu trong bảng products vì nếu xóa ở bảng products trước thì sẽ không biết là cần xóa ảnh nào, thuộc tính nào nữa
 
@@ -299,20 +323,25 @@ class ProductController extends Controller
 		//xóa dữ liệu còn lại
 		$products->delete($id);
 
+    }
+
+
+    //Khi nhấn xóa bình thường thì nó sẽ gọi đến route delete/{id} dẫn đến hàm getDelete, trong hàm này thì ta gọi đến hàm delete() để xóa
+    public function getDelete ($id)
+    {
+    	$this->delete($id);
 		return redirect()->route('admin.product.getList')->with(['flash_level' => 'success', 'flash_message' => 'Xóa sản phẩm thành công']);
     }
 
-    // public function postEditProperty (Request $request)
-    // {
-    // 	$pro_property = DB::table('product_properties')
-    //     ->where('pro_id', $request->pro_id)
-    //     ->where('id', $request->id)
-    //     ->update($request->except('_token'));
-    //     if ($pro_property){
-    //       	return back();
-    //     } else {
-    //     	echo 'error';
-    //   	}
-    // }
+    //Xóa sản phẩm theo checkbox
+    public function postDelete (Request $request)
+    {
+    	if($request->checks){
+			foreach($request->checks as $item){
+				$this->delete($item);
+			}
+		}
+		return redirect()->route('admin.product.getList')->with(['flash_level' => 'success', 'flash_message' => 'Xóa sản phẩm thành công']);
+    }
 
 }

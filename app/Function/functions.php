@@ -81,4 +81,27 @@ function changeTitle($str, $strSymbol = '-', $case = MB_CASE_LOWER) {
 	return $str;
 }
 
+
+// hàm chuyển đổi thời gian sang tiếng việt
+function stranslateTime($str){
+	if(empty($str)){
+		return;
+	}
+	$unicode = array(
+		'giây'=>'seconds|second',
+		'phút'=>'minutes|minute',
+		'giờ'=>'hours|hour',
+		'ngày'=>'days|day',
+		'tuần'=>"weeks|week",
+		'tháng'=>'months|month',
+		'năm'=>'years|year',
+		'trước'=>'ago'
+	);
+	foreach($unicode as $key => $value){
+		$arr = explode('|',$value);
+		$str = str_replace($arr,$key,$str);
+	}
+	return $str;
+}
+
 ?>

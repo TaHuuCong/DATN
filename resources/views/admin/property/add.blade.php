@@ -19,7 +19,6 @@
 			  		$products = DB::table('products')->orderBy('id', 'DESC')->get();   //hiển thị ra toàn bộ danh sách sản phẩm để chọn
                 ?>
 
-
                 <select class="form-control" name="chooseProName">
                 	<option value="">Chọn sản phẩm</option>
 	                @foreach ($products as $item)
@@ -68,3 +67,12 @@
 </section>
 
 @endsection()
+
+@section('custom javascript')
+
+<script type="text/javascript">
+    $('.treeview').removeClass('active');
+    $("#property").addClass('active');
+</script>
+
+@stop

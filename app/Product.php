@@ -8,7 +8,7 @@ class Product extends Model
 {
     protected $table = 'products';
 
-    protected $fillable = ['id', 'name', 'alias', 'price', 'image', 'gender', 'description', 'keyword', 'cate_id', 'brand_id', 'sport_id'];
+    protected $fillable = ['id', 'name', 'alias', 'price', 'image', 'gender', 'description', 'keyword', 'cate_id', 'brand_id', 'sport_id', 'created_at', '  updated_at'];
 
     public function cate ()
     {

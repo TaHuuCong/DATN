@@ -94,7 +94,7 @@
             </div>
             @endforeach
             <div id="insert"></div>
-            <button type="button" class="btn btn-primary" id="addImages"><i class="fa fa-plus" aria-hidden="true"></i></button>
+            <button type="button" class="btn btn-primary" id="addImages">Thêm ảnh chi tiết</button>
             <br>
 
             <?php
@@ -110,10 +110,10 @@
                 </tr>
                 @foreach($pro_property as $prop)
                 <tr>
-                    <input type="hidden" name="id" value="{!! $prop->id !!}" size="6"/>
+                    <input type="hidden" name="id[]" value="{!! $prop->id !!}" size="6"/>
                     <input type="hidden" name="pro_id" value="{!! $prop->pro_id !!}" size="6"/>
                     <td>
-                        <select class="form-control" name="chooseSize">
+                        <select class="form-control" name="chooseSize[]">
                             <option value="34" @if($prop->size == '34') selected @endif>34</option>
                             <option value="35" @if($prop->size == '35') selected @endif>35</option>
                             <option value="36" @if($prop->size == '36') selected @endif>36</option>
@@ -133,10 +133,10 @@
                         </select>
                     </td>
                     <td>
-                        <input class="form-control" type="text" name="color" value="{!! $prop->color !!}" size="10"/>
+                        <input class="form-control" type="text" name="color[]" value="{!! $prop->color !!}" size="10"/>
                     </td>
                     <td>
-                        <select class="form-control" name="chooseStatus">
+                        <select class="form-control" name="chooseStatus[]">
                             <option value="0" @if($prop->status == '0') selected @endif>Còn hàng</option>
                             <option value="1" @if($prop->status == '1') selected @endif>Tạm hết hàng</option>
                         </select>
@@ -148,7 +148,17 @@
                 }
             ?>
         </div>
+
     <form>
 </section>
 
 @endsection()
+
+@section('custom javascript')
+
+<script type="text/javascript">
+    $('.treeview').removeClass('active');
+    $("#product").addClass('active');
+</script>
+
+@stop

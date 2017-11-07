@@ -43,6 +43,7 @@ Route::group(['prefix' => 'admin'], function() {
         Route::post('edit/{id}', ['as' => 'admin.cate.postEdit', 'uses' => 'Admin\CateController@postEdit']);
 
         Route::get('delete/{id}', ['as' => 'admin.cate.getDelete', 'uses' => 'Admin\CateController@getDelete']);
+        Route::post('delete', ['as' => 'admin.cate.postDelete', 'uses' => 'Admin\CateController@postDelete']);
     });
 
     Route::group(['prefix' => 'sport'], function() {
@@ -55,6 +56,7 @@ Route::group(['prefix' => 'admin'], function() {
         Route::post('edit/{id}', ['as' => 'admin.sport.postEdit', 'uses' => 'Admin\SportController@postEdit']);
 
         Route::get('delete/{id}', ['as' => 'admin.sport.getDelete', 'uses' => 'Admin\SportController@getDelete']);
+        Route::post('delete', ['as' => 'admin.sport.postDelete', 'uses' => 'Admin\SportController@postDelete']);
     });
 
     Route::group(['prefix' => 'brand'], function() {
@@ -67,6 +69,7 @@ Route::group(['prefix' => 'admin'], function() {
         Route::post('edit/{id}', ['as' => 'admin.brand.postEdit', 'uses' => 'Admin\BrandController@postEdit']);
 
         Route::get('delete/{id}', ['as' => 'admin.brand.getDelete', 'uses' => 'Admin\BrandController@getDelete']);
+        Route::post('delete', ['as' => 'admin.brand.postDelete', 'uses' => 'Admin\BrandController@postDelete']);
     });
 
     Route::group(['prefix' => 'product'], function() {
@@ -78,9 +81,14 @@ Route::group(['prefix' => 'admin'], function() {
         Route::get('edit/{id}', ['as' => 'admin.product.getEdit', 'uses' => 'Admin\ProductController@getEdit']);
         Route::post('edit/{id}', ['as' => 'admin.product.postEdit', 'uses' => 'Admin\ProductController@postEdit']);
 
+        //xóa 1 sản phẩm bình thường
         Route::get('delete/{id}', ['as' => 'admin.product.getDelete', 'uses' => 'Admin\ProductController@getDelete']);
 
-        Route::get('delimg/{id}', ['as' => 'admin.product.getDelImg', 'uses' => 'Admin\ProductController@getDelImg']);
+        //xóa sản phẩm theo checkbox
+        Route::post('delete', ['as' => 'admin.product.postDelete', 'uses' => 'Admin\ProductController@postDelete']);
+
+        //xóa ảnh chi tiết
+        Route::get('delimg/{id}', ['as' => 'admin.product.getDelImg', 'uses' => 'Admin\DeleteImageProController@getDelImg']);
     });
 
     Route::group(['prefix' => 'property'], function() {
@@ -93,5 +101,6 @@ Route::group(['prefix' => 'admin'], function() {
         Route::post('edit/{id}', ['as' => 'admin.property.postEdit', 'uses' => 'Admin\PropertyController@postEdit']);
 
         Route::get('delete/{id}', ['as' => 'admin.property.getDelete', 'uses' => 'Admin\PropertyController@getDelete']);
+        Route::post('delete', ['as' => 'admin.property.postDelete', 'uses' => 'Admin\PropertyController@postDelete']);
     });
 });

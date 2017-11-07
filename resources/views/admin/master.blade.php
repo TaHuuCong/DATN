@@ -126,26 +126,16 @@
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
-      <!-- search form -->
-      <form action="#" method="get" class="sidebar-form">
-        <div class="input-group">
-          <input type="text" name="q" class="form-control" placeholder="Tìm kiếm...">
-          <span class="input-group-btn">
-                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-                </button>
-              </span>
-        </div>
-      </form>
-      <!-- /.search form -->
+
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
-        <li class="active">
+        <li class="treeview" id="home">
           <a href="index.html">
             <i class="fa fa-dashboard"></i> <span>Trang chủ</span>
           </a>
         </li>
 
-        <li class="treeview">
+        <li class="treeview" id="category">
           <a href="#">
             <i class="fa fa-list-alt" aria-hidden="true"></i>
             <span>Quản lý thể loại</span>
@@ -159,7 +149,7 @@
           </ul>
         </li>
 
-        <li class="treeview">
+        <li class="treeview" id="sport">
           <a href="#">
             <i class="fa fa-futbol-o" aria-hidden="true"></i>
             <span>Quản lý bộ môn</span>
@@ -173,7 +163,7 @@
           </ul>
         </li>
 
-        <li class="treeview">
+        <li class="treeview" id="brand">
           <a href="#">
             <i class="fa fa-list-alt" aria-hidden="true"></i>
             <span>Quản lý thương hiệu</span>
@@ -187,7 +177,7 @@
           </ul>
         </li>
 
-        <li class="treeview">
+        <li class="treeview" id="product">
           <a href="#">
             <i class="fa fa-list-alt" aria-hidden="true"></i>
             <span>Quản lý sản phẩm</span>
@@ -201,7 +191,7 @@
           </ul>
         </li>
 
-        <li class="treeview">
+        <li class="treeview" id="property">
           <a href="#">
             <i class="fa fa-list-alt" aria-hidden="true"></i>
             <span>Quản lý thuộc tính</span>
@@ -336,6 +326,8 @@
 
 <!-- My JS -->
 <script src="{{ asset('public/admin/js/myscript.js') }}"></script>
+
+@yield('custom javascript')
 
 </body>
 </html>

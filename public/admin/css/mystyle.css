@@ -74,3 +74,8 @@ a#del_img i {
 	top: -5px;
 	left: -5px;
 }
+
+/* phân trang */
+.pagination {
+	margin-top: 0;
+}

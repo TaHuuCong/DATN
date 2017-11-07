@@ -34,3 +34,12 @@
 </section>
 
 @endsection()
+
+@section('custom javascript')
+
+<script type="text/javascript">
+    $('.treeview').removeClass('active');
+    $("#brand").addClass('active');
+</script>
+
+@stop

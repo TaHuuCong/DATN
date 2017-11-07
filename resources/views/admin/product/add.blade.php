@@ -93,3 +93,12 @@
 </section>
 
 @endsection()
+
+@section('custom javascript')
+
+<script type="text/javascript">
+    $('.treeview').removeClass('active');
+    $("#product").addClass('active');
+</script>
+
+@stop

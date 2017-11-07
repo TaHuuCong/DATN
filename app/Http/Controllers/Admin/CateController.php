@@ -12,7 +12,7 @@ class CateController extends Controller
 {
 	public function getList ()
     {
-        $cate = Category::select('id', 'name', 'keyword', 'description')->orderBy('id', 'DESC')->get()->toArray();
+        $cate = Category::select('id', 'name', 'keyword', 'description', 'created_at', 'updated_at')->orderBy('id', 'DESC')->get()->toArray();
     	return view('admin.cate.list', compact('cate'));
     }
 
@@ -31,14 +31,32 @@ class CateController extends Controller
 		return redirect()->route('admin.cate.getList')->with(['flash_level' => 'success', 'flash_message' => 'Thêm thể loại thành công !']);
     }
 
-    public function getDelete ($id)
+    public function delete ($id)
     {
         $cate = Category::find($id);
         $product = Product::where('cate_id', '=', $id)->get();
-        foreach ($product as $pro) {
-            $pro->delete();
+        if (isset($product)) {
+            foreach ($product as $pro) {
+                $pro->delete();
+            }
         }
         $cate->delete();
+
+    }
+
+    public function getDelete($id)
+    {
+        $this->delete($id);
+        return redirect()->route('admin.cate.getList')->with(['flash_level' => 'success', 'flash_message' => 'Xóa thể loại thành công !']);
+    }
+
+    public function postDelete (Request $request)
+    {
+        if($request->checks){
+            foreach($request->checks as $item){
+                $this->delete($item);
+            }
+        }
         return redirect()->route('admin.cate.getList')->with(['flash_level' => 'success', 'flash_message' => 'Xóa thể loại thành công !']);
     }
 
