@@ -15,11 +15,7 @@
 	overflow: auto;
 }
 
-.content form button {
-	margin-right: 20px;
-}
-
-/* nút thêm sản phẩm, thể loại... */
+/* nút thêm chung trong các list */
 button.addItem {
 	margin-bottom: 20px;
 	background-color: #337ab7;
@@ -33,6 +29,25 @@ button.addItem:hover {
 
 button.addItem a {
 	color: #fff;
+}
+
+/* nút lọc (filter) trong list sản phẩm, nút xóa trong trong các list */
+button.filter {
+	margin-left: 15px;
+	color: #fff;
+	background-color: #337ab7;
+	border: none;
+}
+
+button.delete {
+	color: #fff;
+	background-color: #337ab7;
+	border: none;
+}
+
+button.filter:hover, button.delete:hover {
+	color: #fff;
+	background-color: #FF9800;
 }
 
 /* bảng hiển thị danh sách sản phẩm, thể loại... */
@@ -78,4 +93,15 @@ a#del_img i {
 /* phân trang */
 .pagination {
 	margin-top: 0;
+}
+
+.pagination li a:hover {
+	background-color: #FF9800;
+	color: #fff;
+}
+
+/* search */
+input.form-control.search {
+	margin-bottom: 40px;
+	background-color: #cee3f5;
 }

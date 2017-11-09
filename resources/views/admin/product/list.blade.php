@@ -5,8 +5,61 @@
 @section('content')
 
 <section class="content">
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"></div>
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+        <div class="form-group">
+            <input class="form-control search" type="text" id="search" name="search" value="" placeholder="Nhập nội dung tìm kiếm ở đây...">
+        </div>
+        <!-- /.form-group -->
+    </div>
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-        <button type="button" class="pull-right btn btn-default addItem"><a href="{!! URL::route('admin.product.getAdd') !!}"> Thêm sản phẩm</a></button>
+        <div class="row">
+            <form action="{{ route('admin.product.getList') }}" method="GET" role="form">
+                <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2" style="padding-left: 0;">
+                    <div class="form-group">
+                        <select class="form-control" name="cateId">
+                            <option value="0">Chọn thể loại</option>
+                            @foreach ($cate as $c_item)
+                                <option value="{!! $c_item['id'] !!}" @if(!empty($cate_id) && ($c_item['id'] == $cate_id)) selected @endif>{!! $c_item['name'] !!}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                    <div class="form-group">
+                        <select class="form-control" name="sportId">
+                            <option value="0">Chọn bộ môn</option>
+                            @foreach ($sport as $s_item)
+                                <option value="{!! $s_item['id'] !!}" @if(!empty($sport_id) && ($s_item['id'] == $sport_id)) selected @endif>{!! $s_item['name'] !!}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                    <div class="form-group">
+                        <select class="form-control" name="brandId">
+                            <option value="0">Chọn thương hiệu</option>
+                            @foreach ($brand as $b_item)
+                                <option value="{!! $b_item['id'] !!}" @if(!empty($brand_id) && ($b_item['id'] == $brand_id)) selected @endif>{!! $b_item['name'] !!}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                    <div class="form-group">
+                        <select class="form-control" name="gender">
+                            <option value="0">Chọn giới tính</option>
+                            <option value="1" @if(!empty($gender) && ($gender == 1)) selected @endif>nam</option>
+                            <option value="2" @if(!empty($gender) && ($gender == 2)) selected @endif>nữ</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-default filter">Lọc</button>
+
+                <button type="button" class="pull-right btn btn-default addItem"><a href="{!! URL::route('admin.product.getAdd') !!}"> Thêm sản phẩm</a></button>
+            </form>
+        </div>
     </div>
 
     <form action="{{ route('admin.product.postDelete') }}" method="POST" role="form">
@@ -51,21 +104,21 @@
                         {!! number_format($item->price, 0, ',', '.') !!} VNĐ
                     </td>
                     <td>
-                        <?php $cate = DB::table('categories')->where('id', $item->cate_id)->first() ?>
-                        @if (!empty($cate->name))
-                            {!! $cate->name !!}
+                        <?php $cates = DB::table('categories')->where('id', $item->cate_id)->first() ?>
+                        @if (!empty($cates->name))
+                            {!! $cates->name !!}
                         @endif
                     </td>
                     <td>
-                        <?php $sport = DB::table('sports')->where('id', $item->sport_id)->first() ?>
-                        @if (!empty($sport->name))
-                            {!! $sport->name !!}
+                        <?php $sports = DB::table('sports')->where('id', $item->sport_id)->first() ?>
+                        @if (!empty($sports->name))
+                            {!! $sports->name !!}
                         @endif
                     </td>
                     <td>
-                        <?php $brand = DB::table('brands')->where('id', $item->brand_id)->first() ?>
-                        @if (!empty($brand->name))
-                            {!! $brand->name !!}
+                        <?php $brands = DB::table('brands')->where('id', $item->brand_id)->first() ?>
+                        @if (!empty($brands->name))
+                            {!! $brands->name !!}
                         @endif
                     </td>
                     <td>
@@ -81,9 +134,13 @@
             </tbody>
         </table>
 
-        <button type="submit" class="btn btn-default">Xóa</button>
+        <button type="submit" class="btn btn-default delete">Xóa</button>
 
-        <div class="paginate pull-right">@include('pagination.paging', ['paginator' => $product])</div>
+        @if (isset($cate_id))
+             <div class="paginate pull-right">{!! $pro_paging !!}</div>
+        @else
+            <div class="paginate pull-right">@include('pagination.paging', ['paginator' => $product])</div>
+        @endif
 
     </form>
 
@@ -94,7 +151,7 @@
 @section('custom javascript')
 
 <script type="text/javascript">
-    $(document).ready(function(){
+    $(document).ready(function() {
         $('.treeview').removeClass('active');  //loại bỏ active ở cái hiện tại
         $("#product").addClass('active');   //active sang cái mới
         var check = false;
@@ -106,6 +163,20 @@
                 check =false;
                 $(".check_class").prop("checked",false);
             }
+        });
+    });
+
+    $(document).ready(function() {
+        $('#search').on('keyup', function() {
+            $value = $(this).val();
+            $.ajax({
+                type: 'get',
+                url: '{{ URL::route('admin.product.searchProd') }}',
+                data: {'keywords': $value},
+                success: function(data) {
+                    console.log(data);
+                }
+            });
         });
     });
 </script>

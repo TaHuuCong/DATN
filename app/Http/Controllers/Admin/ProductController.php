@@ -14,13 +14,45 @@ use App\Http\Requests\Admin\ProductRequest;
 use App\Http\Requests\Admin\ProductEditRequest;
 use Image;
 use File, DB, Config;
+use Input;
 
 class ProductController extends Controller
 {
-	public function getList ()
+	public function getList (Request $request)
 	{
-		$product = Product::select('id', 'name', 'price', 'gender', 'info', 'image', 'keyword', 'description', 'cate_id', 'brand_id', 'sport_id', 'created_at', 'updated_at')->orderBy('id', 'DESC')->paginate(5);
-		return view('admin.product.list', compact('product'));
+		$product = null;
+		$cate_id = null;
+		$sport_id = null;
+		$brand_id = null;
+		$gender = null;
+		if (!empty($request->all())) {
+			$cate_id  =  $request->cateId;
+			$sport_id =  $request->sportId;
+			$brand_id =  $request->brandId;
+			$gender   =  $request->gender;
+			$where    = [];
+			if (!empty($cate_id)) {
+				$where['cate_id'] = $cate_id;
+			}
+			if (!empty($sport_id)) {
+				$where['sport_id'] = $sport_id;
+			}
+			if (!empty($brand_id)) {
+				$where['brand_id'] = $brand_id;
+			}
+			if (!empty($gender)) {
+				$where['gender'] = $gender;
+			}
+
+			$product = Product::select('id', 'name', 'price', 'gender', 'info', 'image', 'keyword', 'description', 'cate_id', 'brand_id', 'sport_id', 'created_at', 'updated_at')->where($where)->orderBy('id', 'DESC')->paginate(5);
+		} else {
+			$product = Product::select('id', 'name', 'price', 'gender', 'info', 'image', 'keyword', 'description', 'cate_id', 'brand_id', 'sport_id', 'created_at', 'updated_at')->orderBy('id', 'DESC')->paginate(5);
+		}
+		$pro_paging =$product->appends(Request::capture()->except('page'))->render();  //phân trang
+		$cate = Category::all();
+		$sport = Sport::all();
+		$brand = Brand::all();
+		return view('admin.product.list', compact('product', 'cate', 'sport', 'brand', 'cate_id', 'pro_paging'));
 	}
 
     public function getAdd ()

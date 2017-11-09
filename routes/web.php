@@ -89,6 +89,9 @@ Route::group(['prefix' => 'admin'], function() {
 
         //xóa ảnh chi tiết
         Route::get('delimg/{id}', ['as' => 'admin.product.getDelImg', 'uses' => 'Admin\DeleteImageProController@getDelImg']);
+
+        //tìm kiếm
+        Route::get('search', ['as' => 'admin.product.searchProd', 'uses' => 'Admin\SearchController@searchProd']);
     });
 
     Route::group(['prefix' => 'property'], function() {

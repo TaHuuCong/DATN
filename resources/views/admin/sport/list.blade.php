@@ -5,7 +5,7 @@
 @section('content')
 
 <section class="content">
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding-right: 0">
         <button type="button" class="pull-right btn btn-default addItem"><a href="{!! URL::route('admin.sport.getAdd') !!}"> Thêm bộ môn</a></button>
     </div>
 
@@ -47,7 +47,7 @@
             </tbody>
         </table>
 
-        <button type="submit" class="btn btn-default">Xóa</button>
+        <button type="submit" class="btn btn-default delete">Xóa</button>
     </form>
 </section>
 
