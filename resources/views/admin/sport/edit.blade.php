@@ -1,6 +1,6 @@
 @extends('admin.master')
 @section('controller', 'Bộ môn')
-@section('action', 'Sửa bộ môn')
+@section('action', 'Sửa')
 @section('breadcrumb', 'Quản lý bộ môn')
 @section('content')
 

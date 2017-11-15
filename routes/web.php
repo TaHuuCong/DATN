@@ -16,14 +16,16 @@ Route::get('/', function () {
 });
 
 Route::get('schema/drop-col', function() {
-    Schema::table('product_properties', function($table) {
-        $table->dropColumn('status');
+    Schema::table('news', function($table) {
+        $table->dropColumn('title');
     });
 });
 
 Route::get('schema/add-col', function() {
-    Schema::table('product_properties', function($table) {
-        $table->tinyInteger('status');
+    Schema::table('news', function($table) {
+        // $table->string('image')->nullable();
+        // $table->text('source')->nullable();
+        $table->string('title');
     });
 });
 
@@ -32,6 +34,7 @@ Route::get('admin/test', function() {
 });
 
 Route::group(['prefix' => 'admin'], function() {
+    //QL thể loại sản phẩm
     Route::group(['prefix' => 'cate'], function() {
         Route::get('list', ['as' => 'admin.cate.getList', 'uses' => 'Admin\CateController@getList']);
 
@@ -46,6 +49,8 @@ Route::group(['prefix' => 'admin'], function() {
         Route::post('delete', ['as' => 'admin.cate.postDelete', 'uses' => 'Admin\CateController@postDelete']);
     });
 
+
+    //QL bộ môn sản phẩm
     Route::group(['prefix' => 'sport'], function() {
         Route::get('list', ['as' => 'admin.sport.getList', 'uses' => 'Admin\SportController@getList']);
 
@@ -59,6 +64,8 @@ Route::group(['prefix' => 'admin'], function() {
         Route::post('delete', ['as' => 'admin.sport.postDelete', 'uses' => 'Admin\SportController@postDelete']);
     });
 
+
+    //QL thương hiệu sản phẩm
     Route::group(['prefix' => 'brand'], function() {
         Route::get('list', ['as' => 'admin.brand.getList', 'uses' => 'Admin\BrandController@getList']);
 
@@ -72,6 +79,23 @@ Route::group(['prefix' => 'admin'], function() {
         Route::post('delete', ['as' => 'admin.brand.postDelete', 'uses' => 'Admin\BrandController@postDelete']);
     });
 
+
+    //QL thuộc tính sản phẩm
+    Route::group(['prefix' => 'property'], function() {
+        Route::get('list', ['as' => 'admin.property.getList', 'uses' => 'Admin\PropertyController@getList']);
+
+        Route::get('add', ['as' => 'admin.property.getAdd', 'uses' => 'Admin\PropertyController@getAdd']);
+        Route::post('add', ['as' => 'admin.property.postAdd', 'uses' => 'Admin\PropertyController@postAdd']);
+
+        Route::get('edit/{id}', ['as' => 'admin.property.getEdit', 'uses' => 'Admin\PropertyController@getEdit']);
+        Route::post('edit/{id}', ['as' => 'admin.property.postEdit', 'uses' => 'Admin\PropertyController@postEdit']);
+
+        Route::get('delete/{id}', ['as' => 'admin.property.getDelete', 'uses' => 'Admin\PropertyController@getDelete']);
+        Route::post('delete', ['as' => 'admin.property.postDelete', 'uses' => 'Admin\PropertyController@postDelete']);
+    });
+
+
+    //QL sản phẩm
     Route::group(['prefix' => 'product'], function() {
         Route::get('list', ['as' => 'admin.product.getList', 'uses' => 'Admin\ProductController@getList']);
 
@@ -91,19 +115,37 @@ Route::group(['prefix' => 'admin'], function() {
         Route::get('delimg/{id}', ['as' => 'admin.product.getDelImg', 'uses' => 'Admin\DeleteImageProController@getDelImg']);
 
         //tìm kiếm
-        Route::get('search', ['as' => 'admin.product.searchProd', 'uses' => 'Admin\SearchController@searchProd']);
+        Route::get('search', ['as' => 'admin.product.getSearchProduct', 'uses' => 'Admin\SearchController@getSearchProduct']);
     });
 
-    Route::group(['prefix' => 'property'], function() {
-        Route::get('list', ['as' => 'admin.property.getList', 'uses' => 'Admin\PropertyController@getList']);
 
-        Route::get('add', ['as' => 'admin.property.getAdd', 'uses' => 'Admin\PropertyController@getAdd']);
-        Route::post('add', ['as' => 'admin.property.postAdd', 'uses' => 'Admin\PropertyController@postAdd']);
+    //Quản lý loại tin
+    Route::group(['prefix' => 'newscate'], function() {
+        Route::get('list', ['as' => 'admin.newscate.getList', 'uses' => 'Admin\NewsCateController@getList']);
 
-        Route::get('edit/{id}', ['as' => 'admin.property.getEdit', 'uses' => 'Admin\PropertyController@getEdit']);
-        Route::post('edit/{id}', ['as' => 'admin.property.postEdit', 'uses' => 'Admin\PropertyController@postEdit']);
+        Route::get('add', ['as' => 'admin.newscate.getAdd', 'uses' => 'Admin\NewsCateController@getAdd']);
+        Route::post('add', ['as' => 'admin.newscate.postAdd', 'uses' => 'Admin\NewsCateController@postAdd']);
 
-        Route::get('delete/{id}', ['as' => 'admin.property.getDelete', 'uses' => 'Admin\PropertyController@getDelete']);
-        Route::post('delete', ['as' => 'admin.property.postDelete', 'uses' => 'Admin\PropertyController@postDelete']);
+        Route::get('edit/{id}', ['as' => 'admin.newscate.getEdit', 'uses' => 'Admin\NewsCateController@getEdit']);
+        Route::post('edit/{id}', ['as' => 'admin.newscate.postEdit', 'uses' => 'Admin\NewsCateController@postEdit']);
+
+        Route::get('delete/{id}', ['as' => 'admin.newscate.getDelete', 'uses' => 'Admin\NewsCateController@getDelete']);
+        Route::post('delete', ['as' => 'admin.newscate.postDelete', 'uses' => 'Admin\NewsCateController@postDelete']);
     });
+
+
+    //Quản lý tin tức
+    Route::group(['prefix' => 'news'], function() {
+        Route::get('list', ['as' => 'admin.news.getList', 'uses' => 'Admin\NewsController@getList']);
+
+        Route::get('add', ['as' => 'admin.news.getAdd', 'uses' => 'Admin\NewsController@getAdd']);
+        Route::post('add', ['as' => 'admin.news.postAdd', 'uses' => 'Admin\NewsController@postAdd']);
+
+        Route::get('edit/{id}', ['as' => 'admin.news.getEdit', 'uses' => 'Admin\NewsController@getEdit']);
+        Route::post('edit/{id}', ['as' => 'admin.news.postEdit', 'uses' => 'Admin\NewsController@postEdit']);
+
+        Route::get('delete/{id}', ['as' => 'admin.news.getDelete', 'uses' => 'Admin\NewsController@getDelete']);
+        Route::post('delete', ['as' => 'admin.news.postDelete', 'uses' => 'Admin\NewsController@postDelete']);
+    });
+
 });

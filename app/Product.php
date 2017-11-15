@@ -27,7 +27,7 @@ class Product extends Model
 
     public function pro_image ()
     {
-    	return $this->hasMany('App\ProductImage', 'id');  //1 sp có nhiều hình ảnh sp
+    	return $this->hasMany('App\ProductImage', 'pro_id');  //1 sp có nhiều hình ảnh sp
     }
 
     public function pro_property ()

@@ -218,6 +218,20 @@
             <li><a href=""><i class="fa fa-circle-o"></i> Thêm phiếu giảm giá</a></li>
           </ul>
         </li>
+
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-list-alt" aria-hidden="true"></i>
+            <span>Quản lý loại tin</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href=""><i class="fa fa-circle-o"></i> Danh sách loại tin</a></li>
+            <li><a href="{!! URL::route('admin.newscate.getAdd') !!}"><i class="fa fa-circle-o"></i> Thêm loại tin</a></li>
+          </ul>
+        </li>
       </ul>
     </section>
     <!-- /.sidebar -->

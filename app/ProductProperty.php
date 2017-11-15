@@ -16,8 +16,8 @@ class ProductProperty extends Model
     	return $this->belongsTo('App\Product');
     }
 
-    public function editProperty ($id, $pro_id, $size, $color, $status)
-    {
-    	DB::table('product_properties')->where('id', $id)->where('pro_id', $pro_id)->update(['size' => $size, 'color' => $color, 'status' => $status]);
-    }
+    // public function editProperty ($id, $pro_id, $size, $color, $status)
+    // {
+    // 	DB::table('product_properties')->where('id', $id)->where('pro_id', $pro_id)->update(['size' => $size, 'color' => $color, 'status' => $status]);
+    // }
 }

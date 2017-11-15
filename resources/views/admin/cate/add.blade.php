@@ -1,7 +1,7 @@
 @extends('admin.master')
-@section('controller', 'Thể loại')
-@section('action', 'Thêm thể loại')
-@section('breadcrumb', 'Quản lý thể loại')
+@section('controller', 'Thể loại sản phẩm')
+@section('action', 'Thêm')
+@section('breadcrumb', 'Quản lý thể loại sản phẩm')
 @section('content')
 
 <section class="content">
@@ -13,7 +13,7 @@
             <input type="hidden" name="_token" value="{!! csrf_token() !!}">
             <div class="form-group">
                 <label>Tên thể loại</label>
-                <input class="form-control" name="txtCateName" placeholder="Nhập tên thể loại" />
+                <input class="form-control" name="txtCateName" placeholder="Nhập tên thể loại sản phẩm" />
             </div>
             <div class="form-group">
                 <label>Từ khóa</label>

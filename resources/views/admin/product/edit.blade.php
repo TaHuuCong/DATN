@@ -1,12 +1,13 @@
 @extends('admin.master')
 @section('controller', 'Sản phẩm')
-@section('action', 'Sửa sản phẩm')
+@section('action', 'Sửa')
 @section('breadcrumb', 'Quản lý sản phẩm')
 @section('content')
 
 <section class="content">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-md-push-1">
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"></div>
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
             @include('admin.blocks.error')
         </div>
     </div>
@@ -15,7 +16,7 @@
         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
             <div class="form-group">
                 <label>Thể loại</label>
-                <select class="form-control" name="cateParent">
+                <select class="form-control" name="cateParent" disabled>
                 @foreach ($cate as $c_item)
                     <option value="{{ $c_item->id }}" {{ ($product->cate_id == $c_item->id) ? 'selected' : '' }}>{{ $c_item->name }}</option>
                 @endforeach
@@ -23,7 +24,7 @@
             </div>
             <div class="form-group">
                 <label>Bộ môn</label>
-                <select class="form-control" name="sportParent">
+                <select class="form-control" name="sportParent" disabled>
                 @foreach ($sport as $s_item)
                     <option value="{{ $s_item->id }}" {{ ($product->sport_id == $s_item->id) ? 'selected' : '' }}>{{ $s_item->name }}</option>
                 @endforeach
@@ -31,7 +32,7 @@
             </div>
             <div class="form-group">
                 <label>Thương hiệu</label>
-                <select class="form-control" name="brandParent">
+                <select class="form-control" name="brandParent" disabled>
                 @foreach ($brand as $b_item)
                     <option value="{{ $b_item->id }}" {{ ($product->brand_id == $b_item->id) ? 'selected' : '' }}>{{ $b_item->name }}</option>
                 @endforeach

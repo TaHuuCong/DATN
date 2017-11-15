@@ -1,7 +1,7 @@
 @extends('admin.master')
-@section('controller', 'Thuộc tính')
-@section('action', 'Thêm thuộc tính cho sản phẩm')
-@section('breadcrumb', 'Quản lý thuộc tính')
+@section('controller', 'Thuộc tính sản phẩm')
+@section('action', 'Thêm')
+@section('breadcrumb', 'Quản lý thuộc tính sản phẩm')
 @section('content')
 
 <section class="content">

@@ -34,10 +34,10 @@ class PropertyController extends Controller
 		$property->status  = $request->chooseStatus;
 
         $check = DB::table('products as pr')
-        ->join('product_properties as pp','pr.id','=','pp.pro_id')
-        ->where('pp.pro_id','=',$property->pro_id)
-        ->where('pp.size','=',$property->size)
-        ->where('pp.color','=',$property->color)
+        ->join('product_properties as pp', 'pr.id', '=', 'pp.pro_id')
+        ->where('pp.pro_id', '=', $property->pro_id)
+        ->where('pp.size', '=', $property->size)
+        ->where('pp.color', '=', $property->color)
         ->count();
         if ($check >= 1) {
             return redirect()->route('admin.property.getAdd')->with(['flash_level' => 'danger', 'flash_message' => 'Bộ thuộc tính này đã tồn tại']);
@@ -67,10 +67,10 @@ class PropertyController extends Controller
             $property->size   = $request->chooseSize;
             $property->color  = $request->txtColor;
             $check = DB::table('products as pr')
-            ->join('product_properties as pp','pr.id','=','pp.pro_id')
-            ->where('pp.pro_id','=',$property->pro_id)
-            ->where('pp.size','=',$property->size)
-            ->where('pp.color','=',$property->color)
+            ->join('product_properties as pp', 'pr.id', '=', 'pp.pro_id')
+            ->where('pp.pro_id', '=', $property->pro_id)
+            ->where('pp.size', '=', $property->size)
+            ->where('pp.color', '=', $property->color)
             ->count();
             if ($check >= 1) {
                 return redirect()->back()->with(['flash_level' => 'danger', 'flash_message' => 'Bộ thuộc tính này đã tồn tại']);
@@ -83,26 +83,28 @@ class PropertyController extends Controller
 
     }
 
-    public function delete($id)
+    public function delete_by_id ($id)
     {
     	$property = ProductProperty::find($id);
     	$property->delete();
     }
 
-    public function getDelete($id)
+    public function getDelete ($id)
     {
-        $this->delete($id);
+        $this->delete_by_id($id);
         return redirect()->route('admin.property.getList')->with(['flash_level' => 'success', 'flash_message' => 'Xóa thuộc tính sản phẩm thành công !']);
     }
 
     public function postDelete (Request $request)
     {
         if($request->checks){
-            foreach($request->checks as $item){
-                $this->delete($item);
+            foreach($request->checks as $item) {
+                $this->delete_by_id($item);
             }
+            return redirect()->route('admin.property.getList')->with(['flash_level' => 'success', 'flash_message' => 'Xóa thuộc tính sản phẩm thành công !']);
+        } else {
+            return redirect()->route('admin.property.getList')->with(['flash_level' => 'success', 'flash_message' => 'Không có mục nào được chọn để xóa !']);
         }
-        return redirect()->route('admin.property.getList')->with(['flash_level' => 'success', 'flash_message' => 'Xóa thuộc tính sản phẩm thành công !']);
     }
 
 }

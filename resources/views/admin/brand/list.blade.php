@@ -1,7 +1,7 @@
 @extends('admin.master')
-@section('controller', 'Thương hiệu')
-@section('action', 'Danh sách thương hiệu')
-@section('breadcrumb', 'Quản lý thương hiệu')
+@section('controller', 'Thương hiệu sản phẩm')
+@section('action', 'Danh sách')
+@section('breadcrumb', 'Quản lý thương hiệu sản phẩm')
 @section('content')
 
 <section class="content">
@@ -36,7 +36,7 @@
                             <td>{!! $stt !!}</td>
                             <td>{!! $item['name'] !!}</td>
                             <td>
-                                <img src="{!! asset('resources/upload/images/brand/'.$item['image']) !!}" width="150" height="100" style="margin: 5px">
+                                <img src="{!! asset('resources/upload/images/brand/'.$item['image']) !!}">
                             </td>
                             <td>{!! $item['keyword'] !!}</td>
                             <td>{!! $item['description'] !!}</td>

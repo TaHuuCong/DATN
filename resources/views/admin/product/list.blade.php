@@ -7,10 +7,7 @@
 <section class="content">
     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"></div>
     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-        <div class="form-group">
-            <input class="form-control search" type="text" id="search" name="search" value="" placeholder="Nhập nội dung tìm kiếm ở đây...">
-        </div>
-        <!-- /.form-group -->
+            <input class="form-control" type="text" id="search" name="search" value="" placeholder="Nhập nội dung tìm kiếm ở đây...">
     </div>
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <div class="row">
@@ -62,7 +59,7 @@
         </div>
     </div>
 
-    <form action="{{ route('admin.product.postDelete') }}" method="POST" role="form">
+    <form action="{{ route('admin.product.postDelete') }}" method="POST" role="form" class="list-pro-data">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
         <table class="table table-striped table-bordered table-hover">
@@ -84,7 +81,7 @@
                 </tr>
             </thead>
             <tbody>
-            <?php $stt = !empty($_GET['page']) ? ($_GET['page']-1)*5+1 : 1 ; ?>
+            <?php $stt = !empty($_GET['page']) ? ($_GET['page']-1)*5+1 : 1 ?>
             @foreach ($product as $item)
                 <tr class="odd gradeX" align="center">
                     <td><input type="checkbox" class="check_class" name="checks[]" value="{!! $item->id !!}"></td>
@@ -127,8 +124,8 @@
                     <td>
                         {!! stranslateTime(\Carbon\Carbon::createFromTimestamp(strtotime($item->updated_at))->diffForHumans()) !!}
                     </td>
-                    <td class="center"><i class="fa fa-trash-o fa-fw"></i><a href="{!! URL::route('admin.product.getDelete', $item->id) !!}" onclick="return confirm('Bạn Có Chắc Là Muốn Xóa Không?')" > Xóa</a></td>
-                    <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{!! URL::route('admin.product.getEdit', $item->id) !!}"> Sửa</a></td>
+                    <td><i class="fa fa-trash-o fa-fw"></i><a href="{!! URL::route('admin.product.getDelete', $item->id) !!}" onclick="return confirm('Bạn Có Chắc Là Muốn Xóa Không?')" > Xóa</a></td>
+                    <td><i class="fa fa-pencil fa-fw"></i> <a href="{!! URL::route('admin.product.getEdit', $item->id) !!}"> Sửa</a></td>
                 </tr>
             @endforeach
             </tbody>
@@ -137,11 +134,18 @@
         <button type="submit" class="btn btn-default delete">Xóa</button>
 
         @if (isset($cate_id))
-             <div class="paginate pull-right">{!! $pro_paging !!}</div>
+            <div class="paginate pull-right">{!! $pro_paging !!}</div>
         @else
             <div class="paginate pull-right">@include('pagination.paging', ['paginator' => $product])</div>
         @endif
 
+    </form>
+
+    <form action="{{ route('admin.product.postDelete') }}" method="POST" role="form" class="search-pro-data" style="display: none">
+        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+        <div id="table-content">
+            
+        </div>
     </form>
 
 </section>
@@ -168,17 +172,26 @@
 
     $(document).ready(function() {
         $('#search').on('keyup', function() {
-            $value = $(this).val();
+            var value = $(this).val();
+            if (value) {
+                $('.list-pro-data').hide();
+                $('.search-pro-data').show();
+            } else {
+                $('.list-pro-data').show();
+                $('.search-pro-data').hide();
+            }
             $.ajax({
                 type: 'get',
-                url: '{{ URL::route('admin.product.searchProd') }}',
-                data: {'keywords': $value},
-                success: function(data) {
-                    console.log(data);
+                url: '{{ URL::route('admin.product.getSearchProduct') }}',
+                data: {'keywords': value},
+                success: function(response) {
+                    console.log(response);
+                    $('#table-content').html(response);
                 }
             });
         });
     });
+
 </script>
 
 @stop

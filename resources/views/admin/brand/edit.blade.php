@@ -1,7 +1,7 @@
 @extends('admin.master')
-@section('controller', 'Thương hiệu')
-@section('action', 'Sửa thương hiệu')
-@section('breadcrumb', 'Quản lý thương hiệu')
+@section('controller', 'Thương hiệu sản phẩm')
+@section('action', 'Sửa')
+@section('breadcrumb', 'Quản lý thương hiệu sản phẩm')
 @section('content')
 
 <section class="content">

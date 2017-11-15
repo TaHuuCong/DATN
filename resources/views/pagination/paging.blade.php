@@ -9,9 +9,9 @@
             <li>
                 <a href="{{ $paginator->url(1) }}">Đầu</a>
             </li>
-           {{--  <li>
+            <li>
                 <a href="{!! str_replace('/?','?',$paginator->url($paginator->currentPage() - 1)) !!}">&laquo;</a>
-            </li> --}}
+            </li>
         @endif
 
         @for ($i = 1; $i <= $paginator->lastPage(); $i++)
@@ -34,9 +34,9 @@
         @endfor
 
         @if ($paginator->currentPage() != $paginator->lastPage())
-            {{-- <li>
+            <li>
                 <a href="{!! str_replace('/?','?',$paginator->url($paginator->currentPage() + 1)) !!}">&raquo;</a>
-            </li> --}}
+            </li>
             <li>
                 <a href="{{ $paginator->url($paginator->lastPage()) }}">Cuối</a>
             </li>

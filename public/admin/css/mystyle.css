@@ -101,7 +101,7 @@ a#del_img i {
 }
 
 /* search */
-input.form-control.search {
+input#search {
 	margin-bottom: 40px;
 	background-color: #cee3f5;
 }

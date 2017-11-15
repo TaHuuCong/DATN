@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\SportRequest;
 use App\Sport;
 use App\Product;
+use DB;
 
 class SportController extends Controller
 {
@@ -30,7 +31,7 @@ class SportController extends Controller
     	return redirect()->route('admin.sport.getList')->with(['flash_level' => 'success', 'flash_message' => 'Thêm bộ môn thành công !']);
     }
 
-    public function delete ($id)
+    public function delete_by_id ($id)
     {
     	$sport = Sport::findOrFail($id);
         $product = Product::where('sport_id', '=', $id)->get();
@@ -42,20 +43,22 @@ class SportController extends Controller
     	$sport->delete();
     }
 
-    public function getDelete($id)
+    public function getDelete ($id)
     {
-        $this->delete($id);
+        $this->delete_by_id($id);
         return redirect()->route('admin.sport.getList')->with(['flash_level' => 'success', 'flash_message' => 'Xóa bộ môn thành công !']);
     }
 
     public function postDelete (Request $request)
     {
         if($request->checks){
-            foreach($request->checks as $item){
-                $this->delete($item);
+            foreach($request->checks as $item) {
+                $this->delete_by_id($item);
             }
+            return redirect()->route('admin.sport.getList')->with(['flash_level' => 'success', 'flash_message' => 'Xóa bộ môn thành công !']);
+        } else {
+            return redirect()->route('admin.sport.getList')->with(['flash_level' => 'success', 'flash_message' => 'Không có mục nào được chọn để xóa !']);
         }
-        return redirect()->route('admin.sport.getList')->with(['flash_level' => 'success', 'flash_message' => 'Xóa bộ môn thành công !']);
     }
 
     public function getEdit ($id)

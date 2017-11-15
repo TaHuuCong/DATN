@@ -31,7 +31,7 @@ class ProductEditRequest extends FormRequest
     public function messages()
     {
         return [
-            'txtProName.required'  => 'Vui lòng nhập tên sản phẩm'
+            'txtProName.required' => 'Vui lòng nhập tên sản phẩm'
         ];
     }
 }
