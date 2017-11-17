@@ -44,9 +44,9 @@ class ProductController extends Controller
 				$where['gender'] = $gender;
 			}
 
-			$product = Product::select('id', 'name', 'price', 'gender', 'info', 'image', 'keyword', 'description', 'cate_id', 'brand_id', 'sport_id', 'created_at', 'updated_at')->where($where)->orderBy('id', 'DESC')->paginate(5);
+			$product = Product::select('id', 'name', 'price', 'gender', 'info', 'image', 'keyword', 'description', 'cate_id', 'brand_id', 'sport_id', 'created_at', 'updated_at')->where($where)->orderBy('id', 'DESC')->paginate(3);
 		} else {
-			$product = Product::select('id', 'name', 'price', 'gender', 'info', 'image', 'keyword', 'description', 'cate_id', 'brand_id', 'sport_id', 'created_at', 'updated_at')->orderBy('id', 'DESC')->paginate(5);
+			$product = Product::select('id', 'name', 'price', 'gender', 'info', 'image', 'keyword', 'description', 'cate_id', 'brand_id', 'sport_id', 'created_at', 'updated_at')->orderBy('id', 'DESC')->paginate(3);
 		}
 		$pro_paging = $product->appends(Request::capture()->except('page'))->render();  //phân trang
 		$cate  = Category::all();

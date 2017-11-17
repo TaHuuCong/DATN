@@ -18,7 +18,9 @@
                     <th><input type="checkbox" id="check" /></th>
                     <th>Số thứ tự</th>
                     <th>Tên bộ môn</th>
+                    <th>Hình ảnh</th>
                     <th>Từ khóa</th>
+                    <th>Mô tả</th>
                     <th>Ngày tạo lập</th>
                     <th>Lần chỉnh sửa cuối</th>
                     <th></th>
@@ -33,7 +35,11 @@
                         <td><input type="checkbox" class="check_class" name="checks[]" value="{!! $item['id'] !!}"></td>
                         <td>{!! $stt !!}</td>
                         <td>{!! $item['name'] !!}</td>
+                        <td>
+                            <img src="{!! asset('resources/upload/images/sport/'.$item['image']) !!}">
+                        </td>
                         <td>{!! $item['keyword'] !!}</td>
+                        <td>{!! $item['description'] !!}</td>
                         <td>
                             {!! stranslateTime(\Carbon\Carbon::createFromTimestamp(strtotime($item['created_at']))->diffForHumans()) !!}
                         </td>

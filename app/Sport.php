@@ -8,7 +8,7 @@ class Sport extends Model
 {
     protected $table = 'sports';
 
-    protected $fillable = ['name', 'keyword'];
+    protected $fillable = ['name', 'image', 'keyword', 'description'];
 
     public function product ()
     {

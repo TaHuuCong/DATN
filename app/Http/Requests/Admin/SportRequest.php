@@ -25,7 +25,7 @@ class SportRequest extends FormRequest
     {
         return [
             'txtSportName' => 'required|unique:sports,name',
-            'txtKeyword'   => 'required'
+            'fImages'      => 'required|image'
         ];
     }
 
@@ -34,7 +34,8 @@ class SportRequest extends FormRequest
         return [
             'txtSportName.required' => 'Vui lòng nhập tên bộ môn',
             'txtSportName.unique'   => 'Tên bộ môn này đã tồn tại',
-            'txtKeyword.required'   => 'Vui lòng nhập từ khóa cho bộ môn'
+            'fImages.required'      => 'Vui lòng chọn hình ảnh',
+            'fImages.image'         => 'File này không phải là một hình ảnh'
         ];
     }
 }

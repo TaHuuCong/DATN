@@ -9,15 +9,23 @@
     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
         @include('admin.blocks.error')
 
-        <form action="" method="POST">
+        <form action="" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="_token" value="{!! csrf_token() !!}">
             <div class="form-group">
                 <label>Tên bộ môn</label>
                 <input class="form-control" name="txtSportName" placeholder="Nhập tên bộ môn" />
             </div>
             <div class="form-group">
+                <label>Hình ảnh</label>
+                <input type="file" name="fImages">
+            </div>
+            <div class="form-group">
                 <label>Từ khóa</label>
                 <input class="form-control" name="txtKeyword" placeholder="Nhập từ khóa" />
+            </div>
+            <div class="form-group">
+                <label>Mô tả</label>
+                <textarea class="form-control" rows="5" name="txtDescription"></textarea>
             </div>
             <button type="submit" class="btn btn-default">Thêm</button>
             <button type="reset" class="btn btn-default">Đặt lại</button>

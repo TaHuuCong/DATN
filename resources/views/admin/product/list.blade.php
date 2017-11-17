@@ -81,7 +81,7 @@
                 </tr>
             </thead>
             <tbody>
-            <?php $stt = !empty($_GET['page']) ? ($_GET['page']-1)*5+1 : 1 ?>
+            <?php $stt = !empty($_GET['page']) ? ($_GET['page']-1)*3+1 : 1 ?>
             @foreach ($product as $item)
                 <tr class="odd gradeX" align="center">
                     <td><input type="checkbox" class="check_class" name="checks[]" value="{!! $item->id !!}"></td>

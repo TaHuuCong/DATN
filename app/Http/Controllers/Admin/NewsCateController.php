@@ -23,6 +23,7 @@ class NewsCateController extends Controller
     {
 		$newscate              = new NewsCategory;
 		$newscate->name        = $request->txtNewsCateName;
+        $newscate->alias       = changeTitle($request->txtNewsCateName);
 		$newscate->keyword     = $request->txtKeyword;
 		$newscate->description = $request->txtDescription;
         $newscate->save();
@@ -43,6 +44,7 @@ class NewsCateController extends Controller
     	);
 		$newscate              = NewsCategory::find($id);
 		$newscate->name        = $request->txtNewsCateName;
+        $newscate->alias       = changeTitle($request->txtNewsCateName);
 		$newscate->keyword     = $request->txtKeyword;
 		$newscate->description = $request->txtDescription;
         $newscate->save();

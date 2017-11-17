@@ -28,6 +28,7 @@ class BrandController extends Controller
 		$file_name          = $request->file('fImages')->getClientOriginalName();   //lấy tên của file được chọn
 		$brand              = new Brand;
 		$brand->name        = $request->txtBrandName;
+        $brand->alias       = changeTitle($request->txtBrandName);
 		$brand->keyword     = $request->txtKeyword;
 		$brand->description = $request->txtDescription;
 
@@ -96,7 +97,8 @@ class BrandController extends Controller
 
         $check = DB::table('brands as br')->where('br.name', '=', $request->txtBrandName)->count();
         if ( ($request->txtBrandName == $brand->name) || (($request->txtBrandName != $brand->name) && ($check < 1)) ) {
-            $brand->name = $request->txtBrandName;
+            $brand->name  = $request->txtBrandName;
+            $brand->alias = changeTitle($request->txtBrandName);
 
             //để cập nhật ảnh logo mới thì cần phải: tải ảnh mới lên (lưu theo tên ảnh) -> di chuyển nó vào thư mục chứa -> xóa ảnh cũ đi
             $img_current = 'resources/upload/images/brand/' . $request->img_current;  //đường dẫn tới hình ảnh hiện tại

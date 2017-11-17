@@ -26,6 +26,7 @@ class CateController extends Controller
     {
         $cate              = new Category;
         $cate->name        = $request->txtCateName;
+        $cate->alias       = changeTitle($request->txtCateName);
         $cate->keyword     = $request->txtKeyword;
         $cate->description = $request->txtDescription;
 		$cate->save();
@@ -80,7 +81,8 @@ class CateController extends Controller
 
         $check = DB::table('categories as ct')->where('ct.name', '=', $request->txtCateName)->count();
         if ( ($request->txtCateName == $cate->name) || (($request->txtCateName != $cate->name) && ($check < 1)) ) {
-            $cate->name = $request->txtCateName;
+            $cate->name  = $request->txtCateName;
+            $cate->alias = changeTitle($request->txtCateName);
             $cate->save();
             return redirect()->route('admin.cate.getList')->with(['flash_level' => 'success', 'flash_message' => 'Sửa thể loại thành công !']);
         } else {

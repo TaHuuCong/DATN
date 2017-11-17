@@ -15,23 +15,44 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('schema/drop-col', function() {
-    Schema::table('news', function($table) {
-        $table->dropColumn('title');
-    });
-});
+// Route::get('schema/drop-col', function() {
+//     Schema::table('brands', function($table) {
+//         $table->dropColumn('title');
+//     });
+// });
 
 Route::get('schema/add-col', function() {
-    Schema::table('news', function($table) {
-        // $table->string('image')->nullable();
-        // $table->text('source')->nullable();
-        $table->string('title');
+    Schema::table('news_categories', function($table) {
+        $table->string('alias');
     });
 });
 
-Route::get('admin/test', function() {
-    return view('admin.cate.add');
-});
+
+/* ------------------------------------------------------------------------------- */
+//USER
+
+Route::get('/', 'WelcomeController@index');
+
+//Lấy sp theo bộ môn
+Route::get('{sport}', 'WelcomeController@sport');
+
+//Lấy sp theo bộ môn và thể loại
+Route::get('{sport}/{category}', 'WelcomeController@sport_category');
+
+//Lấy sp theo thương hiệu
+Route::get('{brand}', 'WelcomeController@brand');
+
+//Lấy sp theo thương hiệu và thể loại
+Route::get('{brand}/{category}', 'WelcomeController@brand_category');
+
+//Lấy tin tức theo loại tin
+Route::get('{newscate}', 'WelcomeController@newscate');
+
+//Lấy tin tức theo loại tin và tiêu đề tin
+Route::get('{newscate}/{newstitle}', 'WelcomeController@newscate_newstitle');
+
+/* ------------------------------------------------------------------------------- */
+//ADMIN
 
 Route::group(['prefix' => 'admin'], function() {
     //QL thể loại sản phẩm

@@ -25,9 +25,7 @@ class BrandRequest extends FormRequest
     {
         return [
             'txtBrandName'   => 'required|unique:brands,name',
-            'fImages'        => 'required|image',
-            'txtKeyword'     => 'required',
-            'txtDescription' => 'required'
+            'fImages'        => 'required|image'
         ];
     }
 
@@ -37,9 +35,7 @@ class BrandRequest extends FormRequest
             'txtBrandName.required'   => 'Vui lòng nhập tên thương hiệu',
             'txtBrandName.unique'     => 'Tên thương hiệu này đã tồn tại',
             'fImages.required'        => 'Vui lòng chọn hình ảnh',
-            'fImages.image'           => 'File này không phải là một hình ảnh',
-            'txtKeyword.required'     => 'Vui lòng nhập từ khóa cho thương hiệu',
-            'txtDescription.required' => 'Vui lòng nhập mô tả về thương hiệu'
+            'fImages.image'           => 'File này không phải là một hình ảnh'
         ];
     }
 }
