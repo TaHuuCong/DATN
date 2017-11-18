@@ -14,18 +14,12 @@
             </ol>
 
             <div class="carousel-inner" role="listbox">
-                <div class="item center active" style="background-image: url(themes/images/banner1.jpg);">
+                <div class="item center active" style="background-image: url('{{ asset("resources/upload/images/banner/largebanner/large/".$large_banner_first->id."/".$large_banner_first->image) }}')">
                 </div>
-                <div class="item center" style="background-image: url(themes/images/banner2.jpg);">
+                @foreach ($large_banner_remain as $lg_banner)
+                	<div class="item center" style="background-image: url('{{ asset("resources/upload/images/banner/largebanner/large/".$lg_banner->id."/".$lg_banner->image) }}')">
                 </div>
-                <div class="item center" style="background-image: url(themes/images/banner3.jpg);">
-                </div>
-                <div class="item center" style="background-image: url(themes/images/banner4.jpg);">
-                </div>
-                <div class="item center" style="background-image: url(themes/images/banner5.jpg);">
-                </div>
-                <div class="item center" style="background-image: url(themes/images/banner6.jpg);">
-                </div>
+                @endforeach
             </div>
 
             <a href="#mySlider" class="left carousel-control" data-slide="prev">
@@ -108,12 +102,12 @@
 				            </ol>
 
 				            <div class="carousel-inner" role="listbox">
-				                <div class="item center active" style="background-image: url(themes/images/sbanner1.jpg);">
+				                <div class="item center active" style="background-image: url('{{ asset("resources/upload/images/banner/smallbanner/large/".$small_banner_first->id."/".$small_banner_first->image) }}')">
 				                </div>
-				                <div class="item center" style="background-image: url(themes/images/sbanner2.jpg);">
+				                @foreach ($small_banner_remain as $sm_banner)
+				                	<div class="item center" style="background-image: url('{{ asset("resources/upload/images/banner/smallbanner/large/".$sm_banner->id."/".$sm_banner->image) }}')">
 				                </div>
-				                <div class="item center" style="background-image: url(themes/images/sbanner3.jpg);">
-				                </div>
+				                @endforeach
 				            </div>
 				        </div>
 				    </div>
@@ -134,7 +128,7 @@
 					              	<a class="details" href="#"><i class="fa fa-info-circle" aria-hidden="true"></i></i> CHI TIẾT</a>
 					              	<a class="wishlist" href="#"><i class="fa fa-heart" aria-hidden="true"></i> YÊU THÍCH</a>
 					            </div>
-								<h2>{{ $newest_prod->price }}</h2>
+								<h2>{{ $newest_prod->price }} VNĐ</h2>
 								<a href=""><p>{{ $newest_prod->name }}</p></a>
 								<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Mua ngay</a>
 							</div>
@@ -167,7 +161,7 @@
 						              	<a class="details" href="#"><i class="fa fa-info-circle" aria-hidden="true"></i></i> DETAILS</a>
 						              	<a class="wishlist" href="#"><i class="fa fa-heart" aria-hidden="true"></i> WISHLIST</a>
 						            </div>
-									<h2>{{ $cf_item->price }}</h2>
+									<h2>{{ $cf_item->price }} VNĐ</h2>
 									<a href=""><p>{{ $cf_item->prname }}</p></a>
 									<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</a>
 								</div>
@@ -188,7 +182,7 @@
 						              	<a class="details" href="#"><i class="fa fa-info-circle" aria-hidden="true"></i></i> DETAILS</a>
 						              	<a class="wishlist" href="#"><i class="fa fa-heart" aria-hidden="true"></i> WISHLIST</a>
 						            </div>
-									<h2>{{ $nprod_cr_item->price }}</h2>
+									<h2>{{ $nprod_cr_item->price }} VNĐ</h2>
 									<a href=""><p>{{ $nprod_cr_item->name }}</p></a>
 									<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</a>
 								</div>
@@ -223,7 +217,7 @@
 						              	<a class="details" href="#"><i class="fa fa-info-circle" aria-hidden="true"></i></i> DETAILS</a>
 						              	<a class="wishlist" href="#"><i class="fa fa-heart" aria-hidden="true"></i> WISHLIST</a>
 						            </div>
-									<h2>{{ $sf_item->price }}</h2>
+									<h2>{{ $sf_item->price }} VNĐ</h2>
 									<a href=""><p>{{ $sf_item->prname }}</p></a>
 									<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</a>
 								</div>
@@ -244,7 +238,7 @@
 						              	<a class="details" href="#"><i class="fa fa-info-circle" aria-hidden="true"></i></i> DETAILS</a>
 						              	<a class="wishlist" href="#"><i class="fa fa-heart" aria-hidden="true"></i> WISHLIST</a>
 						            </div>
-									<h2>{{ $nprod_sr_item->price }}</h2>
+									<h2>{{ $nprod_sr_item->price }} VNĐ</h2>
 									<a href=""><p>{{ $nprod_sr_item->name }}</p></a>
 									<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</a>
 								</div>
@@ -279,7 +273,7 @@
 						              	<a class="details" href="#"><i class="fa fa-info-circle" aria-hidden="true"></i></i> DETAILS</a>
 						              	<a class="wishlist" href="#"><i class="fa fa-heart" aria-hidden="true"></i> WISHLIST</a>
 						            </div>
-									<h2>{{ $bf_item->price }}</h2>
+									<h2>{{ $bf_item->price }} VNĐ</h2>
 									<a href=""><p>{{ $bf_item->prname }}</p></a>
 									<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</a>
 								</div>
@@ -300,7 +294,7 @@
 						              	<a class="details" href="#"><i class="fa fa-info-circle" aria-hidden="true"></i></i> DETAILS</a>
 						              	<a class="wishlist" href="#"><i class="fa fa-heart" aria-hidden="true"></i> WISHLIST</a>
 						            </div>
-									<h2>{{ $nprod_br_item->price }}</h2>
+									<h2>{{ $nprod_br_item->price }} VNĐ</h2>
 									<a href=""><p>{{ $nprod_br_item->name }}</p></a>
 									<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</a>
 								</div>

@@ -13,7 +13,7 @@
             <input type="hidden" name="_token" value="{!! csrf_token() !!}">
             <div class="form-group">
                 <label>Tên thương hiệu</label>
-                <input class="form-control" name="txtBrandName" placeholder="Nhập tên thương hiệu" value="{!! old('txtBrandName', isset($brand)) ? $brand['name'] : null !!}" />
+                <input class="form-control" name="txtBrandName" placeholder="Nhập tên thương hiệu" value="{!! old('txtBrandName', isset($brand) ? $brand['name'] : null) !!}" />
             </div>
             <div class="form-group">
                 <label>Logo hiện tại</label><br>
@@ -26,11 +26,11 @@
             </div>
             <div class="form-group">
                 <label>Từ khóa</label>
-                <input class="form-control" name="txtKeyword" placeholder="Nhập từ khóa" value="{!! old('txtKeyword', isset($brand)) ? $brand['keyword'] : null !!}" />
+                <input class="form-control" name="txtKeyword" placeholder="Nhập từ khóa" value="{!! old('txtKeyword', isset($brand) ? $brand['keyword'] : null) !!}" />
             </div>
             <div class="form-group">
                 <label>Mô tả</label>
-                <textarea class="form-control" rows="5" name="txtDescription">{!! old('txtDescription', isset($brand)) ? $brand['description'] : null !!}</textarea>
+                <textarea class="form-control" rows="5" name="txtDescription">{!! old('txtDescription', isset($brand) ? $brand['description'] : null) !!}</textarea>
             </div>
             <button type="submit" class="btn btn-default">Sửa</button>
             <button type="reset" class="btn btn-default">Đặt lại</button>

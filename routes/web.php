@@ -15,15 +15,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::get('schema/drop-col', function() {
-//     Schema::table('brands', function($table) {
-//         $table->dropColumn('title');
-//     });
-// });
+Route::get('schema/drop-col', function() {
+    Schema::table('small_banners', function($table) {
+        $table->dropColumn('image');
+    });
+});
 
 Route::get('schema/add-col', function() {
-    Schema::table('news_categories', function($table) {
-        $table->string('alias');
+    Schema::table('small_banners', function($table) {
+        $table->string('image')->nullable();
     });
 });
 
@@ -167,6 +167,36 @@ Route::group(['prefix' => 'admin'], function() {
 
         Route::get('delete/{id}', ['as' => 'admin.news.getDelete', 'uses' => 'Admin\NewsController@getDelete']);
         Route::post('delete', ['as' => 'admin.news.postDelete', 'uses' => 'Admin\NewsController@postDelete']);
+    });
+
+
+    //Quản lý banner lớn
+    Route::group(['prefix' => 'largebanner'], function() {
+        Route::get('list', ['as' => 'admin.largebanner.getList', 'uses' => 'Admin\LargeBannerController@getList']);
+
+        Route::get('add', ['as' => 'admin.largebanner.getAdd', 'uses' => 'Admin\LargeBannerController@getAdd']);
+        Route::post('add', ['as' => 'admin.largebanner.postAdd', 'uses' => 'Admin\LargeBannerController@postAdd']);
+
+        Route::get('edit/{id}', ['as' => 'admin.largebanner.getEdit', 'uses' => 'Admin\LargeBannerController@getEdit']);
+        Route::post('edit/{id}', ['as' => 'admin.largebanner.postEdit', 'uses' => 'Admin\LargeBannerController@postEdit']);
+
+        Route::get('delete/{id}', ['as' => 'admin.largebanner.getDelete', 'uses' => 'Admin\LargeBannerController@getDelete']);
+        Route::post('delete', ['as' => 'admin.largebanner.postDelete', 'uses' => 'Admin\LargeBannerController@postDelete']);
+    });
+
+
+    //Quản lý banner nhỏ
+    Route::group(['prefix' => 'smallbanner'], function() {
+        Route::get('list', ['as' => 'admin.smallbanner.getList', 'uses' => 'Admin\SmallBannerController@getList']);
+
+        Route::get('add', ['as' => 'admin.smallbanner.getAdd', 'uses' => 'Admin\SmallBannerController@getAdd']);
+        Route::post('add', ['as' => 'admin.smallbanner.postAdd', 'uses' => 'Admin\SmallBannerController@postAdd']);
+
+        Route::get('edit/{id}', ['as' => 'admin.smallbanner.getEdit', 'uses' => 'Admin\SmallBannerController@getEdit']);
+        Route::post('edit/{id}', ['as' => 'admin.smallbanner.postEdit', 'uses' => 'Admin\SmallBannerController@postEdit']);
+
+        Route::get('delete/{id}', ['as' => 'admin.smallbanner.getDelete', 'uses' => 'Admin\SmallBannerController@getDelete']);
+        Route::post('delete', ['as' => 'admin.smallbanner.postDelete', 'uses' => 'Admin\SmallBannerController@postDelete']);
     });
 
 });

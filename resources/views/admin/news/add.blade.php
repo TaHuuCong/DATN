@@ -61,7 +61,7 @@
 
 <script type="text/javascript">
     $('.treeview').removeClass('active');
-    $("#product").addClass('active');
+    $("#news").addClass('active');
 </script>
 
 @stop

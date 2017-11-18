@@ -1,7 +1,7 @@
 @extends('admin.master')
-@section('controller', 'Thương hiệu sản phẩm')
+@section('controller', 'Banner nhỏ')
 @section('action', 'Thêm')
-@section('breadcrumb', 'Quản lý thương hiệu sản phẩm')
+@section('breadcrumb', 'Quản lý banner nhỏ')
 @section('content')
 
 <section class="content">
@@ -9,23 +9,24 @@
     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
         @include('admin.blocks.error')
 
-        <form action="" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('admin.smallbanner.postAdd') }}" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="_token" value="{!! csrf_token() !!}">
             <div class="form-group">
-                <label>Tên thương hiệu</label>
-                <input type="text" class="form-control" name="txtBrandName" placeholder="Nhập tên thương hiệu" />
+                <label>Tên banner</span></label>
+                <input class="form-control" name="txtBannerName" placeholder="Nhập tên banner" value="{{ old('txtBannerName') }}">
             </div>
             <div class="form-group">
-                <label>Logo</label>
+                <label>Hình ảnh <span style="font-size: 15px; color: red;">*</span></label>
                 <input type="file" name="fImages">
             </div>
             <div class="form-group">
-                <label>Từ khóa</label>
-                <input type="text" class="form-control" name="txtKeyword" placeholder="Nhập từ khóa" />
+                <label style="margin-right: 20px">Hiển thị</label>
+                <input type="checkbox" style="width: 20px; height: 15px; margin-top: 0; vertical-align: middle;" name="display"  value="display">
             </div>
             <div class="form-group">
                 <label>Mô tả</label>
-                <textarea class="form-control" rows="5" name="txtDescription"></textarea>
+                <textarea class="form-control" rows="3" name="txtDescription"></textarea>
+                <script type="text/javascript">ckeditor("txtDescription")</script>
             </div>
             <button type="submit" class="btn btn-default">Thêm</button>
             <button type="reset" class="btn btn-default">Đặt lại</button>
@@ -39,7 +40,7 @@
 
 <script type="text/javascript">
     $('.treeview').removeClass('active');
-    $("#brand").addClass('active');
+    $("#smallbanner").addClass('active');
 </script>
 
 @stop

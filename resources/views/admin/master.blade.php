@@ -144,8 +144,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{!! URL::route('admin.cate.getList') !!}"><i class="fa fa-circle-o" aria-hidden="true"></i> Danh sách thể loại</a></li>
-            <li><a href="{!! URL::route('admin.cate.getAdd') !!}"><i class="fa fa-circle-o" aria-hidden="true"></i> Thêm thể loại</a></li>
+            <li><a href="{!! URL::route('admin.cate.getList') !!}"><i class="fa fa-circle-o" aria-hidden="true"></i> Danh sách</a></li>
+            <li><a href="{!! URL::route('admin.cate.getAdd') !!}"><i class="fa fa-circle-o" aria-hidden="true"></i> Thêm</a></li>
           </ul>
         </li>
 
@@ -158,8 +158,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{!! URL::route('admin.sport.getList') !!}"><i class="fa fa-circle-o" aria-hidden="true"></i> Danh sách bộ môn</a></li>
-            <li><a href="{!! URL::route('admin.sport.getAdd') !!}"><i class="fa fa-circle-o" aria-hidden="true"></i> Thêm bộ môn</a></li>
+            <li><a href="{!! URL::route('admin.sport.getList') !!}"><i class="fa fa-circle-o" aria-hidden="true"></i> Danh sách</a></li>
+            <li><a href="{!! URL::route('admin.sport.getAdd') !!}"><i class="fa fa-circle-o" aria-hidden="true"></i> Thêm</a></li>
           </ul>
         </li>
 
@@ -172,8 +172,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{!! URL::route('admin.brand.getList') !!}"><i class="fa fa-circle-o"></i> Danh sách thương hiệu</a></li>
-            <li><a href="{!! URL::route('admin.brand.getAdd') !!}"><i class="fa fa-circle-o"></i> Thêm thương hiệu</a></li>
+            <li><a href="{!! URL::route('admin.brand.getList') !!}"><i class="fa fa-circle-o"></i> Danh sách</a></li>
+            <li><a href="{!! URL::route('admin.brand.getAdd') !!}"><i class="fa fa-circle-o"></i> Thêm</a></li>
           </ul>
         </li>
 
@@ -186,8 +186,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{!! URL::route('admin.product.getList') !!}"><i class="fa fa-circle-o"></i> Danh sách sản phẩm</a></li>
-            <li><a href="{!! URL::route('admin.product.getAdd') !!}"><i class="fa fa-circle-o"></i> Thêm sản phẩm</a></li>
+            <li><a href="{!! URL::route('admin.product.getList') !!}"><i class="fa fa-circle-o"></i> Danh sách</a></li>
+            <li><a href="{!! URL::route('admin.product.getAdd') !!}"><i class="fa fa-circle-o"></i> Thêm</a></li>
           </ul>
         </li>
 
@@ -200,26 +200,12 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{!! URL::route('admin.property.getList') !!}"><i class="fa fa-circle-o"></i> Danh sách thuộc tính</a></li>
-            <li><a href="{!! URL::route('admin.property.getAdd') !!}"><i class="fa fa-circle-o"></i> Thêm thuộc tính</a></li>
+            <li><a href="{!! URL::route('admin.property.getList') !!}"><i class="fa fa-circle-o"></i> Danh sách</a></li>
+            <li><a href="{!! URL::route('admin.property.getAdd') !!}"><i class="fa fa-circle-o"></i> Thêm</a></li>
           </ul>
         </li>
 
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-list-alt" aria-hidden="true"></i>
-            <span>Quản lý giảm giá</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href=""><i class="fa fa-circle-o"></i> Danh sách phiếu giảm giá</a></li>
-            <li><a href=""><i class="fa fa-circle-o"></i> Thêm phiếu giảm giá</a></li>
-          </ul>
-        </li>
-
-        <li class="treeview">
+        <li class="treeview" id="newscate">
           <a href="#">
             <i class="fa fa-list-alt" aria-hidden="true"></i>
             <span>Quản lý loại tin</span>
@@ -228,10 +214,53 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href=""><i class="fa fa-circle-o"></i> Danh sách loại tin</a></li>
-            <li><a href="{!! URL::route('admin.newscate.getAdd') !!}"><i class="fa fa-circle-o"></i> Thêm loại tin</a></li>
+            <li><a href="{!! URL::route('admin.newscate.getList') !!}"><i class="fa fa-circle-o"></i> Danh sách</a></li>
+            <li><a href="{!! URL::route('admin.newscate.getAdd') !!}"><i class="fa fa-circle-o"></i> Thêm</a></li>
           </ul>
         </li>
+
+        <li class="treeview" id="news">
+          <a href="#">
+            <i class="fa fa-list-alt" aria-hidden="true"></i>
+            <span>Quản lý tin tức</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="{!! URL::route('admin.news.getList') !!}"><i class="fa fa-circle-o"></i> Danh sách</a></li>
+            <li><a href="{!! URL::route('admin.news.getAdd') !!}"><i class="fa fa-circle-o"></i> Thêm</a></li>
+          </ul>
+        </li>
+
+        <li class="treeview" id="largebanner">
+          <a href="#">
+            <i class="fa fa-list-alt" aria-hidden="true"></i>
+            <span>Quản lý banner lớn</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="{!! URL::route('admin.largebanner.getList') !!}"><i class="fa fa-circle-o"></i> Danh sách</a></li>
+            <li><a href="{!! URL::route('admin.largebanner.getAdd') !!}"><i class="fa fa-circle-o"></i> Thêm</a></li>
+          </ul>
+        </li>
+
+        <li class="treeview" id="smallbanner">
+          <a href="#">
+            <i class="fa fa-list-alt" aria-hidden="true"></i>
+            <span>Quản lý banner nhỏ</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="{!! URL::route('admin.smallbanner.getList') !!}"><i class="fa fa-circle-o"></i> Danh sách</a></li>
+            <li><a href="{!! URL::route('admin.smallbanner.getAdd') !!}"><i class="fa fa-circle-o"></i> Thêm</a></li>
+          </ul>
+        </li>
+
       </ul>
     </section>
     <!-- /.sidebar -->

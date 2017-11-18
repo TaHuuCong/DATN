@@ -35,7 +35,7 @@
 
 <script type="text/javascript">
     $('.treeview').removeClass('active');
-    $("#category").addClass('active');
+    $("#newscate").addClass('active');
 </script>
 
 @stop

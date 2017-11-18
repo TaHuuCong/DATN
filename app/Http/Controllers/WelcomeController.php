@@ -31,6 +31,12 @@ class WelcomeController extends Controller {
 	 */
 	public function index()
 	{
+		$large_banner_first = DB::table('large_banners')->where('display', '=', '1')->orderBy('id', 'desc')->first();
+		$large_banner_remain = DB::table('large_banners')->where('display', '=', '1')->where('id', '!=', $large_banner_first->id)->orderBy('id', 'asc')->take(5)->get();
+
+		$small_banner_first = DB::table('small_banners')->where('display', '=', '1')->orderBy('id', 'desc')->first();
+		$small_banner_remain = DB::table('small_banners')->where('display', '=', '1')->where('id', '!=', $small_banner_first->id)->orderBy('id', 'asc')->take(2)->get();
+
 		$newest_products = DB::table('products')->orderBy('id', 'desc')->take(6)->get();
 
 		$cate_first = DB::table('categories')->orderBy('id', 'asc')->first();  //lấy thể loại đầu tiên
@@ -42,7 +48,7 @@ class WelcomeController extends Controller {
 		$brand_first     = DB::table('brands')->orderBy('id', 'asc')->first();
 		$brand_remain    = DB::table('brands')->where('id', '>', $brand_first->id)->orderBy('id')->get();
 
-		return view('user.pages.home', compact('newest_products', 'cate_first', 'cate_remain', 'sport_first', 'sport_remain', 'brand_first', 'brand_remain'));
+		return view('user.pages.home', compact('newest_products', 'cate_first', 'cate_remain', 'sport_first', 'sport_remain', 'brand_first', 'brand_remain', 'large_banner_first', 'large_banner_remain', 'small_banner_first', 'small_banner_remain'));
 	}
 
 
