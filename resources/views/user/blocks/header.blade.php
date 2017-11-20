@@ -106,6 +106,7 @@
 	            <nav class="navbar-collapse collapse">
 		            <ul class="nav navbar-nav">
 					    <li><a href="{{ url('/') }}">Trang chủ</a></li>
+					    <li><a href="{{ url('san-pham') }}">Sản phẩm</a></li>
 	                    <li class="dropdown menu-large">
 	                        <a href="" class="dropdown-toggle" data-toggle="dropdown">Bộ môn <b class="caret"></b></a>
 							<ul class="dropdown-menu mega-menu">
@@ -119,12 +120,12 @@
 											<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
 												<li class="mega-menu-column main">
 												    <ul>
-												    	<li class="dropdown-header"><a style="text-transform: uppercase;" href="{{ URL($sport->alias) }}">{!! $sport->name !!}</a></li>
-												        <a href="{{ URL($sport->alias) }}">
+												    	<li class="dropdown-header"><a style="text-transform: uppercase;" href="{{ URL('bo-mon/'.$sport->alias) }}">{!! $sport->name !!}</a></li>
+												        <a href="{{ URL('bo-mon/'.$sport->alias) }}">
 												        	<img src="{!! asset('resources/upload/images/sport/'.$sport->image) !!}">
 												        </a>
 														@foreach ($cates as $cate)
-															<li><a class="font13" href="{{ URL($sport->alias, $cate->alias) }}">{!! $cate->name !!}</a></li>
+															<li><a class="font13" href="{{ URL('bo-mon/'.$sport->alias.'/'.$cate->alias) }}">{!! $cate->name !!}</a></li>
 														@endforeach
 												    </ul>
 											    </li>
@@ -139,7 +140,7 @@
 										    	<li class="dropdown-header other">Bộ môn khác</li>
 										    	<?php $other_sport = DB::table('sports')->where('id', '>', '4')->get(); ?>
 										    	@foreach ($other_sport as $osport)
-										    		<li><a class="font13" href="{{ URL($osport->alias) }}">{!! $osport->name !!}</a></li>
+										    		<li><a class="font13" href="{{ URL('bo-mon/'.$osport->alias) }}">{!! $osport->name !!}</a></li>
 										    	@endforeach
 										    </ul>
 									    </li>
@@ -160,12 +161,12 @@
 											<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
 												<li class="mega-menu-column">
 												    <ul>
-												    	<li class="dropdown-header"><a style="text-transform: uppercase;" href="{{ URL($brand->alias) }}">{{ $brand->name }}</a></li>
-												        <a href="{{ URL($brand->alias) }}">
+												    	<li class="dropdown-header"><a style="text-transform: uppercase;" href="{{ URL('thuong-hieu/'.$brand->alias) }}">{{ $brand->name }}</a></li>
+												        <a href="{{ URL('thuong-hieu/'.$brand->alias) }}">
 												        	<img src="{!! asset('resources/upload/images/brand/'.$brand->image) !!}">
 												        </a>
 												        @foreach ($cates as $cate)
-															<li><a class="font13" href="{{ URL($brand->alias, $cate->alias) }}">{!! $cate->name !!}</a></li>
+															<li><a class="font13" href="{{ URL('thuong-hieu/'.$brand->alias.'/'.$cate->alias) }}">{!! $cate->name !!}</a></li>
 														@endforeach
 												    </ul>
 											    </li>
@@ -181,7 +182,7 @@
 										    	<li class="dropdown-header other">Thương hiệu khác</li>
 												<?php $other_brand = DB::table('brands')->where('id', '>', '4')->get(); ?>
 										    	@foreach ($other_brand as $obrand)
-										    		<li><a class="font13" href="{{ URL($obrand->alias) }}">{!! $obrand->name !!}</a></li>
+										    		<li><a class="font13" href="{{ URL('thuong-hieu/'.$obrand->alias) }}">{!! $obrand->name !!}</a></li>
 										    	@endforeach
 										    </ul>
 									    </li>

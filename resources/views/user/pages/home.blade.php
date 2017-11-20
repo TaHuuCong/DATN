@@ -39,18 +39,12 @@
 			<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 main-left">
 				<div class="promotion-news">
 					<h2 class="title text-center">Khuyến mãi</h2>
-					<div class="new-content">
-						<a href=""><img src="themes/images/sale.jpg" alt=""></a>
-						<h5><a href="">Khuyến mãi lễ cuối 2016 - đầu 2017</a></h5>
-					</div>
-					<div class="new-content">
-						<a href=""><img src="themes/images/sale.jpg" alt=""></a>
-						<h5><a href="">Khuyến mãi lễ cuối 2016 - đầu 2017</a></h5>
-					</div>
-					<div class="new-content">
-						<a href=""><img src="themes/images/sale.jpg" alt=""></a>
-						<h5><a href="">Khuyến mãi lễ cuối 2016 - đầu 2017</a></h5>
-					</div>
+					@foreach ($promotion_news as $promo)
+						<div class="new-content">
+							<a href=""><img src="{{ asset('resources/upload/images/news/thumbnail/'.$promo->n_id.'/'.$promo->image) }}" alt=""></a>
+							<h5><a href="">{{ $promo->title }}</a></h5>
+						</div>
+					@endforeach
 				</div>
 				<!-- /.promotion-news -->
 
@@ -58,11 +52,9 @@
 					<h2 class="title text-center">Tin thể thao</h2>
 					<ul>
 						<marquee behavior="scroll" direction="up" onmouseover="this.stop()" onmouseout="this.start()" scrollmount="3">
-							<li><i class="fa fa-angle-double-right"></i> <a href="">Hè về rộn ràng - Mua sắm thả ga không lo về giá I</a> <span class="news-date">(11:00, 29/09/2017)</span></li>
-							<li><i class="fa fa-angle-double-right"></i> <a href="">Hè về rộn ràng - Mua sắm thả ga không lo về giá I</a> <span class="news-date">(11:00, 29/09/2017)</span></li>
-							<li><i class="fa fa-angle-double-right"></i> <a href="">Hè về rộn ràng - Mua sắm thả ga không lo về giá I</a> <span class="news-date">(11:00, 29/09/2017)</span></li>
-							<li><i class="fa fa-angle-double-right"></i> <a href="">Hè về rộn ràng - Mua sắm thả ga không lo về giá I</a> <span class="news-date">(11:00, 29/09/2017)</span></li>
-							<li><i class="fa fa-angle-double-right"></i> <a href="">Hè về rộn ràng - Mua sắm thả ga không lo về giá I</a> <span class="news-date">(11:00, 29/09/2017)</span></li>
+						@foreach ($sport_news as $sport_news)
+							<li><i class="fa fa-angle-double-right"></i> <a href="">{{ $sport_news->title }}</a> <span class="news-date">( {{ $sport_news->updated_at }} )</span></li>
+						@endforeach
 						</marquee>
 					</ul>
 				</div>
@@ -71,11 +63,9 @@
 				<div class="advisory">
 					<h2 class="title text-center">Tư vấn</h2>
 					<ul>
-						<li><i class="fa fa-angle-double-right"></i> <a href="">Hè về rộn ràng - Mua sắm thả ga không lo về giá I</a> <span class="news-date">(11:00, 29/09/2017)</span></li>
-						<li><i class="fa fa-angle-double-right"></i> <a href="">Hè về rộn ràng - Mua sắm thả ga không lo về giá I</a> <span class="news-date">(11:00, 29/09/2017)</span></li>
-						<li><i class="fa fa-angle-double-right"></i> <a href="">Hè về rộn ràng - Mua sắm thả ga không lo về giá I</a> <span class="news-date">(11:00, 29/09/2017)</span></li>
-						<li><i class="fa fa-angle-double-right"></i> <a href="">Hè về rộn ràng - Mua sắm thả ga không lo về giá I</a> <span class="news-date">(11:00, 29/09/2017)</span></li>
-						<li><i class="fa fa-angle-double-right"></i> <a href="">Hè về rộn ràng - Mua sắm thả ga không lo về giá I</a> <span class="news-date">(11:00, 29/09/2017)</span></li>
+					@foreach ($advisory_news as $advi)
+						<li><i class="fa fa-angle-double-right"></i> <a href="">{{ $advi->title }}</a> <span class="news-date">( {{ $advi->updated_at }} )</span></li>
+					@endforeach
 					</ul>
 				</div>
 				<!-- /.advisory -->
@@ -84,9 +74,9 @@
 					<h2 class="title text-center">Tuyển dụng</h2>
 					<ul>
 						<marquee behavior="scroll" direction="up" onmouseover="this.stop()" onmouseout="this.start()" scrollmount="3">
-							<li><i class="fa fa-angle-double-right"></i> <a href="">Hè về rộn ràng - Mua sắm thả ga không lo về giá I</a> <span class="news-date">(11:00, 29/09/2017)</span></li>
-							<li><i class="fa fa-angle-double-right"></i> <a href="">Hè về rộn ràng - Mua sắm thả ga không lo về giá I</a> <span class="news-date">(11:00, 29/09/2017)</span></li>
-							<li><i class="fa fa-angle-double-right"></i> <a href="">Hè về rộn ràng - Mua sắm thả ga không lo về giá I</a> <span class="news-date">(11:00, 29/09/2017)</span></li>
+						@foreach ($recruitment_news as $recuit)
+							<li><i class="fa fa-angle-double-right"></i> <a href="">{{ $recuit->title }}</a> <span class="news-date">( {{ $recuit->updated_at }} )</span></li>
+						@endforeach
 						</marquee>
 					</ul>
 				</div>

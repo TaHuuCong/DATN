@@ -33,17 +33,29 @@ Route::get('schema/add-col', function() {
 
 Route::get('/', 'WelcomeController@index');
 
+//Lấy toàn bộ sản phẩm
+Route::get('san-pham', [
+    'as' => 'get.products',
+    'uses' => 'WelcomeController@product'
+]);
+
+//Lấy toàn bộ sản phẩm
+Route::get('san-pham-ajax', [
+    'as' => 'get.product.ajax',
+    'uses' => 'WelcomeController@ajax'
+]);
+
 //Lấy sp theo bộ môn
-Route::get('{sport}', 'WelcomeController@sport');
+Route::get('bo-mon/{sport}', 'WelcomeController@sport');
 
 //Lấy sp theo bộ môn và thể loại
-Route::get('{sport}/{category}', 'WelcomeController@sport_category');
+Route::get('bo-mon/{sport}/{category}', 'WelcomeController@sport_category');
 
 //Lấy sp theo thương hiệu
-Route::get('{brand}', 'WelcomeController@brand');
+Route::get('thuong-hieu/{brand}', 'WelcomeController@brand');
 
 //Lấy sp theo thương hiệu và thể loại
-Route::get('{brand}/{category}', 'WelcomeController@brand_category');
+Route::get('thuong-hieu/{brand}/{category}', 'WelcomeController@brand_category');
 
 //Lấy tin tức theo loại tin
 Route::get('{newscate}', 'WelcomeController@newscate');

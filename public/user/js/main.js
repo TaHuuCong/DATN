@@ -123,3 +123,51 @@ $(function() {
         var location = $('body').scrollTop(); //lấy vị trí của phần tử tính từ top
     });
 });
+
+// Lọc sản phẩm
+$(function() {
+    $('.brandFilter').click(function() {
+        var brand = [];
+        $('.brandFilter').each(function() {
+            if ($(this).is(':checked')) {
+                brand.push($(this).val());
+            }
+        });
+        finalbrand = brand.toString();
+        $.ajax({
+            url: URL_GET_PRODUCT_AJAX.url,
+            type: 'GET',
+            dataType: 'html',
+            data: 'brand=' + finalbrand,
+            success: function(response) {
+                console.log(response);
+                $('#updateDiv').html(response);
+            }
+        });
+    });
+
+    $("#slider-range").slider({
+        range: true,
+        min: 0,
+        max: 100,
+        values: [15, 65],
+        slide: function(event, ui) {
+
+            $("#amount_start").val(ui.values[0]);
+            $("#amount_end").val(ui.values[1]);
+            var start = $('#amount_start').val();
+            var end = $('#amount_end').val();
+
+            $.ajax({
+                type: 'get',
+                dataType: 'html',
+                url: '',
+                data: "start=" + start + "& end=" + end,
+                success: function(response) {
+                    console.log(response);
+                    $('#updateDiv').html(response);
+                }
+            });
+        }
+    });
+});

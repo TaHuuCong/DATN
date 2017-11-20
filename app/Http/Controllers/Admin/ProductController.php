@@ -52,7 +52,7 @@ class ProductController extends Controller
 		$cate  = Category::all();
 		$sport = Sport::all();
 		$brand = Brand::all();
-		return view('admin.product.list', compact('product', 'cate', 'sport', 'brand', 'cate_id', 'pro_paging'));
+		return view('admin.product.list', compact('product', 'cate', 'sport', 'brand', 'cate_id', 'sport_id', 'brand_id', 'gender', 'pro_paging'));
 	}
 
     public function getAdd ()

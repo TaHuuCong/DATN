@@ -4,10 +4,10 @@
 <div class="main-content">
 	<div class="container">
 		<ul class="breadcrumb">
-    		<li><a href="">Trang chủ</a><span class="divider"></span></li>
-    		<li class="active">Sản phẩm</li>
-  		</ul>
-  		<!-- /.breadcrumb -->
+    		<li>Bộ môn<span class="divider"></span></li>
+    		<li class="active"><a href="{{ URL('bo-mon/'.$sp_alias) }}">{{ $name_by_sp_alias->name }}</a><span class="divider"></span></li>
+    		<li class="active">{{ $name_by_ct_alias->name }}</li>
+  		</ul><!-- /.breadcrumb -->
 
 		<div class="row">
 			<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
@@ -16,9 +16,7 @@
 						<h2>Bộ môn</h2>
 						<div class="name">
 							<ul class="nav nav-pills nav-stacked">
-								@foreach ($sports as $sp)
-								<li><a href="#">{{ $sp->name }}</a></li>
-								@endforeach
+								<li><a class="disabled-link">{{ $name_by_sp_alias->name }}</a></li>
 							</ul>
 						</div>
 					</div><!-- /.product-sport -->
@@ -27,26 +25,21 @@
 						<h2>Thể loại</h2>
 						<div class="name">
 							<ul class="nav nav-pills nav-stacked">
-								@foreach ($cates as $ct)
-								<li><a href="#">{{ $ct->name }}</a></li>
-								@endforeach
+								<li><a class="disabled-link">{{ $name_by_ct_alias->name }}</a></li>
 							</ul>
 						</div>
 					</div><!-- /.product-cate -->
+
 					<div class="product-brand">
 						<h2>Thương hiệu</h2>
 						<div class="name">
 							<ul class="nav nav-pills nav-stacked">
-								<?php $brand_param = explode( ',', $brand ) ?>
 								@foreach ($brands as $br)
-								<li>
-									<input type="checkbox" class="brandFilter" value="{{ $br->id }}" @if(in_array($br->id, $brand_param)) checked @endif>
-									<span class="pull-right">({{ App\Product::where('brand_id', '=', $br->id)->count() }})</span>{{ ucwords($br->name) }}
-								</li>
+								<li><a href="#">{{ $br->name }} <span class="pull-right">(50)</span></a></li>
 								@endforeach
 							</ul>
 						</div>
-					</div><!--/product-brand-->
+					</div><!-- /.product-brand -->
 
 					<div class="gender">
 						<h2>Giới tính</h2>
@@ -64,43 +57,40 @@
 							 <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="600" data-slider-step="5" data-slider-value="[250,450]" id="sl2" ><br />
 							 <b class="pull-left">$ 0</b> <b class="pull-right">$ 600</b>
 						</div>
-					</div><!--/price-range-->
+					</div><!-- /.price-range -->
 
 				</div>
 				<!-- /.sidebar-left -->
 			</div>
 
-			<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9" id="updateDiv">
+			<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
 				<div class="newest-product">
 					<h2 class="title text-center">Danh sách sản phẩm</h2>
-					@foreach ($all_products as $all_prods)
+					@foreach ($prod_by_sport_cate as $prod_by_sp_ct)
 					<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
 						<div class="product-info text-center">
-							<a href="#"><img src="{{ asset('resources/upload/images/product/small/'.$all_prods->id.'/'.$all_prods->image) }}" /></a>
+							<a href="#"><img src="{{ asset('resources/upload/images/product/small/'.$prod_by_sp_ct->pr_id.'/'.$prod_by_sp_ct->image) }}" /></a>
 							<div class="shortlinks">
 				              	<a class="details" href="#"><i class="fa fa-info-circle" aria-hidden="true"></i></i> CHI TIẾT</a>
 				              	<a class="wishlist" href="#"><i class="fa fa-heart" aria-hidden="true"></i> YÊU THÍCH</a>
 				            </div>
-							<h2>{{ $all_prods->price }} VNĐ</h2>
-							<a href=""><p>{{ $all_prods->name }}</p></a>
+							<h2>{{ $prod_by_sp_ct->price }} VNĐ</h2>
+							<a href=""><p>{{ $prod_by_sp_ct->name }}</p></a>
 							<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Mua ngay</a>
 						</div>
 					</div>
 					@endforeach
 
-				</div><!--featured-product-->
+				</div><!-- /.newest-product -->
 
 
 				<ul class="pagination">
-				{{ $all_products->appends(['brand' => $brand])->render() }}
-				</ul>
-				<!-- /.pagination -->
+					{{ $prod_by_sport_cate->render() }}
+				</ul><!-- /.pagination -->
 			</div>
 		</div>
 	</div>
 </div>
 <!-- /.main-content -->
-<script>
-	URL_GET_PRODUCT_AJAX = {!! json_encode(['url' => route('get.product.ajax')]) !!}
-</script>
+
 @endsection
