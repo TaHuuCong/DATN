@@ -30,9 +30,12 @@
 		</header>
 		<!-- /header -->
 
-		<!-- Main Content Start -->
-		@yield('content')
-		<!-- Main Content End -->
+		<div class="wrapper-content">
+			<!-- Main Content Start -->
+			@yield('content')
+			<!-- Main Content End -->
+		</div>
+		<!-- /.wrapper-content -->
 
 		<footer>
 			@include('user.blocks.footer')

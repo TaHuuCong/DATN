@@ -12,35 +12,58 @@
 		<div class="row">
 			<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
 				<div class="sidebar-left">
-					<div class="product-sport">
+					<div class="product-sport list-group">
 						<h2>Bộ môn</h2>
 						<div class="name">
 							<ul class="nav nav-pills nav-stacked">
 								@foreach ($sports as $sp)
-								<li><a href="#">{{ $sp->name }}</a></li>
+								<li>
+									<input type="checkbox" class="itemFilter sport" value="{{ $sp->id }}"
+										@if (!empty($sport))
+											@if (in_array($sp->id, $sport))
+												checked
+											@endif
+										@endif
+									/>
+									<span class="pull-right">({{ App\Product::where('sport_id', '=', $sp->id)->count() }})</span>{{ ucwords($sp->name) }}
+								</li>
 								@endforeach
 							</ul>
 						</div>
 					</div><!-- /.product-sport -->
 
-					<div class="product-cate">
+					<div class="product-cate list-group">
 						<h2>Thể loại</h2>
 						<div class="name">
 							<ul class="nav nav-pills nav-stacked">
 								@foreach ($cates as $ct)
-								<li><a href="#">{{ $ct->name }}</a></li>
+								<li>
+									<input type="checkbox" class="itemFilter cate" value="{{ $ct->id }}"
+										@if (!empty($cate))
+											@if (in_array($ct->id, $cate))
+												checked
+											@endif
+										@endif
+									/>
+									<span class="pull-right">({{ App\Product::where('cate_id', '=', $ct->id)->count() }})</span>{{ ucwords($ct->name) }}
+								</li>
 								@endforeach
 							</ul>
 						</div>
 					</div><!-- /.product-cate -->
-					<div class="product-brand">
+					<div class="product-brand list-group">
 						<h2>Thương hiệu</h2>
 						<div class="name">
 							<ul class="nav nav-pills nav-stacked">
-								<?php $brand_param = explode( ',', $brand ) ?>
 								@foreach ($brands as $br)
 								<li>
-									<input type="checkbox" class="brandFilter" value="{{ $br->id }}" @if(in_array($br->id, $brand_param)) checked @endif>
+									<input type="checkbox" class="brandFilter itemFilter brand" value="{{ $br->id }}"
+										@if (!empty($brand))
+											@if (in_array($br->id, $brand))
+												checked
+											@endif
+										@endif
+									/>
 									<span class="pull-right">({{ App\Product::where('brand_id', '=', $br->id)->count() }})</span>{{ ucwords($br->name) }}
 								</li>
 								@endforeach
@@ -48,7 +71,7 @@
 						</div>
 					</div><!--/product-brand-->
 
-					<div class="gender">
+					<div class="gender list-group">
 						<h2>Giới tính</h2>
 						<div class="name">
 							<ul class="nav nav-pills nav-stacked">
@@ -58,7 +81,7 @@
 						</div>
 					</div><!-- /.gender -->
 
-					<div class="price-range">
+					<div class="price-range list-group">
 						<h2>Lọc giá</h2>
 						<div class="range text-center">
 							 <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="600" data-slider-step="5" data-slider-value="[250,450]" id="sl2" ><br />
@@ -90,17 +113,25 @@
 
 				</div><!--featured-product-->
 
+				@if (isset($sport))
+					<ul class="pagination">
+						{{ $all_products->appends(['sport' => $sport, 'cate' => $cate, 'brand' => $brand])->render() }}
+					</ul>
+				@else
+					<ul class="pagination">
+						{{ $all_products->render() }}
+					</ul>
+				@endif
 
-				<ul class="pagination">
-				{{ $all_products->appends(['brand' => $brand])->render() }}
-				</ul>
 				<!-- /.pagination -->
 			</div>
 		</div>
 	</div>
 </div>
 <!-- /.main-content -->
+
 <script>
-	URL_GET_PRODUCT_AJAX = {!! json_encode(['url' => route('get.product.ajax')]) !!}
+	URL_GET_PRODUCT_AJAX = {!! json_encode(['url' => route('get.product.ajax')]) !!}   //  hàm json_encode($array) sẽ chuyển mảng $array thành 1 chuỗi json
 </script>
+
 @endsection

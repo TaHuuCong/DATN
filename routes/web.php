@@ -34,16 +34,10 @@ Route::get('schema/add-col', function() {
 Route::get('/', 'WelcomeController@index');
 
 //Lấy toàn bộ sản phẩm
-Route::get('san-pham', [
-    'as' => 'get.products',
-    'uses' => 'WelcomeController@product'
-]);
+Route::get('san-pham', ['as' => 'get.product', 'uses' => 'WelcomeController@product']);
 
 //Lấy toàn bộ sản phẩm
-Route::get('san-pham-ajax', [
-    'as' => 'get.product.ajax',
-    'uses' => 'WelcomeController@ajax'
-]);
+Route::get('san-pham-ajax', ['as' => 'get.product.ajax', 'uses' => 'WelcomeController@get_product_ajax']);
 
 //Lấy sp theo bộ môn
 Route::get('bo-mon/{sport}', 'WelcomeController@sport');

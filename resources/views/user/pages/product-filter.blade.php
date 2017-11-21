@@ -17,9 +17,7 @@
 
 </div><!--featured-product-->
 
-
 <ul class="pagination">
-<!-- Vấn đề mới lạl xảy ra -->
-	{{ $all_products->appends(['brand' => $brand])->render() }}
+	{{ $all_products->appends(['sport' => $sport, 'cate' => $cate, 'brand' => $brand])->render() }}
 </ul>
 <!-- /.pagination -->

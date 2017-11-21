@@ -27,6 +27,29 @@ var RGBChange = function() {
 //     });
 // });
 
+
+
+// Hiệu ứng ẩn header-top khi scroll-down và hiện khi scroll-up
+$(document).ready(function() {
+    var mywindow = $(window);
+    var mypos = mywindow.scrollTop();
+    var up = false;
+    var newscroll;
+    mywindow.scroll(function() {
+        newscroll = mywindow.scrollTop();
+        if (newscroll > mypos && !up) {
+            $('.header-top').stop().slideToggle();
+            up = !up;
+            console.log(up);
+        } else if (newscroll < mypos && up) {
+            $('.header-top').stop().slideToggle();
+            up = !up;
+        }
+        mypos = newscroll;
+    });
+});
+
+
 // Hiệu ứng của Dropdown Menu
 jQuery(document).ready(function() {
     $(".dropdown").hover(
@@ -125,49 +148,61 @@ $(function() {
 });
 
 // Lọc sản phẩm
+// $(function() {
+//     $('.brandFilter').click(function() {
+//         var brand = [];
+//         $('.brandFilter').each(function() {
+//             if ($(this).is(':checked')) {
+//                 brand.push($(this).val());
+//             }
+//         });
+//         finalbrand = brand.toString();
+//         $.ajax({
+//             url: URL_GET_PRODUCT_AJAX.url,
+//             type: 'GET',
+//             dataType: 'html',
+//             data: 'brand=' + finalbrand,
+//             success: function(response) {
+//                 console.log(response);
+//                 $('#updateDiv').html(response);
+//             }
+//         });
+//     });
+
+// });
+
+
+
 $(function() {
-    $('.brandFilter').click(function() {
-        var brand = [];
-        $('.brandFilter').each(function() {
-            if ($(this).is(':checked')) {
-                brand.push($(this).val());
-            }
-        });
-        finalbrand = brand.toString();
+    var sport, cate, brand, gender;
+    $('.itemFilter').click(function() {
+        $('#updateDiv').html('<div id="loaderpro"></div>');
+
+        sport = multiple_values('sport');
+        cate = multiple_values('cate');
+        brand = multiple_values('brand');
+
         $.ajax({
             url: URL_GET_PRODUCT_AJAX.url,
-            type: 'GET',
-            dataType: 'html',
-            data: 'brand=' + finalbrand,
-            success: function(response) {
-                console.log(response);
-                $('#updateDiv').html(response);
+            type: 'get',
+            data: {
+                sport: sport,
+                cate: cate,
+                brand: brand
+            },
+            success: function(result) {
+                $('#updateDiv').html(result);
             }
         });
     });
 
-    $("#slider-range").slider({
-        range: true,
-        min: 0,
-        max: 100,
-        values: [15, 65],
-        slide: function(event, ui) {
-
-            $("#amount_start").val(ui.values[0]);
-            $("#amount_end").val(ui.values[1]);
-            var start = $('#amount_start').val();
-            var end = $('#amount_end').val();
-
-            $.ajax({
-                type: 'get',
-                dataType: 'html',
-                url: '',
-                data: "start=" + start + "& end=" + end,
-                success: function(response) {
-                    console.log(response);
-                    $('#updateDiv').html(response);
-                }
-            });
-        }
-    });
 });
+
+
+function multiple_values(inputclass) {
+    var val = new Array();
+    $("." + inputclass + ":checked").each(function() {
+        val.push($(this).val());
+    });
+    return val;
+}
