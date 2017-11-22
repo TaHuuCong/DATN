@@ -35,4 +35,22 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
 
+    'facebook' => [
+        'client_id' => '2428166207408987',
+        'client_secret' => '1c320d876ca822048abf2a2b7aaee9f0',
+        'redirect' => 'http://localhost:8080/DATN/auth/login/facebook/callback',
+    ],
+
+    'google' => [
+        'client_id' => '937383544811-b8oag6n1s8j9l4ju58vflpnt8nnmcb4u.apps.googleusercontent.com',
+        'client_secret' => 'QvVAAdHz61RJbbuEfWUuzMjS',
+        'redirect' => 'http://localhost:8080/DATN/auth/login/google/callback',
+    ],
+
+    // 'twitter' => [
+    //     'client_id' => '937383544811-b8oag6n1s8j9l4ju58vflpnt8nnmcb4u.apps.googleusercontent.com',
+    //     'client_secret' => 'QvVAAdHz61RJbbuEfWUuzMjS',
+    //     'redirect' => 'http://localhost:8080/DATN/auth/login/twitter/callback',
+    // ],
+
 ];

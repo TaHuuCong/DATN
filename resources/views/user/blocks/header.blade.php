@@ -15,8 +15,18 @@
 			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
 				<div class="account pull-right">
 					<ul class="nav navbar-nav">
-						<li><a data-toggle="modal" href="#modal-login"><i class="fa fa-sign-in" aria-hidden="true"></i>Đăng nhập</a></li>
-						<li><a data-toggle="modal" href="#modal-register"><i class="fa fa-lock" aria-hidden="true"></i>Đăng kí</a></li>
+					@if (Auth::check())
+						<li class="dropdown">
+	                        <a href="" class="dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->name }} <b class="caret"></b></a>
+							<ul class="profile dropdown-menu">
+								<li><a href=""><i class="fa fa-user" aria-hidden="true"></i>Thông tin cá nhân</a></li>
+								<li><a href="">Lịch sử mua hàng</a></li>
+								<li><a href="{{ route('Logout') }}"><i class="fa fa-sign-in" aria-hidden="true"></i>Đăng xuất</a></li>
+							</ul>
+					@else
+						<li><a href="{{ route('getLogin') }}"><i class="fa fa-sign-in" aria-hidden="true"></i>Đăng nhập</a></li>
+						<li><a href="{{ route('getRegister') }}"><i class="fa fa-user" aria-hidden="true"></i>Đăng ký</a></li>
+					@endif
 					</ul>
 				</div>
 				<!-- /.account -->

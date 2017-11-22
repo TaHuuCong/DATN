@@ -16,14 +16,18 @@ Route::get('/', function () {
 });
 
 Route::get('schema/drop-col', function() {
-    Schema::table('small_banners', function($table) {
-        $table->dropColumn('image');
+    Schema::table('users', function($table) {
+        $table->dropColumn('gender');
     });
 });
 
 Route::get('schema/add-col', function() {
-    Schema::table('small_banners', function($table) {
-        $table->string('image')->nullable();
+    Schema::table('users', function($table) {
+        // $table->integer('gender')->nullable();
+        // $table->string('address');
+        // $table->string('phone');
+        // $table->string('re_password');
+        $table->rememberToken();
     });
 });
 
@@ -31,13 +35,31 @@ Route::get('schema/add-col', function() {
 /* ------------------------------------------------------------------------------- */
 //USER
 
-Route::get('/', 'WelcomeController@index');
+//Về trang chủ
+Route::get('/', ['as' => 'getHome', 'uses' => 'WelcomeController@index']);
+
+//Đăng nhập
+Route::get('/dang-nhap', ['as' => 'getLogin', 'uses' => 'AccountController@getLogin']);
+Route::post('/dang-nhap', ['as' => 'postLogin', 'uses' => 'AccountController@postLogin']);
+
+//Đăng nhập bằng mạng XH
+Route::group(['prefix'=>'auth'], function(){
+    Route::get('login/{service}', 'SocialController@redirectToProvider');
+    Route::get('login/{service}/callback', 'SocialController@handleProviderCallback');
+});
+//Đăng kí
+Route::get('/dang-ki', ['as' => 'getRegister', 'uses' => 'AccountController@getRegister']);
+Route::post('/dang-ki', ['as' => 'postRegister', 'uses' => 'AccountController@postRegister']);
+
+//Đăng xuất
+Route::get('/dang-xuat', ['as' => 'Logout', 'uses' => 'AccountController@postLogout']);
 
 //Lấy toàn bộ sản phẩm
-Route::get('san-pham', ['as' => 'get.product', 'uses' => 'WelcomeController@product']);
+Route::get('san-pham', ['as' => 'getProduct', 'uses' => 'WelcomeController@product']);
 
-//Lấy toàn bộ sản phẩm
-Route::get('san-pham-ajax', ['as' => 'get.product.ajax', 'uses' => 'WelcomeController@get_product_ajax']);
+//Filter sản phẩm
+Route::get('san-pham-ajax', ['as' => 'getProductAjax', 'uses' => 'WelcomeController@get_product_ajax']);
+
 
 //Lấy sp theo bộ môn
 Route::get('bo-mon/{sport}', 'WelcomeController@sport');
@@ -45,11 +67,13 @@ Route::get('bo-mon/{sport}', 'WelcomeController@sport');
 //Lấy sp theo bộ môn và thể loại
 Route::get('bo-mon/{sport}/{category}', 'WelcomeController@sport_category');
 
+
 //Lấy sp theo thương hiệu
 Route::get('thuong-hieu/{brand}', 'WelcomeController@brand');
 
 //Lấy sp theo thương hiệu và thể loại
 Route::get('thuong-hieu/{brand}/{category}', 'WelcomeController@brand_category');
+
 
 //Lấy tin tức theo loại tin
 Route::get('{newscate}', 'WelcomeController@newscate');

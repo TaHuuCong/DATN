@@ -61,56 +61,12 @@ class WelcomeController extends Controller {
 	}
 
 
-	// // Lấy toàn bộ sản phẩm
-	// public function product (Request $request)
-	// {
-	// 	$sports = DB::table('sports')->orderBy('id', 'asc')->get();
-	// 	$cates  = DB::table('categories')->orderBy('id', 'asc')->get();
-	// 	$brands = DB::table('brands')->orderBy('id', 'asc')->get();
-
-	// 	//khi click vào checkbox thì mới có param thì mới sử dụng ajax, còn không click sẽ không có param nên chỉ cần lấy dữ liệu bình thường. Nhưng khi phân trang thì luôn cần param brand, khi lấy dữ liệu bình thường thì param brand = rỗng, còn khi lấy dữ liệu theo ajax thì brand = $brand
-
-	// 	$brand = myUrlEncode($request->input('brand', null)); // $brand ở đây là phần brand = $brand trên url, nó là 1 chuỗi được ngăn cách với nhau bởi dấu phẩy nhờ hàm tự viết myUrlEncode, và nó chính là các id của những cái đã được click khi filter. Khi ở trang 1 phân trang thì param brand trên ẩn đi, từ trang 2 thì brand = ... & page = 2 sẽ hiện ra
-
-	// 	//nếu tồn tại param brand = $brand trên url thì sử dụng hàm explode để chuyển đổi chuỗi $brand thành 1 mảng gồm các phần tử của chuỗi đó dựa theo dấu tách là ',', ví dụ explode({1,2,3}) --> [1, 2, 3]
-	// 	if ($brand) {
-	// 		$all_products = DB::table('products')->whereIn('brand_id', explode( ',', $brand ))->paginate(3);
-	// 	} else {
-	// 		$all_products = DB::table('products')->orderBy('id', 'desc')->paginate(3);
-	// 	}
-	// 	return view('user.pages.product', compact('all_products', 'sports', 'cates', 'brands', 'brand'));
-	// }
-
-	// // Lấy sản phẩm khi click vào checkbox sử dụng ajax
-	// public function get_product_ajax (Request $request)
-	// {
-	// 	if ($request->ajax()) {
-	// 		$brand = $request->brand; //brand là param trên url dùng để phân trang khi filter
-
-	// 		if ($brand) {
-	// 			$all_products = DB::table('products')->whereIN('brand_id', explode( ',', $brand ))->paginate(3);
-	// 		} else {
-	// 			$all_products = DB::table('products')->orderBy('id', 'desc')->paginate(3);
-	// 		}
-	// 		$all_products->setPath(route('get.product'));  //Hàm setPath cho phép tuỳ chọn URL sử dụng bởi paginator khi sinh ra links, ở đây nó sẽ hiển thị theo dạng của route get.product là /san-pham
- //            return view('user.pages.product-filter', compact('all_products', 'brand'));
-	// 	}
-	// }
-
-
 	public function product (Request $request)
 	{
 		$sports = DB::table('sports')->orderBy('id', 'asc')->get();
 		$cates  = DB::table('categories')->orderBy('id', 'asc')->get();
 		$brands = DB::table('brands')->orderBy('id', 'asc')->get();
 
-		//khi click vào checkbox thì mới có param thì mới sử dụng ajax, còn không click sẽ không có param nên chỉ cần lấy dữ liệu bình thường. Nhưng khi phân trang thì luôn cần param brand, khi lấy dữ liệu bình thường thì param brand = rỗng, còn khi lấy dữ liệu theo ajax thì brand = $brand
-
-		// $sport = myUrlEncode($request->input('sport', null));
-		// $cate = myUrlEncode($request->input('cate', null));
-		// $brand = myUrlEncode($request->input('brand', null)); // $brand ở đây là phần brand = $brand trên url, nó là 1 chuỗi được ngăn cách với nhau bởi dấu phẩy nhờ hàm tự viết myUrlEncode, và nó chính là các id của những cái đã được click khi filter. Khi ở trang 1 phân trang thì param brand trên ẩn đi, từ trang 2 thì brand = ... & page = 2 sẽ hiện ra
-
-		  //dạng mảng
 		if (!empty($request->all())) {
 			$sport = $request->input('sport');
 			$cate = $request->input('cate');
@@ -142,42 +98,33 @@ class WelcomeController extends Controller {
 	public function get_product_ajax (Request $request)
 	{
 		//sport, brand, cate là param trên url dùng để phân trang khi filter
+		//khi click vào checkbox thì mới có param thì mới sử dụng ajax, còn không click sẽ không có param nên chỉ cần lấy dữ liệu bình thường. Nhưng khi phân trang thì luôn cần param, khi lấy dữ liệu bình thường thì param = rỗng, còn khi lấy dữ liệu theo ajax thì brand = $brand...
 		$sport = null;
 		$cate = null;
 		$brand = null;
 		if ($request->ajax()) {
-			
-
-			// if (!empty($brand)) {  //nếu tồn tại $brand (click chọn) thì $brand là dạng mảng
-			// 	$all_products = DB::table('products')->whereIn('brand_id', $brand)->paginate(3);
-			// }
 			if (!empty($request->all())) {
 				$sport = $request->sport;
 				$cate = $request->cate;
 				$brand = $request->brand;
 				$where = [];
-				//lỗi chưa lấy được ở đây
+				$all_products = DB::table('products');
 				if (!empty($sport)) {
-					foreach ($sport as $key => $value) {
-						$where['sport_id'] = $value;
-					}
+					$all_products = $all_products->whereIn('sport_id', $sport);
 				}
 				if (!empty($cate)) {
-					foreach ($cate as $key => $value) {
-						$where['cate_id'] = $value;
-					}
+					$all_products = $all_products->whereIn('cate_id', $cate);
+
 				}
 				if (!empty($brand)) {
-					foreach ($brand as $key => $value) {
-						$where['brand_id'] = $value;
-					}
+					$all_products = $all_products->whereIn('brand_id', $brand);
 				}
-				$all_products = DB::table('products')->where($where)->paginate(3);
+				$all_products = $all_products->paginate(3);
 			}
 			else {
 				$all_products = DB::table('products')->orderBy('id', 'desc')->paginate(3);
 			}
-			$all_products->setPath(route('get.product'));  //Hàm setPath cho phép tuỳ chọn URL sử dụng bởi paginator khi sinh ra links, ở đây nó sẽ hiển thị theo dạng của route get.product là /san-pham
+			$all_products->setPath(route('getProduct'));  //Hàm setPath cho phép tuỳ chọn URL sử dụng bởi paginator khi sinh ra links, ở đây nó sẽ hiển thị theo dạng của route get.product là /san-pham
             return view('user.pages.product-filter', compact('all_products', 'sport', 'cate', 'brand'));
 		}
 	}

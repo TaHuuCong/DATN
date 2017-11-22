@@ -131,7 +131,7 @@
 <!-- /.main-content -->
 
 <script>
-	URL_GET_PRODUCT_AJAX = {!! json_encode(['url' => route('get.product.ajax')]) !!}   //  hàm json_encode($array) sẽ chuyển mảng $array thành 1 chuỗi json
+	URL_GET_PRODUCT_AJAX = {!! json_encode(['url' => route('getProductAjax')]) !!}   //  hàm json_encode($array) sẽ chuyển mảng $array thành 1 chuỗi json
 </script>
 
 @endsection
