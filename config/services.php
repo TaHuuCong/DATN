@@ -42,8 +42,8 @@ return [
     ],
 
     'google' => [
-        'client_id' => '937383544811-b8oag6n1s8j9l4ju58vflpnt8nnmcb4u.apps.googleusercontent.com',
-        'client_secret' => 'QvVAAdHz61RJbbuEfWUuzMjS',
+        'client_id' => '1021682225877-8ple3bt83nbduglljeol3i22snsmqros.apps.googleusercontent.com',
+        'client_secret' => 'yf4g96HVB7dv9gI7r4ZAwWor',
         'redirect' => 'http://localhost:8080/DATN/auth/login/google/callback',
     ],
 

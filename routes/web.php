@@ -17,17 +17,15 @@ Route::get('/', function () {
 
 Route::get('schema/drop-col', function() {
     Schema::table('users', function($table) {
-        $table->dropColumn('gender');
+        $table->dropColumn('password');
+        $table->dropColumn('re_password');
     });
 });
 
 Route::get('schema/add-col', function() {
     Schema::table('users', function($table) {
-        // $table->integer('gender')->nullable();
-        // $table->string('address');
-        // $table->string('phone');
-        // $table->string('re_password');
-        $table->rememberToken();
+        $table->string('password')->nullable();
+        $table->string('re_password')->nullable();
     });
 });
 
@@ -44,8 +42,12 @@ Route::post('/dang-nhap', ['as' => 'postLogin', 'uses' => 'AccountController@pos
 
 //Đăng nhập bằng mạng XH
 Route::group(['prefix'=>'auth'], function(){
-    Route::get('login/{service}', 'SocialController@redirectToProvider');
-    Route::get('login/{service}/callback', 'SocialController@handleProviderCallback');
+    Route::get('login/facebook', 'SocialController@redirectToProviderFaceBook');
+    Route::get('login/facebook/callback', 'SocialController@handleProviderFaceBook');
+
+    Route::get('login/google', 'SocialController@redirectToProviderGoogle');
+    Route::get('login/google/callback', 'SocialController@handleProviderGoogle');
+
 });
 //Đăng kí
 Route::get('/dang-ki', ['as' => 'getRegister', 'uses' => 'AccountController@getRegister']);

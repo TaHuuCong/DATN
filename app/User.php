@@ -26,4 +26,9 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function user_social ()
+    {
+        return $this->hasMany('App\UserSocial');  //1 ng dùng có nhiều tài khoản mạng XH
+    }
 }
