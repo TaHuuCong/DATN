@@ -76,12 +76,16 @@ Route::get('thuong-hieu/{brand}', 'WelcomeController@brand');
 //Lấy sp theo thương hiệu và thể loại
 Route::get('thuong-hieu/{brand}/{category}', 'WelcomeController@brand_category');
 
+//Lấy chi tiết sản phẩm
+Route::get('chi-tiet-san-pham/{id}', ['as' => 'productDetail', 'uses' => 'WelcomeController@productDetail']);
 
 //Lấy tin tức theo loại tin
-Route::get('{newscate}', 'WelcomeController@newscate');
+Route::get('loai-tin/{newscate}', 'WelcomeController@newscate');
 
 //Lấy tin tức theo loại tin và tiêu đề tin
-Route::get('{newscate}/{newstitle}', 'WelcomeController@newscate_newstitle');
+Route::get('loai-tin/{newscate}/{newstitle}', 'WelcomeController@newscate_newstitle');
+
+
 
 /* ------------------------------------------------------------------------------- */
 //ADMIN

@@ -113,7 +113,7 @@
 					@foreach ($newest_products as $newest_prod)
 						<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
 							<div class="product-info text-center">
-								<a href="#"><img src="{{ asset('resources/upload/images/product/small/'.$newest_prod->id.'/'.$newest_prod->image) }}" /></a>
+								<a href="{{ route('productDetail', $newest_prod->id) }}"><img src="{{ asset('resources/upload/images/product/small/'.$newest_prod->id.'/'.$newest_prod->image) }}" /></a>
 								<div class="shortlinks">
 					              	<a class="details" href="#"><i class="fa fa-info-circle" aria-hidden="true"></i></i> CHI TIẾT</a>
 					              	<a class="wishlist" href="#"><i class="fa fa-heart" aria-hidden="true"></i> YÊU THÍCH</a>

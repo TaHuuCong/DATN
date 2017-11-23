@@ -187,4 +187,15 @@ class WelcomeController extends Controller {
 		return view('user.pages.news');
 	}
 
+
+	//Lấy chi tiết sản phẩm
+	public function productDetail ($id)
+	{
+		$product_detail = DB::table('products')->where('id', $id)->first();
+		$prod_images = DB::table('product_images')->select('id', 'name')->where('pro_id', $product_detail->id)->get();
+		$prod_properties = DB::table('product_properties')->select('id', 'size', 'color', 'status')->where('pro_id', $product_detail->id)->get();
+
+		return view('user.pages.productdetail', compact('product_detail', 'prod_images', 'prod_properties'));
+	}
+
 }

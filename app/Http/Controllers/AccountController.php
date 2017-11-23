@@ -31,8 +31,8 @@ class AccountController extends Controller
 
         //Lấy thông tin và so sánh với data trong DB
         $input_account = array('email' => $request->email, 'password' => $request->password);
-        if (Auth::attempt($input_account)) {  //nếu có tồn tại trong DB
-            return redirect()->back()->with(['flash_level' => 'success', 'flash_message' => 'Đăng nhập thành công !']);
+        if (Auth::attempt($input_account, $request->has('remember_token'))) {  //nếu có tồn tại trong DB, ở đây $request->has('remember_token') tương ứng với remember_token = true, là có click vào checkbox ghi nhớ đăng nhập
+            return redirect()->route('getHome');
         } else {
             return redirect()->back()->with(['flash_level' => 'danger', 'flash_message' => 'Đăng nhập không thành công !']);
         }
@@ -81,7 +81,7 @@ class AccountController extends Controller
     	$user->re_password = Hash::make($request->re_password);
     	$user->save();
 
-    	return redirect()->back()->with(['flash_level' => 'success', 'flash_message' => 'Đăng kí tài khoản thành công !']);
+    	return redirect()->route('getHome');
     }
 
     public function postLogout ()

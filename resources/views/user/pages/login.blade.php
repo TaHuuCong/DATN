@@ -53,10 +53,7 @@
 						<input type="password" class="form-control" name="password">
 					</div>
 					<div class="form-group">
-						<label>
-							<input type="checkbox" class="checkbox" name="remember_login">
-							Duy trì đăng nhập
-						</label>
+						<input type="checkbox" class="checkbox" name="remember_token"> Ghi nhớ đăng nhập
 					</div>
 					<div class="form-group">
 						<button type="submit" class="btn btn-primary">
