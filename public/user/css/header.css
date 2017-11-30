@@ -1,15 +1,19 @@
 /* HEADER */
+header {
+  width: 100%;
+  z-index: 999;
+  position: fixed;
+  top: 0;
+}
 
 /* header-top */
 .header-top {
-  height: 40px;
-  background-color: #11252F;
+  background: none repeat scroll 0 0 #11252F;
 }
 
 .header-top li a {
-  padding: 10px 15px !important;
   color: #fff;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 600;
 }
 
@@ -33,38 +37,32 @@
 
 .header-top ul.profile.dropdown-menu a:hover {
   color: #FF9800;
+  background: none;
 }
-
-/* END: header-top */
 
 /* --------------------------------------------------- */
 
-header {
-  width: 100%;
-  z-index: 999;
-  position: fixed;
-  top: 0;
-}
-
 /* header-middle */
 .header-middle {
-  height: 80px;
   background-color: #455A64;
-  border-bottom: 2px solid #11252F;
+  border-bottom: 1px solid #11252F;
 }
 
 .header-middle .logo {
   padding: 10px 0px;
 }
 
-/* ------------  Shopping Cart ------------ */
+/* ---- Shopping Cart ---- */
+.header-middle .shopping-cart {
+  margin-top: 18px;
+}
+
 .header-middle .shopping-cart li.dropdown {
   display: inline-block;
   text-transform: uppercase;
 }
 
 .shopping-cart li.dropdown > a {
-  margin: 18px 0 0;
   border: 1px solid #fff;
   color: #fff;
   font-weight: 600;
@@ -153,10 +151,6 @@ header {
   background-color: #FF9800;
 }
 
-/*
-
-/* END: header-middle */
-
 /* --------------------------------------------------- */
 
 /* header-bottom */
@@ -221,7 +215,7 @@ li.menu-large {
 }
 
 /* .other-sports a, .other-brands a {
-  font-weight: 600;
+font-weight: 600;
 } */
 .mega-menu li.mega-menu-column {
   width: 100%;

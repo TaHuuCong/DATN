@@ -1,9 +1,9 @@
 <div class="header-top">
 	<div class="container">
 		<div class="row">
-			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-				<div class="sub-menu pull-left">
-					<ul class="nav navbar-nav pull-left">
+			<div class="col-sm-6">
+				<div class="sub-menu">
+					<ul class="nav nav-pills">
 						<li><a href="contact.html"><i class="fa fa-phone" aria-hidden="true"></i>Liên hệ</a></li>
 						<li><a href="wishlist.html"><i class="fa fa-heart" aria-hidden="true"></i>Yêu thích</a></li>
 						<li><a href="checkout.html"><i class="fa fa-money" aria-hidden="true"></i>Thanh toán</a></li>
@@ -12,9 +12,9 @@
 				<!-- /.sub-menu -->
 			</div>
 
-			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+			<div class="col-sm-6">
 				<div class="account pull-right">
-					<ul class="nav navbar-nav">
+					<ul class="nav nav-pills">
 					@if (Auth::check())
 						<li class="dropdown">
 	                        <a href="" class="dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->name }} <b class="caret"></b></a>
@@ -40,16 +40,16 @@
 	<div class="header-middle">
 		<div class="container">
 			<div class="row">
-				<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+				<div class="col-sm-4">
 					<div class="logo pull-left">
 						<a href="{{ URL('/') }}"><img src="themes/images/logo.png" alt="" height="60"></a>
 					</div>
 					<!-- /.logo -->
 				</div>
 
-				<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+				<div class="col-sm-8">
 					<div class="shopping-cart pull-right">
-						<ul class="nav pull-left">
+						<ul class="nav">
 		                    <li class="dropdown hover">
 		                    	<a href="#" class="dropdown-toggle" id="shopping-cart"><span class="glyphicon glyphicon-shopping-cart"></span>  Giỏ hàng<span id="count-item" data-count="0">0 sản phẩm</span> - <span>$589.50</span> <b class="caret"></b></a>
 		                        <ul class="dropdown-menu">

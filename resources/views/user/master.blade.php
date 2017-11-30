@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Trang chủ</title>
 
 	<!-- Google Fonts -->
@@ -10,11 +10,9 @@
 
 	<!-- CSS Library -->
 	<link rel="stylesheet" type="text/css" href="{{ asset('public/user/css/bootstrap.min.css') }}">
-	<!-- <link rel="stylesheet" type="text/css" href="public/user/css/bootstrap-responsive.css"> -->
 	<link rel="stylesheet" type="text/css" href="{{ asset('public/user/css/jquery-ui.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('public/user/css/font-awesome.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('public/user/css/price-range.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ asset('public/user/css/responsive.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('public/user/css/reset.css') }}">
 
 	<!-- My CSS -->
@@ -22,6 +20,7 @@
 	<link rel="stylesheet" type="text/css" href="{{ asset('public/user/css/header.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('public/user/css/slider.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('public/user/css/contact.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('public/user/css/responsive.css') }}">
 </head>
 <body>
 	<div class="wrapper">
