@@ -78,26 +78,7 @@ $('.product-info').each(function() {
 });
 
 
-// Hiệu ứng zoom ảnh
-$(document).ready(function() {
-
-    $("#zoom_05").elevateZoom({
-        gallery: 'gal1',
-        zoomType: "inner",
-        cursor: "crosshair",
-        galleryActiveClass: 'active',
-        imageCrossfade: true,
-        loadingIcon: ''
-    });
-
-    $("#zoom_05").bind("click", function(e) {
-        var ez = $('#zoom_05').data('elevateZoom');
-        $.fancybox(ez.getGalleryList());
-        return false;
-    });
-
-});
-
+// Hiệu ứng zoom ảnh chi tiết của sản phẩm
 
 // Hiệu ứng sản phẩm bay vào giỏ hàng
 $(document).on('click', '.add-to-cart', function(event) {

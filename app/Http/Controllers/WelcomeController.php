@@ -30,6 +30,8 @@ class WelcomeController extends Controller {
 	 *
 	 * @return Response
 	 */
+
+
 	public function index()
 	{
 		$large_banner_first = DB::table('large_banners')->where('display', '=', '1')->orderBy('id', 'desc')->first();
@@ -195,7 +197,7 @@ class WelcomeController extends Controller {
 		$prod_images = DB::table('product_images')->select('id', 'name')->where('pro_id', $product_detail->id)->get();
 		$prod_properties = DB::table('product_properties')->select('id', 'size', 'color', 'status')->where('pro_id', $product_detail->id)->get();
 
-		return view('user.pages.productdetail', compact('product_detail', 'prod_images', 'prod_properties'));
+		return view('user.pages.productdetail', compact('product_detail', 'prod_images', 'prod_properties', 'id'));
 	}
 
 }

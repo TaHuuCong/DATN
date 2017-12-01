@@ -34,22 +34,24 @@ a:focus {
 /* --------------------------------------------------- */
 
 /* WRAPPER */
+
 .wrapper {
   position: relative;
-  z-index: 1;
+  z-index: 0;
 }
 
 /* MAIN-CONTENT */
-.wrapper-content {
+
+/* .wrapper-content {
   margin-top: 170px;
-}
+} */
 
 .main-content {
   margin-bottom: 40px;
 }
 
 ul.breadcrumb {
-  margin-top: 30px;
+  margin-top: 200px;
 }
 
 /* main-left */
@@ -411,60 +413,6 @@ h2.title {
 
 /* --------------------------------------------------- */
 
-/* LOGIN, REGiSTER */
-.modal-header {
-  margin: 0 20px;
-}
-
-.modal-header h4 {
-  font-weight: 700;
-}
-
-.modal-body .control-group {
-  margin: 0 0 15px 100px;
-}
-
-.modal-body .control-group > label, .your-info .control-group > label {
-  width: 35%;
-}
-
-.modal-body .control-group > input, .your-info .control-group > input {
-  width: 45%;
-}
-
-.modal-body .control-group > input#gender, .your-info .control-group > input#gender {
-  width: 3%;
-  margin: 0 5px 5px 0;
-  vertical-align: middle;
-}
-
-.modal-body .control-group span, .your-info .control-group span {
-  line-height: 25px;
-}
-
-.modal-body .control-group span input, .your-info .control-group span input {
-  width: 13px;
-  height: 13px;
-  float: left;
-  margin-right: 5px;
-}
-
-.modal-footer {
-  border-top: none;
-  margin-top: 0;
-}
-
-.modal-footer .control-group button {
-  background-color: #FF9800;
-  color: #212121;
-  font-weight: 500;
-  margin: 0 230px;
-}
-
-/* END: LOGIN, REGISTER */
-
-/* --------------------------------------------------- */
-
 /* FOOTER */
 
 /* END: FOOTER */
@@ -820,27 +768,30 @@ h5.your-order-head {
 /* PRODUCT-DETAILS */
 
 /* .product-details */
+
 .product-details {
   margin-bottom: 40px;
   overflow: hidden;
   margin-top: 10px;
 }
 
-.product-details #gal1 {
+/* .product-details #gál {
   margin-top: 15px;
 }
 
-.product-details #gal1 a:focus {
+.product-details #gál a:focus {
   color: #fff;
 }
 
-.product-details #gal1 img {
+.product-details #gál img {
   width: 20% !important;
   height: 20% !important;
   margin-right: 10px;
 }
+ */
 
 /* Css for Zoom Image: fix lỗi hiệu ứng ko chạy */
+
 .zoomContainer {
   z-index: 9999 !important;
 }
@@ -849,7 +800,7 @@ h5.your-order-head {
   z-index: 9999 !important;
 }
 
-.product-information {
+/* .product-information {
   border: 1px solid #E0E0E0;
   overflow: hidden;
   padding: 0 30px 30px 30px;
@@ -880,7 +831,7 @@ h5.your-order-head {
 .product-action a:focus, .product-action a:hover {
   background-color: #FF9800;
   color: #fff;
-}
+} */
 
 /* end: .product-details */
 

@@ -42,7 +42,7 @@
 			<div class="row">
 				<div class="col-sm-4">
 					<div class="logo pull-left">
-						<a href="{{ URL('/') }}"><img src="themes/images/logo.png" alt="" height="60"></a>
+						<a href="{{ URL('/') }}"><img src="{{ asset('public/user/images/logo.png') }}" alt="" height="60"></a>
 					</div>
 					<!-- /.logo -->
 				</div>
@@ -101,33 +101,33 @@
 	<!-- /.header-middle -->
 
 	<div class="header-bottom navbar navbar-default navbar-static-top">
-		<div class="container">
-		    <div class="navbar-header">
-	            <!-- Mobile toggle button -->
-	            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-			</div>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-sm-6 col-md-8" style="margin-left: 89.5px; padding-left: 30px">
+					<div class="navbar-header">
+			            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+					</div>
 
-			<div class="mainmenu pull-left">
-	            <nav class="navbar-collapse collapse">
-		            <ul class="nav navbar-nav">
-					    <li><a href="{{ url('/') }}">Trang chủ</a></li>
-					    <li><a href="{{ url('san-pham') }}">Sản phẩm</a></li>
-	                    <li class="dropdown menu-large">
-	                        <a href="" class="dropdown-toggle" data-toggle="dropdown">Bộ môn <b class="caret"></b></a>
-							<ul class="dropdown-menu mega-menu">
-								<div class="row">
-									<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 main-sports">
-										<?php
-											$sports = DB::table('sports')->whereBetween('id', [1,4])->get();
-											$cates  = DB::table('categories')->orderBy('id', 'asc')->get();
-										?>
-										@foreach ($sports as $sport)
-											<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+					<div class="mainmenu pull-left">
+			            <nav class="navbar-collapse collapse">
+				            <ul class="nav navbar-nav">
+							    <li><a href="{{ url('/') }}">Trang chủ</a></li>
+							    <li><a href="{{ url('san-pham') }}">Sản phẩm</a></li>
+			                    <li class="dropdown menu-large">
+			                        <a href="" class="dropdown-toggle" data-toggle="dropdown">Bộ môn <b class="caret"></b></a>
+									<ul class="dropdown-menu mega-menu">
+										<div class="row">
+											<?php
+												$sports = DB::table('sports')->whereBetween('id', [1,4])->get();
+												$cates  = DB::table('categories')->orderBy('id', 'asc')->get();
+											?>
+											@foreach ($sports as $sport)
+											<div class="col-sm-6 col-md-2">
 												<li class="mega-menu-column main">
 												    <ul>
 												    	<li class="dropdown-header"><a style="text-transform: uppercase;" href="{{ URL('bo-mon/'.$sport->alias) }}">{!! $sport->name !!}</a></li>
@@ -140,35 +140,32 @@
 												    </ul>
 											    </li>
 											</div>
-										@endforeach
-									</div>
-									<!-- /.main-sports -->
+											@endforeach
 
-									<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 other-sports">
-										<li class="mega-menu-column">
-										    <ul>
-										    	<li class="dropdown-header other">Bộ môn khác</li>
-										    	<?php $other_sport = DB::table('sports')->where('id', '>', '4')->get(); ?>
-										    	@foreach ($other_sport as $osport)
-										    		<li><a class="font13" href="{{ URL('bo-mon/'.$osport->alias) }}">{!! $osport->name !!}</a></li>
-										    	@endforeach
-										    </ul>
-									    </li>
-									</div>
-									<!-- /.other-sports -->
-								</div>
-							</ul>
-						</li>
-						<li class="dropdown menu-large">
-	                        <a href="" class="dropdown-toggle" data-toggle="dropdown">Thương hiệu <b class="caret"></b></a>
-							<ul class="dropdown-menu mega-menu">
-								<div class="row">
-									<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 main-brands">
-										<?php
-											$brands = DB::table('brands')->whereBetween('id', [1,4])->get();
-										?>
-										@foreach ($brands as $brand)
-											<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+											<div class="col-sm-6 col-md-2 other-sports">
+												<li class="mega-menu-column">
+												    <ul>
+												    	<li class="dropdown-header other">Bộ môn khác</li>
+												    	<?php $other_sport = DB::table('sports')->where('id', '>', '4')->get(); ?>
+												    	@foreach ($other_sport as $osport)
+												    		<li><a class="font13" href="{{ URL('bo-mon/'.$osport->alias) }}">{!! $osport->name !!}</a></li>
+												    	@endforeach
+												    </ul>
+											    </li>
+											</div>
+											<!-- /.other-sports -->
+										</div>
+									</ul>
+								</li>
+								<li class="dropdown menu-large">
+			                        <a href="" class="dropdown-toggle" data-toggle="dropdown">Thương hiệu <b class="caret"></b></a>
+									<ul class="dropdown-menu mega-menu">
+										<div class="row">
+											<?php
+												$brands = DB::table('brands')->whereBetween('id', [1,4])->get();
+											?>
+											@foreach ($brands as $brand)
+											<div class="col-sm-6 col-md-2">
 												<li class="mega-menu-column">
 												    <ul>
 												    	<li class="dropdown-header"><a style="text-transform: uppercase;" href="{{ URL('thuong-hieu/'.$brand->alias) }}">{{ $brand->name }}</a></li>
@@ -181,61 +178,66 @@
 												    </ul>
 											    </li>
 											</div>
-										@endforeach
+											@endforeach
 
-									</div>
-									<!-- /.main-brands -->
 
-									<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 other-brands">
-										<li class="mega-menu-column">
-										    <ul>
-										    	<li class="dropdown-header other">Thương hiệu khác</li>
-												<?php $other_brand = DB::table('brands')->where('id', '>', '4')->get(); ?>
-										    	@foreach ($other_brand as $obrand)
-										    		<li><a class="font13" href="{{ URL('thuong-hieu/'.$obrand->alias) }}">{!! $obrand->name !!}</a></li>
-										    	@endforeach
-										    </ul>
-									    </li>
-									</div>
-									<!-- /.other-brands -->
-								</div>
-							</ul>
-						</li>
-	                    <li class="dropdown menu-large">
-	                        <a href="" class="dropdown-toggle" data-toggle="dropdown">Blog <b class="caret"></b></a>
-							<ul class="dropdown-menu mega-menu">
-								<div class="row">
-									<?php
-										$newscate = DB::table('news_categories')->whereBetween('id', [1,4])->get();
-									?>
-									@foreach ($newscate as $ncate)
-										<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-											<li class="mega-menu-column">
-											    <ul>
-											    	<li class="dropdown-header"><a style="text-transform: uppercase;" href="{{ URL($ncate->alias) }}">{{ $ncate->name }}</a></li>
-
-											    	<?php $news = DB::table('news')->select('news.title', 'news.alias as nalias')->join('news_categories as ncate','ncate.id', '=', 'news.ncate_id')->where('ncate.id', $ncate->id)->orderBy('news.id', 'desc')->take(3)->get(); ?>
-											    	@foreach ($news as $news)
-											    		<li><a class="font13" href="{{ URL($ncate->alias, $news->nalias) }}">{!! $news->title !!}</a></li>
-											    	@endforeach
-											    </ul>
-										    </li>
+											<div class="col-sm-6 col-md-2 other-brands">
+												<li class="mega-menu-column">
+												    <ul>
+												    	<li class="dropdown-header other">Thương hiệu khác</li>
+														<?php $other_brand = DB::table('brands')->where('id', '>', '4')->get(); ?>
+												    	@foreach ($other_brand as $obrand)
+												    		<li><a class="font13" href="{{ URL('thuong-hieu/'.$obrand->alias) }}">{!! $obrand->name !!}</a></li>
+												    	@endforeach
+												    </ul>
+											    </li>
+											</div>
+											<!-- /.other-brands -->
 										</div>
-									@endforeach
-								</div>
-							</ul>
-						</li>
-	                    <li><a href="video.html">Video</a></li>
-	                </ul>
-	            </nav>
-			</div>
-			<!-- /.mainmenu -->
+									</ul>
+								</li>
+			                    <li class="dropdown menu-large">
+			                        <a href="" class="dropdown-toggle" data-toggle="dropdown">Blog <b class="caret"></b></a>
+									<ul class="dropdown-menu mega-menu">
+										<div class="row">
+											<?php
+												$newscate = DB::table('news_categories')->whereBetween('id', [1,4])->get();
+											?>
+											@foreach ($newscate as $ncate)
+												<div class="col-sm-6 col-md-3">
+													<li class="mega-menu-column">
+													    <ul>
+													    	<li class="dropdown-header"><a style="text-transform: uppercase;" href="{{ URL($ncate->alias) }}">{{ $ncate->name }}</a></li>
 
-			<div class="search pull-right">
-				<form class="form-search top-search">
-                    <input type="text" class="input-medium search-query" placeholder="Search Here…">
-                </form>
+													    	<?php $news = DB::table('news')->select('news.title', 'news.alias as nalias')->join('news_categories as ncate','ncate.id', '=', 'news.ncate_id')->where('ncate.id', $ncate->id)->orderBy('news.id', 'desc')->take(3)->get(); ?>
+													    	@foreach ($news as $news)
+													    		<li><a class="font13" href="{{ URL($ncate->alias, $news->nalias) }}">{!! $news->title !!}</a></li>
+													    	@endforeach
+													    </ul>
+												    </li>
+												</div>
+											@endforeach
+										</div>
+									</ul>
+								</li>
+			                    <li><a href="video.html">Video</a></li>
+			                </ul>
+			            </nav>
+					</div>
+
+				</div>
+
+				<div class="col-sm-6 col-md-2">
+					<div class="search" style="margin-left: 30px">
+						<form class="form-search top-search">
+		                    <input type="text" class="input-medium search-query" placeholder="Search Here…">
+		                </form>
+					</div>
+				</div>
 			</div>
+
+
+
 			<!-- /.search -->
 		</div>
 	</div>
