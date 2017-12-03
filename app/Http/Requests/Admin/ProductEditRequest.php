@@ -24,14 +24,16 @@ class ProductEditRequest extends FormRequest
     public function rules()
     {
         return [
-            'txtProName' => 'required'
+            'txtProName' => 'required',
+            'txtPrice'   => 'required'
         ];
     }
 
     public function messages()
     {
         return [
-            'txtProName.required' => 'Vui lòng nhập tên sản phẩm'
+            'txtProName.required' => 'Vui lòng nhập tên sản phẩm',
+            'txtPrice.required'   => 'Vui lòng nhập giá sản phẩm'
         ];
     }
 }

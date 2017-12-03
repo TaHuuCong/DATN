@@ -196,8 +196,11 @@ class WelcomeController extends Controller {
 		$product_detail = DB::table('products')->where('id', $id)->first();
 		$prod_images = DB::table('product_images')->select('id', 'name')->where('pro_id', $product_detail->id)->get();
 		$prod_properties = DB::table('product_properties')->select('id', 'size', 'color', 'status')->where('pro_id', $product_detail->id)->get();
+		$sizes = DB::table('product_properties')
+              					->select('size')
+              					->where('pro_id', $id)->groupBy('size')->get();
 
-		return view('user.pages.productdetail', compact('product_detail', 'prod_images', 'prod_properties', 'id'));
+		return view('user.pages.productdetail', compact('product_detail', 'prod_images', 'prod_properties', 'id', 'sizes'));
 	}
 
 }

@@ -11,11 +11,11 @@
             @include('admin.blocks.error')
         </div>
     </div>
-    <form action="" method="POST" name="formEditProduct" enctype="multipart/form-data">
+    <form action="{{ route('admin.product.postEdit') }}" method="POST" name="formEditProduct" enctype="multipart/form-data">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
             <div class="form-group">
-                <label>Thể loại</label>
+                <label>Thể loại <span class="asterisk">*</span></label>
                 <select class="form-control" name="cateParent" disabled>
                 @foreach ($cate as $c_item)
                     <option value="{{ $c_item->id }}" {{ ($product->cate_id == $c_item->id) ? 'selected' : '' }}>{{ $c_item->name }}</option>
@@ -23,7 +23,7 @@
                 </select>
             </div>
             <div class="form-group">
-                <label>Bộ môn</label>
+                <label>Bộ môn <span class="asterisk">*</span></label>
                 <select class="form-control" name="sportParent" disabled>
                 @foreach ($sport as $s_item)
                     <option value="{{ $s_item->id }}" {{ ($product->sport_id == $s_item->id) ? 'selected' : '' }}>{{ $s_item->name }}</option>
@@ -31,7 +31,7 @@
                 </select>
             </div>
             <div class="form-group">
-                <label>Thương hiệu</label>
+                <label>Thương hiệu <span class="asterisk">*</span></label>
                 <select class="form-control" name="brandParent" disabled>
                 @foreach ($brand as $b_item)
                     <option value="{{ $b_item->id }}" {{ ($product->brand_id == $b_item->id) ? 'selected' : '' }}>{{ $b_item->name }}</option>
@@ -39,20 +39,23 @@
                 </select>
             </div>
             <div class="form-group">
-                <label>Tên sản phẩm</label>
+                <label>Tên sản phẩm <span class="asterisk">*</span></label>
                 <input class="form-control" name="txtProName" value="{!! old('txtProName', isset($product) ? $product['name'] : null) !!}" />
             </div>
             <div class="form-group">
-                <label style="margin-right: 20px">Giới tính</label>
+                <label style="margin-right: 20px">Giới tính <span class="asterisk">*</span></label>
                 <label class="radio-inline">
                     <input name="chooseGender" value="1" type="radio" {!! ($product['gender'] == 1) ? 'checked' : '' !!} > Nam
                 </label>
                 <label class="radio-inline">
                     <input name="chooseGender" value="2" type="radio" {!! ($product['gender'] == 2) ? 'checked' : '' !!} > Nữ
                 </label>
+                <label class="radio-inline">
+                    <input name="chooseGender" value="3" type="radio" {!! ($product['gender'] == 3) ? 'checked' : '' !!} > Không quan tâm
+                </label>
             </div>
             <div class="form-group">
-                <label>Giá</label>
+                <label>Giá <span class="asterisk">*</span></label>
                 <input class="form-control" name="txtPrice" value="{!! old('txtPrice', isset($product) ? $product['price'] : null) !!}"/>
             </div>
             <div class="form-group">
@@ -69,8 +72,8 @@
                 <label>Từ khóa</label>
                 <input class="form-control" name="txtKeyword" value="{!! old('txtKeyword', isset($product) ? $product['keyword'] : null) !!}"/>
             </div>
-            <button type="submit" class="btn btn-default">Sửa</button>
-            <button type="reset" class="btn btn-default">Đặt lại</button>
+            <button type="submit" class="btn btn-default functionButton">Sửa</button>
+            <button type="reset" class="btn btn-default functionButton" onclick = "window.location = '{{ route("admin.product.getList") }}'">Quay lại danh sách</button>
         </div>
         <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
         <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">

@@ -24,24 +24,28 @@ class ProductRequest extends FormRequest
     public function rules()
     {
         return [
-            'cateParent'  => 'required',
-            'sportParent' => 'required',
-            'brandParent' => 'required',
-            'txtProName'  => 'required|unique:products,name',
-            'fImages'     => 'required|image'
+            'cateParent'   => 'required',
+            'sportParent'  => 'required',
+            'brandParent'  => 'required',
+            'txtProName'   => 'required|unique:products,name',
+            'fImages'      => 'required|image',
+            'txtPrice'     => 'required',
+            'chooseGender' => 'required'
         ];
     }
 
     public function messages()
     {
         return [
-            'cateParent.required'  => 'Vui lòng chọn thể loại',
-            'sportParent.required' => 'Vui lòng chọn bộ môn',
-            'brandParent.required' => 'Vui lòng chọn thương hiệu',
-            'txtProName.required'  => 'Vui lòng nhập tên sản phẩm',
-            'txtProName.unique'    => 'Tên sản phẩm này đã tồn tại',
-            'fImages.required'     => 'Vui lòng chọn một hình ảnh',
-            'fImages.image'        =>'File này không phải một hình ảnh'
+            'cateParent.required'   => 'Vui lòng chọn thể loại',
+            'sportParent.required'  => 'Vui lòng chọn bộ môn',
+            'brandParent.required'  => 'Vui lòng chọn thương hiệu',
+            'txtProName.required'   => 'Vui lòng nhập tên sản phẩm',
+            'txtProName.unique'     => 'Tên sản phẩm này đã tồn tại',
+            'fImages.required'      => 'Vui lòng chọn một hình ảnh',
+            'fImages.image'         => 'File này không phải một hình ảnh',
+            'txtPrice.required'     => 'Vui lòng nhập giá sản phẩm',
+            'chooseGender.required' => 'Vui lòng chọn giới tính'
         ];
     }
 }

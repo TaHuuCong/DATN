@@ -9,10 +9,10 @@
     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
         @include('admin.blocks.error')
 
-        <form action="" method="POST">
+        <form action="{{ route('admin.cate.postEdit') }}" method="POST">
             <input type="hidden" name="_token" value="{!! csrf_token() !!}">
             <div class="form-group">
-                <label>Tên</label>
+                <label>Tên thể loại <span class="asterisk">*</span></label>
                 <input class="form-control" name="txtCateName" placeholder="Nhập tên thể loại" value="{!! old('txtCateName', isset($cate) ? $cate['name'] : null) !!}" />
             </div>
             <div class="form-group">
@@ -23,8 +23,8 @@
                 <label>Mô tả</label>
                 <textarea class="form-control" rows="5" name="txtDescription">{!! old('txtDescription', isset($cate) ? $cate['description'] : null) !!}</textarea>
             </div>
-            <button type="submit" class="btn btn-default">Sửa</button>
-            <button type="reset" class="btn btn-default">Đặt lại</button>
+            <button type="submit" class="btn btn-default functionButton">Sửa</button>
+            <button type="reset" class="btn btn-default functionButton" onclick = "window.location = '{{ route("admin.cate.getList") }}'">Quay lại danh sách</button>
         <form>
     </div>
 </section>

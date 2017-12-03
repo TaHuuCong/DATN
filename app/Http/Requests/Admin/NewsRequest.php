@@ -40,7 +40,7 @@ class NewsRequest extends FormRequest
             'txtTitle.unique'     => 'Tiêu đề này đã tồn tại',
             'txtSummary.required' => 'Vui lòng nhập tóm tắt tin',
             'txtContent.required' => 'Vui lòng nhập nội dung tin',
-            'fImages.image'       =>'File này không phải một hình ảnh'
+            'fImages.image'       => 'File này không phải một hình ảnh'
         ];
     }
 }

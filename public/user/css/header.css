@@ -1,8 +1,7 @@
 /* HEADER */
 header {
   width: 100%;
-  z-index: 999;
-  position: fixed;
+  z-index: 999;/*   position: fixed; */
   top: 0;
 }
 
@@ -159,10 +158,18 @@ header {
   margin-bottom: 0;
 }
 
+.my-menu {
+  margin-left: 114.5px;
+}
+
 /* .mainmenu: mega menu */
 .header-bottom.navbar {
   border: none;
   z-index: 4;
+}
+
+.menu-search {
+  position: relative;
 }
 
 .mainmenu .nav {
@@ -188,6 +195,11 @@ li.menu-large {
   font-size: 17px;
   font-weight: 600;
   text-transform: uppercase;
+}
+
+.navbar-nav>.open>a:focus {
+  color: #FF9800 !important;
+  background-color: #F5F5F5 !important;
 }
 
 .mega-menu {
@@ -291,7 +303,6 @@ form.form-search input {
   height: 30px;
   border: 2px solid #414F5A;
   padding: 5px;
-  background: #F0F0E9 url('../images/searchicon.png') 175px center no-repeat;
 }
 
 /* END: header-bottom */

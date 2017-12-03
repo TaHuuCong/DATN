@@ -36,7 +36,7 @@
                             <td>{!! $stt !!}</td>
                             <td>{!! $item['name'] !!}</td>
                             <td>
-                                <img src="{!! asset('resources/upload/images/brand/'.$item['image']) !!}">
+                                <img src="{!! asset('resources/upload/images/brand/'.$item['id'].'/'.$item['image']) !!}">
                             </td>
                             <td>{!! $item['keyword'] !!}</td>
                             <td>{!! $item['description'] !!}</td>

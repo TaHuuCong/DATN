@@ -30,24 +30,24 @@ var RGBChange = function() {
 
 
 // Hiệu ứng ẩn header-top khi scroll-down và hiện khi scroll-up
-$(document).ready(function() {
-    var mywindow = $(window);
-    var mypos = mywindow.scrollTop();
-    var up = false;
-    var newscroll;
-    mywindow.scroll(function() {
-        newscroll = mywindow.scrollTop();
-        if (newscroll > mypos && !up) {
-            $('.header-top').stop().slideToggle();
-            up = !up;
-            console.log(up);
-        } else if (newscroll < mypos && up) {
-            $('.header-top').stop().slideToggle();
-            up = !up;
-        }
-        mypos = newscroll;
-    });
-});
+// $(document).ready(function() {
+//     var mywindow = $(window);
+//     var mypos = mywindow.scrollTop();
+//     var up = false;
+//     var newscroll;
+//     mywindow.scroll(function() {
+//         newscroll = mywindow.scrollTop();
+//         if (newscroll > mypos && !up) {
+//             $('.header-top').stop().slideToggle();
+//             up = !up;
+//             console.log(up);
+//         } else if (newscroll < mypos && up) {
+//             $('.header-top').stop().slideToggle();
+//             up = !up;
+//         }
+//         mypos = newscroll;
+//     });
+// });
 
 
 // Hiệu ứng của Dropdown Menu
@@ -77,8 +77,6 @@ $('.product-info').each(function() {
 
 });
 
-
-// Hiệu ứng zoom ảnh chi tiết của sản phẩm
 
 // Hiệu ứng sản phẩm bay vào giỏ hàng
 $(document).on('click', '.add-to-cart', function(event) {
@@ -129,31 +127,6 @@ $(function() {
 });
 
 // Lọc sản phẩm
-// $(function() {
-//     $('.brandFilter').click(function() {
-//         var brand = [];
-//         $('.brandFilter').each(function() {
-//             if ($(this).is(':checked')) {
-//                 brand.push($(this).val());
-//             }
-//         });
-//         finalbrand = brand.toString();
-//         $.ajax({
-//             url: URL_GET_PRODUCT_AJAX.url,
-//             type: 'GET',
-//             dataType: 'html',
-//             data: 'brand=' + finalbrand,
-//             success: function(response) {
-//                 console.log(response);
-//                 $('#updateDiv').html(response);
-//             }
-//         });
-//     });
-
-// });
-
-
-
 $(function() {
     var sport, cate, brand, gender;
     $('.itemFilter').click(function() {

@@ -8,6 +8,7 @@
 	<!-- JS Library -->
 	<script src="https://code.jquery.com/jquery-3.2.1.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 	<!-- Google Fonts -->
 	<link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700,900" rel="stylesheet">
@@ -39,9 +40,6 @@
 	<link rel="stylesheet" type="text/css" href="{{ asset('public/user/css/contact.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('public/user/css/responsive.css') }}">
 
-
-	<script type="text/javascript" src="{{ asset('public/user/js/bootstrap.js') }}"></script>
-
 </head>
 <body>
 	<div class="wrapper">
@@ -65,7 +63,7 @@
 	<!-- /.wrapper -->
 
 
-	<!-- My JS -->
+	<script type="text/javascript" src="{{ asset('public/user/js/bootstrap.js') }}"></script>
     <script type="text/javascript" src="{{ asset('public/user/js/main.js') }}"></script>
 
     @yield('custom javascript')

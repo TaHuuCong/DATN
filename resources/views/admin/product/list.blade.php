@@ -48,6 +48,7 @@
                             <option value="0">Chọn giới tính</option>
                             <option value="1" @if(!empty($gender) && ($gender == 1)) selected @endif>nam</option>
                             <option value="2" @if(!empty($gender) && ($gender == 2)) selected @endif>nữ</option>
+                            <option value="3" @if(!empty($gender) && ($gender == 3)) selected @endif>không quan tâm</option>
                         </select>
                     </div>
                 </div>
@@ -88,10 +89,12 @@
                     <td>{!! $stt++ !!}</td>
                     <td>{!! $item->name !!}</td>
                     <td>
-                        @if ($item['gender'] == 1)
+                        @if ($item->gender == 1)
                             <?php echo "Nam" ?>
-                        @else
+                        @elseif ($item->gender == 2)
                             <?php echo "Nữ" ?>
+                        @else
+                            <?php echo "Không quan tâm" ?>
                         @endif
                     </td>
                     <td>
@@ -100,24 +103,9 @@
                     <td>
                         {!! number_format($item->price, 0, ',', '.') !!} VNĐ
                     </td>
-                    <td>
-                        <?php $cates = DB::table('categories')->where('id', $item->cate_id)->first() ?>
-                        @if (!empty($cates->name))
-                            {!! $cates->name !!}
-                        @endif
-                    </td>
-                    <td>
-                        <?php $sports = DB::table('sports')->where('id', $item->sport_id)->first() ?>
-                        @if (!empty($sports->name))
-                            {!! $sports->name !!}
-                        @endif
-                    </td>
-                    <td>
-                        <?php $brands = DB::table('brands')->where('id', $item->brand_id)->first() ?>
-                        @if (!empty($brands->name))
-                            {!! $brands->name !!}
-                        @endif
-                    </td>
+                    <td>{!! $item->ct_name !!}</td>
+                    <td>{!! $item->sp_name !!}</td>
+                    <td>{!! $item->br_name !!}</td>
                     <td>
                         {!! stranslateTime(\Carbon\Carbon::createFromTimestamp(strtotime($item->created_at))->diffForHumans()) !!}
                     </td>
@@ -169,7 +157,6 @@
             }
         });
     });
-
     $(document).ready(function() {
         $('#search').on('keyup', function() {
             var value = $(this).val();

@@ -44,9 +44,23 @@ class ProductController extends Controller
 				$where['gender'] = $gender;
 			}
 
-			$product = Product::select('id', 'name', 'price', 'gender', 'info', 'image', 'keyword', 'description', 'cate_id', 'brand_id', 'sport_id', 'created_at', 'updated_at')->where($where)->orderBy('id', 'DESC')->paginate(3);
+			// $product = Product::select('id', 'name', 'price', 'gender', 'info', 'image', 'keyword', 'description', 'cate_id', 'brand_id', 'sport_id', 'created_at', 'updated_at')->where($where)->orderBy('id', 'DESC')->paginate(3);
+			$product = DB::table('products as pr')
+			->select('pr.id', 'pr.name', 'pr.price', 'pr.gender', 'pr.info', 'pr.image', 'pr.keyword', 'pr.description', 'pr.cate_id', 'pr.brand_id', 'pr.sport_id', 'pr.created_at', 'pr.updated_at', 'ct.name as ct_name', 'sp.name as sp_name', 'br.name as br_name')
+			->join('categories as ct','ct.id','=','pr.cate_id')
+	        ->join('sports as sp','sp.id','=','pr.sport_id')
+	        ->join('brands as br','br.id','=','pr.brand_id')
+			->where($where)->orderBy('pr.id', 'DESC')
+			->paginate(3);
 		} else {
-			$product = Product::select('id', 'name', 'price', 'gender', 'info', 'image', 'keyword', 'description', 'cate_id', 'brand_id', 'sport_id', 'created_at', 'updated_at')->orderBy('id', 'DESC')->paginate(3);
+			// $product = Product::select('id', 'name', 'price', 'gender', 'info', 'image', 'keyword', 'description', 'cate_id', 'brand_id', 'sport_id', 'created_at', 'updated_at')->orderBy('id', 'DESC')->paginate(3);
+			$product = DB::table('products as pr')
+			->select('pr.id', 'pr.name', 'pr.price', 'pr.gender', 'pr.info', 'pr.image', 'pr.keyword', 'pr.description', 'pr.cate_id', 'pr.brand_id', 'pr.sport_id', 'pr.created_at', 'pr.updated_at', 'ct.name as ct_name', 'sp.name as sp_name', 'br.name as br_name')
+			->join('categories as ct','ct.id','=','pr.cate_id')
+	        ->join('sports as sp','sp.id','=','pr.sport_id')
+	        ->join('brands as br','br.id','=','pr.brand_id')
+	        ->orderBy('pr.id', 'DESC')
+	        ->paginate(3);
 		}
 		$pro_paging = $product->appends(Request::capture()->except('page'))->render();  //phân trang
 		$cate  = Category::all();
@@ -206,7 +220,7 @@ class ProductController extends Controller
 	         		return redirect()->back()->with(['flash_level' => 'danger', 'flash_message' => 'File bạn chọn không phải là một hình ảnh']);
 	         	}
 			} else {
-				echo "1";
+				echo 'Không có file ảnh mới';
 			}
 			$product->save();
 
@@ -264,8 +278,8 @@ class ProductController extends Controller
 				$tmp_status = $status_arr[$i];
 				$data = [
 					'pro_id' => $id,
-					'size' => $tmp_size,
-					'color' => $tmp_color,
+					'size'   => $tmp_size,
+					'color'  => $tmp_color,
 					'status' => $tmp_status
 				];
 				$property = ProductProperty::find($tmp_id);
@@ -286,7 +300,7 @@ class ProductController extends Controller
     {
     	//Xóa sản phẩm thì phải xóa ảnh chi tiết (bảng product_images) và thuộc tính (bảng product_properties) trước sau đó mới xóa dữ liệu trong bảng products vì nếu xóa ở bảng products trước thì sẽ không biết là cần xóa ảnh nào, thuộc tính nào nữa
 
-    	//xóa ảnh chi tiết
+    	//Xóa ảnh chi tiết
     	$main_dir = 'resources/upload/images/product';
 		$lg_dir   = $main_dir . '/large/' . $id;
 		$sm_dir   = $main_dir . '/small/' . $id;
@@ -298,8 +312,8 @@ class ProductController extends Controller
 
 		$product_images = DB::table('product_images')->where('pro_id', $id)->get();
 		foreach ($product_images as $images) {
-			$lg_detail_img = $lg_detail_dir . '/' . $images->name;
-			$sm_detail_img = $sm_detail_dir . '/' . $images->name;
+			$lg_detail_img  = $lg_detail_dir . '/' . $images->name;
+			$sm_detail_img  = $sm_detail_dir . '/' . $images->name;
 			$thn_detail_img = $thn_detail_dir . '/' . $images->name;
 			//Xóa ảnh
 			if (file_exists($lg_detail_img)) {
@@ -324,17 +338,17 @@ class ProductController extends Controller
 			rmdir($thn_detail_dir);
 		}
 
-		//xóa thuộc tính
+		//Xóa thuộc tính
 		$product_properties = ProductProperty::where('pro_id', '=', $id)->get();
 		foreach ($product_properties as $properties) {
 			$properties->delete();
 		}
 
-		//xóa sản phẩm
+		//Xóa sản phẩm
 		$products = Product::findOrFail($id);
 			//Xóa ảnh đại diện
-		$lg_img = $lg_dir . '/' . $products->image;
-		$sm_img = $sm_dir . '/' . $products->image;
+		$lg_img  = $lg_dir . '/' . $products->image;
+		$sm_img  = $sm_dir . '/' . $products->image;
 		$thn_img = $thn_dir . '/' . $products->image;
 		if (file_exists($lg_img)) {
 			File::delete($lg_img);
@@ -358,7 +372,7 @@ class ProductController extends Controller
 			rmdir($thn_dir);
 		}
 
-		//xóa dữ liệu còn lại
+		//Xóa dữ liệu còn lại
 		$products->delete();
 
     }

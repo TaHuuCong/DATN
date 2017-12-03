@@ -7,7 +7,10 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\CateRequest;
 use App\Category;
 use App\Product;
-use DB;
+use App\ProductProperty;
+use File;
+use DB, Image, Config;
+
 
 class CateController extends Controller
 {
@@ -31,36 +34,6 @@ class CateController extends Controller
         $cate->description = $request->txtDescription;
 		$cate->save();
 		return redirect()->route('admin.cate.getList')->with(['flash_level' => 'success', 'flash_message' => 'Thêm thể loại thành công !']);
-    }
-
-    public function delete_by_id ($id)
-    {
-        $cate = Category::find($id);
-        $product = Product::where('cate_id', '=', $id)->get();
-        if (isset($product)) {
-            foreach ($product as $pro) {
-                $pro->delete();
-            }
-        }
-        $cate->delete();
-    }
-
-    public function getDelete($id)
-    {
-        $this->delete_by_id($id);
-        return redirect()->route('admin.cate.getList')->with(['flash_level' => 'success', 'flash_message' => 'Xóa thể loại thành công !']);
-    }
-
-    public function postDelete (Request $request)
-    {
-        if($request->checks){
-            foreach($request->checks as $item) {
-                $this->delete_by_id($item);
-            }
-            return redirect()->route('admin.cate.getList')->with(['flash_level' => 'success', 'flash_message' => 'Xóa thể loại thành công !']);
-        } else {
-            return redirect()->route('admin.cate.getList')->with(['flash_level' => 'success', 'flash_message' => 'Không có mục nào được chọn để xóa !']);
-        }
     }
 
     public function getEdit ($id)
@@ -89,4 +62,113 @@ class CateController extends Controller
             return redirect()->back()->with(['flash_level' => 'danger', 'flash_message' => 'Thể loại sản phẩm này đã tồn tại !']);
         }
     }
+
+    public function delete_by_id ($id)
+    {
+        $cate = Category::find($id);
+
+        //Xóa sản phẩm tương ứng
+        $product = Product::where('cate_id', '=', $id)->get();
+
+        if (isset($product)) {
+            foreach ($product as $pro) {
+                $pro_id = $pro->id;  //lấy id của sản phẩm
+
+                //Xóa ảnh chi tiết của sản phẩm
+                $main_dir = 'resources/upload/images/product';
+                $lg_dir   = $main_dir . '/large/' . $pro_id;
+                $sm_dir   = $main_dir . '/small/' . $pro_id;
+                $thn_dir  = $main_dir . '/thumbnail/' . $pro_id;
+
+                $lg_detail_dir  = $lg_dir . '/detail';
+                $sm_detail_dir  = $sm_dir . '/detail';
+                $thn_detail_dir = $thn_dir . '/detail';
+
+                $product_images = DB::table('product_images')->where('pro_id', $pro_id)->get();
+                foreach ($product_images as $images) {
+                    $lg_detail_img  = $lg_detail_dir . '/' . $images->name;
+                    $sm_detail_img  = $sm_detail_dir . '/' . $images->name;
+                    $thn_detail_img = $thn_detail_dir . '/' . $images->name;
+                    if (file_exists($lg_detail_img)) {
+                        File::delete($lg_detail_img);
+                    }
+                    if (file_exists($sm_detail_img)) {
+                        File::delete($sm_detail_img);
+                    }
+                    if (file_exists($thn_detail_img)) {
+                        File::delete($thn_detail_img);
+                    }
+                }
+
+                //Xóa thư mục detail
+                if (file_exists($lg_detail_dir)) {
+                    rmdir($lg_detail_dir);
+                }
+                if (file_exists($sm_detail_dir)) {
+                    rmdir($sm_detail_dir);
+                }
+                if (file_exists($thn_detail_dir)) {
+                    rmdir($thn_detail_dir);
+                }
+
+                //Xóa thuộc tính sản phẩm
+                $product_properties = ProductProperty::where('pro_id', '=', $pro_id)->get();
+                foreach ($product_properties as $properties) {
+                    $properties->delete();
+                }
+
+                $products = Product::findOrFail($pro_id);
+                //Xóa ảnh đại diện
+                $lg_img  = $lg_dir . '/' . $products->image;
+                $sm_img  = $sm_dir . '/' . $products->image;
+                $thn_img = $thn_dir . '/' . $products->image;
+                if (file_exists($lg_img)) {
+                    File::delete($lg_img);
+                }
+                if (file_exists($sm_img)) {
+                    File::delete($sm_img);
+                }
+                if (file_exists($thn_img)) {
+                    File::delete($thn_img);
+                }
+
+
+                //Xóa thư mục id
+                if (file_exists($lg_dir)) {
+                    rmdir($lg_dir);
+                }
+                if (file_exists($sm_dir)) {
+                    rmdir($sm_dir);
+                }
+                if (file_exists($thn_dir)) {
+                    rmdir($thn_dir);
+                }
+
+                //Xóa dữ liệu còn lại
+                $products->delete();
+            }
+        }
+
+        //Xóa thông tin còn lại
+        $cate->delete();
+    }
+
+    public function getDelete($id)
+    {
+        $this->delete_by_id($id);
+        return redirect()->route('admin.cate.getList')->with(['flash_level' => 'success', 'flash_message' => 'Xóa thể loại thành công !']);
+    }
+
+    public function postDelete (Request $request)
+    {
+        if($request->checks){
+            foreach($request->checks as $item) {
+                $this->delete_by_id($item);
+            }
+            return redirect()->route('admin.cate.getList')->with(['flash_level' => 'success', 'flash_message' => 'Xóa thể loại thành công !']);
+        } else {
+            return redirect()->route('admin.cate.getList')->with(['flash_level' => 'success', 'flash_message' => 'Không có mục nào được chọn để xóa !']);
+        }
+    }
+
 }

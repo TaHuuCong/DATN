@@ -10,12 +10,12 @@
             @include('admin.blocks.error')
         </div>
     </div>
-    <form action="" method="POST"  enctype="multipart/form-data">
+    <form action="{{ route('admin.news.postAdd') }}" method="POST"  enctype="multipart/form-data">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"></div>
         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
             <div class="form-group">
-                <label>Loại tin</label>
+                <label>Loại tin <span class="asterisk">*</span></label>
                 <select class="form-control" name="newsCate">
                     <option value="">Chọn loại tin</option>
                     @foreach ($newscate as $item)
@@ -24,16 +24,16 @@
                 </select>
             </div>
             <div class="form-group">
-                <label>Tiêu đề</label>
+                <label>Tiêu đề <span class="asterisk">*</span></label>
                 <input class="form-control" name="txtTitle" placeholder="Nhập tiêu đề tin" value="{!! old('txtTitle') !!}" />
             </div>
             <div class="form-group">
-                <label>Tóm tắt</label>
+                <label>Tóm tắt <span class="asterisk">*</span></label>
                 <textarea class="form-control" rows="3" name="txtSummary">{!! old('txtSummary') !!}</textarea>
                 <script type="text/javascript">ckeditor("txtSummary")</script>
             </div>
             <div class="form-group">
-                <label>Nội dung</label>
+                <label>Nội dung <span class="asterisk">*</span></label>
                 <textarea class="form-control" rows="5" name="txtContent">{!! old('txtContent') !!}</textarea>
                 <script type="text/javascript">ckeditor("txtContent")</script>
             </div>
@@ -49,8 +49,8 @@
                 <label>Tác giả</label>
                 <input class="form-control" name="txtAuthor" placeholder="Nhập tác giả" value="{!! old('txtAuthor') !!}" />
             </div>
-            <button type="submit" class="btn btn-default">Thêm</button>
-            <button type="reset" class="btn btn-default">Đặt lại</button>
+            <button type="submit" class="btn btn-default functionButton">Thêm</button>
+            <button type="reset" class="btn btn-default functionButton" onclick = "window.location = '{{ route("admin.news.getList") }}'">Quay lại danh sách</button>
         </div>
     <form>
 </section>

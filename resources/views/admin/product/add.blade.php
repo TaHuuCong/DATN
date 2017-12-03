@@ -10,12 +10,12 @@
             @include('admin.blocks.error')
         </div>
     </div>
-    <form action="" method="POST"  enctype="multipart/form-data">
+    <form action="{{ route('admin.product.postAdd') }}" method="POST"  enctype="multipart/form-data">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
             <div class="form-group">
-                <label>Thể loại</label>
+                <label>Thể loại <span class="asterisk">*</span></label>
                 <select class="form-control" name="cateParent">
                     <option value="">Chọn thể loại</option>
                     @foreach ($cate as $c_item)
@@ -24,7 +24,7 @@
                 </select>
             </div>
             <div class="form-group">
-                <label>Bộ môn</label>
+                <label>Bộ môn <span class="asterisk">*</span></label>
                 <select class="form-control" name="sportParent">
                     <option value="">Chọn bộ môn</option>
                     @foreach ($sport as $s_item)
@@ -33,7 +33,7 @@
                 </select>
             </div>
             <div class="form-group">
-                <label>Thương hiệu</label>
+                <label>Thương hiệu <span class="asterisk">*</span></label>
                 <select class="form-control" name="brandParent">
                     <option value="">Chọn thương hiệu</option>
                     @foreach ($brand as $b_item)
@@ -42,38 +42,41 @@
                 </select>
             </div>
             <div class="form-group">
-                <label>Tên sản phẩm</label>
-                <input class="form-control" name="txtProName" placeholder="Nhập tên sản phẩm" />
+                <label>Tên sản phẩm <span class="asterisk">*</span></label>
+                <input class="form-control" name="txtProName" placeholder="Nhập tên sản phẩm" value="{{ old('txtProName') }}" />
             </div>
             <div class="form-group">
-                <label style="margin-right: 20px">Giới tính</label>
+                <label style="margin-right: 20px">Giới tính <span class="asterisk">*</span></label>
                 <label class="radio-inline">
                     <input name="chooseGender" value="1" checked="checked" type="radio"> Nam
                 </label>
                 <label class="radio-inline">
                     <input name="chooseGender" value="2" type="radio"> Nữ
                 </label>
+                <label class="radio-inline">
+                    <input name="chooseGender" value="3" type="radio"> Không quan tâm
+                </label>
             </div>
             <div class="form-group">
-                <label>Giá</label>
-                <input class="form-control" name="txtPrice" placeholder="Nhập giá sản phẩm"/>
+                <label>Giá <span class="asterisk">*</span></label>
+                <input class="form-control" name="txtPrice" placeholder="Nhập giá sản phẩm" value="{{ old('txtPrice') }}" />
             </div>
             <div class="form-group">
                 <label>Thông tin sản phẩm</label>
-                <textarea class="form-control" rows="3" name="txtInfo"></textarea>
+                <textarea class="form-control" rows="3" name="txtInfo">{{ old('txtInfo') }}</textarea>
                 <script type="text/javascript">ckeditor("txtInfo")</script>
             </div>
             <div class="form-group">
                 <label>Mô tả</label>
-                <textarea class="form-control" rows="3" name="txtDescription"></textarea>
+                <textarea class="form-control" rows="3" name="txtDescription">{{ old('txtDescription') }}</textarea>
                 <script type="text/javascript">ckeditor("txtDescription")</script>
             </div>
             <div class="form-group">
                 <label>Từ khóa</label>
-                <input class="form-control" name="txtKeyword" placeholder="Nhập từ khóa cho sản phẩm" />
+                <input class="form-control" name="txtKeyword" placeholder="Nhập từ khóa cho sản phẩm" value="{{ old('txtKeyword') }}" />
             </div>
-            <button type="submit" class="btn btn-default">Thêm</button>
-            <button type="reset" class="btn btn-default">Đặt lại</button>
+            <button type="submit" class="btn btn-default functionButton">Thêm</button>
+            <button type="reset" class="btn btn-default functionButton" onclick = "window.location = '{{ route("admin.product.getList") }}'">Quay lại danh sách</button>
         </div>
         <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
         <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">

@@ -30,7 +30,7 @@ class PropertyController extends Controller
 		$property          = new ProductProperty;
 		$property->pro_id  = $request->chooseProName;
 		$property->size    = $request->chooseSize;
-		$property->color   = $request->txtColor;
+		$property->color   = $request->chooseColor;
 		$property->status  = $request->chooseStatus;
 
         $check = DB::table('products as pr')
@@ -57,15 +57,15 @@ class PropertyController extends Controller
     {
     	$property = ProductProperty::find($id);
         // chỉ cập nhật trạng thái thì ok, các trường hợp khác phải check xem đã tồn tại bộ thuộc tính chưa
-        if (($property->size == $request->chooseSize) && ($property->color == $request->txtColor) && ($property->status != $request->chooseStatus)) {
+        if (($property->size == $request->chooseSize) && ($property->color == $request->chooseColor) && ($property->status != $request->chooseStatus)) {
             $property->size   = $request->chooseSize;
-            $property->color  = $request->txtColor;
+            $property->color  = $request->chooseColor;
             $property->status = $request->chooseStatus;
             $property->save();
             return redirect()->route('admin.property.getList')->with(['flash_level' => 'success', 'flash_message' => 'Sửa thuộc tính cho sản phẩm thành công']);
         } else {
             $property->size   = $request->chooseSize;
-            $property->color  = $request->txtColor;
+            $property->color  = $request->chooseColor;
             $check = DB::table('products as pr')
             ->join('product_properties as pp', 'pr.id', '=', 'pp.pro_id')
             ->where('pp.pro_id', '=', $property->pro_id)

@@ -1,7 +1,6 @@
 .mySlider {
   padding: 0 0 50px;
-  z-index: 1;
-  margin-top: 168px;
+  z-index: 1;/*   margin-top: 168px; */
 }
 
 .section-container {

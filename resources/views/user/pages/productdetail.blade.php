@@ -34,30 +34,23 @@
 					<!-- /.product-images -->
 				</div>
 
-{{-- 				<div class="col-sm-7">
+				<div class="col-sm-7">
 					<div class="row">
 						<div class="col-sm-12">
 							<h1 class="productname"><span class="bgnone">{{ $product_detail->name }}</span></h1>
               				<div class="productprice">
-                				<div class="productpageprice"><span class="spiral"></span>123</div>
+                				{{-- <div class="productpageprice"><span class="spiral"></span>123</div> --}}
                 				<div class="productpageoldprice">Old price: {{ number_format($product_detail->price, 0, ',', '.') }} VNĐ</div>
               				</div>
 
               				<div class="quantitybox">
-				                <select class="selectsize">
-				                  	<option>Select Size</option>
-				                  	<option>24</option>
-				                   	<option>36</option>
-				                  	<option>48</option>
-				                </select>
-				                <select class="selectqty">
-				                   	<option>Select color</option>
-				                   	<option>Red</option>
-				                  	<option>Green</option>
-				                  	<option>Blue</option>
-				                  	<option>Black</option>
-				                </select>
-                				<div class="clear"></div>
+              					@if(count($sizes)!=0)
+              					<select name="size" id="size">
+              						@foreach ($sizes as $size)
+              						<option>{{$size->size}}</option>
+              						@endforeach
+              					</select>
+              					@endif
               				</div>
 
               				<ul class="productpagecart">
@@ -135,12 +128,12 @@
 
 						</div>
 					</div>
-				</div> --}}
+				</div>
 			</div>
 		</div>
 		<!-- /.product-details -->
 
-{{-- 		<div class="product-related">
+		<div class="product-related">
 			<h2 class="title text-center">Sản phẩm tương tự</h2>
 			<div id="recommended-product-carousel" class="carousel slide" data-ride="carousel">
 				<div class="carousel-inner">
@@ -252,7 +245,7 @@
 					<i class="fa fa-angle-right" aria-hidden="true"></i>
 				</a>
 			</div>
-		</div> --}}
+		</div>
 		<!-- /.product-related -->
 
 	</div>
@@ -265,7 +258,16 @@
 @section('custom javascript')
 	<script type="text/javascript">
 		$(document).ready(function() {
+			// XZoom: zoom ảnh chi tiết của sản phẩm
 			$(".xzoom5, .xzoom-gallery5").xzoom({tint: '#333', Xoffset: 15});
+
+
+			// Click vào chọn size thì nó hiển thị ra màu sắc và trạng thái tương ứng
+			$('#size').change(function() {
+				val size = $('#size').val();
+				alert(size);
+			});
+
 		});
 	</script>
 @stop

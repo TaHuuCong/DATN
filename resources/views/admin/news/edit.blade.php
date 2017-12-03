@@ -10,12 +10,12 @@
             @include('admin.blocks.error')
         </div>
     </div>
-    <form action="" method="POST"  enctype="multipart/form-data">
+    <form action="{{ route('admin.news.postEdit') }}" method="POST"  enctype="multipart/form-data">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"></div>
         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
             <div class="form-group">
-                <label>Loại tin</label>
+                <label>Loại tin <span class="asterisk">*</span></label>
                 <select class="form-control" name="newsCate" disabled>
                     @foreach ($newscate as $item)
                         <option value="{!! $item->id !!}" {!! ($news->ncate_id == $item->id) ? 'selected' : '' !!}>{!! $item->name !!}</option>
@@ -23,16 +23,16 @@
                 </select>
             </div>
             <div class="form-group">
-                <label>Tiêu đề</label>
+                <label>Tiêu đề <span class="asterisk">*</span></label>
                 <input class="form-control" name="txtTitle" value="{!! old('txtTitle', isset($news) ? $news->title : null) !!}" />
             </div>
             <div class="form-group">
-                <label>Tóm tắt</label>
+                <label>Tóm tắt <span class="asterisk">*</span></label>
                 <textarea class="form-control" rows="3" name="txtSummary">{!! old('txtSummary', isset($news) ? $news->summary : null) !!}</textarea>
                 <script type="text/javascript">ckeditor("txtSummary")</script>
             </div>
             <div class="form-group">
-                <label>Nội dung</label>
+                <label>Nội dung <span class="asterisk">*</span></label>
                 <textarea class="form-control" rows="5" name="txtContent">{!! old('txtContent', isset($news) ? $news->content : null) !!}</textarea>
                 <script type="text/javascript">ckeditor("txtContent")</script>
             </div>
@@ -54,8 +54,8 @@
                 <label>Tác giả</label>
                 <input class="form-control" name="txtAuthor" value="{!! old('txtAuthor', isset($news) ? $news->author : null) !!}" />
             </div>
-            <button type="submit" class="btn btn-default">Sửa</button>
-            <button type="reset" class="btn btn-default">Đặt lại</button>
+            <button type="submit" class="btn btn-default functionButton">Sửa</button>
+            <button type="reset" class="btn btn-default functionButton" onclick = "window.location = '{{ route("admin.news.getList") }}'">Quay lại danh sách</button>
         </div>
     <form>
 </section>

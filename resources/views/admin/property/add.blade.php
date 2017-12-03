@@ -10,11 +10,11 @@
             @include('admin.blocks.error')
         </div>
     </div>
-	<form action="" method="POST"  enctype="multipart/form-data">
+	<form action="{{ route('admin.property.postAdd') }}" method="POST"  enctype="multipart/form-data">
         {{ csrf_field() }}
         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-md-push-3">
         	<div class="form-group">
-                <label>Sản phẩm</label>
+                <label>Sản phẩm <span class="asterisk">*</span></label>
                 <?php
 			  		$products = DB::table('products')->orderBy('id', 'DESC')->get();   //hiển thị ra toàn bộ danh sách sản phẩm để chọn
                 ?>
@@ -29,7 +29,7 @@
             <div class="form-group">
                 <label>Size</label>
                 <select class="form-control" name="chooseSize">
-                	<option value="" >Chọn size</option>
+                	<option value="" >Chọn kích cỡ</option>
                 	<option value="34" @if(old('chooseSize') == '34') selected @endif>34</option>
                 	<option value="35" @if(old('chooseSize') == '35') selected @endif>35</option>
                 	<option value="36" @if(old('chooseSize') == '36') selected @endif>36</option>
@@ -50,18 +50,28 @@
             </div>
             <div class="form-group">
                 <label>Màu sắc</label>
-                <input type="text" class="form-control" name="txtColor" value="{!! old('txtColor') !!}" placeholder="Nhập màu sắc của sản phẩm">
+                <select class="form-control" name="chooseColor">
+                    <option value="" >Chọn màu sắc</option>
+                    <option value="trắng" @if(old('chooseColor') == 'trắng') selected @endif>trắng</option>
+                    <option value="đen" @if(old('chooseColor') == 'đen') selected @endif>đen</option>
+                    <option value="đỏ" @if(old('chooseColor') == 'đỏ') selected @endif>đỏ</option>
+                    <option value="hồng" @if(old('chooseColor') == 'hồng') selected @endif>hồng</option>
+                    <option value="cam" @if(old('chooseColor') == 'cam') selected @endif>cam</option>
+                    <option value="vàng" @if(old('chooseColor') == 'vàng') selected @endif>vàng</option>
+                    <option value="xanh lá cây" @if(old('chooseColor') == 'xanh lá cây') selected @endif>xanh lá cây</option>
+                    <option value="xanh da trời" @if(old('chooseColor') == 'xanh da trời') selected @endif>xanh da trời</option>
+                    <option value="tím" @if(old('chooseColor') == 'tím') selected @endif>tím</option>
+                </select>
             </div>
             <div class="form-group">
                 <label>Trạng thái</label>
                 <select class="form-control" name="chooseStatus">
-                    <option value="" >Chọn trạng thái</option>
-                    <option value="0" @if(old('chooseStatus') == '0') selected @endif>Còn hàng</option>
-                    <option value="1" @if(old('chooseStatus') == '1') selected @endif>Tạm hết hàng</option>
+                    <option value="0" selected>Còn hàng</option>
+                    <option value="1" >Tạm hết hàng</option>
                 </select>
             </div>
-            <button type="submit" class="btn btn-default">Thêm</button>
-            <button type="reset" class="btn btn-default">Đặt lại</button>
+            <button type="submit" class="btn btn-default functionButton">Thêm</button>
+            <button type="reset" class="btn btn-default functionButton" onclick = "window.location = '{{ route("admin.property.getList") }}'">Quay lại danh sách</button>
         </div>
     </form>
 </section>

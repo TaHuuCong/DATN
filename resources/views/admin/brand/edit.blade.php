@@ -9,15 +9,15 @@
     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
         @include('admin.blocks.error')
 
-        <form action="" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('admin.brand.postEdit') }}" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="_token" value="{!! csrf_token() !!}">
             <div class="form-group">
-                <label>Tên thương hiệu</label>
+                <label>Tên thương hiệu <span class="asterisk">*</span></label>
                 <input class="form-control" name="txtBrandName" placeholder="Nhập tên thương hiệu" value="{!! old('txtBrandName', isset($brand) ? $brand['name'] : null) !!}" />
             </div>
             <div class="form-group">
-                <label>Logo hiện tại</label><br>
-                <img src="{!! asset('resources/upload/images/brand/'.$brand['image']) !!}" width="250" height="150">
+                <label>Logo hiện tại <span class="asterisk">*</span></label><br>
+                <img src="{!! asset('resources/upload/images/brand/'.$brand['id'].'/'.$brand['image']) !!}">
                 <input type="hidden" name="img_current" value="{!! $brand['image'] !!}" />
             </div>
             <div class="form-group">
@@ -32,8 +32,8 @@
                 <label>Mô tả</label>
                 <textarea class="form-control" rows="5" name="txtDescription">{!! old('txtDescription', isset($brand) ? $brand['description'] : null) !!}</textarea>
             </div>
-            <button type="submit" class="btn btn-default">Sửa</button>
-            <button type="reset" class="btn btn-default">Đặt lại</button>
+            <button type="submit" class="btn btn-default functionButton">Sửa</button>
+            <button type="reset" class="btn btn-default functionButton" onclick = "window.location = '{{ route("admin.brand.getList") }}'">Quay lại danh sách</button>
         <form>
     </div>
 </section>

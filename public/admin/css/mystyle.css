@@ -15,16 +15,23 @@
 	overflow: auto;
 }
 
-/* nút thêm chung trong các list */
-button.addItem {
+/* nút thêm chung trong các list, thêm các loại */
+button.addItem, button.functionButton {
 	margin-bottom: 20px;
 	background-color: #337ab7;
 	border-color: #337ab7;
+	color: #fff;
 }
 
-button.addItem:hover {
+button.addItem:hover, button.functionButton:hover {
 	background-color: #FF9800;
 	border-color: #FF9800;
+	color: #fff;
+}
+
+button.functionButton {
+	margin-top: 50px;
+	margin-right: 30px;
 }
 
 button.addItem a {
@@ -104,4 +111,10 @@ a#del_img i {
 input#search {
 	margin-bottom: 40px;
 	background-color: #cee3f5;
+}
+
+/* dấu hoa thị cho biết trường bắt buộc nhập/chọn */
+.asterisk {
+	font-size: 15px;
+	color: red;
 }

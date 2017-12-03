@@ -10,11 +10,11 @@
             @include('admin.blocks.error')
         </div>
     </div>
-	<form action="" method="POST"  enctype="multipart/form-data">
+	<form action="{{ route('admin.property.postEdit') }}" method="POST"  enctype="multipart/form-data">
         {{ csrf_field() }}
         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-md-push-3">
         	<div class="form-group">
-                <label>Sản phẩm</label>
+                <label>Sản phẩm <span class="asterisk">*</span></label>
                 <?php
                 if(isset($id)){
                     $products = DB::table('products')->where('id', $property->pro_id)->get();    //nếu thêm thuộc tính bằng cách sửa sản phẩm thì phải có id của sản phẩm đó và chỉ hiển thị ra sản phẩm đó thôi
@@ -58,8 +58,8 @@
                     <option value="1" @if($property->status == '1') selected @endif>Tạm hết hàng</option>
                 </select>
             </div>
-            <button type="submit" class="btn btn-default">Sửa</button>
-            <button type="reset" class="btn btn-default">Đặt lại</button>
+            <button type="submit" class="btn btn-default functionButton">Sửa</button>
+            <button type="reset" class="btn btn-default functionButton" onclick = "window.location = '{{ route("admin.property.getList") }}'">Quay lại danh sách</button>
         </div>
     </form>
 </section>

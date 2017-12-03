@@ -16,16 +16,14 @@ Route::get('/', function () {
 });
 
 Route::get('schema/drop-col', function() {
-    Schema::table('users', function($table) {
-        $table->dropColumn('password');
-        $table->dropColumn('re_password');
+    Schema::table('sports', function($table) {
+        $table->dropColumn('image');
     });
 });
 
 Route::get('schema/add-col', function() {
-    Schema::table('users', function($table) {
-        $table->string('password')->nullable();
-        $table->string('re_password')->nullable();
+    Schema::table('sports', function($table) {
+        $table->string('image')->nullable();
     });
 });
 
