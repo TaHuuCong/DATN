@@ -46,7 +46,7 @@ class ProductController extends Controller
 
 			// $product = Product::select('id', 'name', 'price', 'gender', 'info', 'image', 'keyword', 'description', 'cate_id', 'brand_id', 'sport_id', 'created_at', 'updated_at')->where($where)->orderBy('id', 'DESC')->paginate(3);
 			$product = DB::table('products as pr')
-			->select('pr.id', 'pr.name', 'pr.price', 'pr.gender', 'pr.info', 'pr.image', 'pr.keyword', 'pr.description', 'pr.cate_id', 'pr.brand_id', 'pr.sport_id', 'pr.created_at', 'pr.updated_at', 'ct.name as ct_name', 'sp.name as sp_name', 'br.name as br_name')
+			->select('pr.*', 'ct.name as ct_name', 'sp.name as sp_name', 'br.name as br_name')
 			->join('categories as ct','ct.id','=','pr.cate_id')
 	        ->join('sports as sp','sp.id','=','pr.sport_id')
 	        ->join('brands as br','br.id','=','pr.brand_id')
@@ -55,7 +55,7 @@ class ProductController extends Controller
 		} else {
 			// $product = Product::select('id', 'name', 'price', 'gender', 'info', 'image', 'keyword', 'description', 'cate_id', 'brand_id', 'sport_id', 'created_at', 'updated_at')->orderBy('id', 'DESC')->paginate(3);
 			$product = DB::table('products as pr')
-			->select('pr.id', 'pr.name', 'pr.price', 'pr.gender', 'pr.info', 'pr.image', 'pr.keyword', 'pr.description', 'pr.cate_id', 'pr.brand_id', 'pr.sport_id', 'pr.created_at', 'pr.updated_at', 'ct.name as ct_name', 'sp.name as sp_name', 'br.name as br_name')
+			->select('pr.*', 'ct.name as ct_name', 'sp.name as sp_name', 'br.name as br_name')
 			->join('categories as ct','ct.id','=','pr.cate_id')
 	        ->join('sports as sp','sp.id','=','pr.sport_id')
 	        ->join('brands as br','br.id','=','pr.brand_id')
