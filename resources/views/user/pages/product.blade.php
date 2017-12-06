@@ -57,7 +57,7 @@
 							<ul class="nav nav-pills nav-stacked">
 								@foreach ($brands as $br)
 								<li>
-									<input type="checkbox" class="brandFilter itemFilter brand" value="{{ $br->id }}"
+									<input type="checkbox" class="itemFilter brand" value="{{ $br->id }}"
 										@if (!empty($brand))
 											@if (in_array($br->id, $brand))
 												checked
@@ -71,12 +71,21 @@
 						</div>
 					</div><!--/product-brand-->
 
-					<div class="gender list-group">
+					<div class="product-gender list-group">
 						<h2>Giới tính</h2>
 						<div class="name">
 							<ul class="nav nav-pills nav-stacked">
-								<li><a href="#">Nam</a></li>
-								<li><a href="#">Nữ</a></li>
+								@foreach ($genders as $key => $gen)
+								<li>
+									<input type="checkbox" class="itemFilter gender" value="{{ $key }}"
+										@if (!empty($gender))
+											@if (in_array($key, $gender))
+												checked
+											@endif
+										@endif
+									/>{{ $gen }}
+								</li>
+								@endforeach
 							</ul>
 						</div>
 					</div><!-- /.gender -->
@@ -113,9 +122,9 @@
 
 				</div><!--featured-product-->
 
-				@if (isset($sport))
+				@if (isset($sport) || isset($brand) || isset($cate) ||isset($gender))
 					<ul class="pagination">
-						{{ $all_products->appends(['sport' => $sport, 'cate' => $cate, 'brand' => $brand])->render() }}
+						{{ $all_products->appends(['sport' => $sport, 'cate' => $cate, 'brand' => $brand, 'gender' => $gender])->render() }}
 					</ul>
 				@else
 					<ul class="pagination">

@@ -44,13 +44,12 @@
               				</div>
 
               				<div class="quantitybox">
-              					@if(count($sizes)!=0)
               					<select name="size" id="size">
+              						<option>Chọn size</option>
               						@foreach ($sizes as $size)
               						<option>{{$size->size}}</option>
               						@endforeach
               					</select>
-              					@endif
               				</div>
 
               				<ul class="productpagecart">
@@ -133,7 +132,7 @@
 		</div>
 		<!-- /.product-details -->
 
-		<div class="product-related">
+		{{-- <div class="product-related">
 			<h2 class="title text-center">Sản phẩm tương tự</h2>
 			<div id="recommended-product-carousel" class="carousel slide" data-ride="carousel">
 				<div class="carousel-inner">
@@ -245,7 +244,7 @@
 					<i class="fa fa-angle-right" aria-hidden="true"></i>
 				</a>
 			</div>
-		</div>
+		</div> --}}
 		<!-- /.product-related -->
 
 	</div>
@@ -261,11 +260,9 @@
 			// XZoom: zoom ảnh chi tiết của sản phẩm
 			$(".xzoom5, .xzoom-gallery5").xzoom({tint: '#333', Xoffset: 15});
 
-
 			// Click vào chọn size thì nó hiển thị ra màu sắc và trạng thái tương ứng
 			$('#size').change(function() {
-				val size = $('#size').val();
-				alert(size);
+				var size = $('#size').val();
 			});
 
 		});

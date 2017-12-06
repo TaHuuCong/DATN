@@ -11,6 +11,7 @@
 
         <form action="{{ route('admin.smallbanner.postEdit') }}" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="_token" value="{!! csrf_token() !!}">
+            <input type="hidden" name="id" value="{{ $small_banner['id'] }}">
             <div class="form-group">
                 <label>Tên banner</span></label>
                 <input class="form-control" name="txtBannerName" value="{{ old('txtBannerName', isset($small_banner) ? $small_banner['name'] : null) }}">
@@ -41,11 +42,3 @@
 
 @endsection()
 
-@section('custom javascript')
-
-<script type="text/javascript">
-    $('.treeview').removeClass('active');
-    $("#smallbanner").addClass('active');
-</script>
-
-@stop

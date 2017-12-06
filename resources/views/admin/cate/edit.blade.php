@@ -11,6 +11,7 @@
 
         <form action="{{ route('admin.cate.postEdit') }}" method="POST">
             <input type="hidden" name="_token" value="{!! csrf_token() !!}">
+            <input type="hidden" name="id" value="{{ $cate['id'] }}">
             <div class="form-group">
                 <label>Tên thể loại <span class="asterisk">*</span></label>
                 <input class="form-control" name="txtCateName" placeholder="Nhập tên thể loại" value="{!! old('txtCateName', isset($cate) ? $cate['name'] : null) !!}" />
@@ -31,11 +32,3 @@
 
 @endsection()
 
-@section('custom javascript')
-
-<script type="text/javascript">
-    $('.treeview').removeClass('active');
-    $("#category").addClass('active');
-</script>
-
-@stop

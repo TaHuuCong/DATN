@@ -68,48 +68,48 @@ class WelcomeController extends Controller {
 		$sports = DB::table('sports')->orderBy('id', 'asc')->get();
 		$cates  = DB::table('categories')->orderBy('id', 'asc')->get();
 		$brands = DB::table('brands')->orderBy('id', 'asc')->get();
-
+		$genders = ['1' => 'Nam', '2' => 'Nữ'];
 		if (!empty($request->all())) {
-			$sport = $request->input('sport');
-			$cate = $request->input('cate');
-			$brand = $request->input('brand');
-			$where = [];
+			$sport  = $request->input('sport');
+			$cate   = $request->input('cate');
+			$brand  = $request->input('brand');
+			$gender = $request->input('gender');
+			$all_products = DB::table('products');
 			if (!empty($sport)) {
-				foreach ($sport as $key => $value) {
-					$where['sport_id'] = $sport[$key];
-				}
+				$all_products = $all_products->whereIn('sport_id', $sport);
 			}
 			if (!empty($cate)) {
-				foreach ($cate as $key => $value) {
-					$where['cate_id'] = $value;
-				}
+				$all_products = $all_products->whereIn('cate_id', $cate);
+
 			}
 			if (!empty($brand)) {
-				foreach ($brand as $key => $value) {
-					$where['brand_id'] = $value;
-				}
+				$all_products = $all_products->whereIn('brand_id', $brand);
 			}
-			$all_products = DB::table('products')->where($where)->paginate(3);
+			if (!empty($gender)) {
+				$all_products = $all_products->whereIn('gender', $gender);
+			}
+			$all_products = $all_products->orderBy('id', 'desc')->paginate(3);
 		}
 		else {
 			$all_products = DB::table('products')->orderBy('id', 'desc')->paginate(3);
 		}
-		return view('user.pages.product', compact('all_products', 'sports', 'cates', 'brands', 'sport', 'cate', 'brand'));
+		return view('user.pages.product', compact('all_products', 'sports', 'cates', 'brands', 'genders', 'sport', 'cate', 'brand', 'gender'));
 	}
 
 	public function get_product_ajax (Request $request)
 	{
 		//sport, brand, cate là param trên url dùng để phân trang khi filter
 		//khi click vào checkbox thì mới có param thì mới sử dụng ajax, còn không click sẽ không có param nên chỉ cần lấy dữ liệu bình thường. Nhưng khi phân trang thì luôn cần param, khi lấy dữ liệu bình thường thì param = rỗng, còn khi lấy dữ liệu theo ajax thì brand = $brand...
-		$sport = null;
-		$cate = null;
-		$brand = null;
+		$sport  = null;
+		$cate   = null;
+		$brand  = null;
+		$gender = null;
 		if ($request->ajax()) {
 			if (!empty($request->all())) {
-				$sport = $request->sport;
-				$cate = $request->cate;
-				$brand = $request->brand;
-				$where = [];
+				$sport  = $request->sport;
+				$cate   = $request->cate;
+				$brand  = $request->brand;
+				$gender = $request->gender;
 				$all_products = DB::table('products');
 				if (!empty($sport)) {
 					$all_products = $all_products->whereIn('sport_id', $sport);
@@ -121,25 +121,30 @@ class WelcomeController extends Controller {
 				if (!empty($brand)) {
 					$all_products = $all_products->whereIn('brand_id', $brand);
 				}
-				$all_products = $all_products->paginate(3);
+				if (!empty($gender)) {
+					$all_products = $all_products->whereIn('gender', $gender);
+				}
+				$all_products = $all_products->orderBy('id', 'desc')->paginate(3);
 			}
 			else {
 				$all_products = DB::table('products')->orderBy('id', 'desc')->paginate(3);
 			}
 			$all_products->setPath(route('getProduct'));  //Hàm setPath cho phép tuỳ chọn URL sử dụng bởi paginator khi sinh ra links, ở đây nó sẽ hiển thị theo dạng của route get.product là /san-pham
-            return view('user.pages.product-filter', compact('all_products', 'sport', 'cate', 'brand'));
+            return view('user.pages.product-filter', compact('all_products', 'sport', 'cate', 'brand', 'gender'));
 		}
 	}
 
 
 	//Lấy sản phẩm theo bộ môn
-	public function sport ($sp_alias)
+	public function sport ($sp_alias, Request $request)
 	{
-		$prod_by_sport = DB::table('products as pr')->select('pr.*', 'pr.id as pr_id', 'sp.alias')->join('sports as sp', 'pr.sport_id', '=', 'sp.id')->where('sp.alias', '=', $sp_alias)->orderBy('pr_id', 'desc')->paginate(5);
-		$name_by_alias = DB::table('sports')->select('name')->where('alias', '=', $sp_alias)->first();
+		// $prod_by_sport = DB::table('products as pr')->select('pr.*', 'pr.id as pr_id', 'sp.alias', 'sp.id as sp_id')->join('sports as sp', 'pr.sport_id', '=', 'sp.id')->where('sp.alias', '=', $sp_alias)->orderBy('pr_id', 'desc')->paginate(5);
+		$sports = DB::table('sports')->where('alias', '=', $sp_alias)->first();
 		$cates = DB::table('categories')->orderBy('id', 'asc')->get();
 		$brands = DB::table('brands')->orderBy('id', 'asc')->get();
-		return view('user.pages.product_by_sport', compact('prod_by_sport', 'name_by_alias', 'sp_alias', 'cates', 'brands'));
+		$all_products = DB::table('products as pr')->select('pr.*', 'sp.alias')->join('sports as sp', 'pr.sport_id', '=', 'sp.id')->where('sp.alias', '=', $sp_alias)->orderBy('id', 'desc')->paginate(3);
+
+		return view('user.pages.product_by_sport', compact('sp_alias', 'all_products', 'sports', 'cates', 'brands', 'sport', 'cate', 'brand'));
 	}
 
 
@@ -199,6 +204,7 @@ class WelcomeController extends Controller {
 		$sizes = DB::table('product_properties')
               					->select('size')
               					->where('pro_id', $id)->groupBy('size')->get();
+        // dd($sizes);
 
 		return view('user.pages.productdetail', compact('product_detail', 'prod_images', 'prod_properties', 'id', 'sizes'));
 	}

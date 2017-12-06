@@ -54,8 +54,9 @@ class BrandController extends Controller
         return view('admin.brand.edit', compact('brand'));
     }
 
-    public function postEdit (Request $request, $id)
+    public function postEdit (Request $request)
     {
+        $id = $request->id;
         $this->validate($request,
             ['txtBrandName' => 'required', 'fImages' => 'image'],
             ['txtBrandName.required' => 'Vui lòng nhập tên thương hiệu', 'fImages.image' => 'File này không phải là một hình ảnh']

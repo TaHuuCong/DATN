@@ -63,8 +63,9 @@ class NewsController extends Controller
     	return view('admin.news.edit', compact('news', 'newscate'));
     }
 
-    public function postEdit (Request $request, $id)
+    public function postEdit (Request $request)
     {
+    	$id = $request->id;
 		$news           = News::find($id);
 		$news->summary  = $request->txtSummary;
 		$news->content  = $request->txtContent;

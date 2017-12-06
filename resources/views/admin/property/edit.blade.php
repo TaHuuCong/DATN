@@ -12,6 +12,7 @@
     </div>
 	<form action="{{ route('admin.property.postEdit') }}" method="POST"  enctype="multipart/form-data">
         {{ csrf_field() }}
+        <input type="hidden" name="id" value="{{ $property->id }}">
         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-md-push-3">
         	<div class="form-group">
                 <label>Sản phẩm <span class="asterisk">*</span></label>
@@ -66,11 +67,3 @@
 
 @endsection()
 
-@section('custom javascript')
-
-<script type="text/javascript">
-    $('.treeview').removeClass('active');
-    $("#property").addClass('active');
-</script>
-
-@stop

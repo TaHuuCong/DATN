@@ -135,6 +135,7 @@ $(function() {
         sport = multiple_values('sport');
         cate = multiple_values('cate');
         brand = multiple_values('brand');
+        gender = multiple_values('gender');
 
         $.ajax({
             url: URL_GET_PRODUCT_AJAX.url,
@@ -142,7 +143,8 @@ $(function() {
             data: {
                 sport: sport,
                 cate: cate,
-                brand: brand
+                brand: brand,
+                gender: gender
             },
             success: function(result) {
                 $('#updateDiv').html(result);

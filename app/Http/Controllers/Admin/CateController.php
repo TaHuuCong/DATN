@@ -42,8 +42,9 @@ class CateController extends Controller
         return view('admin.cate.edit', compact('cate'));
     }
 
-    public function postEdit (Request $request, $id)
+    public function postEdit (Request $request)
     {
+        $id = $request->id;
         $this->validate($request,
             ['txtCateName' => 'required'],
             ['txtCateName.required' => 'Vui lòng nhập tên thể loại']

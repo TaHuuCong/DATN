@@ -13,6 +13,7 @@
     </div>
     <form action="{{ route('admin.product.postEdit') }}" method="POST" name="formEditProduct" enctype="multipart/form-data">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
+        <input type="hidden" name="id" value="{{ $product->id }}">
         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
             <div class="form-group">
                 <label>Thể loại <span class="asterisk">*</span></label>
@@ -158,11 +159,3 @@
 
 @endsection()
 
-@section('custom javascript')
-
-<script type="text/javascript">
-    $('.treeview').removeClass('active');
-    $("#product").addClass('active');
-</script>
-
-@stop

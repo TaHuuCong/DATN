@@ -59,7 +59,7 @@
 
 <script type="text/javascript">
     $(document).ready(function(){
-        $('.treeview').removeClass('active');  //loại bỏ active ở cái hiện tại
+        $('.mytreeview').removeClass('active');  //loại bỏ active ở cái hiện tại
         $("#category").addClass('active');   //active sang cái mới
         var check = false;
         $('#check').click(function(){

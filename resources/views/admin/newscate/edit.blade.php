@@ -11,6 +11,7 @@
 
         <form action="{{ route('admin.newscate.postEdit') }}" method="POST">
             <input type="hidden" name="_token" value="{!! csrf_token() !!}">
+            <input type="hidden" name="id" value="{{ $newscate['id'] }}">
             <div class="form-group">
                 <label>Tên loại tin <span class="asterisk">*</span></label>
                 <input class="form-control" name="txtNewsCateName" value="{!! old('txtNewsCateName', isset($newscate) ? $newscate['name'] : null) !!}" />
@@ -31,11 +32,3 @@
 
 @endsection()
 
-@section('custom javascript')
-
-<script type="text/javascript">
-    $('.treeview').removeClass('active');
-    $("#newscate").addClass('active');
-</script>
-
-@stop

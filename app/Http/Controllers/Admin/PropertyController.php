@@ -53,8 +53,9 @@ class PropertyController extends Controller
     	return view('admin.property.edit', compact('property', 'id'));
     }
 
-    public function postEdit ($id, Request $request)
+    public function postEdit (Request $request)
     {
+        $id = $request->id;
     	$property = ProductProperty::find($id);
         // chỉ cập nhật trạng thái thì ok, các trường hợp khác phải check xem đã tồn tại bộ thuộc tính chưa
         if (($property->size == $request->chooseSize) && ($property->color == $request->chooseColor) && ($property->status != $request->chooseStatus)) {

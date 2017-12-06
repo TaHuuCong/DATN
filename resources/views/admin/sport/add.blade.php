@@ -35,11 +35,3 @@
 
 @endsection()
 
-@section('custom javascript')
-
-<script type="text/javascript">
-    $('.treeview').removeClass('active');
-    $("#sport").addClass('active');
-</script>
-
-@stop

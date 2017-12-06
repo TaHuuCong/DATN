@@ -157,8 +157,9 @@ class ProductController extends Controller
     	return view('admin.product.edit', compact('product', 'cate', 'sport', 'brand', 'id'));
     }
 
-    public function postEdit (ProductEditRequest $request, $id)
+    public function postEdit (ProductEditRequest $request)
     {
+    	$id = $request->id;
     	$product = Product::find($id);
 		$product->price       = $request->txtPrice;
 		$product->gender      = $request->chooseGender;

@@ -11,6 +11,7 @@
 
         <form action="{{ route('admin.brand.postEdit') }}" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="_token" value="{!! csrf_token() !!}">
+            <input type="hidden" name="id" value="{{ $brand['id'] }}">
             <div class="form-group">
                 <label>Tên thương hiệu <span class="asterisk">*</span></label>
                 <input class="form-control" name="txtBrandName" placeholder="Nhập tên thương hiệu" value="{!! old('txtBrandName', isset($brand) ? $brand['name'] : null) !!}" />
@@ -40,11 +41,3 @@
 
 @endsection()
 
-@section('custom javascript')
-
-<script type="text/javascript">
-    $('.treeview').removeClass('active');
-    $("#brand").addClass('active');
-</script>
-
-@stop

@@ -18,6 +18,6 @@
 </div><!--featured-product-->
 
 <ul class="pagination">
-	{{ $all_products->appends(['sport' => $sport, 'cate' => $cate, 'brand' => $brand])->render() }}
+	{{ $all_products->appends(['sport' => $sport, 'cate' => $cate, 'brand' => $brand, 'gender' => $gender])->render() }}
 </ul>
 <!-- /.pagination -->

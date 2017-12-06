@@ -31,11 +31,3 @@
 
 @endsection()
 
-@section('custom javascript')
-
-<script type="text/javascript">
-    $('.treeview').removeClass('active');
-    $("#newscate").addClass('active');
-</script>
-
-@stop

@@ -57,8 +57,9 @@ class SmallBannerController extends Controller
     	return view('admin.banner.small.edit', compact('small_banner'));
     }
 
-    public function postEdit (Request $request, $id)
+    public function postEdit (Request $request)
     {
+    	$id = $request->id;
     	$this->validate($request,
             ['fImages' => 'image'],
             ['fImages.image' => 'File này không phải là một hình ảnh']

@@ -57,11 +57,3 @@
 
 @endsection()
 
-@section('custom javascript')
-
-<script type="text/javascript">
-    $('.treeview').removeClass('active');
-    $("#news").addClass('active');
-</script>
-
-@stop

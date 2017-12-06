@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
-
+use URL;
 class SearchController extends Controller
 {
 	//Tìm kiếm sản phẩm
@@ -63,8 +63,8 @@ class SearchController extends Controller
                 $str .= '<td>'.$item->brand_name.'</td>';
                 $str .= '<td>'.stranslateTime(\Carbon\Carbon::createFromTimestamp(strtotime($item->created_at))->diffForHumans()).'</td>';
                 $str .= '<td>'.stranslateTime(\Carbon\Carbon::createFromTimestamp(strtotime($item->updated_at))->diffForHumans()).'</td>';
-                // $str .= '<td><i class="fa fa-trash-o fa-fw"></i><a href="'.URL::route('admin.product.getDelete', $item->id).'" onclick="return'.confirm('Bạn Có Chắc Là Muốn Xóa Không?').'" > Xóa</a></td>';
-
+                $str .= '<td><i class="fa fa-trash-o fa-fw"></i><a href="'.URL::route('admin.product.getDelete', $item->id).'" onclick="return confirm(\'Bạn Có Chắc Là Muốn Xóa Không?\')" > Xóa</a></td>';
+                $str .= '<td><i class="fa fa-trash-o fa-fw"></i><a href="'.URL::route('admin.product.getEdit', $item->id).'" > Sửa</a></td>';
                 $str .= '</tr>';
                 $y .= $str;
             }

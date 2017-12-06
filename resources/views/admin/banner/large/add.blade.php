@@ -35,12 +35,3 @@
 </section>
 
 @endsection()
-
-@section('custom javascript')
-
-<script type="text/javascript">
-    $('.treeview').removeClass('active');
-    $("#largebanner").addClass('active');
-</script>
-
-@stop

@@ -59,10 +59,10 @@ Route::get('san-pham', ['as' => 'getProduct', 'uses' => 'WelcomeController@produ
 
 //Filter sản phẩm
 Route::get('san-pham-ajax', ['as' => 'getProductAjax', 'uses' => 'WelcomeController@get_product_ajax']);
-
+// Route::get('bo-mon-ajax', ['as' => 'getSportAjax', 'uses' => 'WelcomeController@get_sport_ajax']);
 
 //Lấy sp theo bộ môn
-Route::get('bo-mon/{sport}', 'WelcomeController@sport');
+Route::get('bo-mon/{sport}', ['as' => 'getSport', 'uses' => 'WelcomeController@sport']);
 
 //Lấy sp theo bộ môn và thể loại
 Route::get('bo-mon/{sport}/{category}', 'WelcomeController@sport_category');
@@ -98,7 +98,7 @@ Route::group(['prefix' => 'admin'], function() {
 
         //khi di chuột vào edit hay delete thì để ý ở góc dưới bên trái màn hình có hiển thị url: ...edit?12 (12 là id của sản phẩm) nên cần có thêm tham số truyền vào phía sau trong route
         Route::get('edit/{id}', ['as' => 'admin.cate.getEdit', 'uses' => 'Admin\CateController@getEdit']);
-        Route::post('edit/{id}', ['as' => 'admin.cate.postEdit', 'uses' => 'Admin\CateController@postEdit']);
+        Route::post('edit', ['as' => 'admin.cate.postEdit', 'uses' => 'Admin\CateController@postEdit']);
 
         Route::get('delete/{id}', ['as' => 'admin.cate.getDelete', 'uses' => 'Admin\CateController@getDelete']);
         Route::post('delete', ['as' => 'admin.cate.postDelete', 'uses' => 'Admin\CateController@postDelete']);
@@ -113,7 +113,7 @@ Route::group(['prefix' => 'admin'], function() {
         Route::post('add', ['as' => 'admin.sport.postAdd', 'uses' => 'Admin\SportController@postAdd']);
 
         Route::get('edit/{id}', ['as' => 'admin.sport.getEdit', 'uses' => 'Admin\SportController@getEdit']);
-        Route::post('edit/{id}', ['as' => 'admin.sport.postEdit', 'uses' => 'Admin\SportController@postEdit']);
+        Route::post('edit', ['as' => 'admin.sport.postEdit', 'uses' => 'Admin\SportController@postEdit']);
 
         Route::get('delete/{id}', ['as' => 'admin.sport.getDelete', 'uses' => 'Admin\SportController@getDelete']);
         Route::post('delete', ['as' => 'admin.sport.postDelete', 'uses' => 'Admin\SportController@postDelete']);
@@ -128,7 +128,7 @@ Route::group(['prefix' => 'admin'], function() {
         Route::post('add', ['as' => 'admin.brand.postAdd', 'uses' => 'Admin\BrandController@postAdd']);
 
         Route::get('edit/{id}', ['as' => 'admin.brand.getEdit', 'uses' => 'Admin\BrandController@getEdit']);
-        Route::post('edit/{id}', ['as' => 'admin.brand.postEdit', 'uses' => 'Admin\BrandController@postEdit']);
+        Route::post('edit', ['as' => 'admin.brand.postEdit', 'uses' => 'Admin\BrandController@postEdit']);
 
         Route::get('delete/{id}', ['as' => 'admin.brand.getDelete', 'uses' => 'Admin\BrandController@getDelete']);
         Route::post('delete', ['as' => 'admin.brand.postDelete', 'uses' => 'Admin\BrandController@postDelete']);
@@ -143,7 +143,7 @@ Route::group(['prefix' => 'admin'], function() {
         Route::post('add', ['as' => 'admin.property.postAdd', 'uses' => 'Admin\PropertyController@postAdd']);
 
         Route::get('edit/{id}', ['as' => 'admin.property.getEdit', 'uses' => 'Admin\PropertyController@getEdit']);
-        Route::post('edit/{id}', ['as' => 'admin.property.postEdit', 'uses' => 'Admin\PropertyController@postEdit']);
+        Route::post('edit', ['as' => 'admin.property.postEdit', 'uses' => 'Admin\PropertyController@postEdit']);
 
         Route::get('delete/{id}', ['as' => 'admin.property.getDelete', 'uses' => 'Admin\PropertyController@getDelete']);
         Route::post('delete', ['as' => 'admin.property.postDelete', 'uses' => 'Admin\PropertyController@postDelete']);
@@ -158,7 +158,7 @@ Route::group(['prefix' => 'admin'], function() {
         Route::post('add', ['as' => 'admin.product.postAdd', 'uses' => 'Admin\ProductController@postAdd']);
 
         Route::get('edit/{id}', ['as' => 'admin.product.getEdit', 'uses' => 'Admin\ProductController@getEdit']);
-        Route::post('edit/{id}', ['as' => 'admin.product.postEdit', 'uses' => 'Admin\ProductController@postEdit']);
+        Route::post('edit', ['as' => 'admin.product.postEdit', 'uses' => 'Admin\ProductController@postEdit']);
 
         //xóa 1 sản phẩm bình thường
         Route::get('delete/{id}', ['as' => 'admin.product.getDelete', 'uses' => 'Admin\ProductController@getDelete']);
@@ -182,7 +182,7 @@ Route::group(['prefix' => 'admin'], function() {
         Route::post('add', ['as' => 'admin.newscate.postAdd', 'uses' => 'Admin\NewsCateController@postAdd']);
 
         Route::get('edit/{id}', ['as' => 'admin.newscate.getEdit', 'uses' => 'Admin\NewsCateController@getEdit']);
-        Route::post('edit/{id}', ['as' => 'admin.newscate.postEdit', 'uses' => 'Admin\NewsCateController@postEdit']);
+        Route::post('edit', ['as' => 'admin.newscate.postEdit', 'uses' => 'Admin\NewsCateController@postEdit']);
 
         Route::get('delete/{id}', ['as' => 'admin.newscate.getDelete', 'uses' => 'Admin\NewsCateController@getDelete']);
         Route::post('delete', ['as' => 'admin.newscate.postDelete', 'uses' => 'Admin\NewsCateController@postDelete']);
@@ -197,7 +197,7 @@ Route::group(['prefix' => 'admin'], function() {
         Route::post('add', ['as' => 'admin.news.postAdd', 'uses' => 'Admin\NewsController@postAdd']);
 
         Route::get('edit/{id}', ['as' => 'admin.news.getEdit', 'uses' => 'Admin\NewsController@getEdit']);
-        Route::post('edit/{id}', ['as' => 'admin.news.postEdit', 'uses' => 'Admin\NewsController@postEdit']);
+        Route::post('edit', ['as' => 'admin.news.postEdit', 'uses' => 'Admin\NewsController@postEdit']);
 
         Route::get('delete/{id}', ['as' => 'admin.news.getDelete', 'uses' => 'Admin\NewsController@getDelete']);
         Route::post('delete', ['as' => 'admin.news.postDelete', 'uses' => 'Admin\NewsController@postDelete']);
@@ -212,7 +212,7 @@ Route::group(['prefix' => 'admin'], function() {
         Route::post('add', ['as' => 'admin.largebanner.postAdd', 'uses' => 'Admin\LargeBannerController@postAdd']);
 
         Route::get('edit/{id}', ['as' => 'admin.largebanner.getEdit', 'uses' => 'Admin\LargeBannerController@getEdit']);
-        Route::post('edit/{id}', ['as' => 'admin.largebanner.postEdit', 'uses' => 'Admin\LargeBannerController@postEdit']);
+        Route::post('edit', ['as' => 'admin.largebanner.postEdit', 'uses' => 'Admin\LargeBannerController@postEdit']);
 
         Route::get('delete/{id}', ['as' => 'admin.largebanner.getDelete', 'uses' => 'Admin\LargeBannerController@getDelete']);
         Route::post('delete', ['as' => 'admin.largebanner.postDelete', 'uses' => 'Admin\LargeBannerController@postDelete']);
@@ -227,7 +227,7 @@ Route::group(['prefix' => 'admin'], function() {
         Route::post('add', ['as' => 'admin.smallbanner.postAdd', 'uses' => 'Admin\SmallBannerController@postAdd']);
 
         Route::get('edit/{id}', ['as' => 'admin.smallbanner.getEdit', 'uses' => 'Admin\SmallBannerController@getEdit']);
-        Route::post('edit/{id}', ['as' => 'admin.smallbanner.postEdit', 'uses' => 'Admin\SmallBannerController@postEdit']);
+        Route::post('edit', ['as' => 'admin.smallbanner.postEdit', 'uses' => 'Admin\SmallBannerController@postEdit']);
 
         Route::get('delete/{id}', ['as' => 'admin.smallbanner.getDelete', 'uses' => 'Admin\SmallBannerController@getDelete']);
         Route::post('delete', ['as' => 'admin.smallbanner.postDelete', 'uses' => 'Admin\SmallBannerController@postDelete']);

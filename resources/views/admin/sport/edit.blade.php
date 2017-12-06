@@ -11,6 +11,7 @@
 
         <form action="{{ route('admin.sport.postEdit') }}" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="_token" value="{!! csrf_token() !!}">
+            <input type="hidden" name="id" value="{{ $sport['id'] }}">
             <div class="form-group">
                 <label>Tên bộ môn <span class="asterisk">*</span></label>
                 <input class="form-control" name="txtSportName" placeholder="Nhập tên bộ môn" value="{!! old('txtSportName', isset($sport) ? $sport['name'] : null) !!}" />
@@ -40,11 +41,3 @@
 
 @endsection()
 
-@section('custom javascript')
-
-<script type="text/javascript">
-    $('.treeview').removeClass('active');
-    $("#sport").addClass('active');
-</script>
-
-@stop

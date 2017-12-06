@@ -53,8 +53,9 @@ class SportController extends Controller
         return view('admin.sport.edit', compact('sport'));
     }
 
-    public function postEdit (Request $request, $id)
+    public function postEdit (Request $request)
     {
+        $id = $request->id;
         $this->validate($request,
             ['txtSportName' => 'required', 'fImages' => 'image'],
             ['txtSportName.required' => 'Vui lòng nhập tên bộ môn', 'fImages.image' => 'File này không phải là một hình ảnh']

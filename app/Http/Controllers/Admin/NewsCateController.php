@@ -36,8 +36,9 @@ class NewsCateController extends Controller
     	return view('admin.newscate.edit', compact('newscate'));
     }
 
-    public function postEdit (Request $request, $id)
+    public function postEdit (Request $request)
     {
+        $id = $request->id;
     	$this->validate($request,
     	  	['txtNewsCateName' => 'required'],
             ['txtNewsCateName.required' => 'Vui lòng nhập tên thể loại']
