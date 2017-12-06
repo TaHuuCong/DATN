@@ -17,15 +17,15 @@ class AccountController extends Controller
     {
     	$this->validate($request,
             [
-                'email' => 'required|email',
+                'email'    => 'required|email',
                 'password' => 'required|min:6|max:20'
             ],
             [
-                'email.required' => 'Vui lòng nhập email của bạn',
-                'email.email' => 'Không đúng định dạng email',
+                'email.required'    => 'Vui lòng nhập email của bạn',
+                'email.email'       => 'Không đúng định dạng email',
                 'password.required' => 'Vui lòng nhập mật khẩu của bạn',
-                'password.min' => 'Mật khấu có tối thiểu 6 kí tự',
-                'password.max' => 'Mật khấu có tối đa 20 kí tự'
+                'password.min'      => 'Mật khấu có tối thiểu 6 kí tự',
+                'password.max'      => 'Mật khấu có tối đa 20 kí tự'
             ]
         );
 
@@ -47,38 +47,38 @@ class AccountController extends Controller
     {
     	$this->validate($request,
     		[
-    			'email' => 'required|email|unique:users,email',
-    			'name' => 'required|max:120',
-    			'address' => 'required',
-    			'phone' => 'required|min:10|numeric',
-    			'password' => 'required|min:6|max:20',
-    			're_password' => 'required|same:password'
+                'email'       => 'required|email|unique:users,email',
+                'name'        => 'required|max:120',
+                'address'     => 'required',
+                'phone'       => 'required|min:10|numeric',
+                'password'    => 'required|min:6|max:20',
+                're_password' => 'required|same:password'
     		],
     		[
-    			'email.required' => 'Vui lòng nhập email của bạn',
-    			'email.email' => 'Không đúng định dạng email',
-    			'email.unique' => 'Email này đã có người sử dụng',
-    			'name.required' => 'Vui lòng nhập tên đầy đủ của bạn',
-    			'address.required' => 'Vui lòng nhập địa chỉ của bạn',
-    			'phone.required' => 'Vui lòng nhập số điện thoại của bạn',
-    			'phone.min' => 'Số điện thoại phải có ít nhất 10 chữ số',
-    			'phone.numeric' => 'Số điện thoại chỉ bao gồm chữ số',
-    			'password.required' => 'Vui lòng nhập mật khẩu của bạn',
-    			'password.min' => 'Mật khấu có tối thiểu 6 kí tự',
-                'password.max' => 'Mật khấu có tối đa 20 kí tự',
-    			're_password.required' => 'Vui lòng nhập lại mật khẩu của bạn',
-    			're_password.same' => 'Mật khẩu không giống nhau'
+                'email.required'       => 'Vui lòng nhập email của bạn',
+                'email.email'          => 'Không đúng định dạng email',
+                'email.unique'         => 'Email này đã có người sử dụng',
+                'name.required'        => 'Vui lòng nhập tên đầy đủ của bạn',
+                'address.required'     => 'Vui lòng nhập địa chỉ của bạn',
+                'phone.required'       => 'Vui lòng nhập số điện thoại của bạn',
+                'phone.min'            => 'Số điện thoại phải có ít nhất 10 chữ số',
+                'phone.numeric'        => 'Số điện thoại chỉ bao gồm chữ số',
+                'password.required'    => 'Vui lòng nhập mật khẩu của bạn',
+                'password.min'         => 'Mật khấu có tối thiểu 6 kí tự',
+                'password.max'         => 'Mật khấu có tối đa 20 kí tự',
+                're_password.required' => 'Vui lòng nhập lại mật khẩu của bạn',
+                're_password.same'     => 'Mật khẩu không giống nhau'
     		]
     	);
 
     	$user = new User;
-    	$user->email = $request->email;
-    	$user->name = $request->name;
-    	$user->gender = $request->gender;
-    	$user->address = $request->address;
-    	$user->phone = $request->phone;
-    	$user->password = Hash::make($request->password);
-    	$user->re_password = Hash::make($request->re_password);
+        $user->email       = $request->email;
+        $user->name        = $request->name;
+        $user->gender      = $request->gender;
+        $user->address     = $request->address;
+        $user->phone       = $request->phone;
+        $user->password    = Hash::make($request->password);
+        $user->re_password = Hash::make($request->re_password);
     	$user->save();
 
     	return redirect()->route('getHome');

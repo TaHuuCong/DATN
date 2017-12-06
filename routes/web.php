@@ -47,9 +47,9 @@ Route::group(['prefix'=>'auth'], function(){
     Route::get('login/google/callback', 'SocialController@handleProviderGoogle');
 
 });
-//Đăng kí
-Route::get('/dang-ki', ['as' => 'getRegister', 'uses' => 'AccountController@getRegister']);
-Route::post('/dang-ki', ['as' => 'postRegister', 'uses' => 'AccountController@postRegister']);
+//Đăng ký thành viên
+Route::get('/dang-ky', ['as' => 'getRegister', 'uses' => 'AccountController@getRegister']);
+Route::post('/dang-ky', ['as' => 'postRegister', 'uses' => 'AccountController@postRegister']);
 
 //Đăng xuất
 Route::get('/dang-xuat', ['as' => 'Logout', 'uses' => 'AccountController@postLogout']);
