@@ -44,6 +44,8 @@
               				</div>
 
               				<div class="quantitybox">
+              					<div name="color" id="color"></div>
+
               					<select name="size" id="size">
               						<option>Chọn size</option>
               						@foreach ($sizes as $size)
@@ -52,12 +54,14 @@
               					</select>
               				</div>
 
-              				<ul class="productpagecart">
+              				{{-- <ul class="productpagecart">
 				                <li><a class="cart" href="#">Add to Cart</a></li>
 				                <li><a class="wish" href="#" >Add to Wishlist</a></li>
-              				</ul>
+              				</ul> --}}
 
-							<div class="category-tab product-details-tab">
+              				<input type="hidden" value="{{ $product_detail->id }}" id="proId"/>
+
+							{{-- <div class="category-tab product-details-tab">
 								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding: 0;">
 									<ul class="nav nav-tabs">
 										<li class="active"><a href="#introduction" data-toggle="tab">Giới thiệu sản phẩm</a></li>
@@ -122,7 +126,7 @@
 									</div>
 									<!-- /#reviews -->
 								</div>
-							</div>
+							</div> --}}
 							<!--/category-tab-->
 
 						</div>
@@ -260,9 +264,45 @@
 			// XZoom: zoom ảnh chi tiết của sản phẩm
 			$(".xzoom5, .xzoom-gallery5").xzoom({tint: '#333', Xoffset: 15});
 
-			// Click vào chọn size thì nó hiển thị ra màu sắc và trạng thái tương ứng
+			// Click vào chọn size thì nó hiển thị ra màu sắc tương ứng: gửi ajax đến controller xử lý
 			$('#size').change(function() {
 				var size = $('#size').val();
+				var proId = $('#proId').val();
+
+				$.ajax({
+					type: 'get',
+					dataType: 'html',
+					url: '{{ url('/chon-size') }}',
+					data: "size=" + size + "& proId=" + proId,
+					success: function (response) {
+						console.log(response);
+						$('#color').html(response);
+
+						<?php
+							for($i=1; $i<10; $i++) {
+							?>
+                			var colorValue<?php echo $i; ?> = $('#colorValue<?php echo $i; ?>').val();
+
+                			// Click vào chọn size thì nó hiển thị ra màu sắc tương ứng
+              				$('#colorClicked<?php echo $i;?>').click(function() {
+              					$.ajax({
+              						type: 'get',
+              						dataType: 'html',
+              						url: '{{ url('/chon-mau') }}',
+              						data: "size=" + size + "& proId=" + proId + "& color=" + colorValue<?php echo $i; ?>,
+              						success: function (response) {
+              							console.log(response);
+              							$('#status').html(response);
+				                    }
+				                });
+							});
+              			<?php
+              				}
+              			?>
+
+					}
+				});
+
 			});
 
 		});

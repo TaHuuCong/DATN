@@ -16,4 +16,9 @@ class Category extends Model
     {
     	return $this->hasMany('App\Product');   //1 loại sp có nhiều sp
     }
+
+    public function size ()
+    {
+    	return $this->hasMany('App\Size');   //1 loại sp có nhiều size
+    }
 }

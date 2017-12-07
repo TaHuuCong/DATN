@@ -6,7 +6,8 @@
 
 <section class="content">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding-right: 0">
-        <button type="button" class="pull-right btn btn-default addItem"><a href="{!! URL::route('admin.property.getAdd') !!}"> Thêm thuộc tính</a></button>
+        <button type="button" class="btn btn-default addItem"><a href="{!! route('admin.property.getSizeAdd') !!}"> Quản lý size</a></button>
+        <button type="button" class="pull-right btn btn-default addItem"><a href="{!! route('admin.property.getAdd') !!}"> Thêm thuộc tính</a></button>
     </div>
 
     <form action="{{ route('admin.property.postDelete') }}" method="POST" role="form">
@@ -71,7 +72,8 @@
 <script type="text/javascript">
     $(document).ready(function(){
         $('.mytreeview').removeClass('active');  //loại bỏ active ở cái hiện tại
-        $("#property").addClass('active');   //active sang cái mới
+        $("#product").addClass('active');   //active sang cái mới
+        $("#listproperty").addClass('active');
         var check = false;
         $('#check').click(function(){
             if(check == false){

@@ -146,6 +146,7 @@
     $(document).ready(function() {
         $('.mytreeview').removeClass('active');  //loại bỏ active ở cái hiện tại
         $("#product").addClass('active');   //active sang cái mới
+        $("#listproduct").addClass('active');
         var check = false;
         $('#check').click(function(){
             if(check == false){
@@ -178,16 +179,7 @@
             });
         });
     });
-    // Hiện tại bạn vẫn đang dùng .html() giống như bên frontend thôi, làm giống bên frontend là xong
-    // thế là tạo view mới như bên kia / thấy có route rồi mà, làm tiếp tục thôi, mà mình nghĩ bạn nên sử dụng 1 package sẽ hay hơn
-    // Còn đó ko?
-    // đây ạ
-    // vậy a nghĩ nên dùng package nào ạ?
-    // https://github.com/yajra/laravel-datatables chịu khó đọc documentions và tìm demo test vài lần
-    // Có thời gian thì tìm thử, còn ko thì thôi.
-    // ok a
-    // cám ơn a nhiều nhé, pro quá :)
-    // HÌ, nhớ từ khóa để search là ra thôi, out nhé
+
 </script>
 
 @stop

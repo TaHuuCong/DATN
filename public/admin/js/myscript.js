@@ -45,3 +45,25 @@ $(document).ready(function() {
         });
     });
 });
+
+
+//Lấy size theo thể loại sản phẩm
+$(document).ready(function() {
+    $("#pro_id").change(function() {
+        var pro_id = $(this).val();
+        $.ajax({
+            type: 'get',
+            dataType: 'html',
+            url: URL_GET_SIZE_BY_CATEID,
+            data: { pro_id: pro_id },
+            success: function(response) {
+                if (response == '') {
+                    $('#size').prop('disabled', true); //disabled thẻ input trong jquery
+                } else {
+                    $('#size').prop('disabled', false);
+                    $('#size').html(response);
+                }
+            }
+        });
+    });
+});

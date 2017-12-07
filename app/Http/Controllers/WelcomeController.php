@@ -32,6 +32,7 @@ class WelcomeController extends Controller {
 	 */
 
 
+	//Đổ dữ liệu ra trang chủ
 	public function index()
 	{
 		$large_banner_first = DB::table('large_banners')->where('display', '=', '1')->orderBy('id', 'desc')->first();
@@ -63,6 +64,9 @@ class WelcomeController extends Controller {
 	}
 
 
+	//---------------------------------------------------------------------------------------
+
+	//Đổ dữ liệu ra trang sản phẩm
 	public function product (Request $request)
 	{
 		$sports = DB::table('sports')->orderBy('id', 'asc')->get();
@@ -96,7 +100,12 @@ class WelcomeController extends Controller {
 		return view('user.pages.product', compact('all_products', 'sports', 'cates', 'brands', 'genders', 'sport', 'cate', 'brand', 'gender'));
 	}
 
-	public function get_product_ajax (Request $request)
+
+	//---------------------------------------------------------------------------------------
+
+
+	//Hiển thị sản phẩm khi lọc dữ liệu với ajax
+	public function getProductAjax (Request $request)
 	{
 		//sport, brand, cate là param trên url dùng để phân trang khi filter
 		//khi click vào checkbox thì mới có param thì mới sử dụng ajax, còn không click sẽ không có param nên chỉ cần lấy dữ liệu bình thường. Nhưng khi phân trang thì luôn cần param, khi lấy dữ liệu bình thường thì param = rỗng, còn khi lấy dữ liệu theo ajax thì brand = $brand...
@@ -130,9 +139,12 @@ class WelcomeController extends Controller {
 				$all_products = DB::table('products')->orderBy('id', 'desc')->paginate(3);
 			}
 			$all_products->setPath(route('getProduct'));  //Hàm setPath cho phép tuỳ chọn URL sử dụng bởi paginator khi sinh ra links, ở đây nó sẽ hiển thị theo dạng của route get.product là /san-pham
-            return view('user.pages.product-filter', compact('all_products', 'sport', 'cate', 'brand', 'gender'));
+            return view('user.pages.product_filter', compact('all_products', 'sport', 'cate', 'brand', 'gender'));
 		}
 	}
+
+
+	//---------------------------------------------------------------------------------------
 
 
 	//Lấy sản phẩm theo bộ môn
@@ -148,6 +160,9 @@ class WelcomeController extends Controller {
 	}
 
 
+	//---------------------------------------------------------------------------------------
+
+
 	//Lấy sản phẩm theo bộ môn và thể loại
 	public function sport_category ($sp_alias, $ct_alias)
 	{
@@ -157,6 +172,9 @@ class WelcomeController extends Controller {
 		$brands = DB::table('brands')->orderBy('id', 'asc')->get();
 		return view('user.pages.product_by_sport_and_cate', compact('prod_by_sport_cate', 'sp_alias', 'name_by_sp_alias', 'name_by_ct_alias', 'brands'));
 	}
+
+
+	//---------------------------------------------------------------------------------------
 
 
 	//Lấy sản phẩm theo thương hiệu
@@ -170,6 +188,9 @@ class WelcomeController extends Controller {
 	}
 
 
+	//---------------------------------------------------------------------------------------
+
+
 	//Lấy sản phẩm theo thương hiệu và thể loại
 	public function brand_category ($br_alias, $ct_alias)
 	{
@@ -181,11 +202,17 @@ class WelcomeController extends Controller {
 	}
 
 
+	//---------------------------------------------------------------------------------------
+
+
 	//Lấy tin tức theo loại tin
 	public function newscate ()
 	{
 		return view('user.pages.news');
 	}
+
+
+	//---------------------------------------------------------------------------------------
 
 
 	//Lấy tin tức theo loại tin và tiêu đề tin
@@ -195,6 +222,9 @@ class WelcomeController extends Controller {
 	}
 
 
+	//---------------------------------------------------------------------------------------
+
+
 	//Lấy chi tiết sản phẩm
 	public function productDetail ($id)
 	{
@@ -202,11 +232,57 @@ class WelcomeController extends Controller {
 		$prod_images = DB::table('product_images')->select('id', 'name')->where('pro_id', $product_detail->id)->get();
 		$prod_properties = DB::table('product_properties')->select('id', 'size', 'color', 'status')->where('pro_id', $product_detail->id)->get();
 		$sizes = DB::table('product_properties')
-              					->select('size')
-              					->where('pro_id', $id)->groupBy('size')->get();
-        // dd($sizes);
+		->select('size')
+		->where('pro_id', $id)->groupBy('size')->get();
 
-		return view('user.pages.productdetail', compact('product_detail', 'prod_images', 'prod_properties', 'id', 'sizes'));
+		return view('user.pages.product_detail', compact('product_detail', 'prod_images', 'prod_properties', 'id', 'sizes'));
 	}
 
+
+	//Chọn size
+	public function selectSize (Request $request)
+	{
+		$proId  = $request->proId;
+		$size   = $request->size;
+		$status = DB::table('product_properties')
+		->where('pro_id', $proId)
+		->where('size', $size)
+		->get();
+
+		$colorCount = 1;
+		foreach ($status as $stt) {
+			?>
+			<input type="hidden" value="<?php echo $stt->color;?>" id="colorValue<?php echo $colorCount;?>"/>
+			<div style="background:<?php echo $stt->color;?>; width:40px; height:40px; float:left; margin:5px; border:1px solid black;" id="colorClicked<?php echo $colorCount;?>"></div>
+			<div id="status"></div>
+         	<?php $colorCount++;
+		}
+	}
+
+
+	//Chọn màu
+	public function selectColor (Request $requestColor)
+	{
+		$proId  = $requestColor->proId;
+		$size   = $requestColor->size;
+		$color  = $requestColor->color;
+		$property = DB::table('product_properties')
+		->where('pro_id', $proId)
+		->where('size', $size)
+		->where('color', $color)
+		->get();
+
+		$colorCount = 1;
+		foreach ($property as $prop) {
+			if ($prop->status == 0) {
+				?>
+				<span style="color: blue;">Còn hàng</span>
+				<?php
+			} else {
+				?>
+				<span style="color: red;">Tạm hết hàng</span>
+				<?php $colorCount++;
+			}
+		}
+	}
 }
